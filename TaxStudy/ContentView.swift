@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var scenario: TaxScenario = TaxScenario()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+            List {
+                Text("Scenario")
+            }
+        } content: {
+            ScenarioEditor(scenario: $scenario)
+        } detail: {
+            ResultsView(scenario: scenario)
         }
-        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+
+    
+
+    
 }
 
 #Preview {
