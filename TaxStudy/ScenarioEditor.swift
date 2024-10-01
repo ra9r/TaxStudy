@@ -9,66 +9,46 @@ import SwiftUI
 
 struct ScenarioEditor: View {
     @Binding var scenario: TaxScenario
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ScrollView {
-            Text("Financial Information")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top)
-            
-            VStack {
-                InputField(title: "SSDI (Social Security)", text: $scenario.ssdi)
+            GroupBox("Social Security") {
+                CurrencyField(title: "Self", amount: $scenario.socialSecuritySelf)
+                CurrencyField(title: "Spouse", amount: $scenario.socialSecuritySpouse)
             }
-            .padding(.bottom)
-            VStack {
-                InputField(title: "Long-term Capital Gains", text: $scenario.longTermCapitalGains)
-                InputField(title: "Long-term Capital Losses", text: $scenario.longTermCapitalLosses)
-                InputField(title: "Carryover Capital Losses", text: $scenario.capitalLossCarryOver)
-                InputField(title: "Short-term Capital Gains", text: $scenario.shortTermCapitalGains)
-                InputField(title: "Short-term Capital Losses", text: $scenario.shortTermCapitalLosses)
-                InputField(title: "Qualified Dividends", text: $scenario.qualifiedDividends)
-                InputField(title: "Non-Qualified Dividends", text: $scenario.nonQualifiedDividends)
-                InputField(title: "Interest", text: $scenario.interest)
+            GroupBox("Capital Gains") {
+                CurrencyField(title: "Long-term", amount: $scenario.longTermCapitalGains)
+                CurrencyField(title: "Short-term", amount: $scenario.shortTermCapitalGains)
             }
-            .padding(.bottom)
-            VStack {
-                InputField(title: "HSA Contribution", text: $scenario.hsaContribution)
-                InputField(title: "Roth Conversion", text: $scenario.rothConversion)
-                InputField(title: "IRA Contribution", text: $scenario.iraContribtuion)
-                InputField(title: "IRA Withdrawal", text: $scenario.iraWithdrawal)
+            GroupBox("Capital Losses") {
+                CurrencyField(title: "Long-term", amount: $scenario.longTermCapitalLosses)
+                CurrencyField(title: "Short-term", amount: $scenario.shortTermCapitalLosses)
+                CurrencyField(title: "Carryover", amount: $scenario.capitalLossCarryOver)
             }
-            .padding(.bottom)
-            VStack {
-                InputField(title: "Margin Interest Expense", text: $scenario.marginInterestExpense)
-                InputField(title: "Mortgage Interest Expense", text: $scenario.mortgageInterestExpense)
-                InputField(title: "Medical and Dental Expense", text: $scenario.medicalAndDentalExpense)
+            GroupBox("Dividends") {
+                CurrencyField(title: "Qualified", amount: $scenario.qualifiedDividends)
+                CurrencyField(title: "Ordinary", amount: $scenario.nonQualifiedDividends)
+                CurrencyField(title: "Interest", amount: $scenario.interest)
             }
-            .padding(.bottom)
+            GroupBox("Retirement") {
+                CurrencyField(title: "HSA Contribution", amount: $scenario.hsaContribution)
+                CurrencyField(title: "Roth Conversion", amount: $scenario.rothConversion)
+                CurrencyField(title: "IRA Contribution", amount: $scenario.iraContribtuion)
+                CurrencyField(title: "IRA Withdrawal", amount: $scenario.iraWithdrawal)
+            }
+            GroupBox("Deductions") {
+                CurrencyField(title: "Margin Interest Expense", amount: $scenario.marginInterestExpense)
+                CurrencyField(title: "Mortgage Interest Expense", amount: $scenario.mortgageInterestExpense)
+                CurrencyField(title: "Medical and Dental Expense", amount: $scenario.medicalAndDentalExpense)
+            }
         }
-        .frame(maxHeight: .infinity)
+        .padding()
+        .scrollIndicators(.never)
     }
+    
 }
 
-struct InputField: View {
-    var title: String
-    @Binding var text: String
-    
-    var formatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .currency
-            formatter.currencySymbol = "$" // Set to your desired currency symbol
-            formatter.maximumFractionDigits = 2
-            return formatter
-        }()
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .fontWeight(.bold)
-            
-            TextField("Enter amount", text: $text)//, formatter: formatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-        }
-    }
+#Preview {
+    ContentView()
 }
