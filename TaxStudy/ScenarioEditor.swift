@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ScenarioEditor: View {
-    @Binding var scenario: TaxScenario
-    @Environment(\.dismiss) var dismiss
+    @Environment(TaxScenarioManager.self) var manager
     
     var body: some View {
+        @Bindable var scenario = manager.selectedTaxScenario
         ScrollView {
             GroupBox("Social Security") {
                 CurrencyField(title: "Self", amount: $scenario.socialSecuritySelf)

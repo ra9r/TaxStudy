@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ScenarioResults : View {
-    @State var scenario: TaxScenario
-    //    @State private var tabIndex = 0
+    var scenario: TaxScenario
     
     let columns = [
         GridItem(.flexible()),  // Flexible width
