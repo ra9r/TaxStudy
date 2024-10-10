@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScenarioEditor: View {
+struct IncomeEditor: View {
     @Environment(TaxScenarioManager.self) var manager
     
     var body: some View {

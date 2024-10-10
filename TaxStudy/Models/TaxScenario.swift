@@ -41,9 +41,9 @@ class TaxScenario: Codable, Identifiable {
     
     var filingStatus: FilingStatus = FilingStatus.marriedFilingJointly
     
-    var ordinaryTaxBrackets = TaxBrackets()
+    var ordinaryTaxBrackets = TaxBrackets.ordinaryTaxBrackets2024
     
-    var capitalGainTaxBrackets = TaxBrackets()
+    var capitalGainTaxBrackets = TaxBrackets.capitalGainsTaxRates2024
     
     @Transient
     var federalTaxes: FederalTaxCalc {
@@ -109,8 +109,8 @@ class TaxScenario: Codable, Identifiable {
         mortgageInterestExpense = 0
         medicalAndDentalExpense = 0
         filingStatus = .marriedFilingJointly
-        ordinaryTaxBrackets = TaxBrackets()
-        capitalGainTaxBrackets =  TaxBrackets()
+        ordinaryTaxBrackets = TaxBrackets.ordinaryTaxBrackets2024
+        capitalGainTaxBrackets =  TaxBrackets.capitalGainsTaxRates2024
     }
         
     enum CodingKeys: String, CodingKey {
@@ -163,7 +163,7 @@ class TaxScenario: Codable, Identifiable {
         medicalAndDentalExpense = try container.decodeIfPresent(Double.self, forKey: .medicalAndDentalExpense) ?? 0
         filingStatus = try container.decodeIfPresent(FilingStatus.self, forKey: .filingStatus) ?? .single
         ordinaryTaxBrackets = try container.decodeIfPresent(TaxBrackets.self, forKey: .ordinaryTaxBrackets) ?? TaxBrackets()
-        capitalGainTaxBrackets = try container.decodeIfPresent(TaxBrackets.self, forKey: .ordinaryTaxBrackets)  ?? TaxBrackets()
+        capitalGainTaxBrackets = try container.decodeIfPresent(TaxBrackets.self, forKey: .capitalGainTaxBrackets)  ?? TaxBrackets()
     }
     
     func encode(to encoder: Encoder) throws {

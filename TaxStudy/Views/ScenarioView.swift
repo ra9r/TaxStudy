@@ -10,28 +10,29 @@ struct ScenarioView : View {
     @Environment(TaxScenarioManager.self) var manager
     
     var body: some View {
-        ScenarioResults(scenario: manager.selectedTaxScenario)
+        
         TabView {
             // First Tab
-            Text("Overview \(manager.selectedTaxScenario.name)")
+            ReportView(ts: manager.selectedTaxScenario)
                 .tabItem {
                     Label("Overview", systemImage: "house.fill")
                 }
             
             // Second Tab
-            ScenarioEditor()
+            IncomeEditor()
                 .tabItem {
                     Label("Income", systemImage: "gearshape.fill")
                 }
             
             // Third Tab
-            Text("Deductions Tab Content")
+            DeductionEditor()
                 .tabItem {
                     Label("Deductions", systemImage: "person.crop.circle.fill")
                 }
-            Text("Rates Tab Content")
+            
+            JSONView(taxScenario: manager.selectedTaxScenario)
                 .tabItem {
-                    Label("Rates", systemImage: "person.crop.circle.fill")
+                    Label("JSON Export", systemImage: "person.crop.circle.fill")
                 }
         }
         .toolbar {

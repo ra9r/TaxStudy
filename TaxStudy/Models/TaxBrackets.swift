@@ -12,11 +12,11 @@ import SwiftData
 class TaxBrackets : Codable, Identifiable {
    
     var id: String = UUID().uuidString
-    var single: [TaxBracket] = []
-    var marriedFilingJointly: [TaxBracket] = []
-    var marriedFilingSeparately: [TaxBracket] = []
-    var qualifiedWidow: [TaxBracket] = []
-    var headOfHousehold: [TaxBracket] = []
+    private var single: [TaxBracket] = []
+    private var marriedFilingJointly: [TaxBracket] = []
+    private var marriedFilingSeparately: [TaxBracket] = []
+    private var qualifiedWidow: [TaxBracket] = []
+    private var headOfHousehold: [TaxBracket] = []
     
     init(year: String? = nil,
          single: [TaxBracket] = [],
@@ -97,7 +97,7 @@ class TaxBrackets : Codable, Identifiable {
     func progressiveTax(for income: Double, filingAs filingStatus: FilingStatus) -> Double {
         var ordinaryIncomeTax: Double = 0
         
-        let sortedBrackets = brackets(for: filingStatus).sorted { $0.threshold < $1.threshold }
+        let sortedBrackets = brackets(for: filingStatus)
         
         for (i, bracket) in sortedBrackets.enumerated() {
             if income > bracket.threshold {
@@ -110,5 +110,72 @@ class TaxBrackets : Codable, Identifiable {
         }
         
         return ordinaryIncomeTax
+    }
+}
+
+extension TaxBrackets {
+    static var ordinaryTaxBrackets2024 : TaxBrackets {
+        let single : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(11600, 0.12),
+            .init(47150, 0.22),
+            .init(100525, 0.24),
+            .init(191950, 0.32),
+            .init(234726, 0.035),
+            .init(609351, 0.37)
+        ]
+        let marriedFilingJointly : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(23201, 0.12),
+            .init(94301, 0.22),
+            .init(201051, 0.24),
+            .init(383901, 0.32),
+            .init(487451, 0.035),
+            .init(731201, 0.37)
+        ]
+        let headOfHousehold : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(16550, 0.12),
+            .init(63101, 0.22),
+            .init(100501, 0.24),
+            .init(191951, 0.32),
+            .init(243701, 0.035),
+            .init(609351, 0.37)
+        ]
+        
+        return TaxBrackets(
+            year: "2024",
+            single: single,
+            marriedFilingJointly: marriedFilingJointly,
+            marriedFilingSeparately: single,
+            qualifiedWidow: single,
+            headOfHousehold: headOfHousehold)
+            
+    }
+    
+    static var capitalGainsTaxRates2024 : TaxBrackets {
+        let single : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(47026, 0.15),
+            .init(518901, 0.20)
+        ]
+        let marriedFilingJointly : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(94051, 0.15),
+            .init(583751, 0.20)
+        ]
+        let headOfHousehold : [TaxBracket] = [
+            .init(0, 0.10),
+            .init(63001, 0.15),
+            .init(551351, 0.20)
+        ]
+        
+        return TaxBrackets(
+            year: "2024",
+            single: single,
+            marriedFilingJointly: marriedFilingJointly,
+            marriedFilingSeparately: single,
+            qualifiedWidow: single,
+            headOfHousehold: headOfHousehold)
     }
 }
