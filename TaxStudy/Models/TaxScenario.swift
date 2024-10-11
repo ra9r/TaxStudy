@@ -10,9 +10,10 @@ import SwiftData
 
 @Observable
 class TaxScenario: Codable, Identifiable {
-
+    
     var id: String = UUID().uuidString
     var name: String = ""
+    var description: String = ""
     
     var socialSecuritySelf: Double = 0
     var socialSecuritySpouse: Double = 0
@@ -90,6 +91,7 @@ class TaxScenario: Codable, Identifiable {
     init(name: String) {
         id = UUID().uuidString
         self.name = name
+        description = ""
         socialSecuritySelf = 0
         socialSecuritySpouse = 0
         interest = 0
@@ -112,10 +114,12 @@ class TaxScenario: Codable, Identifiable {
         ordinaryTaxBrackets = TaxBrackets.ordinaryTaxBrackets2024
         capitalGainTaxBrackets =  TaxBrackets.capitalGainsTaxRates2024
     }
-        
+    
+    // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
         case name
+        case description
         case socialSecuritySelf
         case socialSecuritySpouse
         case interest
@@ -143,6 +147,8 @@ class TaxScenario: Codable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
+        description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+        
         socialSecuritySelf = try container.decodeIfPresent(Double.self, forKey: .socialSecuritySelf) ?? 0
         socialSecuritySpouse = try container.decodeIfPresent(Double.self, forKey: .socialSecuritySpouse) ?? 0
         interest = try container.decodeIfPresent(Double.self, forKey: .interest) ?? 0
@@ -170,6 +176,7 @@ class TaxScenario: Codable, Identifiable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
+        try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(socialSecuritySelf, forKey: .socialSecuritySelf)
         try container.encodeIfPresent(socialSecuritySpouse, forKey: .socialSecuritySpouse)
         try container.encodeIfPresent(interest, forKey: .interest)
@@ -194,13 +201,14 @@ class TaxScenario: Codable, Identifiable {
     }
 }
 
+// MARK: - Hashable
 extension TaxScenario : Hashable {
     // Conforming to Hashable
-        static func == (lhs: TaxScenario, rhs: TaxScenario) -> Bool {
-            return lhs.id == rhs.id
-        }
-        
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
+    static func == (lhs: TaxScenario, rhs: TaxScenario) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

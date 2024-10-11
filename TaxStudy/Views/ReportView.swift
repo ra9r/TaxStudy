@@ -8,9 +8,20 @@ import SwiftUI
 
 struct ReportView : View {
     var ts: TaxScenario
+//    @State var item: Int = 1
     
     var body: some View {
         ScrollView {
+//            Picker("Tax Scenario", selection: $item) {
+//                Text("One").tag(1)
+//                Text("Two").tag(2)
+//                Text("Three").tag(3)
+//            }
+//            .pickerStyle(.segmented)
+//            .labelsHidden()
+//            .tint(.primary)
+//            .padding()
+            
             VStack(alignment: .leading, spacing: 10) {
                 header("Gross Income")
                 body("The gross income is the sum of all the income you receive from your job, investments, and other sources.")
