@@ -47,8 +47,11 @@ class FederalTaxCalc {
         return agi
     }
     
+    var provisionalIncome: Double {
+        return agiBeforeSSDI + taxScenario.taxExemptInterest + (taxScenario.totalSocialSecurityIncome * 0.5)
+    }
+    
     var taxableSSDI: Double {
-        let provisionalIncome = agiBeforeSSDI + taxScenario.taxExemptInterest + (taxScenario.totalSocialSecurityIncome * 0.5)
         return taxScenario.totalSocialSecurityIncome * (provisionalIncome > 34000 ? 0.85 : 0.5)
     }
     

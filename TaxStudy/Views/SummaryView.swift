@@ -18,9 +18,10 @@ struct SummaryView : View {
                     incomeSources
                     computedResults
                 }
+                .padding()
                 
             }
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .padding()
             
             
         }
@@ -28,9 +29,10 @@ struct SummaryView : View {
     }
     
     var header: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .top, spacing: 25) {
             blueBox
             nameAndDescription
+            Spacer()
         }
     }
     
@@ -39,13 +41,14 @@ struct SummaryView : View {
             Text("2024")
                 .font(.largeTitle)
             Divider()
-            VStack(alignment: .leading) {
+            VStack(alignment: .trailing) {
                 Text("\(ts.grossIncome.asCurrency)")
                     .font(.headline)
                 Text("Gross Income")
                     .font(.subheadline)
             }
         }
+        .frame(minWidth: 200)
         .padding()
         .foregroundStyle(.white)
         .background(Color.accentColor)
@@ -65,7 +68,10 @@ struct SummaryView : View {
         DataView("Income Sources", [
             ("Social Security", ts.totalSocialSecurityIncome.asCurrency),
             ("Long-term Capital Gains", ts.longTermCapitalGains.asCurrency),
-            ("Long-term Capital Losses", ts.longTermCapitalLosses.asCurrency)
+            ("Long-term Capital Losses", ts.longTermCapitalLosses.asCurrency),
+            ("Short-term Capital Gains", ts.shortTermCapitalGains.asCurrency),
+            ("Short-term Capital Losses", ts.shortTermCapitalLosses.asCurrency)
+            
         ])
     }
     
@@ -74,7 +80,9 @@ struct SummaryView : View {
             ("Federal Taxes", ts.federalTaxes.taxesOwed.asCurrency),
             ("State Taxes", ts.stateTaxes.taxesOwed.asCurrency),
             ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
-            ("AGI", ts.federalTaxes.agi.asCurrency)
+            ("AGI", ts.federalTaxes.agi.asCurrency),
+            ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),
+            ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency),
         ])
     }
     
