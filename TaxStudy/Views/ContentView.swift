@@ -16,9 +16,9 @@ struct ContentView: View {
         @Bindable var m = manager
         NavigationSplitView {
             List(manager.taxScenarios, selection: $m.selectedTaxScenario) { scenario in
-                NavigationLink("Scenario [\(scenario.name)]", value: scenario)
-                    
+                NavigationLink(scenario.name, value: scenario)
             }
+            .frame(minWidth: 250)
             .toolbar {
                 ToolbarItem(placement: .automatic) {
                     Button {

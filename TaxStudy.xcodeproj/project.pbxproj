@@ -26,11 +26,12 @@
 		2A51CB2F2CB9A3650075BBA0 /* DeductionEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */; };
 		2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */; };
 		2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB152CB9A3650075BBA0 /* JSONView.swift */; };
-		2A51CB322CB9A3650075BBA0 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB162CB9A3650075BBA0 /* ReportView.swift */; };
+		2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB162CB9A3650075BBA0 /* SummaryView.swift */; };
 		2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */; };
 		2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */; };
-		2A51CB352CB9A3650075BBA0 /* ScenarioResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1B2CB9A3650075BBA0 /* ScenarioResults.swift */; };
 		2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */; };
+		2A51CB382CBA90420075BBA0 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB372CBA902E0075BBA0 /* DataView.swift */; };
+		2A51CB3B2CBA9B010075BBA0 /* FileMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB3A2CBA9AFB0075BBA0 /* FileMenus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,13 +53,14 @@
 		2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionEditor.swift; sourceTree = "<group>"; };
 		2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeEditor.swift; sourceTree = "<group>"; };
 		2A51CB152CB9A3650075BBA0 /* JSONView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONView.swift; sourceTree = "<group>"; };
-		2A51CB162CB9A3650075BBA0 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		2A51CB162CB9A3650075BBA0 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		2A51CB192CB9A3650075BBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2A51CB1B2CB9A3650075BBA0 /* ScenarioResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioResults.swift; sourceTree = "<group>"; };
 		2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaxStudy.entitlements; sourceTree = "<group>"; };
 		2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxStudyApp.swift; sourceTree = "<group>"; };
+		2A51CB372CBA902E0075BBA0 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		2A51CB3A2CBA9AFB0075BBA0 /* FileMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenus.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,13 +128,13 @@
 		2A51CB182CB9A3650075BBA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A51CB372CBA902E0075BBA0 /* DataView.swift */,
 				2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */,
-				2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */,
-				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
-				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
-				2A51CB162CB9A3650075BBA0 /* ReportView.swift */,
 				2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */,
-				2A51CB1B2CB9A3650075BBA0 /* ScenarioResults.swift */,
+				2A51CB162CB9A3650075BBA0 /* SummaryView.swift */,
+				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
+				2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */,
+				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +146,7 @@
 				2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */,
 				2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */,
 				2A51CB182CB9A3650075BBA0 /* Views */,
+				2A51CB392CBA9ACA0075BBA0 /* Menus */,
 				2A51CB022CB9A3650075BBA0 /* Components */,
 				2A51CB052CB9A3650075BBA0 /* Extensions */,
 				2A51CB122CB9A3650075BBA0 /* TaxCalculators */,
@@ -151,6 +154,14 @@
 				2A51CB0E2CB9A3650075BBA0 /* Preview Content */,
 			);
 			path = TaxStudy;
+			sourceTree = "<group>";
+		};
+		2A51CB392CBA9ACA0075BBA0 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				2A51CB3A2CBA9AFB0075BBA0 /* FileMenus.swift */,
+			);
+			path = Menus;
 			sourceTree = "<group>";
 		};
 		2AB963E22CA6E1A300E52EDF = {
@@ -250,6 +261,7 @@
 				2A51CB262CB9A3650075BBA0 /* AppManager.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
 				2A51CB282CB9A3650075BBA0 /* TaxBracket.swift in Sources */,
+				2A51CB382CBA90420075BBA0 /* DataView.swift in Sources */,
 				2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */,
 				2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */,
 				2A51CB2B2CB9A3650075BBA0 /* TaxScenarioManager.swift in Sources */,
@@ -259,10 +271,10 @@
 				2A51CB2F2CB9A3650075BBA0 /* DeductionEditor.swift in Sources */,
 				2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */,
 				2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */,
-				2A51CB322CB9A3650075BBA0 /* ReportView.swift in Sources */,
+				2A51CB3B2CBA9B010075BBA0 /* FileMenus.swift in Sources */,
+				2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */,
 				2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */,
 				2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */,
-				2A51CB352CB9A3650075BBA0 /* ScenarioResults.swift in Sources */,
 				2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

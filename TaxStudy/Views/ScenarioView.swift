@@ -12,7 +12,7 @@ struct ScenarioView : View {
     var body: some View {
         TabView {
             // First Tab
-            ReportView(ts: manager.selectedTaxScenario)
+            SummaryView(ts: manager.selectedTaxScenario)
                 .tabItem {
                     Label("Overview", systemImage: "house.fill")
                 }
@@ -39,7 +39,7 @@ struct ScenarioView : View {
         .tint(Color.accentColor)
         .toolbar {
             // Add a button to the title bar's trailing side (right side)
-            ToolbarItem(placement: .navigation) {
+            ToolbarItem(placement: .secondaryAction) {
                 Button(action: {
                     print("Loading ...")
                     do {

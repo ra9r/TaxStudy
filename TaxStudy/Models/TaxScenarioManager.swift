@@ -8,15 +8,21 @@ import SwiftUI
 
 @Observable
 class TaxScenarioManager {
-    var taxScenarios: [TaxScenario] = []
+    var taxScenarios: [TaxScenario]
     var selectedTaxScenario: TaxScenario
     var currentFile: URL?
     
-    init() {
-        selectedTaxScenario = TaxScenario(name: "Scenario \(Date.now.formatted())")
-        taxScenarios.append(selectedTaxScenario)
+    init(taxScenarios: [TaxScenario] = [], selectedTaxScenario: TaxScenario? = nil, currentFile: URL? = nil) {
+        self.taxScenarios = taxScenarios
+        if let selectedTaxScenario {
+            self.selectedTaxScenario = selectedTaxScenario
+        } else {
+            self.selectedTaxScenario = TaxScenario(name: "Untitled Scenario")
+            self.taxScenarios.append(self.selectedTaxScenario)
+        }
+        self.currentFile = currentFile
     }
-
+    
     
     func find(_ id: String) -> TaxScenario? {
         taxScenarios.first { $0.id == id }
@@ -54,6 +60,8 @@ class TaxScenarioManager {
         self.taxScenarios = try decoder.decode([TaxScenario].self, from: data)
         self.selectedTaxScenario = taxScenarios.first ?? TaxScenario(name: "Scenario \(Date.now.formatted())")
         currentFile = url
+        UserDefaults.standard.set(url.path, forKey: "lastOpenedFile")
+        print("lastOpenedFile -> \(url.path)")
         print("Tax scenarios loaded successfully from \(url.path)")
     }
     
@@ -93,5 +101,11 @@ class TaxScenarioManager {
         if let currentFile {
             try save(to: currentFile)
         }
+    }
+    
+    func openLastSavedFile() throws {
+        guard let lastSavedFilePath = UserDefaults.standard.string(forKey: "lastOpenedFile") else { return }
+        let lastSavedFileURL = URL(fileURLWithPath: lastSavedFilePath)
+        try open(from: lastSavedFileURL)
     }
 }
