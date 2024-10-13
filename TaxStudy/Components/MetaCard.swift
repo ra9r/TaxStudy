@@ -36,6 +36,8 @@ struct MetaCard: View {
                 Text(label)
                     .font(.headline)
                     .foregroundColor(.primary)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
                 
                 // Enum string value
                 Text(value)
@@ -48,15 +50,17 @@ struct MetaCard: View {
             .padding(.trailing, 10)
             .padding(.top, 15)
             .padding(.bottom, 15)
+            Spacer()
         }
         .background(Color.altBackground)
+        .frame(width: 200, height: 60)
         .cornerRadius(5)
     }
 }
 
 struct FilingStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        MetaCard(symbolName: FilingStatus.single.symbol, label: "Filing Status", value: FilingStatus.single.rawValue)
+        MetaCard(symbolName: FilingStatus.single.symbol, label: "Employment Status", value: FilingStatus.single.rawValue)
             .previewLayout(.sizeThatFits)
 //            .padding()
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct JSONView: View {
+struct JSONView: View {
     var taxScenario: TaxScenario
     public var body: some View {
         ScrollView {

@@ -41,6 +41,7 @@ struct DataCard: View {
             }
             .padding()
         }
+        .frame(minWidth: 350)
     }
 }
 

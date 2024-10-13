@@ -136,7 +136,12 @@ let TaxFacts2024 = TaxFacts(
         .qualifiedWidow: 250_000
     ],
     niitRate: 0.038,
-    standardDeduction: [:],
+    standardDeduction: [
+        .single: 14_600,
+        .marriedFilingJointly: 29_200,
+        .qualifiedWidow: 29_200,
+        .headOfHousehold: 21_900
+    ],
     capitalLossLimit: 3000,
     ssdiThreshold: 34000
 )
