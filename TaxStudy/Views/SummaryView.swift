@@ -107,7 +107,7 @@ struct SummaryView : View {
     }
     
     var incomeSources: some View {
-        DataView("Income Sources", [
+        DataCard("Income Sources", [
             ("Wages", ts.totalWages.asCurrency),
             ("Social Security", ts.totalSocialSecurityIncome.asCurrency),
             ("Net LTCG", ts.federalTaxes.netLTCG.asCurrency),
@@ -127,21 +127,22 @@ struct SummaryView : View {
     
     var computedResults: some View {
         VStack {
-            DataView("Computed Taxes", [
+            DataCard("Computed Taxes", [
                 ("FICA Tax (Social Security)", ts.federalTaxes.socialSecurityTaxesOwed.asCurrency),
                 ("FICA Tax (Medicare)", ts.federalTaxes.medicareTaxesOwed.asCurrency),
                 ("Ordinary Income Tax", ts.federalTaxes.ordinaryIncomeTax.asCurrency),
                 ("Qualified Dividend Tax", ts.federalTaxes.qualifiedDividendTax.asCurrency),
                 ("Capital Gains Tax", ts.federalTaxes.capitalGainsTax.asCurrency),
+                ("Net Investment Income Tax (NIIT)", ts.federalTaxes.netInvestmentIncomeTax.asCurrency),
             ])
-            DataView("Computed Results", [
+            DataCard("Computed Results", [
                 ("Gross Income", ts.grossIncome.asCurrency),
                 ("AGI", ts.federalTaxes.agi.asCurrency),
                 ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
                 ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
                 ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
             ])
-            DataView("Social Securty", [
+            DataCard("Social Securty", [
                 ("Gross Social Security Income", ts.totalSocialSecurityIncome.asCurrency),
                 ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
                 ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),

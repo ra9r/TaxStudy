@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DataView: View {
+struct DataCard: View {
     var title: String
     let data: [(String, String)]
     
@@ -45,7 +45,7 @@ struct DataView: View {
 }
 
 #Preview {
-    DataView("Fund Basics", [
+    DataCard("Fund Basics", [
         ("Fund sponsor", "Vanguard Group"),
         ("Category", "Aggregate"),
         ("Asset class", "Fixed Income"),

@@ -10,7 +10,6 @@ enum FilingStatus : String, Codable, CaseIterable {
     case marriedFilingJointly = "Married Filing Jointly"
     case marriedFilingSeparately = "Married Filing Separately"
     case qualifiedWidow = "Qualified Widow(er)"
-    case qualifiedWidowWithChild = "Qualified Widow(er) with Child"
     case headOfHousehold = "Head of Household"
     
     var symbol: String {
@@ -22,8 +21,6 @@ enum FilingStatus : String, Codable, CaseIterable {
         case .marriedFilingSeparately:
             return "person.crop.circle.badge.xmark"
         case .qualifiedWidow:
-            return "person.2.fill"
-        case .qualifiedWidowWithChild:
             return "person.2.and.child"
         case .headOfHousehold:
             return "house"

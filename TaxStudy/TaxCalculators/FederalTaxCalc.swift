@@ -132,7 +132,7 @@ class FederalTaxCalc {
     }
     
     var taxesOwed: Double {
-        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax
+        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + socialSecurityTaxesOwed + medicareTaxesOwed
     }
     
     var effectiveTaxRate: Double {
@@ -142,21 +142,30 @@ class FederalTaxCalc {
         return taxesOwed / taxScenario.grossIncome
     }
     
-    var isSubjectToNIIT: Bool {
-        switch taxScenario.filingStatus {
-        case .single:
-            fallthrough
-        case .headOfHousehold:
-            fallthrough
-        case .qualifiedWidow:
-            return agi > 200_000
-        case .marriedFilingJointly:
-            fallthrough
-        case .qualifiedWidowWithChild:
-            return agi > 250_000
-        case .marriedFilingSeparately:
-            return agi > 125_000
+    var netInvestmentIncomeTax: Double {
+        guard let threshold = taxScenario.facts.niitThresholds[taxScenario.filingStatus] else {
+            print("Error: Failed to find NIIT threadholds for \(taxScenario.filingStatus), defaulting to 0")
+            return 0
         }
+        
+        // Check if MAGI exceeds the threshold
+        let excessIncome = max(0, magi - threshold)
+        
+        // The 3.8% NIIT is applied to the lesser of net investment income or the excess MAGI
+        let niitIncome = min(netInvestmentIncome, excessIncome)
+        
+        // Calculate the NIIT (3.8% of the applicable income)
+        let niit = niitIncome * taxScenario.facts.niitRate
+        
+        return niit
+    }
+    
+    var isSubjectToNIIT: Bool {
+        guard let threshold = taxScenario.facts.niitThresholds[taxScenario.filingStatus] else {
+            print("Error: Failed to find NIIT threadholds for \(taxScenario.filingStatus)")
+            return false
+        }
+        return max(0, magi - threshold) > 0
     }
     
     var isSubjectToFICA: Bool {

@@ -16,6 +16,7 @@ class TaxFacts : Codable, Identifiable {
     var medicareTaxThresholds: [FilingStatus: TaxBrackets]
     var provisionalIncomeThresholds: [FilingStatus: TaxBrackets]
     var niitThresholds: [FilingStatus: Double]
+    var niitRate: Double
     var capitalLossLimit: Double // 3000
     var standardDeduction: [FilingStatus: Double] // 14600 in 2023 standard deduction for single filers
     var ssdiThreshold: Double // 34000
@@ -27,6 +28,7 @@ class TaxFacts : Codable, Identifiable {
         medicareTaxThresholds: [FilingStatus : TaxBrackets],
         provisionalIncomeThresholds: [FilingStatus: TaxBrackets],
         niitThresholds: [FilingStatus : Double],
+        niitRate: Double,
         standardDeduction: [FilingStatus : Double],
         capitalLossLimit: Double,
         ssdiThreshold: Double
@@ -37,6 +39,7 @@ class TaxFacts : Codable, Identifiable {
         self.medicareTaxThresholds = medicareTaxThresholds
         self.provisionalIncomeThresholds = provisionalIncomeThresholds
         self.niitThresholds = niitThresholds
+        self.niitRate = niitRate
         self.capitalLossLimit = capitalLossLimit
         self.standardDeduction = standardDeduction
         self.ssdiThreshold = ssdiThreshold
@@ -125,7 +128,14 @@ let TaxFacts2024 = TaxFacts(
             .init(25_000, 0.5),
             .init(34_000, 0.85)),
     ],
-    niitThresholds: [:],
+    niitThresholds: [
+        .single: 200_000,
+        .marriedFilingJointly: 250_000,
+        .marriedFilingSeparately: 125_000,
+        .headOfHousehold: 200_000,
+        .qualifiedWidow: 250_000
+    ],
+    niitRate: 0.038,
     standardDeduction: [:],
     capitalLossLimit: 3000,
     ssdiThreshold: 34000
