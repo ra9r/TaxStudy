@@ -51,7 +51,7 @@ struct SummaryView : View {
         .frame(minWidth: 200)
         .padding()
         .foregroundStyle(.white)
-        .background(Color.accentColor)
+        .background(.accent)
         .cornerRadius(5)
     }
     
@@ -70,7 +70,10 @@ struct SummaryView : View {
             ("Long-term Capital Gains", ts.longTermCapitalGains.asCurrency),
             ("Long-term Capital Losses", ts.longTermCapitalLosses.asCurrency),
             ("Short-term Capital Gains", ts.shortTermCapitalGains.asCurrency),
-            ("Short-term Capital Losses", ts.shortTermCapitalLosses.asCurrency)
+            ("Short-term Capital Losses", ts.shortTermCapitalLosses.asCurrency),
+            ("Qualified Dividends", ts.qualifiedDividends.asCurrency),
+            ("Unqualified Dividends", ts.nonQualifiedDividends.asCurrency),
+            ("Interest", ts.interest.asCurrency)
             
         ])
     }
@@ -81,6 +84,7 @@ struct SummaryView : View {
             ("State Taxes", ts.stateTaxes.taxesOwed.asCurrency),
             ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
             ("AGI", ts.federalTaxes.agi.asCurrency),
+            ("MAGI", ts.federalTaxes.magi.asCurrency),
             ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),
             ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency),
         ])
