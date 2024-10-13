@@ -13,6 +13,10 @@ struct IncomeEditor: View {
     var body: some View {
         @Bindable var scenario = manager.selectedTaxScenario
         ScrollView {
+            GroupBox("Wages") {
+                CurrencyField(title: "Self", amount: $scenario.wagesSelf)
+                CurrencyField(title: "Spouse", amount: $scenario.wagesSpouse)
+            }
             GroupBox("Social Security") {
                 CurrencyField(title: "Self", amount: $scenario.socialSecuritySelf)
                 CurrencyField(title: "Spouse", amount: $scenario.socialSecuritySpouse)
@@ -37,10 +41,10 @@ struct IncomeEditor: View {
                 CurrencyField(title: "IRA Contribution", amount: $scenario.iraContribtuion)
                 CurrencyField(title: "IRA Withdrawal", amount: $scenario.iraWithdrawal)
             }
-            GroupBox("Deductions") {
-                CurrencyField(title: "Margin Interest Expense", amount: $scenario.marginInterestExpense)
-                CurrencyField(title: "Mortgage Interest Expense", amount: $scenario.mortgageInterestExpense)
-                CurrencyField(title: "Medical and Dental Expense", amount: $scenario.medicalAndDentalExpense)
+            GroupBox("Other Income") {
+                CurrencyField(title: "Rental Income", amount: $scenario.rentalIncome)
+                CurrencyField(title: "Royalties", amount: $scenario.royalties)
+                CurrencyField(title: "Business Income", amount: $scenario.businessIncome)
             }
         }
         .padding()

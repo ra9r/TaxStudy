@@ -14,11 +14,13 @@ struct SummaryView : View {
         ScrollView {
             VStack(alignment: .center) {
                 header
+                metaHeader
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
                 HStack(alignment: .top) {
                     incomeSources
                     computedResults
                 }
-                .padding()
                 
             }
             .padding()
@@ -26,6 +28,46 @@ struct SummaryView : View {
             
         }
         .frame(minWidth: 800)
+    }
+    
+    /// <#Description#>
+    var metaHeader: some View {
+        ScrollView(.horizontal) {
+            HStack(alignment: .top) {
+                MetaCard(
+                    symbolName: ts.filingStatus.symbol,
+                    label: "Filing Status",
+                    value: "\(ts.filingStatus.rawValue)"
+                )
+                MetaCard(
+                    symbolName: "briefcase",
+                    label: "Employment Status",
+                    value: "\(ts.employmentStatus.rawValue)"
+                )
+                MetaCard(
+                    symbolName: "scissors",
+                    label: "Deduction Method",
+                    value: "\(ts.federalTaxes.deductionMethod)"
+                )
+                MetaCard(
+                    symbolName: "building.columns",
+                    label: "Federal Taxes",
+                    value: "\(ts.federalTaxes.taxesOwed.asCurrency) (\(ts.federalTaxes.effectiveTaxRate.asPercentage))"
+                )
+                MetaCard(
+                    symbolName: "map",
+                    label: "State Taxes",
+                    value: "\(ts.stateTaxes.taxesOwed.asCurrency) (\(ts.stateTaxes.effectiveTaxRate.asPercentage))"
+                )
+                MetaCard(
+                    symbolName: "percent",
+                    label: "Effective Tax Rate",
+                    value: "\(ts.totalEffectiveTaxRate.asPercentage)"
+                )
+                Spacer()
+            }
+            .padding(.bottom, 5)
+        }
     }
     
     var header: some View {
@@ -66,36 +108,57 @@ struct SummaryView : View {
     
     var incomeSources: some View {
         DataView("Income Sources", [
+            ("Wages", ts.totalWages.asCurrency),
             ("Social Security", ts.totalSocialSecurityIncome.asCurrency),
-            ("Long-term Capital Gains", ts.longTermCapitalGains.asCurrency),
-            ("Long-term Capital Losses", ts.longTermCapitalLosses.asCurrency),
-            ("Short-term Capital Gains", ts.shortTermCapitalGains.asCurrency),
-            ("Short-term Capital Losses", ts.shortTermCapitalLosses.asCurrency),
+            ("Net LTCG", ts.federalTaxes.netLTCG.asCurrency),
+            ("Net STCG", ts.federalTaxes.netSTCG.asCurrency),
             ("Qualified Dividends", ts.qualifiedDividends.asCurrency),
-            ("Unqualified Dividends", ts.nonQualifiedDividends.asCurrency),
-            ("Interest", ts.interest.asCurrency)
+            ("Non-Qualified Dividends", ts.nonQualifiedDividends.asCurrency),
+            ("Interest", ts.interest.asCurrency),
+            ("Rental Income", ts.rentalIncome.asCurrency),
+            ("Royalties", ts.royalties.asCurrency),
+            ("Business Income", ts.businessIncome.asCurrency),
+            ("Foreign Earned Income", ts.foreignEarnedIncome.asCurrency),
+            ("Roth Conversions", ts.rothConversion.asCurrency),
+            ("IRA Withdrawals", ts.iraWithdrawal.asCurrency)
             
         ])
     }
     
     var computedResults: some View {
-        DataView("Computed Results", [
-            ("Federal Taxes", ts.federalTaxes.taxesOwed.asCurrency),
-            ("State Taxes", ts.stateTaxes.taxesOwed.asCurrency),
-            ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
-            ("AGI", ts.federalTaxes.agi.asCurrency),
-            ("MAGI", ts.federalTaxes.magi.asCurrency),
-            ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),
-            ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency),
-        ])
+        VStack {
+            DataView("Computed Taxes", [
+                ("FICA Tax (Social Security)", ts.federalTaxes.socialSecurityTaxesOwed.asCurrency),
+                ("FICA Tax (Medicare)", ts.federalTaxes.medicareTaxesOwed.asCurrency),
+                ("Ordinary Income Tax", ts.federalTaxes.ordinaryIncomeTax.asCurrency),
+                ("Qualified Dividend Tax", ts.federalTaxes.qualifiedDividendTax.asCurrency),
+                ("Capital Gains Tax", ts.federalTaxes.capitalGainsTax.asCurrency),
+            ])
+            DataView("Computed Results", [
+                ("Gross Income", ts.grossIncome.asCurrency),
+                ("AGI", ts.federalTaxes.agi.asCurrency),
+                ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
+                ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
+                ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
+            ])
+            DataView("Social Securty", [
+                ("Gross Social Security Income", ts.totalSocialSecurityIncome.asCurrency),
+                ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
+                ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),
+                ("% of Social Security Taxed", ts.federalTaxes.provisionalTaxRate.asPercentage),
+                
+                ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency)
+            ])
+        }
     }
     
     
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var manager = TaxScenarioManager()
     SummaryView(ts: manager.selectedTaxScenario)
+        .frame(minHeight: 800)
         .onAppear() {
             do {
                 try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))

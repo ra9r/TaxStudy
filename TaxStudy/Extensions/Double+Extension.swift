@@ -15,4 +15,12 @@ extension Double {
         
         return formatter.string(from: NSNumber(value: self))!
     }
+    
+    var asPercentage: String {
+        let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                formatter.maximumFractionDigits = 2
+                formatter.minimumFractionDigits = 2
+                return formatter.string(from: NSNumber(value: self)) ?? "\(self * 100)%"
+    }
 }
