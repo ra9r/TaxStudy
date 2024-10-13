@@ -17,31 +17,47 @@ struct DataCard: View {
     }
     
     var body: some View {
-        GroupBox {
+        VStack {
             VStack(alignment: .leading, spacing: 10) {
-                Text(title)
-                    .font(.headline)
-                    .padding(.bottom, 5)
-                    .padding(.top, 10)
-                
-                Divider()
-                
-                ForEach(data, id: \.0) { item in
-                    HStack {
-                        Text(item.0)
-                            .font(.subheadline)
-                        
-                        Spacer()
-                        
-                        Text(item.1)
-                            .font(.subheadline)
-                    }
-                    Divider()
+                HStack {
+                    Text(title)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 5)
+                        .font(.headline)
+                    Spacer()
                 }
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity)
+                .background(.accent)
+                .foregroundColor(.white)
+                
+                
+                VStack {
+                    ForEach(data.indices, id: \.self) { index in
+                        HStack {
+                            Text(data[index].0)
+                                .font(.subheadline)
+                            
+                            Spacer()
+                            
+                            Text(data[index].1)
+                                .font(.subheadline)
+                        }
+                        .padding(2.5)
+                        
+                        if index != data.indices.last {
+                            Divider()
+                        }
+                    }
+                }
+                .padding(.bottom, 15)
+                .padding(.horizontal, 5)
             }
-            .padding()
+            
         }
+        .background(.gray.opacity(0.1))
         .frame(minWidth: 350)
+        .cornerRadius(5)
     }
 }
 

@@ -1,8 +1,9 @@
 //
-//  MasonryLayout.swift
-//  TaxStudy
+//  MasonryVStack.swift
+//  MasonryStack
 //
-//  Created by Rodney Aiglstorfer on 10/13/24.
+//  Created by Lukas Pistrol on 25.08.23.
+//  see https://github.com/lukepistrol/MasonryStack
 //
 
 import SwiftUI

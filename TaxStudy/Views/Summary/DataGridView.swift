@@ -20,6 +20,7 @@ struct DataGridView : View {
             computedTaxes
             computedResults
             computedSocialSecurity
+            deductions
         }
     }
     
@@ -73,5 +74,14 @@ struct DataGridView : View {
             ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency)
         ])
     }
-       
+    
+    var deductions: some View {
+        DataCard("Deducations", [
+            ("Medical and Dental Expenses", ts.medicalAndDentalExpense.asCurrency),
+            ("Deductible Medical Expenses", ts.federalTaxes.deductibleMedicalExpenses.asCurrency),
+            
+            ("Margin Interest Expense", ts.marginInterestExpense.asCurrency),
+            ("Mortgage Interest Expense", ts.mortgageInterestExpense.asCurrency)
+        ])
+    }
 }
