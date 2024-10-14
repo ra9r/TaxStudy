@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct SummaryView : View {
-    var ts: TaxScenario
+    @Binding var ts: TaxScenario
     //    @State var item: Int = 1
     
     var body: some View {
@@ -58,10 +58,17 @@ struct SummaryView : View {
     
     var nameAndDescription: some View {
         VStack(alignment: .leading) {
-            Text("\(ts.name)")
+            TextField("name", text: $ts.name)
+                .textFieldStyle(PlainTextFieldStyle())
                 .font(.title)
-            Text("\(ts.description)")
+                .multilineTextAlignment(.leading)
+            TextEditor(text: $ts.description)
+                .textEditorStyle(.plain)
+                .scrollDisabled(true)
+                .lineLimit(3)
                 .font(.subheadline)
+                .padding(.leading, -5) // <-- This seems like a hack :(
+                .multilineTextAlignment(.leading)
         }
     }
     
@@ -72,7 +79,7 @@ struct SummaryView : View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var manager = TaxScenarioManager()
-    SummaryView(ts: manager.selectedTaxScenario)
+    SummaryView(ts: $manager.selectedTaxScenario)
         .frame(minWidth: 1000, minHeight: 800)
         .onAppear() {
             do {

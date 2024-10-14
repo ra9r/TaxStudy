@@ -10,9 +10,10 @@ struct ScenarioView : View {
     @Environment(TaxScenarioManager.self) var manager
     
     var body: some View {
+        @Bindable var manager = manager
         TabView {
             // First Tab
-            SummaryView(ts: manager.selectedTaxScenario)
+            SummaryView(ts: $manager.selectedTaxScenario)
                 .tabItem {
                     Label("Overview", systemImage: "house.fill")
                 }
@@ -57,7 +58,15 @@ struct ScenarioView : View {
 }
 
 #Preview {
+    
     @Previewable @State var manager = TaxScenarioManager()
     ScenarioView()
-        .environment(TaxScenarioManager())
+        .environment(manager)
+        .onAppear() {
+            do {
+                try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
+            } catch {
+                print(error)
+            }
+        }
 }
