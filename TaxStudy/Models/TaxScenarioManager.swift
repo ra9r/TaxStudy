@@ -39,6 +39,16 @@ class TaxScenarioManager {
     
     func delete(id: String) {
         taxScenarios.removeAll { $0.id == id }
+        if taxScenarios.isEmpty {
+            selectedTaxScenario = TaxScenario(name: "Untitled Scenario")
+            taxScenarios.append(selectedTaxScenario)
+        } else {
+            // Change the selectedTaxScenario only if it was the one that was deleted.  Otherwise
+            // just leave it alone
+            if selectedTaxScenario.id == id {
+                selectedTaxScenario = taxScenarios.first!
+            }
+        }
     }
     
     // Save function to write the array of TaxScenario to a file in JSON format

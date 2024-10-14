@@ -28,8 +28,11 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationTitle(manager.selectedTaxScenario.name)
+            
         } detail: {
             ScenarioView()
+                
         }
     }
 }

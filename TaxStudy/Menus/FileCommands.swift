@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct FileMenus: Commands {
+struct FileCommands: Commands {
     @State var manager: TaxScenarioManager
     
     var body: some Commands {
@@ -14,6 +14,7 @@ struct FileMenus: Commands {
             Button("New...") {
                 openNewWindow()
             }
+            .keyboardShortcut("N", modifiers: [.command])
             Button("Open...") {
                 openFile()
             }

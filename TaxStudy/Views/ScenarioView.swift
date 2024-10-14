@@ -40,16 +40,24 @@ struct ScenarioView : View {
         .tint(Color.accentColor)
         .toolbar {
             // Add a button to the title bar's trailing side (right side)
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItem(placement: .status) {
                 Button(action: {
                     print("Loading ...")
                     do {
-                        try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
+                        try manager.open(from: URL(fileURLWithPath: manager.currentFile!.path))
                     } catch {
                         print(error)
                     }
                 }) {
                     Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    manager.delete(id: manager.selectedTaxScenario.id)
+                    
+                } label: {
+                    Label("Delete Scenario", systemImage: "trash")
                 }
             }
         }

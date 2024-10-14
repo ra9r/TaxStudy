@@ -25,7 +25,11 @@ struct TaxStudyApp: App {
                 }
         }
         .commands {
-            FileMenus(manager: manager)
+            FileCommands(manager: manager)
+            ToolbarCommands()
+            SidebarCommands()
+            TextEditingCommands()
+//            TextFormattingCommands()
         }
     }
 
