@@ -20,14 +20,12 @@ struct DeductionEditor: View {
     var body: some View {
         @Bindable var scenario = manager.selectedTaxScenario
         ScrollView {
-//            GroupBox {
-//                CurrencyField(title: "Standard Deduction", amount: $scenario.federalTaxes.standardDeduction)
-//                
-//            }
             GroupBox("Deductions") {
                 CurrencyField(title: "Margin Interest Expense", amount: $scenario.marginInterestExpense)
                 CurrencyField(title: "Mortgage Interest Expense", amount: $scenario.mortgageInterestExpense)
                 CurrencyField(title: "Medical and Dental Expense", amount: $scenario.medicalAndDentalExpense)
+                CurrencyField(title: "Charitable Contribtuions", amount: $scenario.charitableContributions)
+                CurrencyField(title: "DAF Contribtuions", amount: $scenario.dafContributions)
             }
         }
         .padding()
@@ -36,6 +34,3 @@ struct DeductionEditor: View {
     
 }
 
-#Preview {
-    ContentView()
-}

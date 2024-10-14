@@ -59,8 +59,10 @@ struct DataGridView : View {
                 ("Gross Income", ts.grossIncome.asCurrency),
                 ("AGI", ts.federalTaxes.agi.asCurrency),
                 ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
-                ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
                 ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
+                ("Total Preferential Income", ts.federalTaxes.preferentialIncome.asCurrency),
+                ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
+                ("Future Carry Over Loss", ts.federalTaxes.futureCarryOverLoss.asCurrency),
             ])
     }
     

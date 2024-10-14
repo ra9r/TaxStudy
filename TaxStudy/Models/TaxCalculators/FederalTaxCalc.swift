@@ -5,6 +5,12 @@
 //  Created by Rodney Aiglstorfer on 10/1/24.
 //
 
+struct NetCapitalGains: Codable {
+    let netLTCG: Double
+    let netSTCG: Double
+    let futureCarrryOver: Double
+}
+
 class FederalTaxCalc {
     
     var taxScenario: TaxScenario
@@ -17,29 +23,65 @@ class FederalTaxCalc {
         return taxScenario.qualifiedDividends + taxScenario.nonQualifiedDividends
     }
     
+    var netCapitalGains: NetCapitalGains {
+        
+        let totalCapitalLosses = taxScenario.shortTermCapitalLosses + taxScenario.longTermCapitalLosses + taxScenario.capitalLossCarryOver
+        
+        let netLTCG = taxScenario.longTermCapitalGains - totalCapitalLosses
+        
+        let netSTCG = taxScenario.shortTermCapitalGains - (netLTCG < 0 ? abs(netLTCG) : 0)
+        
+        let futureCarrryOver = netSTCG < 0 ? abs(netSTCG) : 0
+        
+        return .init(
+            netLTCG: max(0, netLTCG),
+            netSTCG: max(0, netSTCG),
+            futureCarrryOver: futureCarrryOver)
+        
+    }
+    
     var netSTCG: Double {
-        return taxScenario.shortTermCapitalGains - taxScenario.shortTermCapitalLosses
+        return netCapitalGains.netSTCG
     }
     
     var netLTCG: Double {
-        return taxScenario.longTermCapitalGains - taxScenario.longTermCapitalLosses - taxScenario.capitalLossCarryOver - (netSTCG < 0 ? 0 : abs(netSTCG))
+        return netCapitalGains.netLTCG
     }
     
     var netInvestmentIncome: Double {
-        return max(0, netLTCG) + max(0, netSTCG) + totalDividends + taxScenario.interest + taxScenario.rentalIncome + taxScenario.royalties + taxScenario.businessIncome
-    }
-    
-    var capitalLossDeduction: Double {
-        let capitalLossDecutionLimit: Double = 3000
-        return netLTCG > 0 ? 0 : min(capitalLossDecutionLimit, abs(netLTCG))
+        return netLTCG + netSTCG + totalDividends + taxScenario.interest + taxScenario.rentalIncome + taxScenario.royalties + taxScenario.businessIncome
     }
     
     var futureCarryOverLoss: Double {
-        return netLTCG < 0 ? abs(netLTCG) - capitalLossDeduction : 0
+        return netCapitalGains.futureCarrryOver - capitalLossAdjustment
+    }
+    
+    var capitalLossAdjustment: Double {
+        let capitalLossLimit = taxScenario.facts.capitalLossLimit
+        let futureCarryOverLoss = netCapitalGains.futureCarrryOver
+        return (futureCarryOverLoss > 0 ? min(capitalLossLimit, futureCarryOverLoss) : 0)
+    }
+    
+    var grossIncome: Double {
+        let income = taxScenario.totalWages +
+        taxScenario.totalSocialSecurityIncome +
+        taxScenario.interest +
+        taxScenario.taxExemptInterest +
+        netLTCG +
+        taxScenario.qualifiedDividends +
+        netSTCG +
+        taxScenario.nonQualifiedDividends +
+        taxScenario.rentalIncome +
+        taxScenario.royalties +
+        taxScenario.businessIncome +
+        taxScenario.foreignEarnedIncome +
+        taxScenario.rothConversion +
+        taxScenario.iraWithdrawal
+        return income
     }
     
     var agiBeforeSSDI: Double {
-        return taxScenario.grossIncome - taxScenario.totalSocialSecurityIncome - taxScenario.hsaContribution - taxScenario.taxExemptInterest - capitalLossDeduction
+        return taxScenario.grossIncome - taxScenario.totalSocialSecurityIncome - taxScenario.hsaContribution - taxScenario.taxExemptInterest
     }
     
     var agi: Double {
@@ -103,8 +145,12 @@ class FederalTaxCalc {
         return max(0, agi - deduction)
     }
     
+    var preferentialIncome: Double {
+        return taxScenario.qualifiedDividends + netLTCG
+    }
+    
     var ordinaryIncome: Double {
-        return taxableIncome - taxScenario.qualifiedDividends - max(0, netLTCG)
+        return taxableIncome - preferentialIncome - capitalLossAdjustment
     }
     
     var ordinaryIncomeTax: Double {
@@ -132,7 +178,7 @@ class FederalTaxCalc {
     }
     
     var taxesOwed: Double {
-        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + socialSecurityTaxesOwed + medicareTaxesOwed
+        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + totalFICATax
     }
     
     var effectiveTaxRate: Double {
@@ -200,6 +246,10 @@ class FederalTaxCalc {
         }
         
         return forSelf + forSpouse
+    }
+    
+    var totalFICATax: Double {
+        return socialSecurityTaxesOwed + medicareTaxesOwed
     }
     
     

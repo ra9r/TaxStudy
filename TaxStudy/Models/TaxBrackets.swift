@@ -8,6 +8,15 @@
 import Foundation
 import SwiftData
 
+struct TaxBracket : Codable {
+    var rate: Double
+    var threshold: Double
+    
+    init(_ threshold: Double, _ rate: Double) {
+        self.rate = rate
+        self.threshold = threshold
+    }
+}
 
 class TaxBrackets : Codable {
    
