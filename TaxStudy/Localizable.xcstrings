@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "- Select -" : {
+
+    },
     "%@" : {
 
     },
@@ -8,6 +11,9 @@
 
     },
     "2024" : {
+
+    },
+    "A placeholder deduction for future changes in the tax code." : {
 
     },
     "Add" : {
@@ -25,7 +31,7 @@
     "Amount" : {
 
     },
-    "Amount: %.2f" : {
+    "Amount: %@" : {
 
     },
     "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted." : {
@@ -40,19 +46,91 @@
     "Capital Losses" : {
 
     },
+    "Carry forward business losses to offset future taxable income." : {
+
+    },
+    "Casualty and Theft Loss Deduction" : {
+
+    },
     "Catch all adjustment for supporting future changes to the tax code." : {
 
     },
     "Category" : {
 
     },
+    "Charitable Contribution Deduction" : {
+
+    },
+    "Check for temporary reinstatement of this deduction, which previously allowed up to $4,000 for qualified education expenses." : {
+
+    },
     "Custom Adjustment" : {
+
+    },
+    "Custom Deduction" : {
+
+    },
+    "Deduct 50% of your self-employment taxes (SECA)." : {
+
+    },
+    "Deduct 65.5 cents per mile for business driving or actual vehicle expenses." : {
+
+    },
+    "Deduct a portion of qualified long-term care insurance premiums, based on your age." : {
+
+    },
+    "Deduct cash contributions up to 60% of your AGI, or appreciated assets up to 30%. Includes Donor-Advised Fund contributions." : {
+
+    },
+    "Deduct depreciation on business or rental property following MACRS guidelines." : {
+
+    },
+    "Deduct expenses for the part of your home used exclusively for business, if self-employed." : {
+
+    },
+    "Deduct gambling losses up to the amount of reported gambling winnings." : {
+
+    },
+    "Deduct health, dental, and long-term care premiums if you're self-employed." : {
+
+    },
+    "Deduct interest on up to $750,000 of mortgage debt, including home equity loans used for home improvements." : {
+
+    },
+    "Deduct interest paid on loans used to purchase taxable investments, limited to net investment income." : {
+
+    },
+    "Deduct losses from federally declared disasters, subject to limits such as a $500 deductible." : {
+
+    },
+    "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed." : {
+
+    },
+    "Deduct tax preparation fees as a business expense if self-employed." : {
+
+    },
+    "Deduct unreimbursed medical expenses over 7.5% of your AGI." : {
+
+    },
+    "Deduct up to $2,500 of student loan interest, subject to income limits." : {
+
+    },
+    "Deduct up to $10,000 in state and local income, property, and sales taxes, including property taxes on your primary residence." : {
+
+    },
+    "Deduct up to 20% of qualified business income for eligible taxpayers under IRC §199A." : {
 
     },
     "Deductions" : {
 
     },
+    "Delete" : {
+
+    },
     "Delete Scenario" : {
+
+    },
+    "Depreciation Deduction" : {
 
     },
     "Dividends" : {
@@ -64,7 +142,13 @@
     "Enter amount" : {
 
     },
+    "Gambling Loss Deduction" : {
+
+    },
     "Gross Income" : {
+
+    },
+    "Home Office Deduction" : {
 
     },
     "HSA or MSA Contribution" : {
@@ -79,6 +163,9 @@
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
 
     },
+    "Investment and Advisory Fee Deduction" : {
+
+    },
     "IRA or 401(k) Contribution" : {
 
     },
@@ -88,7 +175,25 @@
     "kWh" : {
 
     },
+    "Long-Term Care Insurance Premiums Deduction" : {
+
+    },
+    "Margin Interest Deduction" : {
+
+    },
+    "Medical and Dental Deduction" : {
+
+    },
+    "Mileage Deduction" : {
+
+    },
+    "Mortgage Interest Deduction" : {
+
+    },
     "name" : {
+
+    },
+    "Net Operating Loss Carryforward Deduction" : {
 
     },
     "New..." : {
@@ -109,6 +214,9 @@
     "Overview" : {
 
     },
+    "Qualified Business Income Deduction" : {
+
+    },
     "Refresh" : {
 
     },
@@ -121,7 +229,16 @@
     "Save As..." : {
 
     },
-    "Select a Tax Adjustment" : {
+    "Select" : {
+
+    },
+    "Self-Employed Business Expense Deduction" : {
+
+    },
+    "Self-Employed Health Insurance Premiums Deduction" : {
+
+    },
+    "Self-Employment Tax Deduction" : {
 
     },
     "Single Bar" : {
@@ -130,7 +247,22 @@
     "Social Security" : {
 
     },
+    "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
+
+    },
+    "State and Local Tax Deduction" : {
+
+    },
     "Student Loan Interest" : {
+
+    },
+    "Student Loan Interest Deduction" : {
+
+    },
+    "Tax Preparation Fee Deduction" : {
+
+    },
+    "Tuition and Fees Deduction" : {
 
     },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {

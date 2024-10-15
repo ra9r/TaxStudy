@@ -6,12 +6,13 @@
 //
 import SwiftUI
 
-protocol DeductionType: Codable, Equatable {
+protocol DeductionType: Codable, Equatable, Hashable, CaseIterable, Identifiable {
     var label: String { get }
     var description: String { get }
 }
 
-struct GenericDeduction<T: DeductionType>: Codable, Equatable {
+struct Deduction<T: DeductionType>: Codable, Equatable, Identifiable {
+    var id: UUID = UUID()
     var type: T
     var amount: Double
     var description: String?
@@ -25,10 +26,19 @@ struct GenericDeduction<T: DeductionType>: Codable, Equatable {
 
 @Observable
 class Deductions<T: DeductionType>: Codable {
-    var items: [GenericDeduction<T>]
+    var items: [Deduction<T>]
     
-    init(deductions: [GenericDeduction<T>] = []) {
+    init(deductions: [Deduction<T>] = []) {
         self.items = deductions
+    }
+    
+    func add(_ deduction: Deduction<T>) {
+        items.append(deduction)
+    }
+    
+    func remove(_ deduction: Deduction<T>) {
+        // Remove the deduction that matches the type and amount
+        items.removeAll { $0 == deduction }
     }
     
     func total(for deductionType: T) -> Double {
@@ -46,6 +56,6 @@ class Deductions<T: DeductionType>: Codable {
     // Custom Decodable conformance
     required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.items = try container.decode([GenericDeduction<T>].self)
+        self.items = try container.decode([Deduction<T>].self)
     }
 }

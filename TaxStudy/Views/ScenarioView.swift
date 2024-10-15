@@ -25,7 +25,7 @@ struct ScenarioView : View {
                 .navigationTitle("Income")
             
             // Third Tab
-            DeductionEditor()
+            DeductionsView(ts: $manager.selectedTaxScenario)
                 .tabItem {
                     Label("Deductions", systemImage: "person.crop.circle.fill")
                 }

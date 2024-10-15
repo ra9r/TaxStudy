@@ -17,7 +17,7 @@ enum TaxAdjustmentType : String, CaseIterable {
     /// have access to any kind of group policy coverage, including that offered by
     /// fraternal or professional organizations. The purchase of a qualified
     /// high-deductible health insurance policy is also required.
-    case hasContribution
+    case hsaContribution
     
     /// Interest that's paid on federal student loans is deductible up to a certain
     /// amount. Anyone who pays more than $600 in student loan interest should
@@ -39,11 +39,15 @@ enum TaxAdjustmentType : String, CaseIterable {
 }
 
 extension TaxAdjustmentType : DeductionType {
+    var id: String {
+        return self.rawValue
+    }
+    
     var label: String {
         switch self {
         case .iraOr401kContribution:
             return String(localized: "IRA or 401(k) Contribution")
-        case .hasContribution:
+        case .hsaContribution:
             return String(localized: "HSA or MSA Contribution")
         case .studentLoanInterest:
             return String(localized: "Student Loan Interest")
@@ -60,7 +64,7 @@ extension TaxAdjustmentType : DeductionType {
         switch self {
         case .iraOr401kContribution:
             return String(localized: "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible.")
-        case .hasContribution:
+        case .hsaContribution:
             return String(localized: "All contributions to Health Savings Accounts (HSAs) and Archer Medical Savings Accounts (MSAs) are fully deductible, as long as taxpayers do not have access to any kind of group policy coverage, including that offered by fraternal or professional organizations. The purchase of a qualified high-deductible health insurance policy is also required.")
         case .studentLoanInterest:
             return String(localized: "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower.")

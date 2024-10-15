@@ -43,6 +43,7 @@
 		2A7CB29F2CBDC264008334E1 /* TaxAdjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB29E2CBDC25F008334E1 /* TaxAdjustments.swift */; };
 		2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A02CBDDC12008334E1 /* Deductions.swift */; };
 		2A7CB2A32CBDE4B2008334E1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */; };
+		2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		2A7CB29E2CBDC25F008334E1 /* TaxAdjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxAdjustments.swift; sourceTree = "<group>"; };
 		2A7CB2A02CBDDC12008334E1 /* Deductions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deductions.swift; sourceTree = "<group>"; };
 		2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionsView.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,9 +163,9 @@
 			children = (
 				2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */,
 				2A7CB28F2CBC71A9008334E1 /* Summary */,
+				2A7CB2A42CBE0A66008334E1 /* Deductions */,
 				2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */,
 				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
-				2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */,
 				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
 			);
 			path = Views;
@@ -203,6 +205,15 @@
 				2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		2A7CB2A42CBE0A66008334E1 /* Deductions */ = {
+			isa = PBXGroup;
+			children = (
+				2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */,
+				2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */,
+			);
+			path = Deductions;
 			sourceTree = "<group>";
 		};
 		2AB963E22CA6E1A300E52EDF = {
@@ -299,6 +310,7 @@
 				2A51CB212CB9A3650075BBA0 /* CurrencyCard.swift in Sources */,
 				2A51CB222CB9A3650075BBA0 /* CurrencyField.swift in Sources */,
 				2A51CB232CB9A3650075BBA0 /* PercentageCard.swift in Sources */,
+				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
 				2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */,
 				2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */,

@@ -82,6 +82,10 @@ enum TaxCreditType : String {
 }
 
 extension TaxCreditType: DeductionType {
+    var id: String {
+        return self.rawValue
+    }
+    
     var label: String {
         return ""
     }

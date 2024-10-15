@@ -65,7 +65,7 @@ class TaxScenario: Codable, Identifiable {
     var facts: TaxFacts = DefaultTaxFacts2024
     
     var hsaContribution: Double {
-        return adjustments.total(for: .hasContribution)
+        return adjustments.total(for: .hsaContribution)
     }
     
     var iraContribtuion: Double {
