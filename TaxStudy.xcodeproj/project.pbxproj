@@ -31,6 +31,7 @@
 		2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB372CBA902E0075BBA0 /* DataCard.swift */; };
 		2A51CB3B2CBA9B010075BBA0 /* FileCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */; };
 		2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* Header.swift */; };
+		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
@@ -73,6 +74,7 @@
 		2A51CB372CBA902E0075BBA0 /* DataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCard.swift; sourceTree = "<group>"; };
 		2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCommands.swift; sourceTree = "<group>"; };
 		2A6BA2A92CBE54AB007C3A27 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				2A51CAFF2CB9A3650075BBA0 /* CurrencyCard.swift */,
 				2A51CB002CB9A3650075BBA0 /* CurrencyField.swift */,
 				2A51CB012CB9A3650075BBA0 /* PercentageCard.swift */,
+				2A6BA2AF2CBE645D007C3A27 /* CardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -166,7 +169,7 @@
 				2A6BA2AD2CBE5DB9007C3A27 /* Header */,
 				2A7CB28F2CBC71A9008334E1 /* Summary */,
 				2A7CB2A42CBE0A66008334E1 /* Deductions */,
-				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
+				2A6BA2AE2CBE6026007C3A27 /* Income */,
 				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
 			);
 			path = Views;
@@ -204,6 +207,14 @@
 				2A7CB28B2CBC2886008334E1 /* MetaCard.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		2A6BA2AE2CBE6026007C3A27 /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
+			);
+			path = Income;
 			sourceTree = "<group>";
 		};
 		2A7CB28F2CBC71A9008334E1 /* Summary */ = {
@@ -327,6 +338,7 @@
 				2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */,
 				2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
+				2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */,
 				2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */,
 				2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */,
 				2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */,

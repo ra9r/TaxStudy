@@ -17,47 +17,31 @@ struct DataCard: View {
     }
     
     var body: some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack {
-                    Text(title)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 5)
-                        .font(.headline)
-                    Spacer()
-                }
-                .multilineTextAlignment(.leading)
-                .frame(maxWidth: .infinity)
-                .background(.accent)
-                .foregroundColor(.white)
-                
-                
-                VStack {
-                    ForEach(data.indices, id: \.self) { index in
-                        HStack {
-                            Text(data[index].0)
-                                .font(.subheadline)
-                            
-                            Spacer()
-                            
-                            Text(data[index].1)
-                                .font(.subheadline)
-                        }
-                        .padding(2.5)
+        CardView {
+            HStack {
+                Text(title)
+                Spacer()
+            }
+        } content: {
+            VStack {
+                ForEach(data.indices, id: \.self) { index in
+                    HStack {
+                        Text(data[index].0)
+                            .font(.subheadline)
                         
-                        if index != data.indices.last {
-                            Divider()
-                        }
+                        Spacer()
+                        
+                        Text(data[index].1)
+                            .font(.subheadline)
+                    }
+                    .padding(2.5)
+                    
+                    if index != data.indices.last {
+                        Divider()
                     }
                 }
-                .padding(.bottom, 15)
-                .padding(.horizontal, 5)
             }
-            
         }
-        .background(.gray.opacity(0.1))
-        .frame(minWidth: 350)
-        .cornerRadius(5)
     }
 }
 

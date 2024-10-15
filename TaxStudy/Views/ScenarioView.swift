@@ -18,7 +18,7 @@ struct ScenarioView : View {
                     Label("Overview", systemImage: "house.fill")
                 }
             // Second Tab
-            IncomeEditor()
+            IncomeEditor(ts: $manager.selectedTaxScenario)
                 .tabItem {
                     Label("Income", systemImage: "gearshape.fill")
                 }
@@ -31,11 +31,11 @@ struct ScenarioView : View {
                 }
                 .navigationTitle("Deductions")
             
-            JSONView(taxScenario: manager.selectedTaxScenario)
-                .tabItem {
-                    Label("JSON Export", systemImage: "person.crop.circle.fill")
-                }
-                .navigationTitle("JSON Export")
+//            JSONView(taxScenario: manager.selectedTaxScenario)
+//                .tabItem {
+//                    Label("JSON Export", systemImage: "person.crop.circle.fill")
+//                }
+//                .navigationTitle("JSON Export")
         }
         .tint(Color.accentColor)
         .toolbar {

@@ -27,17 +27,16 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
     }
     
     var body: some View {
-        VStack {
+        CardView {
             HStack {
-                
                 Text(title)
-                    
+                
                 Spacer()
                 Button(action: {
                     showDescription.toggle()
                 }) {
                     Image(systemName: "plus.circle.fill")
-//                        .font(.system(size: 18, weight: .bold))
+                    //                        .font(.system(size: 18, weight: .bold))
                 }
                 .buttonStyle(PlainButtonStyle())
                 .popover(isPresented: $showDescription, arrowEdge: .top) {
@@ -45,14 +44,7 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                         .padding(10)
                 }
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 5)
-            .font(.headline)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity)
-            .background(.accent)
-            .foregroundColor(.white)
-            
+        } content: {
             VStack {
                 ForEach(deductions.items.indices, id: \.self) { index in
                     HStack {
@@ -71,13 +63,7 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                     }
                 }
             }
-            .padding(.bottom, 15)
-            .padding(.horizontal, 5)
-            
         }
-        .background(.gray.opacity(0.1))
-        .frame(minWidth: 350)
-        .cornerRadius(5)
     }
     
     var addDeductionPopup: some View {

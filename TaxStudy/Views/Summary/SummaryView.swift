@@ -8,7 +8,6 @@ import SwiftUI
 
 struct SummaryView : View {
     @Binding var ts: TaxScenario
-    //    @State var item: Int = 1
     
     var body: some View {
         ScrollView {
@@ -26,25 +25,4 @@ struct SummaryView : View {
         }
         .frame(minWidth: 800)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var manager = TaxScenarioManager()
-    SummaryView(ts: $manager.selectedTaxScenario)
-        .frame(minWidth: 1000, minHeight: 800)
-        .onAppear() {
-            do {
-                try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
-            } catch {
-                print(error)
-            }
-        }
 }
