@@ -93,9 +93,9 @@ extension TaxCreditType: DeductionType {
         case .earnedIncomeTaxCredit:
             return String(localized: "Earned Income Tax Credit")
         case .americanOpportunityTaxCredit:
-            return String(localized: "American Opportunity Tax Credit")
+            return String(localized: "American Opportunity Tax  Credit")
         case .lifetimeLearningCredit:
-            return String(localized: "Lifetime Learning Credit")
+            return String(localized: "Lifetime Learning")
         case .saversCredit:
             return String(localized: "Saver’s Credit")
         case .foreignTaxCredit:
@@ -105,15 +105,15 @@ extension TaxCreditType: DeductionType {
         case .premiumTaxCredit:
             return String(localized: "Premium Tax Credit")
         case .residentialRenewableEnergyCredit:
-            return String(localized: "Residential Renewable Energy Credit")
+            return String(localized: "Residential Renewable Energy")
         case .energyEfficiencyImprovementCredit:
-            return String(localized: "Energy Efficiency Improvement Credit")
+            return String(localized: "Energy Efficiency Improvement")
         case .plugInElectricVehicleCredit:
-            return String(localized: "Plug-In Electric Vehicle Credit")
+            return String(localized: "Electric Vehicle Credit")
         case .dependentCareCredit:
             return String(localized: "Dependent Care Credit")
         case .childAndDependencyCareCredit:
-            return String(localized: "Child and Dependency Care Credit")
+            return String(localized: "Child and Dependency Care")
         case .healthCoverageTaxCredit:
             return String(localized: "Health Coverage Tax Credit")
         case .workOpportunityTaxCredit:
@@ -121,7 +121,7 @@ extension TaxCreditType: DeductionType {
         case .elderlyOrDisabledTaxCredit:
             return String(localized: "Elderly or Disabled Tax Credit")
         case .customCredit:
-            return String(localized: "Custom Credit")
+            return String(localized: "Custom")
         }
     }
     

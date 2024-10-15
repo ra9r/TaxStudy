@@ -61,19 +61,19 @@
     "All contributions to Health Savings Accounts (HSAs) and Archer Medical Savings Accounts (MSAs) are fully deductible, as long as taxpayers do not have access to any kind of group policy coverage, including that offered by fraternal or professional organizations. The purchase of a qualified high-deductible health insurance policy is also required." : {
 
     },
-    "American Opportunity Tax Credit" : {
+    "American Opportunity Tax  Credit" : {
 
     },
     "Amount" : {
-
-    },
-    "Amount: %@" : {
 
     },
     "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted." : {
 
     },
     "Business Expenses" : {
+
+    },
+    "Cancel" : {
 
     },
     "Capital Gains" : {
@@ -85,7 +85,7 @@
     "Carry forward business losses to offset future taxable income." : {
 
     },
-    "Casualty and Theft Loss Deduction" : {
+    "Casualty and Theft Loss" : {
 
     },
     "Catch all adjustment for supporting future changes to the tax code." : {
@@ -94,22 +94,22 @@
     "Category" : {
 
     },
-    "Charitable Contribution Deduction" : {
+    "Charitable Contribution" : {
 
     },
     "Check for temporary reinstatement of this deduction, which previously allowed up to $4,000 for qualified education expenses." : {
 
     },
-    "Child and Dependency Care Credit" : {
+    "Child and Dependency Care" : {
 
     },
     "Child Tax Credit" : {
 
     },
-    "Custom Adjustment" : {
+    "Custom" : {
 
     },
-    "Custom Credit" : {
+    "Custom Adjustment" : {
 
     },
     "Custom Deduction" : {
@@ -169,16 +169,13 @@
     "Deductions" : {
 
     },
-    "Delete" : {
-
-    },
     "Delete Scenario" : {
 
     },
     "Dependent Care Credit" : {
 
     },
-    "Depreciation Deduction" : {
+    "Depreciation" : {
 
     },
     "Dividends" : {
@@ -193,7 +190,10 @@
     "Elderly or Disabled Tax Credit" : {
 
     },
-    "Energy Efficiency Improvement Credit" : {
+    "Electric Vehicle Credit" : {
+
+    },
+    "Energy Efficiency Improvement" : {
 
     },
     "Enter amount" : {
@@ -202,7 +202,7 @@
     "Foreign Tax Credit" : {
 
     },
-    "Gambling Loss Deduction" : {
+    "Gambling Loss" : {
 
     },
     "Gross Income" : {
@@ -214,7 +214,7 @@
     "Helps reduce the cost of health insurance premiums for individuals and families purchasing coverage through the ACA Marketplace." : {
 
     },
-    "Home Office Deduction" : {
+    "Home Office" : {
 
     },
     "HSA or MSA Contribution" : {
@@ -229,7 +229,7 @@
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
 
     },
-    "Investment and Advisory Fee Deduction" : {
+    "Investment and Advisory Fee" : {
 
     },
     "IRA or 401(k) Contribution" : {
@@ -241,28 +241,28 @@
     "kWh" : {
 
     },
-    "Lifetime Learning Credit" : {
+    "Lifetime Learning" : {
 
     },
-    "Long-Term Care Insurance Premiums Deduction" : {
+    "Long-Term Care Insurance" : {
 
     },
-    "Margin Interest Deduction" : {
+    "Margin Interest" : {
 
     },
-    "Medical and Dental Deduction" : {
+    "Medical and Dental" : {
 
     },
-    "Mileage Deduction" : {
+    "Mileage" : {
 
     },
-    "Mortgage Interest Deduction" : {
+    "Mortgage Interest" : {
 
     },
     "name" : {
 
     },
-    "Net Operating Loss Carryforward Deduction" : {
+    "Net Operating Loss Carryforward" : {
 
     },
     "New..." : {
@@ -289,9 +289,6 @@
     "Overview" : {
 
     },
-    "Plug-In Electric Vehicle Credit" : {
-
-    },
     "Premium Tax Credit" : {
 
     },
@@ -307,13 +304,13 @@
     "Provides up to $500 for dependents who don't qualify for the Child Tax Credit, like older children or elderly relatives." : {
 
     },
-    "Qualified Business Income Deduction" : {
+    "Qualified Business Income" : {
 
     },
     "Refresh" : {
 
     },
-    "Residential Renewable Energy Credit" : {
+    "Residential Renewable Energy" : {
 
     },
     "Retirement" : {
@@ -331,13 +328,13 @@
     "Select" : {
 
     },
-    "Self-Employed Business Expense Deduction" : {
+    "Self-Employed Business Expense" : {
 
     },
-    "Self-Employed Health Insurance Premiums Deduction" : {
+    "Self-Employed Health Insurance" : {
 
     },
-    "Self-Employment Tax Deduction" : {
+    "Self-Employment Tax" : {
 
     },
     "Single Bar" : {
@@ -349,19 +346,16 @@
     "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
 
     },
-    "State and Local Tax Deduction" : {
+    "State and Local Tax" : {
 
     },
     "Student Loan Interest" : {
 
     },
-    "Student Loan Interest Deduction" : {
+    "Tax Preparation Fee" : {
 
     },
-    "Tax Preparation Fee Deduction" : {
-
-    },
-    "Tuition and Fees Deduction" : {
+    "Tuition and Fees" : {
 
     },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {

@@ -46,6 +46,7 @@ struct IncomeEditor: View {
                 CurrencyField(title: "Rental Income", amount: $scenario.rentalIncome)
                 CurrencyField(title: "Royalties", amount: $scenario.royalties)
                 CurrencyField(title: "Business Income", amount: $scenario.businessIncome)
+                CurrencyField(title: "Foreign Earned Income (FEIE)", amount: $scenario.foreignEarnedIncome)
             }
         }
         .padding()

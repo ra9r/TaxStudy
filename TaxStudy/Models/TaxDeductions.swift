@@ -104,45 +104,45 @@ extension TaxDeductionType: DeductionType {
     var label: String {
         switch self {
         case .medicalAndDentalDeduction:
-            return String(localized: "Medical and Dental Deduction")
+            return String(localized: "Medical and Dental")
         case .stateAndLocalTaxDeduction:
-            return String(localized: "State and Local Tax Deduction")
+            return String(localized: "State and Local Tax")
         case .mortgageInterestDeduction:
-            return String(localized: "Mortgage Interest Deduction")
+            return String(localized: "Mortgage Interest")
         case .charitableContributionDeduction:
-            return String(localized: "Charitable Contribution Deduction")
+            return String(localized: "Charitable Contribution")
         case .casualtyAndTheftLossDeduction:
-            return String(localized: "Casualty and Theft Loss Deduction")
+            return String(localized: "Casualty and Theft Loss")
         case .qualifiedBusinessIncomeDeduction:
-            return String(localized: "Qualified Business Income Deduction")
+            return String(localized: "Qualified Business Income")
         case .marginInterestDeduction:
-            return String(localized: "Margin Interest Deduction")
+            return String(localized: "Margin Interest")
         case .gamblingLossDeduction:
-            return String(localized: "Gambling Loss Deduction")
+            return String(localized: "Gambling Loss")
         case .longTermCareInsurancePremiumsDeduction:
-            return String(localized: "Long-Term Care Insurance Premiums Deduction")
+            return String(localized: "Long-Term Care Insurance")
         case .selfEmployedHealthInsurancePremiumsDeduction:
-            return String(localized: "Self-Employed Health Insurance Premiums Deduction")
+            return String(localized: "Self-Employed Health Insurance")
         case .studentLoanInterestDeduction:
-            return String(localized: "Student Loan Interest Deduction")
+            return String(localized: "Student Loan Interest")
         case .tuitionAndFeesDeduction:
-            return String(localized: "Tuition and Fees Deduction")
+            return String(localized: "Tuition and Fees")
         case .selfEmploymentTaxDeduction:
-            return String(localized: "Self-Employment Tax Deduction")
+            return String(localized: "Self-Employment Tax")
         case .homeOfficeDeduction:
-            return String(localized: "Home Office Deduction")
+            return String(localized: "Home Office")
         case .selfEmployedBusinessExpenseDeduction:
-            return String(localized: "Self-Employed Business Expense Deduction")
+            return String(localized: "Self-Employed Business Expense")
         case .mileageDeduction:
-            return String(localized: "Mileage Deduction")
+            return String(localized: "Mileage")
         case .taxPreparationFeeDeduction:
-            return String(localized: "Tax Preparation Fee Deduction")
+            return String(localized: "Tax Preparation Fee")
         case .investmentAndAdvisoryFeeDeduction:
-            return String(localized: "Investment and Advisory Fee Deduction")
+            return String(localized: "Investment and Advisory Fee")
         case .depreciationDeduction:
-            return String(localized: "Depreciation Deduction")
+            return String(localized: "Depreciation")
         case .netOperatingLossCarryforwardDeduction:
-            return String(localized: "Net Operating Loss Carryforward Deduction")
+            return String(localized: "Net Operating Loss Carryforward")
         case .customDeduction:
             return String(localized: "Custom Deduction")
         }

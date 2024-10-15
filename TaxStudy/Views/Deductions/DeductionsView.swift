@@ -11,11 +11,24 @@ struct DeductionsView: View {
     @Binding var ts: TaxScenario
     
     var body: some View {
-        HStack {
-            DeductionEditor(deductions: $ts.adjustments)
-            DeductionEditor(deductions: $ts.deductions)
-            DeductionEditor(deductions: $ts.credits)
+        ScrollView {
+            VStack(alignment: .center) {
+                Header(ts: $ts)
+                MetaHeaderView(ts)
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
+                HStack(alignment: .top, spacing: 10) {
+                    DeductionEditor("Adjustments", $ts.adjustments)
+                    DeductionEditor("Deductions", $ts.deductions)
+                    DeductionEditor("Credits", $ts.credits)
+                }
+                .padding()
+            }
+            .padding()
+            
+            
         }
+        .frame(minWidth: 800)
     }
 }
 

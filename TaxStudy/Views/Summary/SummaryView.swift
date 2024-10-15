@@ -13,7 +13,7 @@ struct SummaryView : View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
-                header
+                Header(ts: $ts)
                 MetaHeaderView(ts)
                     .padding(.top, 20)
                     .padding(.bottom, 10)
@@ -29,48 +29,7 @@ struct SummaryView : View {
     
     
     
-    var header: some View {
-        HStack(alignment: .top, spacing: 25) {
-            blueBox
-            nameAndDescription
-            Spacer()
-        }
-    }
     
-    var blueBox: some View {
-        HStack {
-            Text("2024")
-                .font(.largeTitle)
-            Divider()
-            VStack(alignment: .trailing) {
-                Text("\(ts.grossIncome.asCurrency)")
-                    .font(.headline)
-                Text("Gross Income")
-                    .font(.subheadline)
-            }
-        }
-        .frame(minWidth: 200)
-        .padding()
-        .foregroundStyle(.white)
-        .background(.accent)
-        .cornerRadius(5)
-    }
-    
-    var nameAndDescription: some View {
-        VStack(alignment: .leading) {
-            TextField("name", text: $ts.name)
-                .textFieldStyle(PlainTextFieldStyle())
-                .font(.title)
-                .multilineTextAlignment(.leading)
-            TextEditor(text: $ts.description)
-                .textEditorStyle(.plain)
-                .scrollDisabled(true)
-                .lineLimit(3)
-                .font(.subheadline)
-                .padding(.leading, -5) // <-- This seems like a hack :(
-                .multilineTextAlignment(.leading)
-        }
-    }
     
     
     

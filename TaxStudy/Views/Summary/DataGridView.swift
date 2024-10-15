@@ -36,8 +36,9 @@ struct DataGridView : View {
             ("Royalties", ts.royalties.asCurrency),
             ("Business Income", ts.businessIncome.asCurrency),
             ("Foreign Earned Income", ts.foreignEarnedIncome.asCurrency),
+            ("Tax-Emxempt Interest", ts.taxExemptInterest.asCurrency),
             ("Roth Conversions", ts.rothConversion.asCurrency),
-            ("IRA Withdrawals", ts.iraWithdrawal.asCurrency)
+            ("IRA Withdrawals", ts.iraWithdrawal.asCurrency),
             
         ])
     }
