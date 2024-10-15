@@ -18,6 +18,7 @@ struct CurrencyField: View {
             TextField("Enter amount", value: $amount, format: .currency(code: "USD"))
                 .multilineTextAlignment(.trailing)
                 .frame(width: 100)
+                .textFieldStyle(.plain)
         }
     }
 }
