@@ -34,7 +34,7 @@ struct DeductionEditor: View {
                     .multilineTextAlignment(.trailing)
                     .frame(width: 100)
                 Button {
-                    manager.selectedTaxScenario.adjustments.add(.init(selectedAdjustment, amount: amount))
+                    manager.selectedTaxScenario.adjustments.items.append(.init(selectedAdjustment, amount: amount))
                 } label: {
                     Image(systemName: "plus")
                     Text("Add")

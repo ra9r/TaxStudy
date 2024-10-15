@@ -31,14 +31,6 @@ class Deductions<T: DeductionType>: Codable {
         self.items = deductions
     }
     
-    func add(_ deduction: GenericDeduction<T>) {
-        items.append(deduction)
-    }
-    
-    func remove(_ deduction: GenericDeduction<T>) {
-        items.removeAll(where: { $0 == deduction })
-    }
-    
     func total(for deductionType: T) -> Double {
         items
             .filter { $0.type == deductionType }
