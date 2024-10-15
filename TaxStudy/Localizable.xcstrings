@@ -13,7 +13,37 @@
     "2024" : {
 
     },
+    "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
+
+    },
+    "A credit for certain individuals affected by foreign trade or receiving benefits from the PBGC to cover qualified health insurance premiums." : {
+
+    },
+    "A credit for contributions to retirement plans, ranging from 10% to 50% of contributions depending on income." : {
+
+    },
+    "A credit for foreign taxes paid on income also subject to U.S. tax, designed to prevent double taxation." : {
+
+    },
+    "A credit for home improvements such as insulation and energy-efficient windows or HVAC systems." : {
+
+    },
+    "A credit for low-income taxpayers aged 65 or older, or for those under 65 with permanent disabilities." : {
+
+    },
+    "A credit for the purchase of qualifying plug-in electric vehicles, up to $7,500 depending on the vehicle and manufacturer." : {
+
+    },
+    "A federal tax benefit that reduces taxes for families with qualifying children." : {
+
+    },
+    "A placeholder credit to support future changes in the tax code." : {
+
+    },
     "A placeholder deduction for future changes in the tax code." : {
+
+    },
+    "A refundable credit for low- to moderate-income individuals and families, designed to reduce tax burden and increase refunds." : {
 
     },
     "Add" : {
@@ -22,10 +52,16 @@
     "Add Scenario" : {
 
     },
+    "Adoption Credit" : {
+
+    },
     "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible." : {
 
     },
     "All contributions to Health Savings Accounts (HSAs) and Archer Medical Savings Accounts (MSAs) are fully deductible, as long as taxpayers do not have access to any kind of group policy coverage, including that offered by fraternal or professional organizations. The purchase of a qualified high-deductible health insurance policy is also required." : {
+
+    },
+    "American Opportunity Tax Credit" : {
 
     },
     "Amount" : {
@@ -64,7 +100,16 @@
     "Check for temporary reinstatement of this deduction, which previously allowed up to $4,000 for qualified education expenses." : {
 
     },
+    "Child and Dependency Care Credit" : {
+
+    },
+    "Child Tax Credit" : {
+
+    },
     "Custom Adjustment" : {
+
+    },
+    "Custom Credit" : {
 
     },
     "Custom Deduction" : {
@@ -130,6 +175,9 @@
     "Delete Scenario" : {
 
     },
+    "Dependent Care Credit" : {
+
+    },
     "Depreciation Deduction" : {
 
     },
@@ -139,13 +187,31 @@
     "Early Withdrawal Penalties" : {
 
     },
+    "Earned Income Tax Credit" : {
+
+    },
+    "Elderly or Disabled Tax Credit" : {
+
+    },
+    "Energy Efficiency Improvement Credit" : {
+
+    },
     "Enter amount" : {
+
+    },
+    "Foreign Tax Credit" : {
 
     },
     "Gambling Loss Deduction" : {
 
     },
     "Gross Income" : {
+
+    },
+    "Health Coverage Tax Credit" : {
+
+    },
+    "Helps reduce the cost of health insurance premiums for individuals and families purchasing coverage through the ACA Marketplace." : {
 
     },
     "Home Office Deduction" : {
@@ -175,6 +241,9 @@
     "kWh" : {
 
     },
+    "Lifetime Learning Credit" : {
+
+    },
     "Long-Term Care Insurance Premiums Deduction" : {
 
     },
@@ -202,6 +271,12 @@
     "No recent files" : {
 
     },
+    "Offers a credit for a portion of childcare or dependent care expenses, enabling taxpayers to work or look for work." : {
+
+    },
+    "Offers up to $2,000 per return for post-secondary education or job skills improvement, with no limit on the number of years claimed." : {
+
+    },
     "Open Recent" : {
 
     },
@@ -214,10 +289,31 @@
     "Overview" : {
 
     },
+    "Plug-In Electric Vehicle Credit" : {
+
+    },
+    "Premium Tax Credit" : {
+
+    },
+    "Provides a credit for installing renewable energy systems in a home, like solar panels or wind turbines." : {
+
+    },
+    "Provides a credit for qualified adoption expenses, with carryover available for unused amounts." : {
+
+    },
+    "Provides up to $2,500 for eligible students' education expenses during the first four years of higher education." : {
+
+    },
+    "Provides up to $500 for dependents who don't qualify for the Child Tax Credit, like older children or elderly relatives." : {
+
+    },
     "Qualified Business Income Deduction" : {
 
     },
     "Refresh" : {
+
+    },
+    "Residential Renewable Energy Credit" : {
 
     },
     "Retirement" : {
@@ -227,6 +323,9 @@
 
     },
     "Save As..." : {
+
+    },
+    "Saver’s Credit" : {
 
     },
     "Select" : {
@@ -269,6 +368,9 @@
 
     },
     "Wages" : {
+
+    },
+    "Work Opportunity Tax Credit" : {
 
     }
   },

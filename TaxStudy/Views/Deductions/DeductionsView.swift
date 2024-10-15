@@ -14,6 +14,7 @@ struct DeductionsView: View {
         HStack {
             DeductionEditor(deductions: $ts.adjustments)
             DeductionEditor(deductions: $ts.deductions)
+            DeductionEditor(deductions: $ts.credits)
         }
     }
 }

@@ -87,10 +87,80 @@ extension TaxCreditType: DeductionType {
     }
     
     var label: String {
-        return ""
+        switch self {
+        case .childTaxCredit:
+            return String(localized: "Child Tax Credit")
+        case .earnedIncomeTaxCredit:
+            return String(localized: "Earned Income Tax Credit")
+        case .americanOpportunityTaxCredit:
+            return String(localized: "American Opportunity Tax Credit")
+        case .lifetimeLearningCredit:
+            return String(localized: "Lifetime Learning Credit")
+        case .saversCredit:
+            return String(localized: "Saver’s Credit")
+        case .foreignTaxCredit:
+            return String(localized: "Foreign Tax Credit")
+        case .adoptionCredit:
+            return String(localized: "Adoption Credit")
+        case .premiumTaxCredit:
+            return String(localized: "Premium Tax Credit")
+        case .residentialRenewableEnergyCredit:
+            return String(localized: "Residential Renewable Energy Credit")
+        case .energyEfficiencyImprovementCredit:
+            return String(localized: "Energy Efficiency Improvement Credit")
+        case .plugInElectricVehicleCredit:
+            return String(localized: "Plug-In Electric Vehicle Credit")
+        case .dependentCareCredit:
+            return String(localized: "Dependent Care Credit")
+        case .childAndDependencyCareCredit:
+            return String(localized: "Child and Dependency Care Credit")
+        case .healthCoverageTaxCredit:
+            return String(localized: "Health Coverage Tax Credit")
+        case .workOpportunityTaxCredit:
+            return String(localized: "Work Opportunity Tax Credit")
+        case .elderlyOrDisabledTaxCredit:
+            return String(localized: "Elderly or Disabled Tax Credit")
+        case .customCredit:
+            return String(localized: "Custom Credit")
+        }
     }
     
     var description: String {
-        return ""
+        switch self {
+        case .childTaxCredit:
+            return String(localized: "A federal tax benefit that reduces taxes for families with qualifying children.")
+        case .earnedIncomeTaxCredit:
+            return String(localized: "A refundable credit for low- to moderate-income individuals and families, designed to reduce tax burden and increase refunds.")
+        case .americanOpportunityTaxCredit:
+            return String(localized: "Provides up to $2,500 for eligible students' education expenses during the first four years of higher education.")
+        case .lifetimeLearningCredit:
+            return String(localized: "Offers up to $2,000 per return for post-secondary education or job skills improvement, with no limit on the number of years claimed.")
+        case .saversCredit:
+            return String(localized: "A credit for contributions to retirement plans, ranging from 10% to 50% of contributions depending on income.")
+        case .foreignTaxCredit:
+            return String(localized: "A credit for foreign taxes paid on income also subject to U.S. tax, designed to prevent double taxation.")
+        case .adoptionCredit:
+            return String(localized: "Provides a credit for qualified adoption expenses, with carryover available for unused amounts.")
+        case .premiumTaxCredit:
+            return String(localized: "Helps reduce the cost of health insurance premiums for individuals and families purchasing coverage through the ACA Marketplace.")
+        case .residentialRenewableEnergyCredit:
+            return String(localized: "Provides a credit for installing renewable energy systems in a home, like solar panels or wind turbines.")
+        case .energyEfficiencyImprovementCredit:
+            return String(localized: "A credit for home improvements such as insulation and energy-efficient windows or HVAC systems.")
+        case .plugInElectricVehicleCredit:
+            return String(localized: "A credit for the purchase of qualifying plug-in electric vehicles, up to $7,500 depending on the vehicle and manufacturer.")
+        case .dependentCareCredit:
+            return String(localized: "Provides up to $500 for dependents who don't qualify for the Child Tax Credit, like older children or elderly relatives.")
+        case .childAndDependencyCareCredit:
+            return String(localized: "Offers a credit for a portion of childcare or dependent care expenses, enabling taxpayers to work or look for work.")
+        case .healthCoverageTaxCredit:
+            return String(localized: "A credit for certain individuals affected by foreign trade or receiving benefits from the PBGC to cover qualified health insurance premiums.")
+        case .workOpportunityTaxCredit:
+            return String(localized: "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers.")
+        case .elderlyOrDisabledTaxCredit:
+            return String(localized: "A credit for low-income taxpayers aged 65 or older, or for those under 65 with permanent disabilities.")
+        case .customCredit:
+            return String(localized: "A placeholder credit to support future changes in the tax code.")
+        }
     }
 }
