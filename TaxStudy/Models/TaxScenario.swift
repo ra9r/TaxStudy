@@ -52,17 +52,25 @@ class TaxScenario: Codable, Identifiable {
     var foreignEarnedIncome: Double = 0
     
     // MARK: - Retirement
-    var hsaContribution: Double = 0
-    var iraContribtuion: Double = 0
+    
     var iraWithdrawal: Double = 0
     var rothConversion: Double = 0
     
     // MARK: - Deductions
-    var marginInterestExpense: Double = 0
-    var mortgageInterestExpense: Double = 0
-    var medicalAndDentalExpense: Double = 0
-    var charitableContributions: Double = 0
-    var dafContributions: Double = 0
+    var deductions: Deductions<TaxDeductionType> = Deductions()
+    var credits: Deductions<TaxCreditType> = Deductions()
+    var adjustments: Deductions<TaxAdjustmentType> = Deductions()
+    
+    // MARK: - Scenario Facts
+    var facts: TaxFacts = DefaultTaxFacts2024
+    
+    var hsaContribution: Double {
+        return adjustments.total(for: .hasContribution)
+    }
+    
+    var iraContribtuion: Double {
+        return adjustments.total(for: .iraOr401kContribution)
+    }
     
     // MARK: - Computed Values
     var grossIncome: Double {
@@ -92,16 +100,10 @@ class TaxScenario: Codable, Identifiable {
         return totalTaxesOwed / grossIncome
     }
     
-    // MARK: - Helper Classes
-    @Transient
-    var facts: TaxFacts = TaxFacts2024
-    
-    @Transient
     var federalTaxes: FederalTaxCalc {
         return FederalTaxCalc(self)
     }
     
-    @Transient
     var stateTaxes: StateTaxCalc {
         return NCTaxCalc(federalTaxes)
     }
@@ -142,12 +144,12 @@ class TaxScenario: Codable, Identifiable {
         case iraContribtuion
         case iraWithdrawal
         case rothConversion
-        // Deductions
-        case marginInterestExpense
-        case mortgageInterestExpense
-        case medicalAndDentalExpense
-        case charitableContributions
-        case dafContributions
+        // Deductions & Credits
+        case deductions
+        case credits
+        case adjustments
+        
+        case facts
     }
     
     required init(from decoder: Decoder) throws {
@@ -182,17 +184,14 @@ class TaxScenario: Codable, Identifiable {
         businessIncome = try container.decodeIfPresent(Double.self, forKey: .businessIncome) ?? 0
         foreignEarnedIncome = try container.decodeIfPresent(Double.self, forKey: .foreignEarnedIncome) ?? 0
         
-        hsaContribution = try container.decodeIfPresent(Double.self, forKey: .hsaContribution) ?? 0
-        iraContribtuion = try container.decodeIfPresent(Double.self, forKey: .iraContribtuion) ?? 0
         iraWithdrawal = try container.decodeIfPresent(Double.self, forKey: .iraWithdrawal) ?? 0
         rothConversion = try container.decodeIfPresent(Double.self, forKey: .rothConversion) ?? 0
         
-        marginInterestExpense = try container.decodeIfPresent(Double.self, forKey: .marginInterestExpense) ?? 0
-        mortgageInterestExpense = try container.decodeIfPresent(Double.self, forKey: .mortgageInterestExpense) ?? 0
-        medicalAndDentalExpense = try container.decodeIfPresent(Double.self, forKey: .medicalAndDentalExpense) ?? 0
-        charitableContributions = try container.decodeIfPresent(Double.self, forKey: .charitableContributions) ?? 0
-        dafContributions = try container.decodeIfPresent(Double.self, forKey: .dafContributions) ?? 0
+        credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
+        deductions = try container.decodeIfPresent(Deductions<TaxDeductionType>.self, forKey: .deductions) ?? Deductions()
+        adjustments = try container.decodeIfPresent(Deductions<TaxAdjustmentType>.self, forKey: .adjustments) ?? Deductions()
         
+        facts = try container.decodeIfPresent(TaxFacts.self, forKey: .facts) ?? DefaultTaxFacts2024
     }
     
     func encode(to encoder: Encoder) throws {
@@ -232,11 +231,11 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(businessIncome, forKey: .businessIncome)
         try container.encode(foreignEarnedIncome, forKey: .foreignEarnedIncome)
         
-        try container.encode(marginInterestExpense, forKey: .marginInterestExpense)
-        try container.encode(mortgageInterestExpense, forKey: .mortgageInterestExpense)
-        try container.encode(medicalAndDentalExpense, forKey: .medicalAndDentalExpense)
-        try container.encode(charitableContributions, forKey: .charitableContributions)
-        try container.encode(dafContributions, forKey: .dafContributions)
+        try container.encode(credits, forKey: .credits)
+        try container.encode(deductions, forKey: .deductions)
+        try container.encode(adjustments, forKey: .adjustments)
+        
+        try container.encode(facts, forKey: .facts)
     }
 }
 

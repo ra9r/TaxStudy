@@ -20,7 +20,6 @@ struct DataGridView : View {
             computedTaxes
             computedResults
             computedSocialSecurity
-            deductions
         }
     }
     
@@ -55,15 +54,15 @@ struct DataGridView : View {
     }
         
     var computedResults: some View {
-            DataCard("Computed Results", [
-                ("Gross Income", ts.grossIncome.asCurrency),
-                ("AGI", ts.federalTaxes.agi.asCurrency),
-                ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
-                ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
-                ("Total Preferential Income", ts.federalTaxes.preferentialIncome.asCurrency),
-                ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
-                ("Future Carry Over Loss", ts.federalTaxes.futureCarryOverLoss.asCurrency),
-            ])
+        DataCard("Computed Results", [
+            ("Gross Income", ts.grossIncome.asCurrency),
+            ("AGI", ts.federalTaxes.agi.asCurrency),
+            ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
+            ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
+            ("Total Preferential Income", ts.federalTaxes.preferentialIncome.asCurrency),
+            ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
+            ("Future Carry Over Loss", ts.federalTaxes.futureCarryOverLoss.asCurrency),
+        ])
     }
     
     var computedSocialSecurity: some View {
@@ -77,13 +76,5 @@ struct DataGridView : View {
         ])
     }
     
-    var deductions: some View {
-        DataCard("Deducations", [
-            ("Medical and Dental Expenses", ts.medicalAndDentalExpense.asCurrency),
-            ("Deductible Medical Expenses", ts.federalTaxes.deductibleMedicalExpenses.asCurrency),
-            
-            ("Margin Interest Expense", ts.marginInterestExpense.asCurrency),
-            ("Mortgage Interest Expense", ts.mortgageInterestExpense.asCurrency)
-        ])
-    }
+    
 }

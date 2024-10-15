@@ -1,0 +1,144 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%lld kWh" : {
+
+    },
+    "2024" : {
+
+    },
+    "Add" : {
+
+    },
+    "Add Scenario" : {
+
+    },
+    "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible." : {
+
+    },
+    "All contributions to Health Savings Accounts (HSAs) and Archer Medical Savings Accounts (MSAs) are fully deductible, as long as taxpayers do not have access to any kind of group policy coverage, including that offered by fraternal or professional organizations. The purchase of a qualified high-deductible health insurance policy is also required." : {
+
+    },
+    "Amount" : {
+
+    },
+    "Amount: %.2f" : {
+
+    },
+    "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted." : {
+
+    },
+    "Business Expenses" : {
+
+    },
+    "Capital Gains" : {
+
+    },
+    "Capital Losses" : {
+
+    },
+    "Catch all adjustment for supporting future changes to the tax code." : {
+
+    },
+    "Category" : {
+
+    },
+    "Custom Adjustment" : {
+
+    },
+    "Deductions" : {
+
+    },
+    "Delete Scenario" : {
+
+    },
+    "Dividends" : {
+
+    },
+    "Early Withdrawal Penalties" : {
+
+    },
+    "Enter amount" : {
+
+    },
+    "Gross Income" : {
+
+    },
+    "HSA or MSA Contribution" : {
+
+    },
+    "Income" : {
+
+    },
+    "Interest" : {
+
+    },
+    "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
+
+    },
+    "IRA or 401(k) Contribution" : {
+
+    },
+    "JSON Export" : {
+
+    },
+    "kWh" : {
+
+    },
+    "name" : {
+
+    },
+    "New..." : {
+
+    },
+    "No recent files" : {
+
+    },
+    "Open Recent" : {
+
+    },
+    "Open..." : {
+
+    },
+    "Other Income" : {
+
+    },
+    "Overview" : {
+
+    },
+    "Refresh" : {
+
+    },
+    "Retirement" : {
+
+    },
+    "Save" : {
+
+    },
+    "Save As..." : {
+
+    },
+    "Select a Tax Adjustment" : {
+
+    },
+    "Single Bar" : {
+
+    },
+    "Social Security" : {
+
+    },
+    "Student Loan Interest" : {
+
+    },
+    "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {
+
+    },
+    "Wages" : {
+
+    }
+  },
+  "version" : "1.0"
+}

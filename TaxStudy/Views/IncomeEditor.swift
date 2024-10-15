@@ -33,12 +33,13 @@ struct IncomeEditor: View {
             GroupBox("Dividends") {
                 CurrencyField(title: "Qualified", amount: $scenario.qualifiedDividends)
                 CurrencyField(title: "Ordinary", amount: $scenario.nonQualifiedDividends)
+            }
+            GroupBox("Interest") {
+                CurrencyField(title: "Tax-Exempt Interest", amount: $scenario.taxExemptInterest)
                 CurrencyField(title: "Interest", amount: $scenario.interest)
             }
             GroupBox("Retirement") {
-                CurrencyField(title: "HSA Contribution", amount: $scenario.hsaContribution)
                 CurrencyField(title: "Roth Conversion", amount: $scenario.rothConversion)
-                CurrencyField(title: "IRA Contribution", amount: $scenario.iraContribtuion)
                 CurrencyField(title: "IRA Withdrawal", amount: $scenario.iraWithdrawal)
             }
             GroupBox("Other Income") {

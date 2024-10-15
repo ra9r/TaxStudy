@@ -66,7 +66,7 @@ class FederalTaxCalc {
         let income = taxScenario.totalWages +
         taxScenario.totalSocialSecurityIncome +
         taxScenario.interest +
-        taxScenario.taxExemptInterest +
+//        taxScenario.taxExemptInterest + // excluded from Gross Income calculations
         netLTCG +
         taxScenario.qualifiedDividends +
         netSTCG +
@@ -117,17 +117,18 @@ class FederalTaxCalc {
         return standardDeduction
     }
     
-    var deductibleMedicalExpenses: Double {
-        let medicalExpenses = taxScenario.medicalAndDentalExpense
-        let threshold = 0.075 * agi
-        return max(0, medicalExpenses - threshold)
-    }
+//    var deductibleMedicalExpenses: Double {
+//        let medicalExpenses = taxScenario.medicalAndDentalExpense
+//        let threshold = 0.075 * agi
+//        return max(0, medicalExpenses - threshold)
+//    }
     
     var itemizedDeductions: Double {
-        let mortgageInterest = taxScenario.mortgageInterestExpense
-        let marginInterest = taxScenario.marginInterestExpense
-        let medicalExpenses = deductibleMedicalExpenses
-        return mortgageInterest + marginInterest + medicalExpenses
+//        let mortgageInterest = taxScenario.mortgageInterestExpense
+//        let marginInterest = taxScenario.marginInterestExpense
+//        let medicalExpenses = deductibleMedicalExpenses
+//        return mortgageInterest + marginInterest + medicalExpenses
+        return 0
     }
     
     var deduction: Double {

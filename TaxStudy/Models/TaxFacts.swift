@@ -46,7 +46,7 @@ class TaxFacts : Codable, Identifiable {
     }
 }
 
-let TaxFacts2024 = TaxFacts(
+let DefaultTaxFacts2024 = TaxFacts(
     ordinaryTaxBrackets: [
         .single: TaxBrackets(
             .init(0, 0.10),
