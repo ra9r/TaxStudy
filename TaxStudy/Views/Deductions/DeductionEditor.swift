@@ -48,6 +48,11 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
             ForEach(deductions.items.indices, id: \.self) { index in
                 CardField(deductions.items[index].type.label,
                               amount: $deductions.items[index].amount)
+                .contextMenu {
+                    Button("Delete") {
+                        deductions.remove(deductions.items[index])
+                    }
+                }
                 
                 if index != deductions.items.indices.last {
                     Divider()
