@@ -60,7 +60,7 @@ struct IncomeEditor: View {
                         CardView("Dividends") {
                             CardField("Qualified", amount: $ts.qualifiedDividends)
                             Divider()
-                            CardField("Ordinary", amount: $ts.nonQualifiedDividends)
+                            CardField("Non-Qualified (Ordinary)", amount: $ts.nonQualifiedDividends)
                         }
                         CardView("Interest") {
                             CardField("Tax-Exempt Interest", amount: $ts.taxExemptInterest)

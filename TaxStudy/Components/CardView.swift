@@ -47,7 +47,7 @@ struct CardView<Content: View>: View {
             
         }
         .background(.gray.opacity(0.1))
-        .frame(minWidth: 350)
+        .frame(minWidth: 250)
         .cornerRadius(5)
     }
 }
