@@ -45,22 +45,12 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                 }
             }
         } content: {
-            VStack {
-                ForEach(deductions.items.indices, id: \.self) { index in
-                    HStack {
-                        Text(deductions.items[index].type.label)
-                            .font(.subheadline)
-                        
-                        Spacer()
-                        
-                        Text(deductions.items[index].amount.asCurrency)
-                            .font(.subheadline)
-                    }
-                    .padding(2.5)
-                    
-                    if index != deductions.items.indices.last {
-                        Divider()
-                    }
+            ForEach(deductions.items.indices, id: \.self) { index in
+                CardField(deductions.items[index].type.label,
+                              amount: $deductions.items[index].amount)
+                
+                if index != deductions.items.indices.last {
+                    Divider()
                 }
             }
         }

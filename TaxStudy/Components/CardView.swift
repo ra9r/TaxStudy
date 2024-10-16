@@ -7,21 +7,30 @@
 
 import SwiftUI
 
-struct CardView<Header: View, Content: View>: View {
-    let header: Header
+struct CardView<Content: View>: View {
+    let header: AnyView
     let content: Content
 
-    init(@ViewBuilder header: () -> Header, @ViewBuilder content: () -> Content) {
-        self.header = header()
+    init<Header: View>(@ViewBuilder header: () -> Header, @ViewBuilder content: () -> Content) {
+        self.header = AnyView(header())
+        self.content = content()
+    }
+    
+    // New convenience initializer
+    init(_ headerLabel: String, @ViewBuilder content: () -> Content) {
+        self.header = AnyView(
+            HStack {
+                Text(headerLabel)
+                Spacer()
+            }
+        )
         self.content = content()
     }
 
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 10) {
-                Group {
-                    header
-                }
+                header
                     .padding(.vertical, 10)
                     .padding(.horizontal, 5)
                     .font(.headline)
@@ -29,10 +38,11 @@ struct CardView<Header: View, Content: View>: View {
                     .frame(maxWidth: .infinity)
                     .background(.accent)
                     .foregroundColor(.white)
-                
-                content
-                    .padding(.bottom, 15)
-                    .padding(.horizontal, 5)
+                VStack {
+                    content
+                }
+                .padding(.bottom, 15)
+                .padding(.horizontal, 5)
             }
             
         }
@@ -43,15 +53,7 @@ struct CardView<Header: View, Content: View>: View {
 }
 
 #Preview {
-    CardView {
-        HStack {
-            Text("Title goes here")
-                .padding(.vertical, 10)
-                .padding(.horizontal, 5)
-                .font(.headline)
-            Spacer()
-        }
-    } content: {
+    CardView("Title goes here") {
         VStack {
             HStack {
                 Text("Line Value")

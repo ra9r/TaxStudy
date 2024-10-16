@@ -17,28 +17,12 @@ struct DataCard: View {
     }
     
     var body: some View {
-        CardView {
-            HStack {
-                Text(title)
-                Spacer()
-            }
-        } content: {
-            VStack {
-                ForEach(data.indices, id: \.self) { index in
-                    HStack {
-                        Text(data[index].0)
-                            .font(.subheadline)
-                        
-                        Spacer()
-                        
-                        Text(data[index].1)
-                            .font(.subheadline)
-                    }
-                    .padding(2.5)
-                    
-                    if index != data.indices.last {
-                        Divider()
-                    }
+        CardView(title) {
+            ForEach(data.indices, id: \.self) { index in
+                CardItem(data[index].0, value: data[index].1)
+                
+                if index != data.indices.last {
+                    Divider()
                 }
             }
         }
