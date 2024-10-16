@@ -73,6 +73,7 @@
 		2A6BA2A92CBE54AB007C3A27 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
+		2A6BA2B52CBFE52C007C3A27 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		2AB963E22CA6E1A300E52EDF = {
 			isa = PBXGroup;
 			children = (
+				2A6BA2B52CBFE52C007C3A27 /* .gitignore */,
 				2A51CB1E2CB9A3650075BBA0 /* TaxStudy */,
 				2AB963EC2CA6E1A300E52EDF /* Products */,
 			);
