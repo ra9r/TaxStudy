@@ -8,76 +8,50 @@
 import SwiftUI
 
 struct IncomeEditor: View {
-    @Binding var ts: TaxScenario
+    var title: String
+    var incomeTypes: [IncomeType]
+    @Binding var incomeSources: IncomeSources
+    @State private var showDescription: Bool = false
+    @State private var amount: Double = 0
+    
+    init(_ title: String, _ sources: Binding<IncomeSources>, filter: [IncomeType]? = nil) {
+        self.title = title
+        self.incomeTypes = filter ?? IncomeType.allCases
+        self._incomeSources = sources
+    }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center) {
-                Header(ts: $ts)
-                MetaHeaderView(ts)
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-                HStack(alignment: .top) {
-                    VStack(spacing: 10) {
-                        CardView("Wages") {
-                            CardField("Self", amount: $ts.wagesSelf)
-                            Divider()
-                            CardField("Spouse", amount: $ts.wagesSpouse)
-                        }
-                        CardView("Social Security") {
-                            CardField("Self", amount: $ts.socialSecuritySelf)
-                            Divider()
-                            CardField("Spouse", amount: $ts.socialSecuritySpouse)
-                        }
-                        CardView("Retirement") {
-                            CardField("Roth Conversion", amount: $ts.rothConversion)
-                            Divider()
-                            CardField("IRA Withdrawal", amount: $ts.iraWithdrawal)
-                        }
-                        CardView("Other Income") {
-                            CardField("Rental Income", amount: $ts.rentalIncome)
-                            Divider()
-                            CardField("Royalties", amount: $ts.royalties)
-                            Divider()
-                            CardField("Business Income", amount: $ts.businessIncome)
-                            Divider()
-                            CardField("Foreign Earned Income (FEIE)", amount: $ts.foreignEarnedIncome)
+        CardView {
+            HStack {
+                Text(title)
+                
+                Spacer()
+                Menu {
+                    ForEach(incomeTypes, id: \.self) { incomeType in
+                        Button(incomeType.label) {
+                            incomeSources.add(.init(incomeType, amount: 0))
                         }
                     }
-                    VStack(spacing: 10) {
-                        CardView("Capital Gains") {
-                            CardField("Long-term", amount: $ts.longTermCapitalGains)
-                            Divider()
-                            CardField("Short-term", amount: $ts.shortTermCapitalGains)
-                        }
-                        CardView("Capital Losses") {
-                            CardField("Long-term", amount: $ts.longTermCapitalLosses)
-                            Divider()
-                            CardField("Short-term", amount: $ts.shortTermCapitalLosses)
-                            Divider()
-                            CardField("Carried Forward", amount: $ts.capitalLossCarryOver)
-                        }
-                        CardView("Dividends") {
-                            CardField("Qualified", amount: $ts.qualifiedDividends)
-                            Divider()
-                            CardField("Non-Qualified (Ordinary)", amount: $ts.nonQualifiedDividends)
-                        }
-                        CardView("Interest") {
-                            CardField("Tax-Exempt Interest", amount: $ts.taxExemptInterest)
-                            Divider()
-                            CardField("Interest", amount: $ts.interest)
-                        }
-                        
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+        } content: {
+            ForEach(incomeSources.matching(anyOf: incomeTypes), id: \.self) { incomeSource in
+                CardItem(incomeSource.type.label,
+                         value: incomeSource.amount.asCurrency)
+                .contextMenu {
+                    Button("Delete") {
+                        incomeSources.remove(incomeSource)
                     }
                 }
-                .padding()
+                
+//                if index != incomeSources.sources.indices.last {
+                    Divider()
+//                }
             }
-            .padding()
-            
-            
         }
-        .frame(minWidth: 800)
-        
     }
     
 }

@@ -16,56 +16,103 @@ class TaxScenario: Codable, Identifiable {
     var description: String = ""
     var filingStatus: FilingStatus = FilingStatus.single
     var employmentStatus: EmploymentStatus = .retired
-    
-    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired) {
-        self.name = name
-        self.filingStatus = filingStatus
-        self.employmentStatus = employmentStatus
-    }
-    
-    // MARK: - Wages
-    var wagesSelf: Double = 0
-    var wagesSpouse: Double = 0
-    
-    // MARK: - Social Security
-    var socialSecuritySelf: Double = 0
-    var socialSecuritySpouse: Double = 0
-    
-    // MARK: - Investment Income
-    var interest: Double = 0
-    var taxExemptInterest: Double = 0
-    
-    var longTermCapitalGains: Double = 0
-    var longTermCapitalLosses: Double = 0
-    var capitalLossCarryOver: Double = 0
-    
-    var shortTermCapitalGains: Double = 0
-    var shortTermCapitalLosses: Double = 0
-    
-    var qualifiedDividends: Double = 0
-    var nonQualifiedDividends: Double = 0
-    
-    // MARK: - Misc Income
-    var rentalIncome: Double = 0
-    var royalties: Double = 0
-    var businessIncome: Double = 0
-    var foreignEarnedIncome: Double = 0
-    
-    // MARK: - Retirement
-    
-    var iraWithdrawal: Double = 0
-    var rothConversion: Double = 0
-    
-    // MARK: - Deductions
+    var income: IncomeSources = IncomeSources()
     var deductions: Deductions<TaxDeductionType> = Deductions()
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
+    var facts: String
+    
+    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, facts: TaxFacts? = nil) {
+        self.name = name
+        self.filingStatus = filingStatus
+        self.employmentStatus = employmentStatus
+        self.facts = facts?.id ?? DefaultTaxFacts2024.id
+    }
+    
+    // MARK: - Wages
+    var wagesSelf: Double {
+        income.total(for: .wagesSelf)
+    }
+    var wagesSpouse: Double {
+        income.total(for: .wagesSpouse)
+    }
+    
+    // MARK: - Social Security
+    var socialSecuritySelf: Double {
+        income.total(for: .socialSecuritySelf)
+    }
+    var socialSecuritySpouse: Double {
+        income.total(for: .socialSecuritySpouse)
+    }
+    
+    // MARK: - Investment Income
+    var interest: Double {
+        income.total(for: .interest)
+    }
+    var taxExemptInterest: Double {
+        income.total(for: .taxExemptInterest)
+    }
+    
+    var longTermCapitalGains: Double {
+        income.total(for: .longTermCapitalGains)
+    }
+    var carryforwardLoss: Double {
+        income.total(for: .carryforwardLoss)
+    }
+    
+    var shortTermCapitalGains: Double {
+        income.total(for: .shortTermCapitalGains)
+    }
+    
+    var qualifiedDividends: Double {
+        income.total(for: .qualifiedDividends)
+    }
+    
+    var nonQualifiedDividends: Double {
+        totalDividends - qualifiedDividends
+    }
+    
+    var totalDividends: Double {
+        return income.total(for: .totalOrdinaryDividends)
+    }
+    
+    // MARK: - Misc Income
+    var rentalIncome: Double {
+        return income.total(for: .rentalIncome)
+    }
+    var royalties: Double {
+        return income.total(for: .royalties)
+    }
+    var businessIncome: Double {
+        return income.total(for: .businessIncome)
+    }
+    var foreignEarnedIncome: Double {
+        return income.total(for: .foreignEarnedIncome)
+    }
+    
+    // MARK: - Retirement
+    
+    var iraWithdrawal: Double {
+        return income.total(for: .iraWithdrawal)
+    }
+    var rothConversion: Double {
+        return income.total(for: .rothConversion)
+    }
+    
     
     // MARK: - Other Excluded Income
-    var qualifiedHSADistributions: Double = 0
-    var rothDistributions: Double = 0
-    var giftsOrInheritance: Double = 0
-    var otherTaxExemptIncome: Double = 0
+    var qualifiedHSADistributions: Double {
+        return income.total(for: .qualifiedHSADistributions)
+    }
+    var rothDistributions: Double {
+        return income.total(for: .rothDistributions)
+    }
+    var giftsOrInheritance: Double {
+        return income.total(for: .giftsOrInheritance)
+    }
+    var otherTaxExemptIncome: Double {
+        return income.total(for: .otherTaxExemptIncome)
+    }
     
     var hsaContribution: Double {
         return adjustments.total(for: .hsaContribution)
@@ -90,21 +137,6 @@ class TaxScenario: Codable, Identifiable {
         return socialSecuritySelf + socialSecuritySpouse
     }
     
-//    var afterTaxIncome: Double {
-//        return grossIncome - federalTaxes.taxesOwed - stateTaxes.taxesOwed
-//    }
-//    
-//    var totalTaxesOwed: Double {
-//        return federalTaxes.taxesOwed + stateTaxes.taxesOwed
-//    }
-    
-//    var totalEffectiveTaxRate: Double {
-//        if grossIncome == 0 {
-//            return 0
-//        }
-//        return totalTaxesOwed / grossIncome
-//    }
-    
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case id
@@ -112,41 +144,13 @@ class TaxScenario: Codable, Identifiable {
         case description
         case filingStatus
         case employmentStatus
-        // Wages
-        case wagesSelf
-        case wagesSpouse
-        // Social Security Income
-        case socialSecuritySelf
-        case socialSecuritySpouse
-        // Investment Income
-        case interest
-        case taxExemptInterest
-
-        case longTermCapitalGains
-        case longTermCapitalLosses
-        case capitalLossCarryOver
-
-        case shortTermCapitalGains
-        case shortTermCapitalLosses
-
-        case qualifiedDividends
-        case nonQualifiedDividends
-        // Misc Income
-        case rentalIncome
-        case royalties
-        case businessIncome
-        case foreignEarnedIncome
-        // Retirement
-        case hsaContribution
-        case iraContribtuion
-        case iraWithdrawal
-        case rothConversion
-        // Deductions & Credits
+        
+        case income
         case deductions
         case credits
         case adjustments
         
-//        case facts
+        case facts
     }
     
     required init(from decoder: Decoder) throws {
@@ -154,36 +158,10 @@ class TaxScenario: Codable, Identifiable {
         id = try container.decode(String.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
-        filingStatus = try container.decodeIfPresent(FilingStatus.self, forKey: .filingStatus) ?? .single
-        employmentStatus = try container.decodeIfPresent(EmploymentStatus.self, forKey: .employmentStatus) ?? .retired
-        
-        wagesSelf = try container.decodeIfPresent(Double.self, forKey: .wagesSelf) ?? 0
-        wagesSpouse = try container.decodeIfPresent(Double.self, forKey: .wagesSpouse) ?? 0
-        
-        socialSecuritySelf = try container.decodeIfPresent(Double.self, forKey: .socialSecuritySelf) ?? 0
-        socialSecuritySpouse = try container.decodeIfPresent(Double.self, forKey: .socialSecuritySpouse) ?? 0
-        
-        interest = try container.decodeIfPresent(Double.self, forKey: .interest) ?? 0
-        taxExemptInterest = try container.decodeIfPresent(Double.self, forKey: .taxExemptInterest) ?? 0
-        
-        longTermCapitalGains = try container.decodeIfPresent(Double.self, forKey: .longTermCapitalGains) ?? 0
-        longTermCapitalLosses = try container.decodeIfPresent(Double.self, forKey: .longTermCapitalLosses) ?? 0
-        capitalLossCarryOver = try container.decodeIfPresent(Double.self, forKey: .capitalLossCarryOver) ?? 0
-        
-        shortTermCapitalGains = try container.decodeIfPresent(Double.self, forKey: .shortTermCapitalGains) ?? 0
-        shortTermCapitalLosses = try container.decodeIfPresent(Double.self, forKey: .shortTermCapitalLosses) ?? 0
-        
-        qualifiedDividends = try container.decodeIfPresent(Double.self, forKey: .qualifiedDividends) ?? 0
-        nonQualifiedDividends = try container.decodeIfPresent(Double.self, forKey: .nonQualifiedDividends) ?? 0
-        
-        rentalIncome = try container.decodeIfPresent(Double.self, forKey: .rentalIncome) ?? 0
-        royalties = try container.decodeIfPresent(Double.self, forKey: .royalties) ?? 0
-        businessIncome = try container.decodeIfPresent(Double.self, forKey: .businessIncome) ?? 0
-        foreignEarnedIncome = try container.decodeIfPresent(Double.self, forKey: .foreignEarnedIncome) ?? 0
-        
-        iraWithdrawal = try container.decodeIfPresent(Double.self, forKey: .iraWithdrawal) ?? 0
-        rothConversion = try container.decodeIfPresent(Double.self, forKey: .rothConversion) ?? 0
-        
+        filingStatus = try container.decode(FilingStatus.self, forKey: .filingStatus)
+        employmentStatus = try container.decode(EmploymentStatus.self, forKey: .employmentStatus)
+        facts = try container.decode(String.self, forKey: .facts)
+        income = try container.decodeIfPresent(IncomeSources.self, forKey: .income) ?? IncomeSources()
         credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
         deductions = try container.decodeIfPresent(Deductions<TaxDeductionType>.self, forKey: .deductions) ?? Deductions()
         adjustments = try container.decodeIfPresent(Deductions<TaxAdjustmentType>.self, forKey: .adjustments) ?? Deductions()
@@ -196,36 +174,9 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(description, forKey: .description)
         try container.encode(filingStatus, forKey: .filingStatus)
         try container.encode(employmentStatus, forKey: .employmentStatus)
+        try container.encode(facts, forKey: .facts)
 
-        try container.encode(wagesSelf, forKey: .wagesSelf)
-        try container.encode(wagesSpouse, forKey: .wagesSpouse)
-        
-        try container.encode(socialSecuritySelf, forKey: .socialSecuritySelf)
-        try container.encode(socialSecuritySpouse, forKey: .socialSecuritySpouse)
-        
-        try container.encode(interest, forKey: .interest)
-        try container.encode(taxExemptInterest, forKey: .taxExemptInterest)
-        
-        try container.encode(longTermCapitalGains, forKey: .longTermCapitalGains)
-        try container.encode(longTermCapitalLosses, forKey: .longTermCapitalLosses)
-        try container.encode(capitalLossCarryOver, forKey: .capitalLossCarryOver)
-        
-        try container.encode(shortTermCapitalGains, forKey: .shortTermCapitalGains)
-        try container.encode(shortTermCapitalLosses, forKey: .shortTermCapitalLosses)
-        
-        try container.encode(qualifiedDividends, forKey: .qualifiedDividends)
-        try container.encode(nonQualifiedDividends, forKey: .nonQualifiedDividends)
-        
-        try container.encode(hsaContribution, forKey: .hsaContribution)
-        try container.encode(iraContribtuion, forKey: .iraContribtuion)
-        try container.encode(iraWithdrawal, forKey: .iraWithdrawal)
-        try container.encode(rothConversion, forKey: .rothConversion)
-        
-        try container.encode(rentalIncome, forKey: .rentalIncome)
-        try container.encode(royalties, forKey: .royalties)
-        try container.encode(businessIncome, forKey: .businessIncome)
-        try container.encode(foreignEarnedIncome, forKey: .foreignEarnedIncome)
-        
+        try container.encode(income, forKey: .income)
         try container.encode(credits, forKey: .credits)
         try container.encode(deductions, forKey: .deductions)
         try container.encode(adjustments, forKey: .adjustments)

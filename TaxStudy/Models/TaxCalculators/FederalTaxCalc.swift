@@ -26,13 +26,11 @@ class FederalTaxCalc {
         return totalIncome + scenario.taxExemptIncome
     }
     
-    var totalDividends: Double {
-        return scenario.qualifiedDividends + scenario.nonQualifiedDividends
-    }
+    
     
     var netCapitalGains: NetCapitalGains {
         
-        let totalCapitalLosses = scenario.shortTermCapitalLosses + scenario.longTermCapitalLosses + scenario.capitalLossCarryOver
+        let totalCapitalLosses = scenario.carryforwardLoss
         
         let netLTCG = scenario.longTermCapitalGains - totalCapitalLosses
         
@@ -56,7 +54,7 @@ class FederalTaxCalc {
     }
     
     var netInvestmentIncome: Double {
-        return netLTCG + netSTCG + totalDividends + scenario.interest + scenario.rentalIncome + scenario.royalties + scenario.businessIncome
+        return netLTCG + netSTCG + scenario.totalDividends + scenario.interest + scenario.rentalIncome + scenario.royalties + scenario.businessIncome
     }
     
     var futureCarryForwardLoss: Double {

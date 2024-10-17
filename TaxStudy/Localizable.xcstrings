@@ -76,10 +76,16 @@
     "Business Expenses" : {
 
     },
+    "Business Income" : {
+
+    },
     "Cancel" : {
 
     },
     "Carry forward business losses to offset future taxable income." : {
+
+    },
+    "Carryforward Loss" : {
 
     },
     "Casualty and Theft Loss" : {
@@ -178,6 +184,9 @@
     "Depreciation" : {
 
     },
+    "Distributions from an HSA for qualified medical expenses" : {
+
+    },
     "Early Withdrawal Penalties" : {
 
     },
@@ -199,10 +208,16 @@
     "Enter amount" : {
 
     },
+    "Foreign Earned Income" : {
+
+    },
     "Foreign Tax Credit" : {
 
     },
     "Gambling Loss" : {
+
+    },
+    "Gifts or Inheritance" : {
 
     },
     "Gross Income" : {
@@ -223,7 +238,31 @@
     "Income" : {
 
     },
+    "Income earned outside the United States" : {
+
+    },
+    "Income from business activities" : {
+
+    },
+    "Income from converting traditional IRA to Roth IRA" : {
+
+    },
+    "Income from gifts or inheritance" : {
+
+    },
+    "Income from rental properties" : {
+
+    },
+    "Income from royalties" : {
+
+    },
     "Income Threadhold" : {
+
+    },
+    "Interest" : {
+
+    },
+    "Interest income exempt from federal taxes" : {
 
     },
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
@@ -235,13 +274,25 @@
     "IRA or 401(k) Contribution" : {
 
     },
+    "IRA Withdrawal" : {
+
+    },
     "kWh" : {
 
     },
     "Lifetime Learning" : {
 
     },
+    "Long-Term Capital Gains" : {
+
+    },
+    "Long-term capital gains from investments" : {
+
+    },
     "Long-Term Care Insurance" : {
+
+    },
+    "Losses carried forward from previous years" : {
 
     },
     "Margin Interest" : {
@@ -280,6 +331,18 @@
     "Open..." : {
 
     },
+    "Other forms of tax-exempt income" : {
+
+    },
+    "Other miscellaneous ordinary income" : {
+
+    },
+    "Other Ordinary Income" : {
+
+    },
+    "Other Tax-Exempt Income" : {
+
+    },
     "Overview" : {
 
     },
@@ -301,10 +364,31 @@
     "Qualified Business Income" : {
 
     },
+    "Qualified Dividends" : {
+
+    },
+    "Qualified dividends eligible for lower tax rates" : {
+
+    },
+    "Qualified HSA Distributions" : {
+
+    },
     "Refresh" : {
 
     },
+    "Rental Income" : {
+
+    },
     "Residential Renewable Energy" : {
+
+    },
+    "Roth Conversion" : {
+
+    },
+    "Roth Distributions" : {
+
+    },
+    "Royalties" : {
 
     },
     "Save" : {
@@ -328,7 +412,25 @@
     "Self-Employment Tax" : {
 
     },
+    "Short-Term Capital Gains" : {
+
+    },
+    "Short-term capital gains from investments" : {
+
+    },
     "Single Bar" : {
+
+    },
+    "Social Security (Self)" : {
+
+    },
+    "Social Security (Spouse)" : {
+
+    },
+    "Social Security benefits received by the filer" : {
+
+    },
+    "Social Security benefits received by the spouse" : {
 
     },
     "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
@@ -346,10 +448,40 @@
     "Tax Rate" : {
 
     },
+    "Tax-Exempt Interest" : {
+
+    },
+    "Taxable interest income" : {
+
+    },
+    "Total Ordinary Dividends" : {
+
+    },
+    "Total ordinary dividends, including both qualified and non-qualified" : {
+
+    },
     "Tuition and Fees" : {
 
     },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {
+
+    },
+    "Wages (Self)" : {
+
+    },
+    "Wages (Spouse)" : {
+
+    },
+    "Wages earned by the filer" : {
+
+    },
+    "Wages earned by the spouse" : {
+
+    },
+    "Withdrawals from a Roth IRA (tax-free under qualifying conditions)" : {
+
+    },
+    "Withdrawals from a traditional IRA" : {
 
     },
     "Work Opportunity Tax Credit" : {
