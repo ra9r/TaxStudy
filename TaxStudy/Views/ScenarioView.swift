@@ -18,7 +18,7 @@ struct ScenarioView : View {
                     Label("Overview", systemImage: "house.fill")
                 }
             // Second Tab
-            IncomeEditor(ts: $manager.selectedTaxScenario)
+            IncomeView(ts: $manager.selectedTaxScenario)
                 .tabItem {
                     Label("Income", systemImage: "gearshape.fill")
                 }

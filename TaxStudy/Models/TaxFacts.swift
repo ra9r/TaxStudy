@@ -22,6 +22,7 @@ class TaxFacts : Codable, Identifiable {
     var ssdiThreshold: Double // 34000
     
     init(
+        id: String? = nil,
         ordinaryTaxBrackets: [FilingStatus : TaxBrackets],
         capitalGainTaxBrackets: [FilingStatus : TaxBrackets],
         ssTaxThresholds: [FilingStatus : TaxBrackets],
@@ -33,6 +34,7 @@ class TaxFacts : Codable, Identifiable {
         capitalLossLimit: Double,
         ssdiThreshold: Double
     ) {
+        self.id = id ?? UUID().uuidString
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
         self.ssTaxThresholds = ssTaxThresholds
@@ -47,6 +49,7 @@ class TaxFacts : Codable, Identifiable {
 }
 
 let DefaultTaxFacts2024 = TaxFacts(
+    id: "OfficialTaxFacts2024",
     ordinaryTaxBrackets: [
         .single: TaxBrackets(
             .init(0, 0.10),
