@@ -37,7 +37,7 @@ enum IncomeType: String, Codable, CaseIterable {
     /// Dividends eligible for preferential tax rates
     case qualifiedDividends
     /// Total ordinary dividends, including qualified and non-qualified
-    case totalOrdinaryDividends
+    case ordinaryDividends
     
     // MARK: - Misc Ordinary Income
     
@@ -89,7 +89,7 @@ extension IncomeType: Identifiable {
         .longTermCapitalGains,
         .carryforwardLoss,
         .qualifiedDividends,
-        .totalOrdinaryDividends
+        .ordinaryDividends
     ]
     
     
@@ -132,8 +132,8 @@ extension IncomeType {
             return String(localized: "Carryforward Loss")
         case .qualifiedDividends:
             return String(localized: "Qualified Dividends")
-        case .totalOrdinaryDividends:
-            return String(localized: "Total Ordinary Dividends")
+        case .ordinaryDividends:
+            return String(localized: "Ordinary Dividends")
         case .rentalIncome:
             return String(localized: "Rental Income")
         case .royalties:
@@ -181,7 +181,7 @@ extension IncomeType {
             return String(localized: "Losses carried forward from previous years")
         case .qualifiedDividends:
             return String(localized: "Qualified dividends eligible for lower tax rates")
-        case .totalOrdinaryDividends:
+        case .ordinaryDividends:
             return String(localized: "Total ordinary dividends, including both qualified and non-qualified")
         case .rentalIncome:
             return String(localized: "Income from rental properties")

@@ -30,7 +30,7 @@ struct DataGridView : View {
             ("Net LTCG", federalTaxes.netLTCG.asCurrency),
             ("Net STCG", federalTaxes.netSTCG.asCurrency),
             ("Qualified Dividends", federalTaxes.scenario.qualifiedDividends.asCurrency),
-            ("Non-Qualified Dividends", federalTaxes.scenario.nonQualifiedDividends.asCurrency),
+            ("Non-Qualified Dividends", federalTaxes.scenario.ordinaryDividends.asCurrency),
             ("Interest", federalTaxes.scenario.interest.asCurrency),
             ("Rental Income", federalTaxes.scenario.rentalIncome.asCurrency),
             ("Royalties", federalTaxes.scenario.royalties.asCurrency),

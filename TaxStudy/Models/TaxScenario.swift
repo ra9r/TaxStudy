@@ -68,12 +68,12 @@ class TaxScenario: Codable, Identifiable {
         income.total(for: .qualifiedDividends)
     }
     
-    var nonQualifiedDividends: Double {
-        totalDividends - qualifiedDividends
+    var ordinaryDividends: Double {
+        return income.total(for: .ordinaryDividends)
     }
     
     var totalDividends: Double {
-        return income.total(for: .totalOrdinaryDividends)
+        ordinaryDividends - qualifiedDividends
     }
     
     // MARK: - Misc Income

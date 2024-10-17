@@ -75,7 +75,7 @@ class FederalTaxCalc {
         netLTCG +
         scenario.qualifiedDividends +
         netSTCG +
-        scenario.nonQualifiedDividends +
+        scenario.ordinaryDividends +
         scenario.rentalIncome +
         scenario.royalties +
         scenario.businessIncome +
