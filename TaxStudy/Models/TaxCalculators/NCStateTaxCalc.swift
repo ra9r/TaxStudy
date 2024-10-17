@@ -8,22 +8,22 @@
 class NCTaxCalc : StateTaxCalc {
     var federalTaxCalc: FederalTaxCalc
     
-    init(_ federalTaxCalc: FederalTaxCalc) {
-        self.federalTaxCalc = federalTaxCalc
+    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+        self.federalTaxCalc = FederalTaxCalc(scenario, facts: facts)
     }
     
     var taxesOwed: Double {
         // NC State Tax rate for 2023 is 4.75%
         let ncDeduction = 13000.0
-        let taxableIncome = federalTaxCalc.agi - ncDeduction + federalTaxCalc.taxScenario.taxExemptInterest - federalTaxCalc.taxScenario.totalSocialSecurityIncome
+        let taxableIncome = federalTaxCalc.agi - ncDeduction + federalTaxCalc.scenario.taxExemptInterest - federalTaxCalc.scenario.totalSocialSecurityIncome
         let tax = taxableIncome * 0.046
         return max(0, tax)
     }
     
     var effectiveTaxRate: Double {
-        if federalTaxCalc.taxScenario.grossIncome == 0 {
+        if federalTaxCalc.grossIncome == 0 {
             return 0
         }
-        return taxesOwed / federalTaxCalc.taxScenario.grossIncome
+        return taxesOwed / federalTaxCalc.grossIncome
     }
 }

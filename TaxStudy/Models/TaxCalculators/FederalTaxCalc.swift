@@ -8,35 +8,42 @@
 struct NetCapitalGains: Codable {
     let netLTCG: Double
     let netSTCG: Double
-    let futureCarrryOver: Double
+    let futureCarryForwardLoss: Double
 }
 
 class FederalTaxCalc {
     
-    var taxScenario: TaxScenario
+    var scenario: TaxScenario
+    var facts: TaxFacts
     
-    init(_ taxScenario: TaxScenario) {
-        self.taxScenario = taxScenario
+    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+        self.scenario = scenario
+        self.facts = facts ?? DefaultTaxFacts2024
+    }
+    
+    // MARK: - Computed Values
+    var grossIncome: Double {
+        return totalIncome + scenario.taxExemptIncome
     }
     
     var totalDividends: Double {
-        return taxScenario.qualifiedDividends + taxScenario.nonQualifiedDividends
+        return scenario.qualifiedDividends + scenario.nonQualifiedDividends
     }
     
     var netCapitalGains: NetCapitalGains {
         
-        let totalCapitalLosses = taxScenario.shortTermCapitalLosses + taxScenario.longTermCapitalLosses + taxScenario.capitalLossCarryOver
+        let totalCapitalLosses = scenario.shortTermCapitalLosses + scenario.longTermCapitalLosses + scenario.capitalLossCarryOver
         
-        let netLTCG = taxScenario.longTermCapitalGains - totalCapitalLosses
+        let netLTCG = scenario.longTermCapitalGains - totalCapitalLosses
         
-        let netSTCG = taxScenario.shortTermCapitalGains - (netLTCG < 0 ? abs(netLTCG) : 0)
+        let netSTCG = scenario.shortTermCapitalGains - (netLTCG < 0 ? abs(netLTCG) : 0)
         
         let futureCarrryOver = netSTCG < 0 ? abs(netSTCG) : 0
         
         return .init(
             netLTCG: max(0, netLTCG),
             netSTCG: max(0, netSTCG),
-            futureCarrryOver: futureCarrryOver)
+            futureCarryForwardLoss: futureCarrryOver)
         
     }
     
@@ -49,39 +56,39 @@ class FederalTaxCalc {
     }
     
     var netInvestmentIncome: Double {
-        return netLTCG + netSTCG + totalDividends + taxScenario.interest + taxScenario.rentalIncome + taxScenario.royalties + taxScenario.businessIncome
+        return netLTCG + netSTCG + totalDividends + scenario.interest + scenario.rentalIncome + scenario.royalties + scenario.businessIncome
     }
     
-    var futureCarryOverLoss: Double {
-        return netCapitalGains.futureCarrryOver - capitalLossAdjustment
+    var futureCarryForwardLoss: Double {
+        return netCapitalGains.futureCarryForwardLoss - capitalLossAdjustment
     }
     
     var capitalLossAdjustment: Double {
-        let capitalLossLimit = taxScenario.facts.capitalLossLimit
-        let futureCarryOverLoss = netCapitalGains.futureCarrryOver
+        let capitalLossLimit = facts.capitalLossLimit
+        let futureCarryOverLoss = netCapitalGains.futureCarryForwardLoss
         return (futureCarryOverLoss > 0 ? min(capitalLossLimit, futureCarryOverLoss) : 0)
     }
     
     var totalIncome: Double {
-        let income = taxScenario.totalWages +
-        taxScenario.totalSocialSecurityIncome +
-        taxScenario.interest +
+        let income = scenario.totalWages +
+        scenario.totalSocialSecurityIncome +
+        scenario.interest +
 //        taxScenario.taxExemptInterest + // excluded from Gross Income calculations
         netLTCG +
-        taxScenario.qualifiedDividends +
+        scenario.qualifiedDividends +
         netSTCG +
-        taxScenario.nonQualifiedDividends +
-        taxScenario.rentalIncome +
-        taxScenario.royalties +
-        taxScenario.businessIncome +
-        taxScenario.foreignEarnedIncome +
-        taxScenario.rothConversion +
-        taxScenario.iraWithdrawal
+        scenario.nonQualifiedDividends +
+        scenario.rentalIncome +
+        scenario.royalties +
+        scenario.businessIncome +
+        scenario.foreignEarnedIncome +
+        scenario.rothConversion +
+        scenario.iraWithdrawal
         return income
     }
     
     var agiBeforeSSDI: Double {
-        return taxScenario.grossIncome - taxScenario.totalSocialSecurityIncome - taxScenario.hsaContribution - taxScenario.taxExemptInterest
+        return totalIncome - scenario.totalSocialSecurityIncome - scenario.hsaContribution
     }
     
     var agi: Double {
@@ -94,11 +101,11 @@ class FederalTaxCalc {
     }
     
     var provisionalIncome: Double {
-        return agiBeforeSSDI + taxScenario.taxExemptInterest + (taxScenario.totalSocialSecurityIncome * 0.5)
+        return agiBeforeSSDI + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
     }
     
     var provisionalTaxRate: Double {
-        guard let provisionalTaxRates = taxScenario.facts.provisionalIncomeThresholds[taxScenario.filingStatus] else {
+        guard let provisionalTaxRates = facts.provisionalIncomeThresholds[scenario.filingStatus] else {
             print("Error: No provisional tax rates for \(provisionalIncome), defaulting to 0.")
             return 0
         }
@@ -106,12 +113,12 @@ class FederalTaxCalc {
     }
     
     var taxableSSDI: Double {
-        return taxScenario.totalSocialSecurityIncome * provisionalTaxRate
+        return scenario.totalSocialSecurityIncome * provisionalTaxRate
     }
     
     var standardDeduction: Double {
-        guard let standardDeduction = taxScenario.facts.standardDeduction[taxScenario.filingStatus] else {
-            print("Error: No standard deduction for \(taxScenario.filingStatus), defaulting to 0.")
+        guard let standardDeduction = facts.standardDeduction[scenario.filingStatus] else {
+            print("Error: No standard deduction for \(scenario.filingStatus), defaulting to 0.")
             return 0
         }
         return standardDeduction
@@ -147,7 +154,7 @@ class FederalTaxCalc {
     }
     
     var preferentialIncome: Double {
-        return taxScenario.qualifiedDividends + netLTCG
+        return scenario.qualifiedDividends + netLTCG
     }
     
     var ordinaryIncome: Double {
@@ -155,24 +162,24 @@ class FederalTaxCalc {
     }
     
     var ordinaryIncomeTax: Double {
-        guard let ordinaryTaxBrackets = taxScenario.facts.ordinaryTaxBrackets[taxScenario.filingStatus] else {
-            print("Failed to find tax brackets for \(taxScenario.filingStatus)")
+        guard let ordinaryTaxBrackets = facts.ordinaryTaxBrackets[scenario.filingStatus] else {
+            print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
         return ordinaryTaxBrackets.progressiveTax(for: ordinaryIncome)
     }
     
     var qualifiedDividendTax: Double {
-        guard let capitalGainTaxBrackets = taxScenario.facts.capitalGainTaxBrackets[taxScenario.filingStatus] else {
-            print("Failed to find tax brackets for \(taxScenario.filingStatus)")
+        guard let capitalGainTaxBrackets = facts.capitalGainTaxBrackets[scenario.filingStatus] else {
+            print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
-        return taxScenario.qualifiedDividends * capitalGainTaxBrackets.highestRate(for: taxableIncome)
+        return scenario.qualifiedDividends * capitalGainTaxBrackets.highestRate(for: taxableIncome)
     }
     
     var capitalGainsTax: Double {
-        guard let capitalGainTaxBrackets = taxScenario.facts.capitalGainTaxBrackets[taxScenario.filingStatus] else {
-            print("Failed to find tax brackets for \(taxScenario.filingStatus)")
+        guard let capitalGainTaxBrackets = facts.capitalGainTaxBrackets[scenario.filingStatus] else {
+            print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
         return max(0, netLTCG) * capitalGainTaxBrackets.highestRate(for: taxableIncome)
@@ -183,15 +190,15 @@ class FederalTaxCalc {
     }
     
     var effectiveTaxRate: Double {
-        if taxScenario.grossIncome == 0 {
+        if grossIncome == 0 {
             return 0
         }
-        return taxesOwed / taxScenario.grossIncome
+        return taxesOwed / grossIncome
     }
     
     var netInvestmentIncomeTax: Double {
-        guard let threshold = taxScenario.facts.niitThresholds[taxScenario.filingStatus] else {
-            print("Error: Failed to find NIIT threadholds for \(taxScenario.filingStatus), defaulting to 0")
+        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
+            print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus), defaulting to 0")
             return 0
         }
         
@@ -202,32 +209,32 @@ class FederalTaxCalc {
         let niitIncome = min(netInvestmentIncome, excessIncome)
         
         // Calculate the NIIT (3.8% of the applicable income)
-        let niit = niitIncome * taxScenario.facts.niitRate
+        let niit = niitIncome * facts.niitRate
         
         return niit
     }
     
     var isSubjectToNIIT: Bool {
-        guard let threshold = taxScenario.facts.niitThresholds[taxScenario.filingStatus] else {
-            print("Error: Failed to find NIIT threadholds for \(taxScenario.filingStatus)")
+        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
+            print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus)")
             return false
         }
         return max(0, magi - threshold) > 0
     }
     
     var isSubjectToFICA: Bool {
-        return taxScenario.totalWages > 0
+        return scenario.totalWages > 0
     }
     
     var socialSecurityTaxesOwed: Double {
-        guard let taxRates = taxScenario.facts.ssTaxThresholds[taxScenario.filingStatus] else {
-            print("Error: Failed to find SS tax rates for \(taxScenario.filingStatus)")
+        guard let taxRates = facts.ssTaxThresholds[scenario.filingStatus] else {
+            print("Error: Failed to find SS tax rates for \(scenario.filingStatus)")
             return 0
         }
-        let forSelf = taxRates.progressiveTax(for: taxScenario.wagesSelf)
-        let forSpouse = taxRates.progressiveTax(for: taxScenario.wagesSpouse)
+        let forSelf = taxRates.progressiveTax(for: scenario.wagesSelf)
+        let forSpouse = taxRates.progressiveTax(for: scenario.wagesSpouse)
         
-        if taxScenario.employmentStatus == .selfEmployed {
+        if scenario.employmentStatus == .selfEmployed {
             return (forSelf * 2) + (forSpouse * 2)
         }
         
@@ -235,14 +242,14 @@ class FederalTaxCalc {
     }
     
     var medicareTaxesOwed: Double {
-        guard let taxRates = taxScenario.facts.medicareTaxThresholds[taxScenario.filingStatus] else {
-            print("Error: Failed to find Medicate tax rates for \(taxScenario.filingStatus)")
+        guard let taxRates = facts.medicareTaxThresholds[scenario.filingStatus] else {
+            print("Error: Failed to find Medicate tax rates for \(scenario.filingStatus)")
             return 0
         }
-        let forSelf = taxRates.progressiveTax(for: taxScenario.wagesSelf)
-        let forSpouse = taxRates.progressiveTax(for: taxScenario.wagesSpouse)
+        let forSelf = taxRates.progressiveTax(for: scenario.wagesSelf)
+        let forSpouse = taxRates.progressiveTax(for: scenario.wagesSpouse)
         
-        if taxScenario.employmentStatus == .selfEmployed {
+        if scenario.employmentStatus == .selfEmployed {
             return (forSelf * 2) + (forSpouse * 2)
         }
         

@@ -61,9 +61,6 @@ class TaxScenario: Codable, Identifiable {
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
     
-    // MARK: - Scenario Facts
-    var facts: TaxFacts = DefaultTaxFacts2024
-    
     // MARK: - Other Excluded Income
     var qualifiedHSADistributions: Double = 0
     var rothDistributions: Double = 0
@@ -76,11 +73,6 @@ class TaxScenario: Codable, Identifiable {
     
     var iraContribtuion: Double {
         return adjustments.total(for: .iraOr401kContribution)
-    }
-    
-    // MARK: - Computed Values
-    var grossIncome: Double {
-        return federalTaxes.totalIncome + taxExemptIncome
     }
     
     var taxExemptIncome: Double {
@@ -98,28 +90,20 @@ class TaxScenario: Codable, Identifiable {
         return socialSecuritySelf + socialSecuritySpouse
     }
     
-    var afterTaxIncome: Double {
-        return grossIncome - federalTaxes.taxesOwed - stateTaxes.taxesOwed
-    }
+//    var afterTaxIncome: Double {
+//        return grossIncome - federalTaxes.taxesOwed - stateTaxes.taxesOwed
+//    }
+//    
+//    var totalTaxesOwed: Double {
+//        return federalTaxes.taxesOwed + stateTaxes.taxesOwed
+//    }
     
-    var totalTaxesOwed: Double {
-        return federalTaxes.taxesOwed + stateTaxes.taxesOwed
-    }
-    
-    var totalEffectiveTaxRate: Double {
-        if grossIncome == 0 {
-            return 0
-        }
-        return totalTaxesOwed / grossIncome
-    }
-    
-    var federalTaxes: FederalTaxCalc {
-        return FederalTaxCalc(self)
-    }
-    
-    var stateTaxes: StateTaxCalc {
-        return NCTaxCalc(federalTaxes)
-    }
+//    var totalEffectiveTaxRate: Double {
+//        if grossIncome == 0 {
+//            return 0
+//        }
+//        return totalTaxesOwed / grossIncome
+//    }
     
     // MARK: - Codable
     enum CodingKeys: String, CodingKey {
@@ -162,7 +146,7 @@ class TaxScenario: Codable, Identifiable {
         case credits
         case adjustments
         
-        case facts
+//        case facts
     }
     
     required init(from decoder: Decoder) throws {
@@ -203,8 +187,6 @@ class TaxScenario: Codable, Identifiable {
         credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
         deductions = try container.decodeIfPresent(Deductions<TaxDeductionType>.self, forKey: .deductions) ?? Deductions()
         adjustments = try container.decodeIfPresent(Deductions<TaxAdjustmentType>.self, forKey: .adjustments) ?? Deductions()
-        
-        facts = try container.decodeIfPresent(TaxFacts.self, forKey: .facts) ?? DefaultTaxFacts2024
     }
     
     func encode(to encoder: Encoder) throws {
@@ -247,8 +229,6 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(credits, forKey: .credits)
         try container.encode(deductions, forKey: .deductions)
         try container.encode(adjustments, forKey: .adjustments)
-        
-        try container.encode(facts, forKey: .facts)
     }
 }
 

@@ -4,10 +4,10 @@
     "- Select -" : {
 
     },
-    "%@" : {
+    "%lld kWh" : {
 
     },
-    "%lld kWh" : {
+    "<< Placeholder >>" : {
 
     },
     "2024" : {

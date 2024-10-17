@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct DataGridView : View {
-    var ts: TaxScenario
+    var federalTaxes: FederalTaxCalc
     
-    init(_ ts: TaxScenario) {
-        self.ts = ts
+    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+        self.federalTaxes = FederalTaxCalc(scenario, facts: facts)
     }
     
     var body: some View {
@@ -25,55 +25,55 @@ struct DataGridView : View {
     
     var incomeSources: some View {
         DataCard("Income Sources", [
-            ("Wages", ts.totalWages.asCurrency),
-            ("Social Security", ts.totalSocialSecurityIncome.asCurrency),
-            ("Net LTCG", ts.federalTaxes.netLTCG.asCurrency),
-            ("Net STCG", ts.federalTaxes.netSTCG.asCurrency),
-            ("Qualified Dividends", ts.qualifiedDividends.asCurrency),
-            ("Non-Qualified Dividends", ts.nonQualifiedDividends.asCurrency),
-            ("Interest", ts.interest.asCurrency),
-            ("Rental Income", ts.rentalIncome.asCurrency),
-            ("Royalties", ts.royalties.asCurrency),
-            ("Business Income", ts.businessIncome.asCurrency),
-            ("Foreign Earned Income", ts.foreignEarnedIncome.asCurrency),
-            ("Tax-Emxempt Interest", ts.taxExemptInterest.asCurrency),
-            ("Roth Conversions", ts.rothConversion.asCurrency),
-            ("IRA Withdrawals", ts.iraWithdrawal.asCurrency),
+            ("Wages", federalTaxes.scenario.totalWages.asCurrency),
+            ("Social Security", federalTaxes.scenario.totalSocialSecurityIncome.asCurrency),
+            ("Net LTCG", federalTaxes.netLTCG.asCurrency),
+            ("Net STCG", federalTaxes.netSTCG.asCurrency),
+            ("Qualified Dividends", federalTaxes.scenario.qualifiedDividends.asCurrency),
+            ("Non-Qualified Dividends", federalTaxes.scenario.nonQualifiedDividends.asCurrency),
+            ("Interest", federalTaxes.scenario.interest.asCurrency),
+            ("Rental Income", federalTaxes.scenario.rentalIncome.asCurrency),
+            ("Royalties", federalTaxes.scenario.royalties.asCurrency),
+            ("Business Income", federalTaxes.scenario.businessIncome.asCurrency),
+            ("Foreign Earned Income", federalTaxes.scenario.foreignEarnedIncome.asCurrency),
+            ("Tax-Emxempt Interest", federalTaxes.scenario.taxExemptInterest.asCurrency),
+            ("Roth Conversions", federalTaxes.scenario.rothConversion.asCurrency),
+            ("IRA Withdrawals", federalTaxes.scenario.iraWithdrawal.asCurrency),
             
         ])
     }
     
     var computedTaxes: some View {
         DataCard("Computed Taxes", [
-            ("FICA Tax (Social Security)", ts.federalTaxes.socialSecurityTaxesOwed.asCurrency),
-            ("FICA Tax (Medicare)", ts.federalTaxes.medicareTaxesOwed.asCurrency),
-            ("Ordinary Income Tax", ts.federalTaxes.ordinaryIncomeTax.asCurrency),
-            ("Qualified Dividend Tax", ts.federalTaxes.qualifiedDividendTax.asCurrency),
-            ("Capital Gains Tax", ts.federalTaxes.capitalGainsTax.asCurrency),
-            ("Net Investment Income Tax (NIIT)", ts.federalTaxes.netInvestmentIncomeTax.asCurrency),
+            ("FICA Tax (Social Security)", federalTaxes.socialSecurityTaxesOwed.asCurrency),
+            ("FICA Tax (Medicare)", federalTaxes.medicareTaxesOwed.asCurrency),
+            ("Ordinary Income Tax", federalTaxes.ordinaryIncomeTax.asCurrency),
+            ("Qualified Dividend Tax", federalTaxes.qualifiedDividendTax.asCurrency),
+            ("Capital Gains Tax", federalTaxes.capitalGainsTax.asCurrency),
+            ("Net Investment Income Tax (NIIT)", federalTaxes.netInvestmentIncomeTax.asCurrency),
         ])
     }
         
     var computedResults: some View {
         DataCard("Computed Results", [
-            ("Gross Income", ts.grossIncome.asCurrency),
-            ("AGI", ts.federalTaxes.agi.asCurrency),
-            ("Net Investment Income (NII)", ts.federalTaxes.netInvestmentIncome.asCurrency),
-            ("Total Taxable Income", ts.federalTaxes.taxableIncome.asCurrency),
-            ("Total Preferential Income", ts.federalTaxes.preferentialIncome.asCurrency),
-            ("Total Ordinary Income", ts.federalTaxes.ordinaryIncome.asCurrency),
-            ("Future Carry Over Loss", ts.federalTaxes.futureCarryOverLoss.asCurrency),
+            ("Total Income", federalTaxes.totalIncome.asCurrency),
+            ("AGI", federalTaxes.agi.asCurrency),
+            ("Net Investment Income (NII)", federalTaxes.netInvestmentIncome.asCurrency),
+            ("Total Taxable Income", federalTaxes.taxableIncome.asCurrency),
+            ("Total Preferential Income", federalTaxes.preferentialIncome.asCurrency),
+            ("Total Ordinary Income", federalTaxes.ordinaryIncome.asCurrency),
+            ("Future Carry Forward Loss", federalTaxes.futureCarryForwardLoss.asCurrency),
         ])
     }
     
     var computedSocialSecurity: some View {
         DataCard("Social Securty", [
-            ("Gross Social Security Income", ts.totalSocialSecurityIncome.asCurrency),
-            ("AGI (Before SS Income)", ts.federalTaxes.agiBeforeSSDI.asCurrency),
-            ("Provisional Income", ts.federalTaxes.provisionalIncome.asCurrency),
-            ("% of Social Security Taxed", ts.federalTaxes.provisionalTaxRate.asPercentage),
+            ("Gross Social Security Income", federalTaxes.scenario.totalSocialSecurityIncome.asCurrency),
+            ("AGI (Before SS Income)", federalTaxes.agiBeforeSSDI.asCurrency),
+            ("Provisional Income", federalTaxes.provisionalIncome.asCurrency),
+            ("% of Social Security Taxed", federalTaxes.provisionalTaxRate.asPercentage),
             
-            ("Taxable SS Income", ts.federalTaxes.taxableSSDI.asCurrency)
+            ("Taxable SS Income", federalTaxes.taxableSSDI.asCurrency)
         ])
     }
     
