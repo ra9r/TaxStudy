@@ -32,17 +32,16 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                 Text(title)
                 
                 Spacer()
-                Button(action: {
-                    showDescription.toggle()
-                }) {
+                Menu {
+                    ForEach(T.allCases, id: \.self) { incomeType in
+                        Button(incomeType.label) {
+                            deductions.add(.init(incomeType, amount: 0))
+                        }
+                    }
+                } label: {
                     Image(systemName: "plus.circle.fill")
-                    //                        .font(.system(size: 18, weight: .bold))
                 }
                 .buttonStyle(PlainButtonStyle())
-                .popover(isPresented: $showDescription, arrowEdge: .top) {
-                    addDeductionPopup
-                        .padding(10)
-                }
             }
         } content: {
             ForEach(deductions.items.indices, id: \.self) { index in
@@ -56,37 +55,6 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                 
                 if index != deductions.items.indices.last {
                     Divider()
-                }
-            }
-        }
-    }
-    
-    var addDeductionPopup: some View {
-        VStack {
-            Picker("Select", selection: $selected) {
-                Text("- Select -").tag(nil as T?)
-                ForEach(T.allCases, id: \.self) { deductionType in
-                    Text(deductionType.label) // Display the localized label for each case
-                        .tag(deductionType)
-                }
-            }
-            .labelsHidden()
-            .pickerStyle(.automatic) // You can change the style as needed
-            TextField("Enter amount", value: $amount, format: .currency(code: "USD"))
-                .multilineTextAlignment(.trailing)
-                .frame(width: 100)
-            HStack(spacing: 5) {
-                Button {
-                    showDescription.toggle()
-                } label: {
-                    Text("Cancel")
-                }
-                Button {
-                    if let selected {
-                        deductions.add(.init(selected, amount: amount))
-                    }
-                } label: {
-                    Text("Add")
                 }
             }
         }

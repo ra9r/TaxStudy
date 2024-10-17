@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "- Select -" : {
-
-    },
     "%lld kWh" : {
 
     },
@@ -46,9 +43,6 @@
     "A refundable credit for low- to moderate-income individuals and families, designed to reduce tax burden and increase refunds." : {
 
     },
-    "Add" : {
-
-    },
     "Add New Tax Bracket" : {
 
     },
@@ -77,9 +71,6 @@
 
     },
     "Business Income" : {
-
-    },
-    "Cancel" : {
 
     },
     "Carry forward business losses to offset future taxable income." : {
@@ -203,9 +194,6 @@
 
     },
     "Energy Efficiency Improvement" : {
-
-    },
-    "Enter amount" : {
 
     },
     "Foreign Earned Income" : {
@@ -398,9 +386,6 @@
 
     },
     "Saver’s Credit" : {
-
-    },
-    "Select" : {
 
     },
     "Self-Employed Business Expense" : {

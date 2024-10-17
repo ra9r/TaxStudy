@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+//
+//  ScenarioEditor.swift
+//  TaxStudy
+//
+//  Created by Rodney Aiglstorfer on 9/28/24.
+//
+
+import SwiftUI
+
 struct IncomeEditor: View {
     var title: String
     var incomeTypes: [IncomeType]
@@ -38,21 +47,27 @@ struct IncomeEditor: View {
                 .buttonStyle(PlainButtonStyle())
             }
         } content: {
-            ForEach(incomeSources.matching(anyOf: incomeTypes), id: \.self) { incomeSource in
-                CardItem(incomeSource.type.label,
-                         value: incomeSource.amount.asCurrency)
+            // Filter the sources based on incomeTypes
+            let filteredSources = incomeSources.sources.filter { incomeTypes.contains($0.type) }
+            
+            // Iterate through the filtered sources
+            ForEach(filteredSources.indices, id: \.self) { index in
+                CardField(filteredSources[index].type.label,
+                          amount: $incomeSources.sources[incomeSources.sources.firstIndex(where: { $0.id == filteredSources[index].id })!].amount)
                 .contextMenu {
                     Button("Delete") {
-                        incomeSources.remove(incomeSource)
+                        incomeSources.remove(filteredSources[index])
                     }
                 }
                 
-//                if index != incomeSources.sources.indices.last {
+                // Only show the divider if it's not the last visible item
+                if index != filteredSources.indices.last {
                     Divider()
-//                }
+                }
             }
         }
     }
+    
     
 }
 
