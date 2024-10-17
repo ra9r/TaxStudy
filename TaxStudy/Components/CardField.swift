@@ -20,12 +20,13 @@ struct CardField: View {
         HStack(alignment: .center) {
             HStack {
                 Text(label)
-                    .font(.subheadline)
+                    .font(.system(size: 16, weight: .semibold))
                 
                 Spacer()
                 
                 TextField("Amount", value: $amount, format: .currency(code: "USD"))
-                    .font(.subheadline)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
                     .frame(width: 100)
                     .textFieldStyle(.plain)

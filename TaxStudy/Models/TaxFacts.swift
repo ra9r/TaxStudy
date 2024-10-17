@@ -54,7 +54,7 @@ let DefaultTaxFacts2024 = TaxFacts(
             .init(47_150, 0.22),
             .init(100_525, 0.24),
             .init(191_950, 0.32),
-            .init(234_726, 0.035),
+            .init(234_726, 0.35),
             .init(609_351, 0.37)),
         .marriedFilingJointly: TaxBrackets(
             .init(0, 0.10),
@@ -62,7 +62,7 @@ let DefaultTaxFacts2024 = TaxFacts(
             .init(94_301, 0.22),
             .init(201_051, 0.24),
             .init(383_901, 0.32),
-            .init(487_451, 0.035),
+            .init(487_451, 0.35),
             .init(731_201, 0.37)),
         .headOfHousehold: TaxBrackets(
             .init(0, 0.10),
@@ -70,7 +70,7 @@ let DefaultTaxFacts2024 = TaxFacts(
             .init(63_101, 0.22),
             .init(100_501, 0.24),
             .init(191_951, 0.32),
-            .init(243_701, 0.035),
+            .init(243_701, 0.35),
             .init(609_351, 0.37))
     ],
     capitalGainTaxBrackets: [

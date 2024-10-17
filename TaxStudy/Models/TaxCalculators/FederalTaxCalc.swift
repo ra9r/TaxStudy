@@ -62,7 +62,7 @@ class FederalTaxCalc {
         return (futureCarryOverLoss > 0 ? min(capitalLossLimit, futureCarryOverLoss) : 0)
     }
     
-    var grossIncome: Double {
+    var totalIncome: Double {
         let income = taxScenario.totalWages +
         taxScenario.totalSocialSecurityIncome +
         taxScenario.interest +

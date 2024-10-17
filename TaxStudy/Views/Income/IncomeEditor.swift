@@ -51,11 +51,11 @@ struct IncomeEditor: View {
                             CardField("Short-term", amount: $ts.shortTermCapitalGains)
                         }
                         CardView("Capital Losses") {
-                            CardField("Long-term", amount: $ts.longTermCapitalLosses).padding(0)
+                            CardField("Long-term", amount: $ts.longTermCapitalLosses)
                             Divider()
-                            CardField("Short-term", amount: $ts.shortTermCapitalLosses).padding(0)
+                            CardField("Short-term", amount: $ts.shortTermCapitalLosses)
                             Divider()
-                            CardField("Carryover", amount: $ts.capitalLossCarryOver).padding(0)
+                            CardField("Carried Forward", amount: $ts.capitalLossCarryOver)
                         }
                         CardView("Dividends") {
                             CardField("Qualified", amount: $ts.qualifiedDividends)

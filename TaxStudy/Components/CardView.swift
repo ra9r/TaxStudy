@@ -31,9 +31,10 @@ struct CardView<Content: View>: View {
         VStack {
             VStack(alignment: .leading, spacing: 10) {
                 header
+                    .textCase(.uppercase)
                     .padding(.vertical, 10)
-                    .padding(.horizontal, 5)
-                    .font(.headline)
+                    .padding(.horizontal, 10)
+                    .font(.system(size: 16, weight: .semibold))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity)
                     .background(.accent)
@@ -42,7 +43,7 @@ struct CardView<Content: View>: View {
                     content
                 }
                 .padding(.bottom, 15)
-                .padding(.horizontal, 5)
+                .padding(.horizontal, 10)
             }
             
         }

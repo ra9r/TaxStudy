@@ -45,6 +45,7 @@
 		2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A02CBDDC12008334E1 /* Deductions.swift */; };
 		2A7CB2A32CBDE4B2008334E1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */; };
 		2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */; };
+		2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionsView.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracketEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				2A7CB28F2CBC71A9008334E1 /* Summary */,
 				2A7CB2A42CBE0A66008334E1 /* Deductions */,
 				2A6BA2AE2CBE6026007C3A27 /* Income */,
+				2ACC200E2CC00A1000D2A907 /* Settings */,
 				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
 			);
 			path = Views;
@@ -251,6 +254,14 @@
 				2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2ACC200E2CC00A1000D2A907 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +363,7 @@
 				2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */,
 				2A51CB3B2CBA9B010075BBA0 /* FileCommands.swift in Sources */,
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,
+				2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */,
 				2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */,
 				2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */,
 				2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */,

@@ -8,7 +8,11 @@
 import Foundation
 import SwiftData
 
-struct TaxBracket : Codable {
+struct TaxBracket : Codable, Identifiable {
+    var id: Double {
+        return rate
+    }
+    
     var rate: Double
     var threshold: Double
     
@@ -20,7 +24,7 @@ struct TaxBracket : Codable {
 
 class TaxBrackets : Codable {
    
-    private var brackets: [TaxBracket] = []
+    var brackets: [TaxBracket] = []
     
     init(_ brackets: TaxBracket...) {
         self.brackets = brackets.sorted { $0.threshold < $1.threshold }

@@ -49,6 +49,9 @@
     "Add" : {
 
     },
+    "Add New Tax Bracket" : {
+
+    },
     "Add Scenario" : {
 
     },
@@ -181,6 +184,9 @@
     "Earned Income Tax Credit" : {
 
     },
+    "Edit Tax Brackets for %@" : {
+
+    },
     "Elderly or Disabled Tax Credit" : {
 
     },
@@ -215,6 +221,9 @@
 
     },
     "Income" : {
+
+    },
+    "Income Threadhold" : {
 
     },
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
@@ -332,6 +341,9 @@
 
     },
     "Tax Preparation Fee" : {
+
+    },
+    "Tax Rate" : {
 
     },
     "Tuition and Fees" : {

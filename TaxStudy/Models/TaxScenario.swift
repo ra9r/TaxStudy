@@ -64,6 +64,12 @@ class TaxScenario: Codable, Identifiable {
     // MARK: - Scenario Facts
     var facts: TaxFacts = DefaultTaxFacts2024
     
+    // MARK: - Other Excluded Income
+    var qualifiedHSADistributions: Double = 0
+    var rothDistributions: Double = 0
+    var giftsOrInheritance: Double = 0
+    var otherTaxExemptIncome: Double = 0
+    
     var hsaContribution: Double {
         return adjustments.total(for: .hsaContribution)
     }
@@ -74,7 +80,14 @@ class TaxScenario: Codable, Identifiable {
     
     // MARK: - Computed Values
     var grossIncome: Double {
-        return federalTaxes.grossIncome
+        return federalTaxes.totalIncome + taxExemptIncome
+    }
+    
+    var taxExemptIncome: Double {
+        return taxExemptInterest +
+        qualifiedHSADistributions +
+        rothDistributions +
+        otherTaxExemptIncome
     }
     
     var totalWages: Double {

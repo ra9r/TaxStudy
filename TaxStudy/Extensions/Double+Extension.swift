@@ -20,7 +20,7 @@ extension Double {
         let formatter = NumberFormatter()
                 formatter.numberStyle = .percent
                 formatter.maximumFractionDigits = 2
-                formatter.minimumFractionDigits = 2
+                formatter.minimumFractionDigits = 0
                 return formatter.string(from: NSNumber(value: self)) ?? "\(self * 100)%"
     }
 }
