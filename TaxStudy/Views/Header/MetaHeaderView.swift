@@ -35,8 +35,8 @@ struct MetaHeaderView : View {
             )
             MetaCard(
                 symbolName: "scissors",
-                label: "Deduction Method",
-                value: "\(federalTaxes.deductionMethod)"
+                label: "\(federalTaxes.deductionMethod)",
+                value: "\(federalTaxes.deduction.asCurrency)"
             )
             MetaCard(
                 symbolName: "exclamationmark",

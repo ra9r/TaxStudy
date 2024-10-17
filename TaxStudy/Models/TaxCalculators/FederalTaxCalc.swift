@@ -122,18 +122,17 @@ class FederalTaxCalc {
         return standardDeduction
     }
     
-//    var deductibleMedicalExpenses: Double {
-//        let medicalExpenses = taxScenario.medicalAndDentalExpense
-//        let threshold = 0.075 * agi
-//        return max(0, medicalExpenses - threshold)
-//    }
+    var deductibleMedicalExpenses: Double {
+        let medicalExpenses = scenario.deductions.total(for: .medicalAndDentalDeduction)
+        let threshold = 0.075 * agi
+        return max(0, medicalExpenses - threshold)
+    }
     
     var itemizedDeductions: Double {
-//        let mortgageInterest = taxScenario.mortgageInterestExpense
-//        let marginInterest = taxScenario.marginInterestExpense
-//        let medicalExpenses = deductibleMedicalExpenses
-//        return mortgageInterest + marginInterest + medicalExpenses
-        return 0
+        let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
+        let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
+        let medicalExpenses = deductibleMedicalExpenses
+        return mortgageInterest + marginInterest + medicalExpenses
     }
     
     var deduction: Double {

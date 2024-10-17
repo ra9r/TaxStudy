@@ -10,6 +10,7 @@ import Foundation
 /// Collection of tax brackets and other contraints and limits that are used in computing the taxes for a given year.
 class TaxFacts : Codable, Identifiable {
     var id: String = UUID().uuidString
+    var year: Int? = 2024
     var ordinaryTaxBrackets: [FilingStatus: TaxBrackets]
     var capitalGainTaxBrackets: [FilingStatus: TaxBrackets]
     var ssTaxThresholds: [FilingStatus: TaxBrackets]
@@ -23,6 +24,7 @@ class TaxFacts : Codable, Identifiable {
     
     init(
         id: String? = nil,
+        year: Int? = 2024,
         ordinaryTaxBrackets: [FilingStatus : TaxBrackets],
         capitalGainTaxBrackets: [FilingStatus : TaxBrackets],
         ssTaxThresholds: [FilingStatus : TaxBrackets],
@@ -35,6 +37,7 @@ class TaxFacts : Codable, Identifiable {
         ssdiThreshold: Double
     ) {
         self.id = id ?? UUID().uuidString
+        self.year = year
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
         self.ssTaxThresholds = ssTaxThresholds
@@ -50,6 +53,7 @@ class TaxFacts : Codable, Identifiable {
 
 let DefaultTaxFacts2024 = TaxFacts(
     id: "OfficialTaxFacts2024",
+    year: 2024,
     ordinaryTaxBrackets: [
         .single: TaxBrackets(
             .init(0, 0.10),
