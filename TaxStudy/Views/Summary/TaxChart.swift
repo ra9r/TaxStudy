@@ -17,18 +17,18 @@ struct BarSegment: Identifiable {
 
 
 struct TaxChart: View {
-    var ts: TaxScenario
+    var federalTaxes: FederalTaxCalc
     var data: [BarSegment] = []
     
     
-    init(_ ts: TaxScenario) {
-        self.ts = ts
-//        data.append(.init(name: "After Tax", value: ts.grossIncome - ts.federalTaxes.taxesOwed, color: .accent))
-        data.append(.init(name: "Capital Gains", value: ts.federalTaxes.capitalGainsTax, color: .accent.opacity(0.8)))
-        data.append(.init(name: "Qualified Dividends", value: ts.federalTaxes.qualifiedDividendTax, color: .accent.opacity(0.7)))
-        data.append(.init(name: "Ordinary Income", value: ts.federalTaxes.ordinaryIncomeTax, color: .accent.opacity(0.6)))
-        data.append(.init(name: "NIIT", value: ts.federalTaxes.netInvestmentIncomeTax, color: .accent.opacity(0.5)))
-        data.append(.init(name: "FICA", value: ts.federalTaxes.totalFICATax, color: .accent.opacity(0.4)))
+    init(_ ts: TaxScenario, facts: TaxFacts? = nil) {
+        self.federalTaxes = FederalTaxCalc(ts, facts: facts)
+
+        data.append(.init(name: "Capital Gains", value: federalTaxes.capitalGainsTax, color: .accent.opacity(0.8)))
+        data.append(.init(name: "Qualified Dividends", value: federalTaxes.qualifiedDividendTax, color: .accent.opacity(0.7)))
+        data.append(.init(name: "Ordinary Income", value: federalTaxes.ordinaryIncomeTax, color: .accent.opacity(0.6)))
+        data.append(.init(name: "NIIT", value: federalTaxes.netInvestmentIncomeTax, color: .accent.opacity(0.5)))
+        data.append(.init(name: "FICA", value: federalTaxes.totalFICATax, color: .accent.opacity(0.4)))
         data = data.sorted { $0.value > $1.value }
     }
     

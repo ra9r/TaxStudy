@@ -7,10 +7,12 @@
 import SwiftUI
 
 struct MetaHeaderView : View {
-    var ts: TaxScenario
+    var federalTaxes: FederalTaxCalc
+    var stateTaxes: StateTaxCalc
     
-    init(_ ts: TaxScenario) {
-        self.ts = ts
+    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+        self.federalTaxes = FederalTaxCalc(scenario, facts: facts)
+        self.stateTaxes = NCTaxCalc(scenario, facts: facts) // TODO: Refactor to support any state
     }
     
     var body: some View {
@@ -22,39 +24,34 @@ struct MetaHeaderView : View {
         
         LazyVGrid(columns: layout, alignment: .leading, spacing: 5) {
             MetaCard(
-                symbolName: ts.filingStatus.symbol,
+                symbolName: federalTaxes.scenario.filingStatus.symbol,
                 label: "Filing Status",
-                value: "\(ts.filingStatus.rawValue)"
+                value: "\(federalTaxes.scenario.filingStatus.rawValue)"
             )
             MetaCard(
                 symbolName: "briefcase",
                 label: "Employment Status",
-                value: "\(ts.employmentStatus.rawValue)"
+                value: "\(federalTaxes.scenario.employmentStatus.rawValue)"
             )
             MetaCard(
                 symbolName: "scissors",
                 label: "Deduction Method",
-                value: "\(ts.federalTaxes.deductionMethod)"
+                value: "\(federalTaxes.deductionMethod)"
             )
             MetaCard(
                 symbolName: "exclamationmark",
                 label: "Subject to NIIT",
-                value: "\(ts.federalTaxes.isSubjectToNIIT)"
+                value: "\(federalTaxes.isSubjectToNIIT)"
             )
             MetaCard(
                 symbolName: "building.columns",
                 label: "Federal Taxes",
-                value: "\(ts.federalTaxes.taxesOwed.asCurrency) (\(ts.federalTaxes.effectiveTaxRate.asPercentage))"
+                value: "\(federalTaxes.taxesOwed.asCurrency) (\(federalTaxes.effectiveTaxRate.asPercentage))"
             )
             MetaCard(
                 symbolName: "map",
                 label: "State Taxes",
-                value: "\(ts.stateTaxes.taxesOwed.asCurrency) (\(ts.stateTaxes.effectiveTaxRate.asPercentage))"
-            )
-            MetaCard(
-                symbolName: "percent",
-                label: "Effective Tax Rate",
-                value: "\(ts.totalEffectiveTaxRate.asPercentage)"
+                value: "\(stateTaxes.taxesOwed.asCurrency) (\(stateTaxes.effectiveTaxRate.asPercentage))"
             )
             Spacer()
         }

@@ -39,6 +39,6 @@ struct TaxBracketEditor: View {
 
 #Preview {
     @Previewable @State var manager = TaxScenarioManager()
-    TaxBracketEditor(filingStatus: .single, taxBrackets: manager.selectedTaxScenario.facts.ordinaryTaxBrackets[.single]!)
+    TaxBracketEditor(filingStatus: .single, taxBrackets: DefaultTaxFacts2024.ordinaryTaxBrackets[.single]!)
         .environment(manager)
 }
