@@ -34,7 +34,6 @@
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
-		2A7CB2912CBC7201008334E1 /* MetaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */; };
 		2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2922CBC73BF008334E1 /* DataGridView.swift */; };
 		2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */; };
 		2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */; };
@@ -92,7 +91,6 @@
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
-		2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaHeaderView.swift; sourceTree = "<group>"; };
 		2A7CB2922CBC73BF008334E1 /* DataGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGridView.swift; sourceTree = "<group>"; };
 		2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasonryLayout.swift; sourceTree = "<group>"; };
 		2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxChart.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			children = (
 				2A6BA2A92CBE54AB007C3A27 /* Header.swift */,
 				2A7CB28B2CBC2886008334E1 /* MetaCard.swift */,
-				2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */,
 				2ACC20262CC267B500D2A907 /* KeyFigures.swift */,
 			);
 			path = Header;
@@ -452,7 +449,6 @@
 				2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */,
 				2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */,
 				2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */,
-				2A7CB2912CBC7201008334E1 /* MetaHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

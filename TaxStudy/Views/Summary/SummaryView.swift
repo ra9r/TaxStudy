@@ -13,13 +13,9 @@ struct SummaryView : View {
         ScrollView {
             VStack(alignment: .center) {
                 Header(ts: $ts)
-                MetaHeaderView(ts)
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
+                KeyFigures(federalTaxes: FederalTaxCalc(ts))
             }
             .padding()
-            
-            
         }
         .frame(minWidth: 800)
     }
