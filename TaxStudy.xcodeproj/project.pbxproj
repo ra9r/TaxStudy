@@ -216,13 +216,13 @@
 				2A51CB192CB9A3650075BBA0 /* Assets.xcassets */,
 				2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */,
 				2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */,
+				2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */,
 				2A51CB182CB9A3650075BBA0 /* Views */,
 				2A51CB392CBA9ACA0075BBA0 /* Menus */,
 				2A51CB022CB9A3650075BBA0 /* Components */,
 				2A51CB052CB9A3650075BBA0 /* Extensions */,
 				2A51CB0C2CB9A3650075BBA0 /* Models */,
 				2A51CB0E2CB9A3650075BBA0 /* Preview Content */,
-				2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */,
 			);
 			path = TaxStudy;
 			sourceTree = "<group>";
