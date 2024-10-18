@@ -46,7 +46,11 @@ enum TaxDeductionType: String {
     
     /// Long-Term Care Insurance Premiums - Deduct a portion of qualified long-term care insurance premiums
     /// based on age. The deduction limit varies annually.
-    case longTermCareInsurancePremiumsDeduction
+    case longTermCareInsurancePremiumsDeductions
+    
+    /// For rental properties, many expenses are deductible, and they can help reduce your taxable rental income.
+    /// Deductible rental property expenses generally fall into several categories.
+    case rentalPropertyExpensesDeduction
     
     /// Self-Employed Health Insurance Premiums - Deduct health, dental, and long-term care insurance
     /// premiums paid for you, your spouse, and dependents if you’re self-employed.
@@ -115,6 +119,8 @@ extension TaxDeductionType: DeductionType {
         case .depreciationDeduction:
             fallthrough
         case .customDeduction:
+            fallthrough
+        case .rentalPropertyExpensesDeduction:
             return true
         default:
             return false
@@ -123,6 +129,8 @@ extension TaxDeductionType: DeductionType {
     
     var label: String {
         switch self {
+        case .rentalPropertyExpensesDeduction:
+            return String(localized: "Rental Property Expenses")
         case .medicalAndDentalDeduction:
             return String(localized: "Medical and Dental")
         case .stateAndLocalTaxDeduction:
@@ -143,7 +151,7 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Margin Interest")
         case .gamblingLossDeduction:
             return String(localized: "Gambling Loss")
-        case .longTermCareInsurancePremiumsDeduction:
+        case .longTermCareInsurancePremiumsDeductions:
             return String(localized: "Long-Term Care Insurance")
         case .selfEmployedHealthInsurancePremiumsDeduction:
             return String(localized: "Self-Employed Health Insurance")
@@ -170,6 +178,8 @@ extension TaxDeductionType: DeductionType {
     
     var description: String {
         switch self {
+        case .rentalPropertyExpensesDeduction:
+            return String(localized: "For rental properties, many expenses are deductible, and they can help reduce your taxable rental income. Deductible rental property expenses generally fall into several categories. ")
         case .medicalAndDentalDeduction:
             return String(localized: "Deduct unreimbursed medical expenses over 7.5% of your AGI.")
         case .stateAndLocalTaxDeduction:
@@ -190,7 +200,7 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Deduct interest paid on loans used to purchase taxable investments, limited to net investment income.")
         case .gamblingLossDeduction:
             return String(localized: "Deduct gambling losses up to the amount of reported gambling winnings.")
-        case .longTermCareInsurancePremiumsDeduction:
+        case .longTermCareInsurancePremiumsDeductions:
             return String(localized: "Deduct a portion of qualified long-term care insurance premiums, based on your age.")
         case .selfEmployedHealthInsurancePremiumsDeduction:
             return String(localized: "Deduct health, dental, and long-term care premiums if you're self-employed.")

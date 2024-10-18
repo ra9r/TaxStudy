@@ -73,7 +73,7 @@ class TaxScenario: Codable, Identifiable {
     }
     
     var totalDividends: Double {
-        ordinaryDividends - qualifiedDividends
+        ordinaryDividends + qualifiedDividends
     }
     
     // MARK: - Misc Income

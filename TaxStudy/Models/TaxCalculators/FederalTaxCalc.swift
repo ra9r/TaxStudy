@@ -22,11 +22,14 @@ class FederalTaxCalc {
     }
     
     // MARK: - Income
+    
+    /// **Gross Income** is a complete total of all income generated regarless of any exemptions, adjustements, deductions and credits
     var grossIncome: Double {
         return totalIncome +
         taxExemptIncome
     }
     
+    /// **Total Income** is *gross income* minus all tax-exempt income
     var totalIncome: Double {
         let income = scenario.totalWages +
         scenario.totalSocialSecurityIncome +
@@ -44,6 +47,8 @@ class FederalTaxCalc {
         return income
     }
     
+    /// **Tax Exempt Income** is all income that is not factored into *Total Income*.  This income has absolutely no impact on your
+    /// federal taxes.
     var taxExemptIncome: Double {
         return scenario.taxExemptInterest +
         scenario.qualifiedHSADistributions +
@@ -51,10 +56,12 @@ class FederalTaxCalc {
         scenario.otherTaxExemptIncome
     }
     
+    /// **AGI Before Social Security** This is a computed value that is used to compute various social security values.
     var agiBeforeSSDI: Double {
         return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
     }
     
+    /// **Adjusted Gross Income (AGI)** This is the *Total Income* with adjustments for taxable social security and "above the line" deductions
     var agi: Double {
         return agiBeforeSSDI + taxableSSDI
     }
@@ -65,7 +72,9 @@ class FederalTaxCalc {
     }
     
     // MARK: - Investment
-    var netCapitalGains: NetCapitalGains {
+    
+    /// Internal method that computes the capital gains for other computations
+    private var netCapitalGains: NetCapitalGains {
         
         let totalCapitalLosses = scenario.carryforwardLoss
         
@@ -82,22 +91,36 @@ class FederalTaxCalc {
         
     }
     
+    /// The net short-term capital  gains.  This value is never negative, only greater or equal to zero.
     var netSTCG: Double {
         return netCapitalGains.netSTCG
     }
     
+    /// The net long-term capital  gains.  This value is never negative, only greater or equal to zero.
     var netLTCG: Double {
         return netCapitalGains.netLTCG
     }
     
-    var netInvestmentIncome: Double {
-        return netLTCG + netSTCG + scenario.totalDividends + scenario.interest + scenario.rentalIncome + scenario.royalties + scenario.businessIncome
-    }
-    
+    /// The resulting carryforward loss after *netLTCG* and *netSTCG* are computed
     var futureCarryForwardLoss: Double {
         return netCapitalGains.futureCarryForwardLoss - capitalLossAdjustment
     }
     
+    /// **Net Investment Income (NII)** refers to income derived from investments, after deducting any
+    /// allowable expenses related to those investments. It includes income such as interest, dividends,
+    /// capital gains, rental income, and other types of passive income.
+    var netInvestmentIncome: Double {
+        let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
+        let rentalPropertyExpense = scenario.deductions.total(for: .rentalPropertyExpensesDeduction)
+        
+        let result = netLTCG + netSTCG + scenario.totalDividends + scenario.interest + scenario.rentalIncome +
+        scenario.royalties - marginInterest - rentalPropertyExpense
+        
+        return result
+    }
+    
+    /// Computes how must of the remaining capital losses can be deducted from ordinary income up to a max of $3000
+    /// which is a limit defined by the ``TaxFacts``
     var capitalLossAdjustment: Double {
         let capitalLossLimit = facts.capitalLossLimit
         let futureCarryOverLoss = netCapitalGains.futureCarryForwardLoss
@@ -158,12 +181,13 @@ class FederalTaxCalc {
     var itemizedDeductions: Double {
         let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
         let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
+        let rentalExpenses = scenario.deductions.total(for: .rentalPropertyExpensesDeduction)
         let medicalExpenses = deductibleMedicalExpenses
         let stateAndLocalTax = scenario.deductions.total(for: .stateAndLocalTaxDeduction)
         let tuitionAndFees = scenario.deductions.total(for: .tuitionAndFeesDeduction)
         let customDeductions = scenario.deductions.total(for: .customDeduction)
 
-        return mortgageInterest + marginInterest + medicalExpenses + stateAndLocalTax +
+        return mortgageInterest + marginInterest + rentalExpenses + medicalExpenses + stateAndLocalTax +
         tuitionAndFees + customDeductions + totalChartitableContributions
     }
     
