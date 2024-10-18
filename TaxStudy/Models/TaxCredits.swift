@@ -93,6 +93,8 @@ extension TaxCreditType: DeductionType {
         case .lifetimeLearningCredit:
             fallthrough
         case .foreignTaxCredit:
+            fallthrough
+        case .customCredit:
             return true
         default:
             return false
@@ -134,7 +136,7 @@ extension TaxCreditType: DeductionType {
         case .elderlyOrDisabledTaxCredit:
             return String(localized: "Elderly or Disabled Tax Credit")
         case .customCredit:
-            return String(localized: "Custom")
+            return String(localized: "Other Credit")
         }
     }
     

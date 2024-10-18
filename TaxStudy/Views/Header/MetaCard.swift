@@ -15,8 +15,8 @@ struct MetaCard: View {
     var body: some View {
         HStack {
             Rectangle()
-                            .fill(Color.blue.opacity(0.6)) // Lighter blue color
-                            .frame(width: 5) //
+                .fill(Color.blue.opacity(0.6)) // Lighter blue color
+                .frame(width: 5) //
             // Circle with the symbol inside
             ZStack {
                 Circle()
@@ -46,8 +46,6 @@ struct MetaCard: View {
                     .foregroundColor(.secondary)
                 
             }
-            .padding(.leading, 10)
-            .padding(.trailing, 10)
             .padding(.top, 15)
             .padding(.bottom, 15)
             Spacer()
@@ -62,6 +60,6 @@ struct FilingStatusView_Previews: PreviewProvider {
     static var previews: some View {
         MetaCard(symbolName: FilingStatus.single.symbol, label: "Employment Status", value: FilingStatus.single.rawValue)
             .previewLayout(.sizeThatFits)
-//            .padding()
+        //            .padding()
     }
 }

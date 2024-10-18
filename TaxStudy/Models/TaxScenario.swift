@@ -114,6 +114,7 @@ class TaxScenario: Codable, Identifiable {
         return income.total(for: .otherTaxExemptIncome)
     }
     
+    // MARK: - Adjustments (for AGI)
     var hsaContribution: Double {
         return adjustments.total(for: .hsaContribution)
     }
@@ -122,6 +123,23 @@ class TaxScenario: Codable, Identifiable {
         return adjustments.total(for: .iraOr401kContribution)
     }
     
+    var studentLoanInterest: Double {
+        return adjustments.total(for: .studentLoanInterest)
+    }
+    
+    var businessExpenses: Double {
+        return adjustments.total(for: .businessExpenses)
+    }
+    
+    var earlyWithdrawalPenalties: Double {
+        return adjustments.total(for: .earlyWithDrawalPenalties)
+    }
+    
+    var totalAdjustments: Double {
+        return hsaContribution + iraContribtuion + studentLoanInterest + businessExpenses + earlyWithdrawalPenalties
+    }
+    
+    // MARK: - Wages and Social Security
     var totalWages: Double {
         return wagesSelf + wagesSpouse
     }

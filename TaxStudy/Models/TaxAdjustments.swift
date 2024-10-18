@@ -53,8 +53,6 @@ extension TaxAdjustmentType : DeductionType {
             fallthrough
         case .customAdjustment:
             return true
-//        case .studentLoanInterest:
-//        case .businessExpenses:
         default:
             return false
         }
@@ -73,7 +71,7 @@ extension TaxAdjustmentType : DeductionType {
         case .earlyWithDrawalPenalties:
             return String(localized: "Early Withdrawal Penalties")
         case .customAdjustment:
-            return String(localized: "Custom Adjustment")
+            return String(localized: "Other Adjustment")
         }
     }
     

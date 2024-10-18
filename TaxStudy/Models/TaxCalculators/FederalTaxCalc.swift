@@ -51,6 +51,10 @@ class FederalTaxCalc {
         scenario.otherTaxExemptIncome
     }
     
+    var agiBeforeSSDI: Double {
+        return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
+    }
+    
     var agi: Double {
         return agiBeforeSSDI + taxableSSDI
     }
@@ -101,10 +105,6 @@ class FederalTaxCalc {
     }
     
     // MARK: - Social Security
-    
-    var agiBeforeSSDI: Double {
-        return totalIncome - scenario.totalSocialSecurityIncome - scenario.hsaContribution
-    }
     
     var provisionalIncome: Double {
         return agiBeforeSSDI + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
@@ -159,8 +159,12 @@ class FederalTaxCalc {
         let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
         let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
         let medicalExpenses = deductibleMedicalExpenses
-        return mortgageInterest + marginInterest + medicalExpenses +
-        totalChartitableContributions
+        let stateAndLocalTax = scenario.deductions.total(for: .stateAndLocalTaxDeduction)
+        let tuitionAndFees = scenario.deductions.total(for: .tuitionAndFeesDeduction)
+        let customDeductions = scenario.deductions.total(for: .customDeduction)
+
+        return mortgageInterest + marginInterest + medicalExpenses + stateAndLocalTax +
+        tuitionAndFees + customDeductions + totalChartitableContributions
     }
     
     var deduction: Double {

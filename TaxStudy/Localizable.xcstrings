@@ -106,15 +106,6 @@
     "Child Tax Credit" : {
 
     },
-    "Custom" : {
-
-    },
-    "Custom Adjustment" : {
-
-    },
-    "Custom Deduction" : {
-
-    },
     "Deduct 50% of your self-employment taxes (SECA)." : {
 
     },
@@ -155,9 +146,6 @@
 
     },
     "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed." : {
-
-    },
-    "Deduct tax preparation fees as a business expense if self-employed." : {
 
     },
     "Deduct unreimbursed medical expenses over 7.5% of your AGI." : {
@@ -268,9 +256,6 @@
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
 
     },
-    "Investment and Advisory Fee" : {
-
-    },
     "IRA or 401(k) Contribution" : {
 
     },
@@ -335,6 +320,15 @@
 
     },
     "Ordinary Dividends" : {
+
+    },
+    "Other Adjustment" : {
+
+    },
+    "Other Credit" : {
+
+    },
+    "Other Deduction" : {
 
     },
     "Other forms of tax-exempt income" : {
@@ -436,9 +430,6 @@
     "Social Security benefits received by the spouse" : {
 
     },
-    "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
-
-    },
     "Standard" : {
 
     },
@@ -446,9 +437,6 @@
 
     },
     "Student Loan Interest" : {
-
-    },
-    "Tax Preparation Fee" : {
 
     },
     "Tax Rate" : {

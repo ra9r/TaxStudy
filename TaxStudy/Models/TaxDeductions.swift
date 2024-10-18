@@ -75,15 +75,6 @@ enum TaxDeductionType: String {
     /// vehicle expenses (depreciation, maintenance, gas) may be deducted.
     case mileageDeduction
     
-    /// Tax Preparation Fees - Deducted as a business expense if self-employed. Otherwise, no longer
-    /// deductible for individual filers.
-    case taxPreparationFeeDeduction
-    
-    /// Investment and Advisory Fees (Pre-2018) - Some unreimbursed investment-related expenses may be
-    /// deductible as a miscellaneous deduction, but the ability to deduct this has been suspended for
-    /// tax years 2018 through 2025 under the TCJA.
-    case investmentAndAdvisoryFeeDeduction
-    
     /// Depreciation - Deduct the depreciation of property (such as business property, rental real estate)
     /// under MACRS guidelines.
     case depreciationDeduction
@@ -119,11 +110,9 @@ extension TaxDeductionType: DeductionType {
             fallthrough
         case .tuitionAndFeesDeduction:
             fallthrough
-        case .taxPreparationFeeDeduction:
-            fallthrough
         case .marginInterestDeduction:
             fallthrough
-        case .investmentAndAdvisoryFeeDeduction:
+        case .depreciationDeduction:
             fallthrough
         case .customDeduction:
             return true
@@ -170,16 +159,12 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Self-Employed Business Expense")
         case .mileageDeduction:
             return String(localized: "Mileage")
-        case .taxPreparationFeeDeduction:
-            return String(localized: "Tax Preparation Fee")
-        case .investmentAndAdvisoryFeeDeduction:
-            return String(localized: "Investment and Advisory Fee")
         case .depreciationDeduction:
             return String(localized: "Depreciation")
         case .netOperatingLossCarryforwardDeduction:
             return String(localized: "Net Operating Loss Carryforward")
         case .customDeduction:
-            return String(localized: "Custom Deduction")
+            return String(localized: "Other Deduction")
         }
     }
     
@@ -221,10 +206,6 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed.")
         case .mileageDeduction:
             return String(localized: "Deduct 65.5 cents per mile for business driving or actual vehicle expenses.")
-        case .taxPreparationFeeDeduction:
-            return String(localized: "Deduct tax preparation fees as a business expense if self-employed.")
-        case .investmentAndAdvisoryFeeDeduction:
-            return String(localized: "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025.")
         case .depreciationDeduction:
             return String(localized: "Deduct depreciation on business or rental property following MACRS guidelines.")
         case .netOperatingLossCarryforwardDeduction:
