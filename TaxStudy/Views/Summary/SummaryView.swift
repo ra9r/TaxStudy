@@ -16,8 +16,6 @@ struct SummaryView : View {
                 MetaHeaderView(ts)
                     .padding(.top, 20)
                     .padding(.bottom, 10)
-                DataGridView(ts)
-                
             }
             .padding()
             

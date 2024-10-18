@@ -302,6 +302,12 @@ class FederalTaxCalc {
         return taxesOwed / 4
     }
     
+    var marginalTaxRate: Double {
+        let brackets = facts.ordinaryTaxBrackets[scenario.filingStatus]
+        
+        return brackets?.highestRate(for: ordinaryIncome) ?? 0
+    }
+    
     var effectiveTaxRate: Double {
         if grossIncome == 0 {
             return 0

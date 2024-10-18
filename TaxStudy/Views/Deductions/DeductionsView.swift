@@ -12,21 +12,12 @@ struct DeductionsView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .center) {
-                Header(ts: $ts)
-                MetaHeaderView(ts)
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-                HStack(alignment: .top, spacing: 10) {
-                    DeductionEditor("Adjustments", $ts.adjustments)
-                    DeductionEditor("Deductions", $ts.deductions)
-                    DeductionEditor("Credits", $ts.credits)
-                }
-                .padding()
+            HStack(alignment: .top, spacing: 10) {
+                DeductionEditor("Adjustments", $ts.adjustments)
+                DeductionEditor("Deductions", $ts.deductions)
+                DeductionEditor("Credits", $ts.credits)
             }
             .padding()
-            
-            
         }
         .frame(minWidth: 800)
     }

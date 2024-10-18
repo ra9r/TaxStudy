@@ -22,7 +22,7 @@ struct KeyFigures: View {
                 }
                 VStack {
                     CardItem("Filing Status", value: federalTaxes.scenario.filingStatus.rawValue)
-                    CardItem("Marginal Rate", value: federalTaxes.effectiveTaxRate.asPercentage)
+                    CardItem("Marginal Rate", value: federalTaxes.marginalTaxRate.asPercentage)
                     CardItem("Avergae Rate", value: federalTaxes.effectiveTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency)
                 }

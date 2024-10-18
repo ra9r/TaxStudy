@@ -11,31 +11,12 @@ struct ScenarioView : View {
     
     var body: some View {
         @Bindable var manager = manager
-        TabView {
-            // First Tab
-            SummaryView(ts: $manager.selectedTaxScenario)
-                .tabItem {
-                    Label("Overview", systemImage: "house.fill")
-                }
-            // Second Tab
-            IncomeView(ts: $manager.selectedTaxScenario)
-                .tabItem {
-                    Label("Income", systemImage: "gearshape.fill")
-                }
-                .navigationTitle("Income")
-            
-            // Third Tab
-            DeductionsView(ts: $manager.selectedTaxScenario)
-                .tabItem {
-                    Label("Deductions", systemImage: "person.crop.circle.fill")
-                }
-                .navigationTitle("Deductions")
-            
-//            JSONView(taxScenario: manager.selectedTaxScenario)
-//                .tabItem {
-//                    Label("JSON Export", systemImage: "person.crop.circle.fill")
-//                }
-//                .navigationTitle("JSON Export")
+        ScrollView {
+            VStack {
+                SummaryView(ts: $manager.selectedTaxScenario)
+                IncomeView(ts: $manager.selectedTaxScenario)
+                DeductionsView(ts: $manager.selectedTaxScenario)
+            }
         }
         .tint(Color.accentColor)
         .toolbar {
