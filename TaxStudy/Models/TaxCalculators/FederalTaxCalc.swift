@@ -298,6 +298,10 @@ class FederalTaxCalc {
         return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + totalFICATax
     }
     
+    var safeHarborTax: Double {
+        return taxesOwed / 4
+    }
+    
     var effectiveTaxRate: Double {
         if grossIncome == 0 {
             return 0
