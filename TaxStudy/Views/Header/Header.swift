@@ -40,9 +40,13 @@ struct Header: View {
     
     var nameAndDescription: some View {
         VStack(alignment: .leading) {
-            TextField("name", text: $ts.name)
-                .textFieldStyle(PlainTextFieldStyle())
-                .font(.title)
+            HStack(alignment: .firstTextBaseline) {
+                Text("Scenario:")
+                TextField("name", text: $ts.name)
+                    .textFieldStyle(PlainTextFieldStyle())
+            }
+            .font(.title)
+            
             TextEditor(text: $ts.description)
                 .textEditorStyle(.plain)
                 .scrollDisabled(true)

@@ -22,8 +22,9 @@ struct KeyFigures: View {
                 }
                 VStack {
                     CardItem("Filing Status", value: federalTaxes.scenario.filingStatus.rawValue)
-                    CardItem("Marginal Rate", value: federalTaxes.marginalTaxRate.asPercentage)
-                    CardItem("Avergae Rate", value: federalTaxes.effectiveTaxRate.asPercentage)
+                    CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)
+                    CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
+                    CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency)
                 }
                 VStack {

@@ -34,7 +34,7 @@ struct CardView<Content: View>: View {
                     .textCase(.uppercase)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 10)
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 14, weight: .regular))
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity)
                     .background(.accent)
@@ -47,7 +47,7 @@ struct CardView<Content: View>: View {
             }
             
         }
-        .background(.gray.opacity(0.1))
+        .background(.altBackground.opacity(0.2))
         .frame(minWidth: 250)
         .cornerRadius(5)
     }
