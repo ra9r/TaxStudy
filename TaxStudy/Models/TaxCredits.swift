@@ -87,7 +87,16 @@ extension TaxCreditType: DeductionType {
     }
     
     var isSupported: Bool {
-        return true
+        switch self {
+        case .premiumTaxCredit:
+            fallthrough
+        case .lifetimeLearningCredit:
+            fallthrough
+        case .foreignTaxCredit:
+            return true
+        default:
+            return false
+        }
     }
     
     var label: String {

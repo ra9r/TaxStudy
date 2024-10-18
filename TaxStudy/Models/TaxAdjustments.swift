@@ -44,7 +44,20 @@ extension TaxAdjustmentType : DeductionType {
     }
     
     var isSupported: Bool {
-        return true
+        switch (self) {
+        case .iraOr401kContribution:
+            fallthrough
+        case .hsaContribution:
+            fallthrough
+        case .earlyWithDrawalPenalties:
+            fallthrough
+        case .customAdjustment:
+            return true
+//        case .studentLoanInterest:
+//        case .businessExpenses:
+        default:
+            return false
+        }
     }
     
     var label: String {
