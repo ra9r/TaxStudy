@@ -19,12 +19,12 @@ struct CardItem: View {
     var body: some View {
         HStack {
             Text(label)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 12, weight: .semibold))
             
             Spacer()
             
             Text(value)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 12, weight: .medium))
                 .foregroundColor(.gray)
         }
         .padding(2.5)

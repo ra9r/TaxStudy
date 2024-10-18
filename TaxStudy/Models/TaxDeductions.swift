@@ -20,13 +20,14 @@ enum TaxDeductionType: String {
     /// improve your home.
     case mortgageInterestDeduction
     
-    /// Charitable Contributions
-    /// - Deduct contributions made to qualified charitable organizations. These can be:
-    /// - Cash contributions: Up to 60% of your AGI.
-    /// - Stock or appreciated assets: Up to 30% of your AGI.
-    /// - Donor-Advised Fund (DAF) contributions: Generally treated as charitable contributions.
-    /// - Mileage for charitable activities: 14 cents per mile.
-    case charitableContributionDeduction
+    /// Charitable Contributions of Cash: Up to 60% of your AGI.
+    case charitableCashContributionDeduction
+    
+    /// Charitable Contributions of Stock or appreciated assets: Up to 30% of your AGI.
+    case charitableAssetContributionDeduction
+    
+    /// Charitable Contributions of Mileage for charitable activities: 14 cents per mile.
+    case charitableMileageContributionDeduction
     
     /// Casualty and Theft Losses - Deduct losses from federally declared disasters, subject to a $500
     /// deductible and other limits.
@@ -101,6 +102,36 @@ extension TaxDeductionType: DeductionType {
         return self.rawValue
     }
     
+    var isSupported: Bool {
+        switch self {
+            
+        case .medicalAndDentalDeduction:
+            fallthrough
+        case .stateAndLocalTaxDeduction:
+            fallthrough
+        case .mortgageInterestDeduction:
+            fallthrough
+        case .charitableCashContributionDeduction:
+            fallthrough
+        case .charitableAssetContributionDeduction:
+            fallthrough
+        case .charitableMileageContributionDeduction:
+            fallthrough
+        case .tuitionAndFeesDeduction:
+            fallthrough
+        case .taxPreparationFeeDeduction:
+            fallthrough
+        case .marginInterestDeduction:
+            fallthrough
+        case .investmentAndAdvisoryFeeDeduction:
+            fallthrough
+        case .customDeduction:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var label: String {
         switch self {
         case .medicalAndDentalDeduction:
@@ -109,8 +140,12 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "State and Local Tax")
         case .mortgageInterestDeduction:
             return String(localized: "Mortgage Interest")
-        case .charitableContributionDeduction:
-            return String(localized: "Charitable Contribution")
+        case .charitableCashContributionDeduction:
+            return String(localized: "Charitable Cash Contribution")
+        case .charitableAssetContributionDeduction:
+            return String(localized: "Charitable Stock or Asset Contribution")
+        case .charitableMileageContributionDeduction:
+            return String(localized: "Charitable Contribution of Mileage")
         case .casualtyAndTheftLossDeduction:
             return String(localized: "Casualty and Theft Loss")
         case .qualifiedBusinessIncomeDeduction:
@@ -156,8 +191,12 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Deduct up to $10,000 in state and local income, property, and sales taxes, including property taxes on your primary residence.")
         case .mortgageInterestDeduction:
             return String(localized: "Deduct interest on up to $750,000 of mortgage debt, including home equity loans used for home improvements.")
-        case .charitableContributionDeduction:
-            return String(localized: "Deduct cash contributions up to 60% of your AGI, or appreciated assets up to 30%. Includes Donor-Advised Fund contributions.")
+        case .charitableCashContributionDeduction:
+            return String(localized: "Deduct cash contributions up to 60% of your AGI")
+        case .charitableAssetContributionDeduction:
+            return String(localized: "Deduct charitable asset contributions up to 30% of your AGI")
+        case .charitableMileageContributionDeduction:
+            return String(localized: "Deduct mileage driven for a charitable purpose at a rate of $0.14 per mile")
         case .casualtyAndTheftLossDeduction:
             return String(localized: "Deduct losses from federally declared disasters, subject to limits such as a $500 deductible.")
         case .qualifiedBusinessIncomeDeduction:

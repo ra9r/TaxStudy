@@ -43,6 +43,10 @@ extension TaxAdjustmentType : DeductionType {
         return self.rawValue
     }
     
+    var isSupported: Bool {
+        return true
+    }
+    
     var label: String {
         switch self {
         case .iraOr401kContribution:

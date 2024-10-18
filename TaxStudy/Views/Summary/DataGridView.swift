@@ -45,8 +45,8 @@ struct DataGridView : View {
     
     var computedTaxes: some View {
         DataCard("Computed Taxes", [
-            ("FICA Tax (Social Security)", federalTaxes.socialSecurityTaxesOwed.asCurrency),
-            ("FICA Tax (Medicare)", federalTaxes.medicareTaxesOwed.asCurrency),
+            ("FICA Tax (Social Security)", federalTaxes.socialSecurityTax.asCurrency),
+            ("FICA Tax (Medicare)", federalTaxes.medicareTax.asCurrency),
             ("Ordinary Income Tax", federalTaxes.ordinaryIncomeTax.asCurrency),
             ("Qualified Dividend Tax", federalTaxes.qualifiedDividendTax.asCurrency),
             ("Capital Gains Tax", federalTaxes.capitalGainsTax.asCurrency),

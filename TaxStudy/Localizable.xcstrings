@@ -88,7 +88,13 @@
     "Category" : {
 
     },
-    "Charitable Contribution" : {
+    "Charitable Cash Contribution" : {
+
+    },
+    "Charitable Contribution of Mileage" : {
+
+    },
+    "Charitable Stock or Asset Contribution" : {
 
     },
     "Check for temporary reinstatement of this deduction, which previously allowed up to $4,000 for qualified education expenses." : {
@@ -118,7 +124,10 @@
     "Deduct a portion of qualified long-term care insurance premiums, based on your age." : {
 
     },
-    "Deduct cash contributions up to 60% of your AGI, or appreciated assets up to 30%. Includes Donor-Advised Fund contributions." : {
+    "Deduct cash contributions up to 60% of your AGI" : {
+
+    },
+    "Deduct charitable asset contributions up to 30% of your AGI" : {
 
     },
     "Deduct depreciation on business or rental property following MACRS guidelines." : {
@@ -140,6 +149,9 @@
 
     },
     "Deduct losses from federally declared disasters, subject to limits such as a $500 deductible." : {
+
+    },
+    "Deduct mileage driven for a charitable purpose at a rate of $0.14 per mile" : {
 
     },
     "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed." : {
@@ -263,6 +275,9 @@
 
     },
     "IRA Withdrawal" : {
+
+    },
+    "Itemized" : {
 
     },
     "kWh" : {
@@ -422,6 +437,9 @@
 
     },
     "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
+
+    },
+    "Standard" : {
 
     },
     "State and Local Tax" : {

@@ -9,6 +9,7 @@ import SwiftUI
 protocol DeductionType: Codable, Equatable, Hashable, CaseIterable, Identifiable {
     var label: String { get }
     var description: String { get }
+    var isSupported: Bool { get }
 }
 
 struct Deduction<T: DeductionType>: Codable, Equatable, Identifiable {

@@ -122,13 +122,6 @@ class TaxScenario: Codable, Identifiable {
         return adjustments.total(for: .iraOr401kContribution)
     }
     
-    var taxExemptIncome: Double {
-        return taxExemptInterest +
-        qualifiedHSADistributions +
-        rothDistributions +
-        otherTaxExemptIncome
-    }
-    
     var totalWages: Double {
         return wagesSelf + wagesSpouse
     }

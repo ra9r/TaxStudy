@@ -21,13 +21,46 @@ class FederalTaxCalc {
         self.facts = facts ?? DefaultTaxFacts2024
     }
     
-    // MARK: - Computed Values
+    // MARK: - Income
     var grossIncome: Double {
-        return totalIncome + scenario.taxExemptIncome
+        return totalIncome +
+        taxExemptIncome
     }
     
+    var totalIncome: Double {
+        let income = scenario.totalWages +
+        scenario.totalSocialSecurityIncome +
+        scenario.interest +
+        netLTCG +
+        scenario.qualifiedDividends +
+        netSTCG +
+        scenario.ordinaryDividends +
+        scenario.rentalIncome +
+        scenario.royalties +
+        scenario.businessIncome +
+        scenario.foreignEarnedIncome +
+        scenario.rothConversion +
+        scenario.iraWithdrawal
+        return income
+    }
     
+    var taxExemptIncome: Double {
+        return scenario.taxExemptInterest +
+        scenario.qualifiedHSADistributions +
+        scenario.rothDistributions +
+        scenario.otherTaxExemptIncome
+    }
     
+    var agi: Double {
+        return agiBeforeSSDI + taxableSSDI
+    }
+    
+    var magi: Double {
+        // For simplicity, assume MAGI = AGI
+        return agi
+    }
+    
+    // MARK: - Investment
     var netCapitalGains: NetCapitalGains {
         
         let totalCapitalLosses = scenario.carryforwardLoss
@@ -67,41 +100,16 @@ class FederalTaxCalc {
         return (futureCarryOverLoss > 0 ? min(capitalLossLimit, futureCarryOverLoss) : 0)
     }
     
-    var totalIncome: Double {
-        let income = scenario.totalWages +
-        scenario.totalSocialSecurityIncome +
-        scenario.interest +
-//        taxScenario.taxExemptInterest + // excluded from Gross Income calculations
-        netLTCG +
-        scenario.qualifiedDividends +
-        netSTCG +
-        scenario.ordinaryDividends +
-        scenario.rentalIncome +
-        scenario.royalties +
-        scenario.businessIncome +
-        scenario.foreignEarnedIncome +
-        scenario.rothConversion +
-        scenario.iraWithdrawal
-        return income
-    }
+    // MARK: - Social Security
     
     var agiBeforeSSDI: Double {
         return totalIncome - scenario.totalSocialSecurityIncome - scenario.hsaContribution
     }
     
-    var agi: Double {
-        return agiBeforeSSDI + taxableSSDI
-    }
-    
-    var magi: Double {
-        // For simplicity, assume MAGI = AGI
-        return agi
-    }
-    
     var provisionalIncome: Double {
         return agiBeforeSSDI + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
     }
-    
+
     var provisionalTaxRate: Double {
         guard let provisionalTaxRates = facts.provisionalIncomeThresholds[scenario.filingStatus] else {
             print("Error: No provisional tax rates for \(provisionalIncome), defaulting to 0.")
@@ -114,6 +122,7 @@ class FederalTaxCalc {
         return scenario.totalSocialSecurityIncome * provisionalTaxRate
     }
     
+    // MARK: - Deductions
     var standardDeduction: Double {
         guard let standardDeduction = facts.standardDeduction[scenario.filingStatus] else {
             print("Error: No standard deduction for \(scenario.filingStatus), defaulting to 0.")
@@ -128,11 +137,30 @@ class FederalTaxCalc {
         return max(0, medicalExpenses - threshold)
     }
     
+    var deductibleCharitableCashContributions: Double {
+        let charitableContributions = scenario.deductions.total(for: .charitableCashContributionDeduction)
+        let threshold = facts.charitableCashThreadholdRate * agi
+        return max(0, charitableContributions - threshold)
+    }
+    
+    var deductibleCharitableAssetContributions: Double {
+        let charitableContributions = scenario.deductions.total(for: .charitableAssetContributionDeduction)
+        let threshold = facts.charitableAssetThreadholdRate * agi
+        return max(0, charitableContributions - threshold)
+    }
+    
+    var totalChartitableContributions: Double {
+        return deductibleCharitableCashContributions +
+        deductibleCharitableAssetContributions +
+        scenario.deductions.total(for: .charitableMileageContributionDeduction)
+    }
+    
     var itemizedDeductions: Double {
         let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
         let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
         let medicalExpenses = deductibleMedicalExpenses
-        return mortgageInterest + marginInterest + medicalExpenses
+        return mortgageInterest + marginInterest + medicalExpenses +
+        totalChartitableContributions
     }
     
     var deduction: Double {
@@ -141,10 +169,12 @@ class FederalTaxCalc {
     
     var deductionMethod: String {
         if deduction == standardDeduction {
-            return "Standard"
+            return String(localized: "Standard")
         }
-        return "Itemized"
+        return String(localized: "Itemized")
     }
+    
+    // MARK: - Final Calculations
     
     var taxableIncome: Double {
         return max(0, agi - deduction)
@@ -157,6 +187,8 @@ class FederalTaxCalc {
     var ordinaryIncome: Double {
         return taxableIncome - preferentialIncome - capitalLossAdjustment
     }
+    
+    // MARK: - Computed Taxes
     
     var ordinaryIncomeTax: Double {
         guard let ordinaryTaxBrackets = facts.ordinaryTaxBrackets[scenario.filingStatus] else {
@@ -182,17 +214,6 @@ class FederalTaxCalc {
         return max(0, netLTCG) * capitalGainTaxBrackets.highestRate(for: taxableIncome)
     }
     
-    var taxesOwed: Double {
-        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + totalFICATax
-    }
-    
-    var effectiveTaxRate: Double {
-        if grossIncome == 0 {
-            return 0
-        }
-        return taxesOwed / grossIncome
-    }
-    
     var netInvestmentIncomeTax: Double {
         guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
             print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus), defaulting to 0")
@@ -211,19 +232,7 @@ class FederalTaxCalc {
         return niit
     }
     
-    var isSubjectToNIIT: Bool {
-        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
-            print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus)")
-            return false
-        }
-        return max(0, magi - threshold) > 0
-    }
-    
-    var isSubjectToFICA: Bool {
-        return scenario.totalWages > 0
-    }
-    
-    var socialSecurityTaxesOwed: Double {
+    var socialSecurityTax: Double {
         guard let taxRates = facts.ssTaxThresholds[scenario.filingStatus] else {
             print("Error: Failed to find SS tax rates for \(scenario.filingStatus)")
             return 0
@@ -238,7 +247,7 @@ class FederalTaxCalc {
         return forSelf + forSpouse
     }
     
-    var medicareTaxesOwed: Double {
+    var medicareTax: Double {
         guard let taxRates = facts.medicareTaxThresholds[scenario.filingStatus] else {
             print("Error: Failed to find Medicate tax rates for \(scenario.filingStatus)")
             return 0
@@ -254,8 +263,32 @@ class FederalTaxCalc {
     }
     
     var totalFICATax: Double {
-        return socialSecurityTaxesOwed + medicareTaxesOwed
+        return socialSecurityTax + medicareTax
+    }
+
+    var taxesOwed: Double {
+        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + totalFICATax
     }
     
+    var effectiveTaxRate: Double {
+        if grossIncome == 0 {
+            return 0
+        }
+        return taxesOwed / grossIncome
+    }
     
+    // MARK: - Computed Flags
+    
+    var isSubjectToNIIT: Bool {
+        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
+            print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus)")
+            return false
+        }
+        return max(0, magi - threshold) > 0
+    }
+    
+    var isSubjectToFICA: Bool {
+        return scenario.totalWages > 0
+    }
+
 }
