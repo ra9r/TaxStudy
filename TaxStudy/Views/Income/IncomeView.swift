@@ -12,21 +12,12 @@ struct IncomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .center) {
-                Header(ts: $ts)
-                MetaHeaderView(ts)
-                    .padding(.top, 20)
-                    .padding(.bottom, 10)
-                HStack(alignment: .top, spacing: 10) {
-                    IncomeEditor("Tax Exempt Income", $ts.income, filter: IncomeType.taxExempt)
-                    IncomeEditor("Ordinary Income", $ts.income, filter: IncomeType.ordinary)
-                    IncomeEditor("Investment Income", $ts.income, filter: IncomeType.investment)
-                }
-                .padding()
+            HStack(alignment: .top, spacing: 10) {
+                IncomeEditor("Tax Exempt Income", $ts.income, filter: IncomeType.taxExempt)
+                IncomeEditor("Ordinary Income", $ts.income, filter: IncomeType.ordinary)
+                IncomeEditor("Investment Income", $ts.income, filter: IncomeType.investment)
             }
             .padding()
-            
-            
         }
         .frame(minWidth: 800)
     }

@@ -26,7 +26,6 @@
 		2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */; };
 		2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */; };
 		2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */; };
-		2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB372CBA902E0075BBA0 /* DataCard.swift */; };
 		2A51CB3B2CBA9B010075BBA0 /* FileCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */; };
 		2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* Header.swift */; };
 		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
@@ -34,8 +33,6 @@
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
-		2A7CB2912CBC7201008334E1 /* MetaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */; };
-		2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2922CBC73BF008334E1 /* DataGridView.swift */; };
 		2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */; };
 		2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */; };
 		2A7CB2992CBCF407008334E1 /* HorizontalBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */; };
@@ -49,7 +46,18 @@
 		2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */; };
 		2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */; };
 		2ACC20162CC0CCFD00D2A907 /* IncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20152CC0CCFD00D2A907 /* IncomeView.swift */; };
+		2ACC20272CC267B500D2A907 /* KeyFigures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20262CC267B500D2A907 /* KeyFigures.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2ACC201F2CC23DDC00D2A907 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AB963E32CA6E1A300E52EDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AB963EA2CA6E1A300E52EDF;
+			remoteInfo = TaxStudy;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2A51CB002CB9A3650075BBA0 /* CardField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardField.swift; sourceTree = "<group>"; };
@@ -72,7 +80,6 @@
 		2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaxStudy.entitlements; sourceTree = "<group>"; };
 		2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxStudyApp.swift; sourceTree = "<group>"; };
-		2A51CB372CBA902E0075BBA0 /* DataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCard.swift; sourceTree = "<group>"; };
 		2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCommands.swift; sourceTree = "<group>"; };
 		2A6BA2A92CBE54AB007C3A27 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -81,8 +88,6 @@
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
-		2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaHeaderView.swift; sourceTree = "<group>"; };
-		2A7CB2922CBC73BF008334E1 /* DataGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGridView.swift; sourceTree = "<group>"; };
 		2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasonryLayout.swift; sourceTree = "<group>"; };
 		2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxChart.swift; sourceTree = "<group>"; };
 		2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChartView.swift; sourceTree = "<group>"; };
@@ -97,10 +102,27 @@
 		2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTypes.swift; sourceTree = "<group>"; };
 		2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSources.swift; sourceTree = "<group>"; };
 		2ACC20152CC0CCFD00D2A907 /* IncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeView.swift; sourceTree = "<group>"; };
+		2ACC201B2CC23DDC00D2A907 /* TaxStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ACC20262CC267B500D2A907 /* KeyFigures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFigures.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2ACC201C2CC23DDC00D2A907 /* TaxStudyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaxStudyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2AB963E82CA6E1A300E52EDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ACC20182CC23DDC00D2A907 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,18 +156,18 @@
 		2A51CB0C2CB9A3650075BBA0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */,
-				2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */,
-				2A7CB2A02CBDDC12008334E1 /* Deductions.swift */,
-				2A7CB29E2CBDC25F008334E1 /* TaxAdjustments.swift */,
+				2A51CB0B2CB9A3650075BBA0 /* TaxScenarioManager.swift */,
 				2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */,
-				2A7CB29C2CBDAE7C008334E1 /* TaxDeductions.swift */,
-				2A7CB29A2CBDAC43008334E1 /* TaxCredits.swift */,
 				2A51CB072CB9A3650075BBA0 /* FilingStatus.swift */,
 				2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */,
+				2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */,
+				2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */,
+				2A7CB29E2CBDC25F008334E1 /* TaxAdjustments.swift */,
+				2A7CB29C2CBDAE7C008334E1 /* TaxDeductions.swift */,
+				2A7CB29A2CBDAC43008334E1 /* TaxCredits.swift */,
+				2A7CB2A02CBDDC12008334E1 /* Deductions.swift */,
 				2A51CB092CB9A3650075BBA0 /* TaxBrackets.swift */,
 				2A51CB0A2CB9A3650075BBA0 /* TaxScenario.swift */,
-				2A51CB0B2CB9A3650075BBA0 /* TaxScenarioManager.swift */,
 				2A51CB122CB9A3650075BBA0 /* TaxCalculators */,
 			);
 			path = Models;
@@ -190,13 +212,13 @@
 				2A51CB192CB9A3650075BBA0 /* Assets.xcassets */,
 				2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */,
 				2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */,
+				2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */,
 				2A51CB182CB9A3650075BBA0 /* Views */,
 				2A51CB392CBA9ACA0075BBA0 /* Menus */,
 				2A51CB022CB9A3650075BBA0 /* Components */,
 				2A51CB052CB9A3650075BBA0 /* Extensions */,
 				2A51CB0C2CB9A3650075BBA0 /* Models */,
 				2A51CB0E2CB9A3650075BBA0 /* Preview Content */,
-				2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */,
 			);
 			path = TaxStudy;
 			sourceTree = "<group>";
@@ -214,6 +236,7 @@
 			children = (
 				2A6BA2A92CBE54AB007C3A27 /* Header.swift */,
 				2A7CB28B2CBC2886008334E1 /* MetaCard.swift */,
+				2ACC20262CC267B500D2A907 /* KeyFigures.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -231,10 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				2A51CB162CB9A3650075BBA0 /* SummaryView.swift */,
-				2A7CB2902CBC71FA008334E1 /* MetaHeaderView.swift */,
 				2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */,
-				2A51CB372CBA902E0075BBA0 /* DataCard.swift */,
-				2A7CB2922CBC73BF008334E1 /* DataGridView.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -253,6 +273,7 @@
 			children = (
 				2A6BA2B52CBFE52C007C3A27 /* .gitignore */,
 				2A51CB1E2CB9A3650075BBA0 /* TaxStudy */,
+				2ACC201C2CC23DDC00D2A907 /* TaxStudyTests */,
 				2AB963EC2CA6E1A300E52EDF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -261,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */,
+				2ACC201B2CC23DDC00D2A907 /* TaxStudyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,6 +317,29 @@
 			productReference = 2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2ACC201A2CC23DDC00D2A907 /* TaxStudyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2ACC20212CC23DDD00D2A907 /* Build configuration list for PBXNativeTarget "TaxStudyTests" */;
+			buildPhases = (
+				2ACC20172CC23DDC00D2A907 /* Sources */,
+				2ACC20182CC23DDC00D2A907 /* Frameworks */,
+				2ACC20192CC23DDC00D2A907 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2ACC20202CC23DDC00D2A907 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2ACC201C2CC23DDC00D2A907 /* TaxStudyTests */,
+			);
+			name = TaxStudyTests;
+			packageProductDependencies = (
+			);
+			productName = TaxStudyTests;
+			productReference = 2ACC201B2CC23DDC00D2A907 /* TaxStudyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -307,6 +352,10 @@
 				TargetAttributes = {
 					2AB963EA2CA6E1A300E52EDF = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					2ACC201A2CC23DDC00D2A907 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 2AB963EA2CA6E1A300E52EDF;
 					};
 				};
 			};
@@ -325,6 +374,7 @@
 			projectRoot = "";
 			targets = (
 				2AB963EA2CA6E1A300E52EDF /* TaxStudy */,
+				2ACC201A2CC23DDC00D2A907 /* TaxStudyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -340,6 +390,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2ACC20192CC23DDC00D2A907 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -348,16 +405,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */,
+				2ACC20272CC267B500D2A907 /* KeyFigures.swift in Sources */,
 				2A51CB222CB9A3650075BBA0 /* CardField.swift in Sources */,
 				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
 				2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */,
-				2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */,
 				2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
 				2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */,
 				2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */,
-				2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */,
 				2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */,
 				2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */,
 				2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */,
@@ -385,11 +441,25 @@
 				2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */,
 				2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */,
 				2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */,
-				2A7CB2912CBC7201008334E1 /* MetaHeaderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ACC20172CC23DDC00D2A907 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2ACC20202CC23DDC00D2A907 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AB963EA2CA6E1A300E52EDF /* TaxStudy */;
+			targetProxy = 2ACC201F2CC23DDC00D2A907 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2AB963F82CA6E1A400E52EDF /* Debug */ = {
@@ -566,6 +636,40 @@
 			};
 			name = Release;
 		};
+		2ACC20222CC23DDD00D2A907 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5Y4JCK337;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.a9r.TaxStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaxStudy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaxStudy";
+			};
+			name = Debug;
+		};
+		2ACC20232CC23DDD00D2A907 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T5Y4JCK337;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.a9r.TaxStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaxStudy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaxStudy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,6 +687,15 @@
 			buildConfigurations = (
 				2AB963FB2CA6E1A400E52EDF /* Debug */,
 				2AB963FC2CA6E1A400E52EDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2ACC20212CC23DDD00D2A907 /* Build configuration list for PBXNativeTarget "TaxStudyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2ACC20222CC23DDD00D2A907 /* Debug */,
+				2ACC20232CC23DDD00D2A907 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

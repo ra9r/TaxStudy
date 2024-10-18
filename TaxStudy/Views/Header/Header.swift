@@ -16,6 +16,7 @@ struct Header: View {
             nameAndDescription
             Spacer()
         }
+        .padding(.bottom, 20)
     }
     
     var blueBox: some View {
@@ -24,8 +25,7 @@ struct Header: View {
                 .font(.largeTitle)
             Divider()
             VStack(alignment: .trailing) {
-//                Text("\(ts.grossIncome.asCurrency)")
-                Text("<< Placeholder >>")
+                Text("\(FederalTaxCalc(ts).grossIncome.asCurrency)")
                     .font(.headline)
                 Text("Gross Income")
                     .font(.subheadline)

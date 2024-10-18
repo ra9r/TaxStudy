@@ -86,6 +86,21 @@ extension TaxCreditType: DeductionType {
         return self.rawValue
     }
     
+    var isSupported: Bool {
+        switch self {
+        case .premiumTaxCredit:
+            fallthrough
+        case .lifetimeLearningCredit:
+            fallthrough
+        case .foreignTaxCredit:
+            fallthrough
+        case .customCredit:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var label: String {
         switch self {
         case .childTaxCredit:
@@ -121,7 +136,7 @@ extension TaxCreditType: DeductionType {
         case .elderlyOrDisabledTaxCredit:
             return String(localized: "Elderly or Disabled Tax Credit")
         case .customCredit:
-            return String(localized: "Custom")
+            return String(localized: "Other Credit")
         }
     }
     

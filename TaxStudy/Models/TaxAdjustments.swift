@@ -43,6 +43,21 @@ extension TaxAdjustmentType : DeductionType {
         return self.rawValue
     }
     
+    var isSupported: Bool {
+        switch (self) {
+        case .iraOr401kContribution:
+            fallthrough
+        case .hsaContribution:
+            fallthrough
+        case .earlyWithDrawalPenalties:
+            fallthrough
+        case .customAdjustment:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var label: String {
         switch self {
         case .iraOr401kContribution:
@@ -56,7 +71,7 @@ extension TaxAdjustmentType : DeductionType {
         case .earlyWithDrawalPenalties:
             return String(localized: "Early Withdrawal Penalties")
         case .customAdjustment:
-            return String(localized: "Custom Adjustment")
+            return String(localized: "Other Adjustment")
         }
     }
     

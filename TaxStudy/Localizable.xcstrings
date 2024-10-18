@@ -1,10 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld kWh" : {
+    "%@" : {
 
     },
-    "<< Placeholder >>" : {
+    "%lld kWh" : {
 
     },
     "2024" : {
@@ -88,7 +88,13 @@
     "Category" : {
 
     },
-    "Charitable Contribution" : {
+    "Charitable Cash Contribution" : {
+
+    },
+    "Charitable Contribution of Mileage" : {
+
+    },
+    "Charitable Stock or Asset Contribution" : {
 
     },
     "Check for temporary reinstatement of this deduction, which previously allowed up to $4,000 for qualified education expenses." : {
@@ -100,15 +106,6 @@
     "Child Tax Credit" : {
 
     },
-    "Custom" : {
-
-    },
-    "Custom Adjustment" : {
-
-    },
-    "Custom Deduction" : {
-
-    },
     "Deduct 50% of your self-employment taxes (SECA)." : {
 
     },
@@ -118,7 +115,10 @@
     "Deduct a portion of qualified long-term care insurance premiums, based on your age." : {
 
     },
-    "Deduct cash contributions up to 60% of your AGI, or appreciated assets up to 30%. Includes Donor-Advised Fund contributions." : {
+    "Deduct cash contributions up to 60% of your AGI" : {
+
+    },
+    "Deduct charitable asset contributions up to 30% of your AGI" : {
 
     },
     "Deduct depreciation on business or rental property following MACRS guidelines." : {
@@ -142,10 +142,10 @@
     "Deduct losses from federally declared disasters, subject to limits such as a $500 deductible." : {
 
     },
-    "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed." : {
+    "Deduct mileage driven for a charitable purpose at a rate of $0.14 per mile" : {
 
     },
-    "Deduct tax preparation fees as a business expense if self-employed." : {
+    "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed." : {
 
     },
     "Deduct unreimbursed medical expenses over 7.5% of your AGI." : {
@@ -158,9 +158,6 @@
 
     },
     "Deduct up to 20% of qualified business income for eligible taxpayers under IRC §199A." : {
-
-    },
-    "Deductions" : {
 
     },
     "Delete" : {
@@ -196,6 +193,9 @@
     "Energy Efficiency Improvement" : {
 
     },
+    "For rental properties, many expenses are deductible, and they can help reduce your taxable rental income. Deductible rental property expenses generally fall into several categories. " : {
+
+    },
     "Foreign Earned Income" : {
 
     },
@@ -221,9 +221,6 @@
 
     },
     "HSA or MSA Contribution" : {
-
-    },
-    "Income" : {
 
     },
     "Income earned outside the United States" : {
@@ -256,13 +253,13 @@
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
 
     },
-    "Investment and Advisory Fee" : {
-
-    },
     "IRA or 401(k) Contribution" : {
 
     },
     "IRA Withdrawal" : {
+
+    },
+    "Itemized" : {
 
     },
     "kWh" : {
@@ -319,6 +316,18 @@
     "Open..." : {
 
     },
+    "Ordinary Dividends" : {
+
+    },
+    "Other Adjustment" : {
+
+    },
+    "Other Credit" : {
+
+    },
+    "Other Deduction" : {
+
+    },
     "Other forms of tax-exempt income" : {
 
     },
@@ -329,9 +338,6 @@
 
     },
     "Other Tax-Exempt Income" : {
-
-    },
-    "Overview" : {
 
     },
     "Premium Tax Credit" : {
@@ -365,6 +371,9 @@
 
     },
     "Rental Income" : {
+
+    },
+    "Rental Property Expenses" : {
 
     },
     "Residential Renewable Energy" : {
@@ -418,16 +427,13 @@
     "Social Security benefits received by the spouse" : {
 
     },
-    "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025." : {
+    "Standard" : {
 
     },
     "State and Local Tax" : {
 
     },
     "Student Loan Interest" : {
-
-    },
-    "Tax Preparation Fee" : {
 
     },
     "Tax Rate" : {
@@ -437,9 +443,6 @@
 
     },
     "Taxable interest income" : {
-
-    },
-    "Total Ordinary Dividends" : {
 
     },
     "Total ordinary dividends, including both qualified and non-qualified" : {

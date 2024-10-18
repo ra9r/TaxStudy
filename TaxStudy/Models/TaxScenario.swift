@@ -68,12 +68,12 @@ class TaxScenario: Codable, Identifiable {
         income.total(for: .qualifiedDividends)
     }
     
-    var nonQualifiedDividends: Double {
-        totalDividends - qualifiedDividends
+    var ordinaryDividends: Double {
+        return income.total(for: .ordinaryDividends)
     }
     
     var totalDividends: Double {
-        return income.total(for: .totalOrdinaryDividends)
+        ordinaryDividends + qualifiedDividends
     }
     
     // MARK: - Misc Income
@@ -114,6 +114,7 @@ class TaxScenario: Codable, Identifiable {
         return income.total(for: .otherTaxExemptIncome)
     }
     
+    // MARK: - Adjustments (for AGI)
     var hsaContribution: Double {
         return adjustments.total(for: .hsaContribution)
     }
@@ -122,13 +123,23 @@ class TaxScenario: Codable, Identifiable {
         return adjustments.total(for: .iraOr401kContribution)
     }
     
-    var taxExemptIncome: Double {
-        return taxExemptInterest +
-        qualifiedHSADistributions +
-        rothDistributions +
-        otherTaxExemptIncome
+    var studentLoanInterest: Double {
+        return adjustments.total(for: .studentLoanInterest)
     }
     
+    var businessExpenses: Double {
+        return adjustments.total(for: .businessExpenses)
+    }
+    
+    var earlyWithdrawalPenalties: Double {
+        return adjustments.total(for: .earlyWithDrawalPenalties)
+    }
+    
+    var totalAdjustments: Double {
+        return hsaContribution + iraContribtuion + studentLoanInterest + businessExpenses + earlyWithdrawalPenalties
+    }
+    
+    // MARK: - Wages and Social Security
     var totalWages: Double {
         return wagesSelf + wagesSpouse
     }

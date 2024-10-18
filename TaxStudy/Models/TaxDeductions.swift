@@ -20,13 +20,14 @@ enum TaxDeductionType: String {
     /// improve your home.
     case mortgageInterestDeduction
     
-    /// Charitable Contributions
-    /// - Deduct contributions made to qualified charitable organizations. These can be:
-    /// - Cash contributions: Up to 60% of your AGI.
-    /// - Stock or appreciated assets: Up to 30% of your AGI.
-    /// - Donor-Advised Fund (DAF) contributions: Generally treated as charitable contributions.
-    /// - Mileage for charitable activities: 14 cents per mile.
-    case charitableContributionDeduction
+    /// Charitable Contributions of Cash: Up to 60% of your AGI.
+    case charitableCashContributionDeduction
+    
+    /// Charitable Contributions of Stock or appreciated assets: Up to 30% of your AGI.
+    case charitableAssetContributionDeduction
+    
+    /// Charitable Contributions of Mileage for charitable activities: 14 cents per mile.
+    case charitableMileageContributionDeduction
     
     /// Casualty and Theft Losses - Deduct losses from federally declared disasters, subject to a $500
     /// deductible and other limits.
@@ -45,7 +46,11 @@ enum TaxDeductionType: String {
     
     /// Long-Term Care Insurance Premiums - Deduct a portion of qualified long-term care insurance premiums
     /// based on age. The deduction limit varies annually.
-    case longTermCareInsurancePremiumsDeduction
+    case longTermCareInsurancePremiumsDeductions
+    
+    /// For rental properties, many expenses are deductible, and they can help reduce your taxable rental income.
+    /// Deductible rental property expenses generally fall into several categories.
+    case rentalPropertyExpensesDeduction
     
     /// Self-Employed Health Insurance Premiums - Deduct health, dental, and long-term care insurance
     /// premiums paid for you, your spouse, and dependents if you’re self-employed.
@@ -74,15 +79,6 @@ enum TaxDeductionType: String {
     /// vehicle expenses (depreciation, maintenance, gas) may be deducted.
     case mileageDeduction
     
-    /// Tax Preparation Fees - Deducted as a business expense if self-employed. Otherwise, no longer
-    /// deductible for individual filers.
-    case taxPreparationFeeDeduction
-    
-    /// Investment and Advisory Fees (Pre-2018) - Some unreimbursed investment-related expenses may be
-    /// deductible as a miscellaneous deduction, but the ability to deduct this has been suspended for
-    /// tax years 2018 through 2025 under the TCJA.
-    case investmentAndAdvisoryFeeDeduction
-    
     /// Depreciation - Deduct the depreciation of property (such as business property, rental real estate)
     /// under MACRS guidelines.
     case depreciationDeduction
@@ -101,16 +97,52 @@ extension TaxDeductionType: DeductionType {
         return self.rawValue
     }
     
+    var isSupported: Bool {
+        switch self {
+            
+        case .medicalAndDentalDeduction:
+            fallthrough
+        case .stateAndLocalTaxDeduction:
+            fallthrough
+        case .mortgageInterestDeduction:
+            fallthrough
+        case .charitableCashContributionDeduction:
+            fallthrough
+        case .charitableAssetContributionDeduction:
+            fallthrough
+        case .charitableMileageContributionDeduction:
+            fallthrough
+        case .tuitionAndFeesDeduction:
+            fallthrough
+        case .marginInterestDeduction:
+            fallthrough
+        case .depreciationDeduction:
+            fallthrough
+        case .customDeduction:
+            fallthrough
+        case .rentalPropertyExpensesDeduction:
+            return true
+        default:
+            return false
+        }
+    }
+    
     var label: String {
         switch self {
+        case .rentalPropertyExpensesDeduction:
+            return String(localized: "Rental Property Expenses")
         case .medicalAndDentalDeduction:
             return String(localized: "Medical and Dental")
         case .stateAndLocalTaxDeduction:
             return String(localized: "State and Local Tax")
         case .mortgageInterestDeduction:
             return String(localized: "Mortgage Interest")
-        case .charitableContributionDeduction:
-            return String(localized: "Charitable Contribution")
+        case .charitableCashContributionDeduction:
+            return String(localized: "Charitable Cash Contribution")
+        case .charitableAssetContributionDeduction:
+            return String(localized: "Charitable Stock or Asset Contribution")
+        case .charitableMileageContributionDeduction:
+            return String(localized: "Charitable Contribution of Mileage")
         case .casualtyAndTheftLossDeduction:
             return String(localized: "Casualty and Theft Loss")
         case .qualifiedBusinessIncomeDeduction:
@@ -119,7 +151,7 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Margin Interest")
         case .gamblingLossDeduction:
             return String(localized: "Gambling Loss")
-        case .longTermCareInsurancePremiumsDeduction:
+        case .longTermCareInsurancePremiumsDeductions:
             return String(localized: "Long-Term Care Insurance")
         case .selfEmployedHealthInsurancePremiumsDeduction:
             return String(localized: "Self-Employed Health Insurance")
@@ -135,29 +167,31 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Self-Employed Business Expense")
         case .mileageDeduction:
             return String(localized: "Mileage")
-        case .taxPreparationFeeDeduction:
-            return String(localized: "Tax Preparation Fee")
-        case .investmentAndAdvisoryFeeDeduction:
-            return String(localized: "Investment and Advisory Fee")
         case .depreciationDeduction:
             return String(localized: "Depreciation")
         case .netOperatingLossCarryforwardDeduction:
             return String(localized: "Net Operating Loss Carryforward")
         case .customDeduction:
-            return String(localized: "Custom Deduction")
+            return String(localized: "Other Deduction")
         }
     }
     
     var description: String {
         switch self {
+        case .rentalPropertyExpensesDeduction:
+            return String(localized: "For rental properties, many expenses are deductible, and they can help reduce your taxable rental income. Deductible rental property expenses generally fall into several categories. ")
         case .medicalAndDentalDeduction:
             return String(localized: "Deduct unreimbursed medical expenses over 7.5% of your AGI.")
         case .stateAndLocalTaxDeduction:
             return String(localized: "Deduct up to $10,000 in state and local income, property, and sales taxes, including property taxes on your primary residence.")
         case .mortgageInterestDeduction:
             return String(localized: "Deduct interest on up to $750,000 of mortgage debt, including home equity loans used for home improvements.")
-        case .charitableContributionDeduction:
-            return String(localized: "Deduct cash contributions up to 60% of your AGI, or appreciated assets up to 30%. Includes Donor-Advised Fund contributions.")
+        case .charitableCashContributionDeduction:
+            return String(localized: "Deduct cash contributions up to 60% of your AGI")
+        case .charitableAssetContributionDeduction:
+            return String(localized: "Deduct charitable asset contributions up to 30% of your AGI")
+        case .charitableMileageContributionDeduction:
+            return String(localized: "Deduct mileage driven for a charitable purpose at a rate of $0.14 per mile")
         case .casualtyAndTheftLossDeduction:
             return String(localized: "Deduct losses from federally declared disasters, subject to limits such as a $500 deductible.")
         case .qualifiedBusinessIncomeDeduction:
@@ -166,7 +200,7 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Deduct interest paid on loans used to purchase taxable investments, limited to net investment income.")
         case .gamblingLossDeduction:
             return String(localized: "Deduct gambling losses up to the amount of reported gambling winnings.")
-        case .longTermCareInsurancePremiumsDeduction:
+        case .longTermCareInsurancePremiumsDeductions:
             return String(localized: "Deduct a portion of qualified long-term care insurance premiums, based on your age.")
         case .selfEmployedHealthInsurancePremiumsDeduction:
             return String(localized: "Deduct health, dental, and long-term care premiums if you're self-employed.")
@@ -182,10 +216,6 @@ extension TaxDeductionType: DeductionType {
             return String(localized: "Deduct necessary business expenses like supplies, travel, and meals (50%), if self-employed.")
         case .mileageDeduction:
             return String(localized: "Deduct 65.5 cents per mile for business driving or actual vehicle expenses.")
-        case .taxPreparationFeeDeduction:
-            return String(localized: "Deduct tax preparation fees as a business expense if self-employed.")
-        case .investmentAndAdvisoryFeeDeduction:
-            return String(localized: "Some unreimbursed investment-related expenses were deductible before 2018, but this has been suspended through 2025.")
         case .depreciationDeduction:
             return String(localized: "Deduct depreciation on business or rental property following MACRS guidelines.")
         case .netOperatingLossCarryforwardDeduction:

@@ -37,6 +37,7 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                         Button(incomeType.label) {
                             deductions.add(.init(incomeType, amount: 0))
                         }
+                        .disabled(incomeType.isSupported == false)
                     }
                 } label: {
                     Image(systemName: "plus.circle.fill")

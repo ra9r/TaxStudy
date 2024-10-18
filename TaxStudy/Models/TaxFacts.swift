@@ -10,6 +10,7 @@ import Foundation
 /// Collection of tax brackets and other contraints and limits that are used in computing the taxes for a given year.
 class TaxFacts : Codable, Identifiable {
     var id: String = UUID().uuidString
+    var year: Int? = 2024
     var ordinaryTaxBrackets: [FilingStatus: TaxBrackets]
     var capitalGainTaxBrackets: [FilingStatus: TaxBrackets]
     var ssTaxThresholds: [FilingStatus: TaxBrackets]
@@ -20,9 +21,13 @@ class TaxFacts : Codable, Identifiable {
     var capitalLossLimit: Double // 3000
     var standardDeduction: [FilingStatus: Double] // 14600 in 2023 standard deduction for single filers
     var ssdiThreshold: Double // 34000
+    var charitableCashThreadholdRate: Double = 0.6
+    var charitableAssetThreadholdRate: Double = 0.3
+    var charitableMileageRate: Double = 0.14
     
     init(
         id: String? = nil,
+        year: Int? = 2024,
         ordinaryTaxBrackets: [FilingStatus : TaxBrackets],
         capitalGainTaxBrackets: [FilingStatus : TaxBrackets],
         ssTaxThresholds: [FilingStatus : TaxBrackets],
@@ -35,6 +40,7 @@ class TaxFacts : Codable, Identifiable {
         ssdiThreshold: Double
     ) {
         self.id = id ?? UUID().uuidString
+        self.year = year
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
         self.ssTaxThresholds = ssTaxThresholds
@@ -50,6 +56,7 @@ class TaxFacts : Codable, Identifiable {
 
 let DefaultTaxFacts2024 = TaxFacts(
     id: "OfficialTaxFacts2024",
+    year: 2024,
     ordinaryTaxBrackets: [
         .single: TaxBrackets(
             .init(0, 0.10),
@@ -141,6 +148,7 @@ let DefaultTaxFacts2024 = TaxFacts(
     niitRate: 0.038,
     standardDeduction: [
         .single: 14_600,
+        .marriedFilingSeparately: 14_600,
         .marriedFilingJointly: 29_200,
         .qualifiedWidow: 29_200,
         .headOfHousehold: 21_900
