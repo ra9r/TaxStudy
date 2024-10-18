@@ -16,6 +16,7 @@ struct Header: View {
             nameAndDescription
             Spacer()
         }
+        .padding(.bottom, 20)
     }
     
     var blueBox: some View {

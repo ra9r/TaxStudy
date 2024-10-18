@@ -26,7 +26,6 @@
 		2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB172CB9A3650075BBA0 /* ScenarioView.swift */; };
 		2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */; };
 		2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */; };
-		2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB372CBA902E0075BBA0 /* DataCard.swift */; };
 		2A51CB3B2CBA9B010075BBA0 /* FileCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */; };
 		2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* Header.swift */; };
 		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
@@ -34,7 +33,6 @@
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
-		2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2922CBC73BF008334E1 /* DataGridView.swift */; };
 		2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */; };
 		2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */; };
 		2A7CB2992CBCF407008334E1 /* HorizontalBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */; };
@@ -82,7 +80,6 @@
 		2A51CB1A2CB9A3650075BBA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaxStudy.entitlements; sourceTree = "<group>"; };
 		2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxStudyApp.swift; sourceTree = "<group>"; };
-		2A51CB372CBA902E0075BBA0 /* DataCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCard.swift; sourceTree = "<group>"; };
 		2A51CB3A2CBA9AFB0075BBA0 /* FileCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCommands.swift; sourceTree = "<group>"; };
 		2A6BA2A92CBE54AB007C3A27 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -91,7 +88,6 @@
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
-		2A7CB2922CBC73BF008334E1 /* DataGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGridView.swift; sourceTree = "<group>"; };
 		2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasonryLayout.swift; sourceTree = "<group>"; };
 		2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxChart.swift; sourceTree = "<group>"; };
 		2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChartView.swift; sourceTree = "<group>"; };
@@ -259,8 +255,6 @@
 			children = (
 				2A51CB162CB9A3650075BBA0 /* SummaryView.swift */,
 				2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */,
-				2A51CB372CBA902E0075BBA0 /* DataCard.swift */,
-				2A7CB2922CBC73BF008334E1 /* DataGridView.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -416,12 +410,10 @@
 				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
 				2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */,
-				2A7CB2932CBC73D4008334E1 /* DataGridView.swift in Sources */,
 				2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
 				2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */,
 				2A6BA2AA2CBE54AB007C3A27 /* Header.swift in Sources */,
-				2A51CB382CBA90420075BBA0 /* DataCard.swift in Sources */,
 				2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */,
 				2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */,
 				2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */,
