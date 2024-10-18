@@ -14,6 +14,7 @@ struct TaxStudyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(.white)
                 .environment(manager)
                 .onAppear {
                     do {
