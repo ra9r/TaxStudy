@@ -58,14 +58,14 @@ class FederalTaxCalc {
     
     // MARK: - AGI and MAGI
     
-    /// **AGI Before Social Security** This is a computed value that is used to compute various social security values.
-    var agiBeforeSocialSecurity: Double {
-        return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
-    }
+//    /// **AGI Before Social Security** This is a computed value that is used to compute various social security values.
+//    var agiBeforeSocialSecurity: Double {
+//        return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
+//    }
     
     /// **Adjusted Gross Income (AGI)** This is the *Total Income* with adjustments for taxable social security and "above the line" deductions
     var agi: Double {
-        return agiBeforeSocialSecurity + taxableSSDI
+        return totalIncome + taxableSSI - scenario.totalAdjustments
     }
     
     var magiForIRA: Double {
@@ -77,8 +77,33 @@ class FederalTaxCalc {
         scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
     }
     
+    var magiForRothIRA: Double {
+        return magiForIRA
+    }
+    
     var magiForNIIT: Double {
         return agi +
+        scenario.adjustments.total(for: .foreignHousingExclusion) +
+        scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
+    }
+    
+    var magiForACASubsidies: Double {
+        return agi +
+        scenario.taxExemptInterest +
+        scenario.adjustments.total(for: .foreignHousingExclusion) +
+        scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
+    }
+    
+    var magiForPassiveActivityLossRules: Double {
+        return agi +
+        scenario.taxExemptInterest +
+        scenario.adjustments.total(for: .iraOr401kContribution)
+    }
+    
+    var magiForSocialSecurity: Double {
+        let agiBeforeSSI = totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
+        return agiBeforeSSI +
+        scenario.taxExemptInterest +
         scenario.adjustments.total(for: .foreignHousingExclusion) +
         scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
     }
@@ -142,7 +167,7 @@ class FederalTaxCalc {
     // MARK: - Social Security
     
     var provisionalIncome: Double {
-        return agiBeforeSocialSecurity + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
+        return magiForSocialSecurity + (scenario.totalSocialSecurityIncome * 0.5)
     }
 
     var provisionalTaxRate: Double {
@@ -153,7 +178,7 @@ class FederalTaxCalc {
         return provisionalTaxRates.highestRate(for: provisionalIncome)
     }
     
-    var taxableSSDI: Double {
+    var taxableSSI: Double {
         return scenario.totalSocialSecurityIncome * provisionalTaxRate
     }
     

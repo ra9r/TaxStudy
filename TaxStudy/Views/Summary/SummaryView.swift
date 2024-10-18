@@ -13,7 +13,7 @@ struct SummaryView : View {
         ScrollView {
             VStack(alignment: .center) {
                 Header(ts: $ts)
-                KeyFigures(federalTaxes: FederalTaxCalc(ts))
+                KeyFigures(federalTaxes: FederalTaxCalc(ts), stateTaxes: NCTaxCalc(ts))
             }
             .padding()
         }

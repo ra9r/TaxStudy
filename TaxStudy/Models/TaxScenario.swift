@@ -135,8 +135,17 @@ class TaxScenario: Codable, Identifiable {
         return adjustments.total(for: .earlyWithDrawalPenalties)
     }
     
+    var foreignEarnedIncomeAndHousing: Double {
+        return adjustments.total(for: .foreignEarnedIncomeExclusion) + adjustments.total(for: .foreignHousingExclusion)
+    }
+    
     var totalAdjustments: Double {
-        return hsaContribution + iraContribtuion + studentLoanInterest + businessExpenses + earlyWithdrawalPenalties
+        return hsaContribution +
+        iraContribtuion +
+        studentLoanInterest +
+        businessExpenses +
+        earlyWithdrawalPenalties +
+        foreignEarnedIncomeAndHousing
     }
     
     // MARK: - Wages and Social Security

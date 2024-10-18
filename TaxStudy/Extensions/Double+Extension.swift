@@ -16,6 +16,16 @@ extension Double {
         return formatter.string(from: NSNumber(value: self))!
     }
     
+    func asCurrency(_ maxFractionDigits: Int = 2) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = maxFractionDigits
+        formatter.minimumFractionDigits = 0
+        formatter.locale = Locale.current // You can change this to another locale if needed
+        
+        return formatter.string(from: NSNumber(value: self))!
+    }
+    
     var asPercentage: String {
         let formatter = NumberFormatter()
                 formatter.numberStyle = .percent

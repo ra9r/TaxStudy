@@ -82,9 +82,6 @@
     "Carry forward business losses to offset future taxable income." : {
 
     },
-    "Carryforward Loss" : {
-
-    },
     "Casualty and Theft Loss" : {
 
     },
@@ -353,6 +350,9 @@
 
     },
     "Premium Tax Credit" : {
+
+    },
+    "Previous Carryforward Loss" : {
 
     },
     "Provides a credit for installing renewable energy systems in a home, like solar panels or wind turbines." : {

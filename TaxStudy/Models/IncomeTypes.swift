@@ -129,7 +129,7 @@ extension IncomeType {
         case .longTermCapitalGains:
             return String(localized: "Long-Term Capital Gains")
         case .carryforwardLoss:
-            return String(localized: "Carryforward Loss")
+            return String(localized: "Previous Carryforward Loss")
         case .qualifiedDividends:
             return String(localized: "Qualified Dividends")
         case .ordinaryDividends:
