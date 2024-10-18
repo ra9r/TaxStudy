@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct KeyFigures: View {
-    var federalTaxes: FederalTaxCalc
-    var stateTaxes: StateTaxCalc
+    @Binding var ts: TaxScenario
+    
 
     var body: some View {
+        let federalTaxes = FederalTaxCalc(ts)
+        let stateTaxes = NCTaxCalc(ts)
         CardView("Key Metrics") {
             HStack(alignment: .top) {
                 VStack {
@@ -24,7 +26,8 @@ struct KeyFigures: View {
                 }
                 Divider()
                 VStack {
-                    CardItem("Filing Status", value: federalTaxes.scenario.filingStatus.rawValue)
+                    CardPicker("Filing Status", selection: $ts.filingStatus)
+                    CardPicker("Employment Status", selection: $ts.employmentStatus)
                     CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)
                     CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
                     CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)

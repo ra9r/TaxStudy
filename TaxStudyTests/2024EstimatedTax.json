@@ -1,27 +1,70 @@
 [
   {
-    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
-    "name" : "Current Year Estimates",
-    "facts" : "OfficialTaxFacts2024",
-    "credits" : [
+    "income" : [
       {
-        "type" : "lifetimeLearningCredit",
-        "amount" : 2000,
-        "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379"
-      }
-    ],
-    "employmentStatus" : "Retired",
-    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
-    "deductions" : [
-      {
-        "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC",
-        "amount" : 40012.49,
-        "type" : "marginInterestDeduction"
+        "amount" : 39248,
+        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881",
+        "type" : "socialSecuritySelf"
       },
       {
-        "amount" : 11174.98,
+        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
+        "amount" : 44619,
+        "type" : "taxExemptInterest"
+      },
+      {
+        "type" : "longTermCapitalGains",
+        "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85",
+        "amount" : 253905.43
+      },
+      {
+        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
+        "type" : "shortTermCapitalGains",
+        "amount" : 182203.54
+      },
+      {
+        "type" : "qualifiedDividends",
+        "amount" : 104993,
+        "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA"
+      },
+      {
+        "type" : "ordinaryDividends",
+        "amount" : 107151.64,
+        "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7"
+      },
+      {
+        "amount" : 13357.96,
+        "type" : "interest",
+        "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B"
+      },
+      {
+        "type" : "carryforwardLoss",
+        "amount" : 2279214,
+        "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB"
+      }
+    ],
+    "filingStatus" : "Married Filing Jointly",
+    "deductions" : [
+      {
+        "type" : "marginInterestDeduction",
+        "amount" : 40012.49,
+        "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC"
+      },
+      {
+        "type" : "stateAndLocalTaxDeduction",
         "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
-        "type" : "stateAndLocalTaxDeduction"
+        "amount" : 11174.98
+      }
+    ],
+    "facts" : "OfficialTaxFacts2024",
+    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
+    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
+    "name" : "Current Year Estimates",
+    "employmentStatus" : "Retired",
+    "credits" : [
+      {
+        "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379",
+        "type" : "lifetimeLearningCredit",
+        "amount" : 2000
       }
     ],
     "adjustments" : [
@@ -30,49 +73,6 @@
         "amount" : 8300,
         "id" : "AC0C6C0E-9AEC-441A-81E7-FBCDD89CC3A9"
       }
-    ],
-    "income" : [
-      {
-        "amount" : 39248,
-        "type" : "socialSecuritySelf",
-        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881"
-      },
-      {
-        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
-        "amount" : 44619,
-        "type" : "taxExemptInterest"
-      },
-      {
-        "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85",
-        "amount" : 253905.43,
-        "type" : "longTermCapitalGains"
-      },
-      {
-        "amount" : 182203.54,
-        "type" : "shortTermCapitalGains",
-        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979"
-      },
-      {
-        "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA",
-        "type" : "qualifiedDividends",
-        "amount" : 104993
-      },
-      {
-        "type" : "ordinaryDividends",
-        "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7",
-        "amount" : 107151.64
-      },
-      {
-        "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B",
-        "type" : "interest",
-        "amount" : 13357.96
-      },
-      {
-        "type" : "carryforwardLoss",
-        "amount" : 2279214,
-        "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB"
-      }
-    ],
-    "filingStatus" : "Single"
+    ]
   }
 ]
