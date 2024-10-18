@@ -64,6 +64,12 @@
     "Amount" : {
 
     },
+    "Any foreign earned income that is reported on Form 2555 can be deducted." : {
+
+    },
+    "Any foreign housing expenses that are reported on Form 2555 can be deducted." : {
+
+    },
     "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted." : {
 
     },
@@ -197,6 +203,12 @@
 
     },
     "Foreign Earned Income" : {
+
+    },
+    "Foreign Earned Income Exclusion" : {
+
+    },
+    "Foreign Housing Exclusion/Deduction" : {
 
     },
     "Foreign Tax Credit" : {

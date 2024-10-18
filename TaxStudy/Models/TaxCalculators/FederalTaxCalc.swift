@@ -56,19 +56,31 @@ class FederalTaxCalc {
         scenario.otherTaxExemptIncome
     }
     
+    // MARK: - AGI and MAGI
+    
     /// **AGI Before Social Security** This is a computed value that is used to compute various social security values.
-    var agiBeforeSSDI: Double {
+    var agiBeforeSocialSecurity: Double {
         return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
     }
     
     /// **Adjusted Gross Income (AGI)** This is the *Total Income* with adjustments for taxable social security and "above the line" deductions
     var agi: Double {
-        return agiBeforeSSDI + taxableSSDI
+        return agiBeforeSocialSecurity + taxableSSDI
     }
     
-    var magi: Double {
-        // For simplicity, assume MAGI = AGI
-        return agi
+    var magiForIRA: Double {
+        return agi +
+        scenario.iraContribtuion +
+        scenario.deductions.total(for: .studentLoanInterestDeduction) +
+        scenario.deductions.total(for: .tuitionAndFeesDeduction) +
+        scenario.adjustments.total(for: .foreignHousingExclusion) +
+        scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
+    }
+    
+    var magiForNIIT: Double {
+        return agi +
+        scenario.adjustments.total(for: .foreignHousingExclusion) +
+        scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
     }
     
     // MARK: - Investment
@@ -130,7 +142,7 @@ class FederalTaxCalc {
     // MARK: - Social Security
     
     var provisionalIncome: Double {
-        return agiBeforeSSDI + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
+        return agiBeforeSocialSecurity + scenario.taxExemptInterest + (scenario.totalSocialSecurityIncome * 0.5)
     }
 
     var provisionalTaxRate: Double {
@@ -249,7 +261,7 @@ class FederalTaxCalc {
         }
         
         // Check if MAGI exceeds the threshold
-        let excessIncome = max(0, magi - threshold)
+        let excessIncome = max(0, magiForNIIT - threshold)
         
         // The 3.8% NIIT is applied to the lesser of net investment income or the excess MAGI
         let niitIncome = min(netInvestmentIncome, excessIncome)
@@ -330,7 +342,7 @@ class FederalTaxCalc {
             print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus)")
             return false
         }
-        return max(0, magi - threshold) > 0
+        return max(0, magiForNIIT - threshold) > 0
     }
     
     var isSubjectToFICA: Bool {

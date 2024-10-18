@@ -34,6 +34,10 @@ enum TaxAdjustmentType : String, CaseIterable {
     /// bond that is reported on Form 1099-INT or 1099-DIV can be deducted.
     case earlyWithDrawalPenalties
     
+    case foreignEarnedIncomeExclusion
+    
+    case foreignHousingExclusion
+    
     /// Catch all adjustment for supporting future changes to the tax code.
     case customAdjustment
 }
@@ -70,6 +74,10 @@ extension TaxAdjustmentType : DeductionType {
             return String(localized: "Business Expenses")
         case .earlyWithDrawalPenalties:
             return String(localized: "Early Withdrawal Penalties")
+        case .foreignEarnedIncomeExclusion:
+            return String(localized: "Foreign Earned Income Exclusion")
+        case .foreignHousingExclusion:
+            return String(localized: "Foreign Housing Exclusion/Deduction")
         case .customAdjustment:
             return String(localized: "Other Adjustment")
         }
@@ -87,6 +95,10 @@ extension TaxAdjustmentType : DeductionType {
             return String(localized: "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor.")
         case .earlyWithDrawalPenalties:
             return String(localized: "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted.")
+        case .foreignEarnedIncomeExclusion:
+            return String(localized: "Any foreign earned income that is reported on Form 2555 can be deducted.")
+        case .foreignHousingExclusion:
+            return String(localized: "Any foreign housing expenses that are reported on Form 2555 can be deducted.")
         case .customAdjustment:
             return String(localized: "Catch all adjustment for supporting future changes to the tax code.")
         }
