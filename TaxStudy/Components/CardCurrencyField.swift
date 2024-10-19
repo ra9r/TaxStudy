@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardField: View {
+struct CardCurrencyField: View {
     var label: String
     @Binding var amount: Double
     

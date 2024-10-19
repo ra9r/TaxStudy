@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
 		2A51CB202CB9A3650075BBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB192CB9A3650075BBA0 /* Assets.xcassets */; };
-		2A51CB222CB9A3650075BBA0 /* CardField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB002CB9A3650075BBA0 /* CardField.swift */; };
+		2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */; };
 		2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */; };
 		2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB042CB9A3650075BBA0 /* String+Extension.swift */; };
 		2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB072CB9A3650075BBA0 /* FilingStatus.swift */; };
@@ -43,6 +43,7 @@
 		2A7CB2A32CBDE4B2008334E1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */; };
 		2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */; };
 		2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50A2CC2F3B000546505 /* CardPicker.swift */; };
+		2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50C2CC35EE800546505 /* CardNumberField.swift */; };
 		2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */; };
 		2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */; };
 		2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */; };
@@ -61,7 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A51CB002CB9A3650075BBA0 /* CardField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardField.swift; sourceTree = "<group>"; };
+		2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrencyField.swift; sourceTree = "<group>"; };
 		2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB042CB9A3650075BBA0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB072CB9A3650075BBA0 /* FilingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilingStatus.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionsView.swift; sourceTree = "<group>"; };
 		2AA0B50A2CC2F3B000546505 /* CardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPicker.swift; sourceTree = "<group>"; };
+		2AA0B50C2CC35EE800546505 /* CardNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberField.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracketEditor.swift; sourceTree = "<group>"; };
 		2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTypes.swift; sourceTree = "<group>"; };
@@ -140,7 +142,8 @@
 				2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */,
 				2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */,
 				2A6BA2AF2CBE645D007C3A27 /* CardView.swift */,
-				2A51CB002CB9A3650075BBA0 /* CardField.swift */,
+				2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */,
+				2AA0B50C2CC35EE800546505 /* CardNumberField.swift */,
 				2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */,
 				2AA0B50A2CC2F3B000546505 /* CardPicker.swift */,
 			);
@@ -409,7 +412,7 @@
 			files = (
 				2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */,
 				2ACC20272CC267B500D2A907 /* KeyFigures.swift in Sources */,
-				2A51CB222CB9A3650075BBA0 /* CardField.swift in Sources */,
+				2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */,
 				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
 				2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */,
@@ -437,6 +440,7 @@
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,
 				2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */,
 				2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */,
+				2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */,
 				2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */,
 				2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */,
 				2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */,

@@ -22,10 +22,13 @@ struct KeyFigures: View {
                     CardItem("Deductions", value: federalTaxes.deduction.asCurrency(0))
                     CardItem("Taxable Income", value: federalTaxes.taxableIncome.asCurrency(0))
                     CardItem("Federal Taxes", value: federalTaxes.taxesOwed.asCurrency(0))
+                    CardItem("FICA Taxes", value: federalTaxes.totalFICATax.asCurrency(0))
                     CardItem("State Taxes", value: stateTaxes.taxesOwed.asCurrency(0))
                 }
                 Divider()
                 VStack {
+                    CardNumberField("Age (Self)", amount: $ts.ageSelf)
+                    CardNumberField("Age (Self)", amount: $ts.ageSpouce)
                     CardPicker("Filing Status", selection: $ts.filingStatus)
                     CardPicker("Employment Status", selection: $ts.employmentStatus)
                     CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)

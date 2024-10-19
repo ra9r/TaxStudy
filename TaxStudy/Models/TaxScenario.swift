@@ -21,11 +21,15 @@ class TaxScenario: Codable, Identifiable {
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
     var facts: String
+    var ageSelf: Int = 50
+    var ageSpouce: Int = 50
     
-    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, facts: TaxFacts? = nil) {
+    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, ageSelf: Int = 50, ageSpouce: Int = 50, facts: TaxFacts? = nil) {
         self.name = name
         self.filingStatus = filingStatus
         self.employmentStatus = employmentStatus
+        self.ageSelf = ageSelf
+        self.ageSpouce = ageSpouce
         self.facts = facts?.id ?? DefaultTaxFacts2024.id
     }
     

@@ -52,7 +52,7 @@ struct IncomeEditor: View {
             
             // Iterate through the filtered sources
             ForEach(filteredSources.indices, id: \.self) { index in
-                CardField(filteredSources[index].type.label,
+                CardCurrencyField(filteredSources[index].type.label,
                           amount: $incomeSources.sources[incomeSources.sources.firstIndex(where: { $0.id == filteredSources[index].id })!].amount)
                 .help(filteredSources[index].type.description)
                 .contextMenu {

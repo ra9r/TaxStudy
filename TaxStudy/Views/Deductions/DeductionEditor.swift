@@ -46,7 +46,7 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
             }
         } content: {
             ForEach(deductions.items.indices, id: \.self) { index in
-                CardField(deductions.items[index].type.label,
+                CardCurrencyField(deductions.items[index].type.label,
                               amount: $deductions.items[index].amount)
                 .help(deductions.items[index].type.description)
                 .contextMenu {
