@@ -65,7 +65,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.deduction == 32_300)
         #expect(fedTax.taxableIncome.roundedCurrency() == 67_700)
         #expect(fedTax.taxesOwed.roundedCurrency() == 7_660)
-        #expect(fedTax.marginalOrdinaryTaxRate == 0.22)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 7.7)
         
         #expect(fedTax.netLTCG == 0)
@@ -108,7 +108,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.deduction == 32_300)
         #expect(fedTax.taxableIncome.roundedCurrency() == 67_700)
         #expect(fedTax.taxesOwed.roundedCurrency() == 7_660)
-        #expect(fedTax.marginalOrdinaryTaxRate == 0.22)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 7.7)
         
         #expect(fedTax.netLTCG == 0)
@@ -188,7 +188,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.taxableSSI == 13_480)
         #expect(fedTax.provisionalIncome == 52_800)
         #expect(fedTax.provisionalTaxRate == 0.85)
-        #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.10)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 0)
         
         // MARK: Add LTCG $16,000 of which 50% is gains
@@ -205,7 +205,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.taxableSSI == 20_280)
         #expect(fedTax.provisionalIncome == 60_800)
         #expect(fedTax.provisionalTaxRate == 0.85)
-        #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.10)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 0)
         
         
@@ -219,7 +219,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.taxableSSI == 20_280)
         #expect(fedTax.provisionalIncome == 60_800)
         #expect(fedTax.provisionalTaxRate == 0.85)
-        #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.10)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 0)
         
     }

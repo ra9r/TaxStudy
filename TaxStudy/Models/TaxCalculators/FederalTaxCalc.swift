@@ -408,7 +408,7 @@ class FederalTaxCalc {
         
         let income = max(0, taxableIncome)
         
-        guard let highestBracket = brackets.highestBracket(for: agi) else {
+        guard let highestBracket = brackets.highestBracket(for: income) else {
             print("Error: Failed to find highest bracket for \(income), default to 0")
             return 0
         }
@@ -424,7 +424,7 @@ class FederalTaxCalc {
         
         let income = max(0, taxableIncome)
         
-        guard let highestBracket = brackets.highestBracket(for: agi) else {
+        guard let highestBracket = brackets.highestBracket(for: income) else {
             print("Error: Failed to find highest bracket for \(income), default to 0")
             return 0
         }
