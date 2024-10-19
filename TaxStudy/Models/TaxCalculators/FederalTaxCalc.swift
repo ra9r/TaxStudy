@@ -192,14 +192,16 @@ class FederalTaxCalc {
             return 0
         }
         
-//        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
-//            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
-//            return 0
-//        }
+        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
+            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
         
 //        let excessProvisionalIncomeOverThreshold = provisionalIncome - highestBracket.threshold
         
-        return provisionalTaxRates.progressiveTax(for: provisionalIncome)
+        let maxTaxableSocialSecurityIncome = scenario.totalSocialSecurityIncome * highestBracket.rate
+        
+        return min(maxTaxableSocialSecurityIncome, provisionalTaxRates.progressiveTax(for: provisionalIncome))
     }
     
     // MARK: - Deductions
