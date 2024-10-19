@@ -65,7 +65,7 @@ class FederalTaxCalc {
     
     /// **Adjusted Gross Income (AGI)** This is the *Total Income* with adjustments for taxable social security and "above the line" deductions
     var agi: Double {
-        return agiBeforeSSI + taxableSSI - scenario.totalAdjustments
+        return agiBeforeSSI + taxableSSI
     }
     
     var agiBeforeSSI: Double {
@@ -191,14 +191,14 @@ class FederalTaxCalc {
             return 0
         }
         
-        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
-            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
-            return 0
-        }
+//        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
+//            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+//            return 0
+//        }
         
-        let excessProvisionalIncomeOverThreshold = provisionalIncome - highestBracket.threshold
+//        let excessProvisionalIncomeOverThreshold = provisionalIncome - highestBracket.threshold
         
-        return excessProvisionalIncomeOverThreshold * provisionalTaxRate
+        return provisionalTaxRates.progressiveTax(for: provisionalIncome)
     }
     
     // MARK: - Deductions
@@ -301,7 +301,8 @@ class FederalTaxCalc {
             print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
-        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: taxableIncome) else {
+        
+        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: preferentialIncome) else {
             print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
             return 0
         }
@@ -315,12 +316,12 @@ class FederalTaxCalc {
             return 0
         }
         
-        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: taxableIncome) else {
+        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: preferentialIncome) else {
             print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
             return 0
         }
         
-        return max(0, netLTCG) * highestBracket.rate
+        return netLTCG * highestBracket.rate
     }
     
     var netInvestmentIncomeTax: Double {

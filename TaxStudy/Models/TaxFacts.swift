@@ -94,15 +94,15 @@ let DefaultTaxFacts2024 = TaxFacts(
     ],
     capitalGainTaxBrackets: [
         .single: TaxBrackets(
-            .init(0, 0.10),
+            .init(0, 0.0),
             .init(47_026, 0.15),
             .init(518_901, 0.20)),
         .marriedFilingJointly: TaxBrackets(
-            .init(0, 0.10),
+            .init(0, 0.0),
             .init(94051, 0.15),
             .init(583751, 0.20)),
         .headOfHousehold: TaxBrackets(
-            .init(0, 0.10),
+            .init(0, 0.0),
             .init(63_001, 0.15),
             .init(551_351, 0.20))
     ],
