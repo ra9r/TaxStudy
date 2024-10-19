@@ -186,6 +186,7 @@ class FederalTaxCalc {
     }
     
     var taxableSSI: Double {
+        if scenario.totalSocialSecurityIncome == 0 { return 0 } // You can't have taxes on SSI if there is no SSI.
         guard let provisionalTaxRates = facts.provisionalIncomeThresholds[scenario.filingStatus] else {
             print("Error: No provisional tax rates for \(provisionalIncome), defaulting to 0.")
             return 0
