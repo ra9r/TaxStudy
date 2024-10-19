@@ -34,3 +34,18 @@ extension Double {
                 return formatter.string(from: NSNumber(value: self)) ?? "\(self * 100)%"
     }
 }
+
+extension Double {
+    func roundedCurrency(_ decimals: Int = 0) -> Double {
+        let multiplier = pow(10.0, Double(decimals))
+        return (self * multiplier).rounded() / multiplier
+    }
+}
+
+extension Double {
+    func roundedPercentage(_ decimals: Int = 0) -> Double {
+        let percentage = self * 100
+        let multiplier = pow(10.0, Double(decimals))
+        return (percentage * multiplier).rounded() / multiplier
+    }
+}

@@ -1,40 +1,55 @@
 [
   {
-    "income" : [
+    "ageSelf" : 50,
+    "ageSpouse" : 50,
+    "deductions" : [
       {
-        "amount" : 39248,
-        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881",
-        "type" : "socialSecuritySelf"
+        "amount" : 40012.49,
+        "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC",
+        "type" : "marginInterestDeduction"
       },
       {
-        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
+        "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
+        "amount" : 11174.98,
+        "type" : "stateAndLocalTaxDeduction"
+      }
+    ],
+    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
+    "income" : [
+      {
+        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881",
+        "type" : "socialSecuritySelf",
+        "amount" : 39248
+      },
+      {
         "type" : "taxExemptInterest",
-        "amount" : 44619
+        "amount" : 44619,
+        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860"
       },
       {
         "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85",
-        "amount" : 253905.43,
-        "type" : "longTermCapitalGains"
+        "type" : "longTermCapitalGains",
+        "amount" : 253905.43
       },
       {
-        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
         "amount" : 182203.54,
+        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
         "type" : "shortTermCapitalGains"
       },
       {
+        "amount" : 104993,
         "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA",
-        "type" : "qualifiedDividends",
-        "amount" : 104993
+        "type" : "qualifiedDividends"
       },
       {
-        "amount" : 107151.64,
         "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7",
+        "amount" : 107151.64,
         "type" : "ordinaryDividends"
       },
       {
         "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B",
-        "amount" : 13357.96,
-        "type" : "interest"
+        "type" : "interest",
+        "amount" : 13357.96
       },
       {
         "amount" : 2279214,
@@ -42,28 +57,16 @@
         "type" : "carryforwardLoss"
       }
     ],
+    "employmentStatus" : "Retired",
     "adjustments" : [
       {
-        "amount" : 8300,
+        "id" : "AC0C6C0E-9AEC-441A-81E7-FBCDD89CC3A9",
         "type" : "hsaContribution",
-        "id" : "AC0C6C0E-9AEC-441A-81E7-FBCDD89CC3A9"
+        "amount" : 8300
       }
     ],
-    "employmentStatus" : "Retired",
-    "filingStatus" : "Married Filing Jointly",
-    "ageSpouse" : 50,
-    "deductions" : [
-      {
-        "type" : "marginInterestDeduction",
-        "amount" : 40012.49,
-        "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC"
-      },
-      {
-        "amount" : 11174.98,
-        "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
-        "type" : "stateAndLocalTaxDeduction"
-      }
-    ],
+    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
+    "facts" : "OfficialTaxFacts2024",
     "credits" : [
       {
         "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379",
@@ -71,28 +74,32 @@
         "amount" : 2000
       }
     ],
-    "facts" : "OfficialTaxFacts2024",
-    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
-    "ageSelf" : 50,
     "name" : "Current Year Estimates",
-    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE"
+    "filingStatus" : "Married Filing Jointly"
   },
   {
+    "name" : "$0 Tax on $100,000",
     "filingStatus" : "Married Filing Jointly",
+    "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
+    "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
+    "ageSelf" : 65,
+    "ageSpouse" : 65,
+    "employmentStatus" : "Retired",
+    "facts" : "OfficialTaxFacts2024",
     "income" : [
       {
+        "amount" : 38400,
         "id" : "865CA641-D988-4F0C-8DF6-641CD22E1797",
-        "amount" : 62400,
         "type" : "socialSecuritySelf"
       },
       {
         "id" : "FA8C43B7-D34C-4C7A-B770-C31D25332F67",
-        "amount" : 10000,
-        "type" : "qualifiedDividends"
+        "type" : "qualifiedDividends",
+        "amount" : 10000
       },
       {
-        "amount" : 11600,
         "type" : "iraWithdrawal",
+        "amount" : 11600,
         "id" : "79881996-8523-4B14-BD7D-F9C6AB466029"
       },
       {
@@ -101,62 +108,91 @@
         "amount" : 8000
       },
       {
+        "type" : "otherTaxExemptIncome",
         "id" : "C6F63E19-19BF-4F76-922C-B36278CACD87",
-        "amount" : 8000,
-        "type" : "otherTaxExemptIncome"
+        "amount" : 8000
+      },
+      {
+        "type" : "socialSecuritySpouse",
+        "id" : "AC3F2450-13C6-468C-9065-013946592E8C",
+        "amount" : 24000
       }
     ],
     "credits" : [
 
     ],
-    "ageSelf" : 65,
-    "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
-    "employmentStatus" : "Retired",
-    "ageSpouse" : 65,
-    "adjustments" : [
-
-    ],
-    "facts" : "OfficialTaxFacts2024",
-    "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
     "deductions" : [
 
     ],
-    "name" : "$0 Tax on $100,000"
-  },
-  {
-    "id" : "0BD75978-2901-493A-AC93-55463A99F397",
-    "employmentStatus" : "Retired",
     "adjustments" : [
 
-    ],
-    "facts" : "OfficialTaxFacts2024",
+    ]
+  },
+  {
     "income" : [
       {
+        "type" : "iraWithdrawal",
         "amount" : 30000,
-        "id" : "3D405528-D42A-4171-82F3-2270583680E8",
-        "type" : "iraWithdrawal"
+        "id" : "3D405528-D42A-4171-82F3-2270583680E8"
       },
       {
-        "id" : "7ED776DD-63B2-4785-8858-A399BDD0E732",
         "amount" : 67500,
+        "id" : "7ED776DD-63B2-4785-8858-A399BDD0E732",
         "type" : "longTermCapitalGains"
       },
       {
         "type" : "otherTaxExemptIncome",
-        "amount" : 22500,
-        "id" : "A2638736-D9A9-4118-814C-80BC44CCB1E2"
+        "id" : "A2638736-D9A9-4118-814C-80BC44CCB1E2",
+        "amount" : 22500
       }
     ],
-    "ageSelf" : 65,
     "name" : "$0 Tax on $120,000",
-    "deductions" : [
-
-    ],
-    "filingStatus" : "Married Filing Jointly",
+    "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
+    "employmentStatus" : "Retired",
     "credits" : [
 
     ],
+    "facts" : "OfficialTaxFacts2024",
+    "deductions" : [
+
+    ],
+    "id" : "0BD75978-2901-493A-AC93-55463A99F397",
+    "adjustments" : [
+
+    ],
+    "filingStatus" : "Married Filing Jointly",
     "ageSpouse" : 65,
-    "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY"
+    "ageSelf" : 65
+  },
+  {
+    "income" : [
+      {
+        "id" : "9912CD1E-CD98-4ABE-995E-74BA1D928F11",
+        "type" : "wagesSelf",
+        "amount" : 50000
+      },
+      {
+        "type" : "wagesSpouse",
+        "amount" : 50000,
+        "id" : "0BA81810-CE35-449C-A530-239F9FC682D2"
+      }
+    ],
+    "credits" : [
+
+    ],
+    "ageSelf" : 50,
+    "ageSpouse" : 50,
+    "description" : "",
+    "name" : "$100,000 in Wages",
+    "filingStatus" : "Single",
+    "facts" : "OfficialTaxFacts2024",
+    "employmentStatus" : "Retired",
+    "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
+    "deductions" : [
+
+    ],
+    "adjustments" : [
+
+    ]
   }
 ]

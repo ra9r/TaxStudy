@@ -18,14 +18,19 @@ class TaxFacts : Codable, Identifiable {
     var ssTaxThresholds: [FilingStatus: TaxBrackets]
     /// The FICA income thresholds for Medicare Taxes
     var medicareTaxThresholds: [FilingStatus: TaxBrackets]
+    
     var provisionalIncomeThresholds: [FilingStatus: TaxBrackets]
+    
     var niitThresholds: [FilingStatus: Double]
     var niitRate: Double
+    
     var capitalLossLimit: Double // 3000
+    
     var standardDeduction: [FilingStatus: Double]
     var standardDeductionBonus: [FilingStatus: Double]
     var standardDeductionBonusAge: Int
-    var ssdiThreshold: Double // 34000
+    
+//    var ssdiThreshold: Double // 34000
     var charitableCashThreadholdRate: Double = 0.6
     var charitableAssetThreadholdRate: Double = 0.3
     var charitableMileageRate: Double = 0.14
@@ -43,8 +48,8 @@ class TaxFacts : Codable, Identifiable {
         standardDeduction: [FilingStatus : Double],
         startardDeductionBonus: [FilingStatus : Double],
         standardDeductionBonusAge: Int,
-        capitalLossLimit: Double,
-        ssdiThreshold: Double
+        capitalLossLimit: Double
+//        ssdiThreshold: Double
     ) {
         self.id = id ?? UUID().uuidString
         self.year = year
@@ -59,7 +64,7 @@ class TaxFacts : Codable, Identifiable {
         self.standardDeduction = standardDeduction
         self.standardDeductionBonus = startardDeductionBonus
         self.standardDeductionBonusAge = standardDeductionBonusAge
-        self.ssdiThreshold = ssdiThreshold
+//        self.ssdiThreshold = ssdiThreshold
     }
 }
 
@@ -109,25 +114,34 @@ let DefaultTaxFacts2024 = TaxFacts(
     ssTaxThresholds: [
         .single: TaxBrackets(
             .init(0, 0.062),
-            .init(160_200, 0.0)),
+            .init(168_600, 0.0)),
         .marriedFilingJointly: TaxBrackets(
             .init(0, 0.062),
-            .init(160_200, 0.0)),
+            .init(168_600, 0.0)),
+        .marriedFilingSeparately: TaxBrackets(
+            .init(0, 0.062),
+            .init(168_600, 0.0)),
         .headOfHousehold: TaxBrackets(
             .init(0, 0.062),
-            .init(160_200, 0.0))
+            .init(168_600, 0.0)),
+        .qualifiedWidow: TaxBrackets(
+            .init(0, 0.062),
+            .init(168_600, 0.0))
     ],
     medicareTaxThresholds: [
         .single: TaxBrackets(
-            .init(0, 0.045),
+            .init(0, 0.029),
             .init(200_000, 0.009)),
         .marriedFilingJointly: TaxBrackets(
-            .init(0, 0.045),
+            .init(0, 0.029),
             .init(250_000, 0.009)),
         .marriedFilingSeparately: TaxBrackets(
-            .init(0, 0.045),
+            .init(0, 0.029),
             .init(125_000, 0.009)),
         .headOfHousehold: TaxBrackets(
+            .init(0, 0.045),
+            .init(200_000, 0.009)),
+        .qualifiedWidow: TaxBrackets(
             .init(0, 0.045),
             .init(200_000, 0.009))
     ],
@@ -170,6 +184,6 @@ let DefaultTaxFacts2024 = TaxFacts(
         .headOfHousehold: 1_950
     ],
     standardDeductionBonusAge: 65,
-    capitalLossLimit: 3000,
-    ssdiThreshold: 34000
+    capitalLossLimit: 3000
+//    ssdiThreshold: 34000
 )
