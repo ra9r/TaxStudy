@@ -114,8 +114,12 @@ class TaxScenarioManager {
     }
     
     func openLastSavedFile() throws {
-        guard let lastSavedFilePath = UserDefaults.standard.string(forKey: "lastOpenedFile") else { return }
-        let lastSavedFileURL = URL(fileURLWithPath: lastSavedFilePath)
-        try open(from: lastSavedFileURL)
+        let recentDocuments = NSDocumentController.shared.recentDocumentURLs
+        
+        if recentDocuments.isEmpty {
+            return
+        } else {
+            try open(from: recentDocuments.first!)
+        }
     }
 }
