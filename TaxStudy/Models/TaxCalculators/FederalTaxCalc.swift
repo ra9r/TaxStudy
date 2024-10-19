@@ -65,7 +65,11 @@ class FederalTaxCalc {
     
     /// **Adjusted Gross Income (AGI)** This is the *Total Income* with adjustments for taxable social security and "above the line" deductions
     var agi: Double {
-        return totalIncome + taxableSSI - scenario.totalAdjustments
+        return agiBeforeSSI + taxableSSI - scenario.totalAdjustments
+    }
+    
+    var agiBeforeSSI: Double {
+        return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
     }
     
     var magiForIRA: Double {
@@ -101,7 +105,6 @@ class FederalTaxCalc {
     }
     
     var magiForSocialSecurity: Double {
-        let agiBeforeSSI = totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
         return agiBeforeSSI +
         scenario.taxExemptInterest +
         scenario.adjustments.total(for: .foreignHousingExclusion) +
@@ -175,11 +178,27 @@ class FederalTaxCalc {
             print("Error: No provisional tax rates for \(provisionalIncome), defaulting to 0.")
             return 0
         }
-        return provisionalTaxRates.highestRate(for: provisionalIncome)
+        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
+            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
+        return highestBracket.rate
     }
     
     var taxableSSI: Double {
-        return scenario.totalSocialSecurityIncome * provisionalTaxRate
+        guard let provisionalTaxRates = facts.provisionalIncomeThresholds[scenario.filingStatus] else {
+            print("Error: No provisional tax rates for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
+        
+        guard let highestBracket = provisionalTaxRates.highestBracket(for: provisionalIncome) else {
+            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
+        
+        let excessProvisionalIncomeOverThreshold = provisionalIncome - highestBracket.threshold
+        
+        return excessProvisionalIncomeOverThreshold * provisionalTaxRate
     }
     
     // MARK: - Deductions
@@ -188,7 +207,21 @@ class FederalTaxCalc {
             print("Error: No standard deduction for \(scenario.filingStatus), defaulting to 0.")
             return 0
         }
-        return standardDeduction
+        
+        guard let standardDeductionBonus = facts.standardDeductionBonus[scenario.filingStatus] else {
+            print("Error: No standard deduction bonus for \(scenario.filingStatus), defaulting to 0.")
+            return 0
+        }
+        
+        let selfBonus = scenario.ageSelf >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
+        let spouceBonus = scenario.ageSpouse >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
+        
+        switch scenario.filingStatus {
+        case .marriedFilingJointly:
+            return standardDeduction + selfBonus + spouceBonus
+        default:
+            return standardDeduction + selfBonus
+        }
     }
     
     var deductibleMedicalExpenses: Double {
@@ -268,7 +301,12 @@ class FederalTaxCalc {
             print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
-        return scenario.qualifiedDividends * capitalGainTaxBrackets.highestRate(for: taxableIncome)
+        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: taxableIncome) else {
+            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
+        
+        return scenario.qualifiedDividends * highestBracket.rate
     }
     
     var capitalGainsTax: Double {
@@ -276,7 +314,13 @@ class FederalTaxCalc {
             print("Failed to find tax brackets for \(scenario.filingStatus)")
             return 0
         }
-        return max(0, netLTCG) * capitalGainTaxBrackets.highestRate(for: taxableIncome)
+        
+        guard let highestBracket = capitalGainTaxBrackets.highestBracket(for: taxableIncome) else {
+            print("Error: No highest bracket for \(provisionalIncome), defaulting to 0.")
+            return 0
+        }
+        
+        return max(0, netLTCG) * highestBracket.rate
     }
     
     var netInvestmentIncomeTax: Double {
@@ -297,6 +341,7 @@ class FederalTaxCalc {
         return niit
     }
     
+    /// Return the portion of FICA taxes for Sociai Security
     var socialSecurityTax: Double {
         guard let taxRates = facts.ssTaxThresholds[scenario.filingStatus] else {
             print("Error: Failed to find SS tax rates for \(scenario.filingStatus)")
@@ -312,6 +357,7 @@ class FederalTaxCalc {
         return forSelf + forSpouse
     }
     
+    /// Returns the portion of FICA taxes for Medicare
     var medicareTax: Double {
         guard let taxRates = facts.medicareTaxThresholds[scenario.filingStatus] else {
             print("Error: Failed to find Medicate tax rates for \(scenario.filingStatus)")
@@ -332,7 +378,7 @@ class FederalTaxCalc {
     }
 
     var taxesOwed: Double {
-        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax + totalFICATax
+        return ordinaryIncomeTax + qualifiedDividendTax + capitalGainsTax + netInvestmentIncomeTax
     }
     
     var safeHarborTax: Double {
@@ -344,13 +390,13 @@ class FederalTaxCalc {
     var maginalCapitalGainsTaxRate: Double {
         let brackets = facts.capitalGainTaxBrackets[scenario.filingStatus]
         
-        return brackets?.highestRate(for: preferentialIncome) ?? 0
+        return brackets?.highestBracket(for: preferentialIncome)?.rate ?? 0
     }
     
     var marginalOrdinaryTaxRate: Double {
         let brackets = facts.ordinaryTaxBrackets[scenario.filingStatus]
         
-        return brackets?.highestRate(for: ordinaryIncome) ?? 0
+        return brackets?.highestBracket(for: ordinaryIncome)?.rate ?? 0
     }
     
     var averageTaxRate: Double {

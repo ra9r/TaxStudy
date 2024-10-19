@@ -30,22 +30,22 @@ class TaxBrackets : Codable {
         self.brackets = brackets.sorted { $0.threshold < $1.threshold }
     }
     
-    func highestRate(for amount: Double) -> Double {
+    func highestBracket(for amount: Double) -> TaxBracket? {
         // Sort the brackets by their threshold in ascending order
         let sortedBrackets = brackets
         
         // Iterate through the sorted brackets to find the highest applicable rate
-        var applicableRate: Double = 0
+        var applicableBracket: TaxBracket?
         
         for bracket in sortedBrackets {
             if amount >= bracket.threshold {
-                applicableRate = bracket.rate
+                applicableBracket = bracket
             } else {
                 break
             }
         }
         
-        return applicableRate
+        return applicableBracket
     }
     
     func progressiveTax(for income: Double) -> Double {

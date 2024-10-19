@@ -27,22 +27,23 @@ struct KeyFigures: View {
                 }
                 Divider()
                 VStack {
-                    CardNumberField("Age (Self)", amount: $ts.ageSelf)
-                    CardNumberField("Age (Self)", amount: $ts.ageSpouce)
                     CardPicker("Filing Status", selection: $ts.filingStatus)
-                    CardPicker("Employment Status", selection: $ts.employmentStatus)
                     CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)
                     CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
                     CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency(0))
+                    CardNumberField("Age (Self)", amount: $ts.ageSelf)
+                    CardNumberField("Age (Spouse)", amount: $ts.ageSpouse)
+                    CardPicker("Employment Status", selection: $ts.employmentStatus)
                 }
                 Divider()
                 VStack {
                     CardItem("Tax Exempt Interest", value: federalTaxes.scenario.taxExemptInterest.asCurrency(0))
-                    CardItem("Total / Taxable Social Security", value: "\(federalTaxes.scenario.totalSocialSecurityIncome.asCurrency(0)) / \(federalTaxes.taxableSSI.asCurrency(0)) (\(federalTaxes.provisionalTaxRate.asPercentage))")
                     CardItem("Qualified / Ordinary Dividends", value: "\(federalTaxes.scenario.qualifiedDividends.asCurrency(0)) / \(federalTaxes.scenario.ordinaryDividends.asCurrency(0))")
                     CardItem("ST / LT Capital Gains", value: "\(federalTaxes.netSTCG.asCurrency(0)) / \(federalTaxes.netLTCG.asCurrency(0))")
                     CardItem("Carryforward Loss", value: federalTaxes.futureCarryForwardLoss.asCurrency(0))
+                    CardItem("Provisional Income", value: federalTaxes.provisionalIncome.asCurrency(0))
+                    CardItem("Total / Taxable Social Security", value: "\(federalTaxes.scenario.totalSocialSecurityIncome.asCurrency(0)) / \(federalTaxes.taxableSSI.asCurrency(0)) (\(federalTaxes.provisionalTaxRate.asPercentage))")
                 }
             }
         }

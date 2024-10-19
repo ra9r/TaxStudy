@@ -1,57 +1,5 @@
 [
   {
-    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
-    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
-    "income" : [
-      {
-        "amount" : 39248,
-        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881",
-        "type" : "socialSecuritySelf"
-      },
-      {
-        "amount" : 44619,
-        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
-        "type" : "taxExemptInterest"
-      },
-      {
-        "type" : "longTermCapitalGains",
-        "amount" : 253905.43,
-        "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85"
-      },
-      {
-        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
-        "type" : "shortTermCapitalGains",
-        "amount" : 182203.54
-      },
-      {
-        "amount" : 104993,
-        "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA",
-        "type" : "qualifiedDividends"
-      },
-      {
-        "type" : "ordinaryDividends",
-        "amount" : 107151.64,
-        "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7"
-      },
-      {
-        "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B",
-        "amount" : 13357.96,
-        "type" : "interest"
-      },
-      {
-        "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB",
-        "type" : "carryforwardLoss",
-        "amount" : 2279214
-      }
-    ],
-    "name" : "Current Year Estimates",
-    "credits" : [
-      {
-        "type" : "lifetimeLearningCredit",
-        "amount" : 2000,
-        "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379"
-      }
-    ],
     "deductions" : [
       {
         "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC",
@@ -59,11 +7,15 @@
         "amount" : 40012.49
       },
       {
-        "amount" : 11174.98,
         "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
-        "type" : "stateAndLocalTaxDeduction"
+        "type" : "stateAndLocalTaxDeduction",
+        "amount" : 11174.98
       }
     ],
+    "ageSelf" : 50,
+    "name" : "Current Year Estimates",
+    "facts" : "OfficialTaxFacts2024",
+    "filingStatus" : "Married Filing Jointly",
     "adjustments" : [
       {
         "id" : "AC0C6C0E-9AEC-441A-81E7-FBCDD89CC3A9",
@@ -71,28 +23,89 @@
         "amount" : 8300
       }
     ],
+    "credits" : [
+      {
+        "amount" : 2000,
+        "type" : "lifetimeLearningCredit",
+        "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379"
+      }
+    ],
+    "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
     "employmentStatus" : "Retired",
-    "filingStatus" : "Married Filing Jointly",
-    "facts" : "OfficialTaxFacts2024"
+    "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
+    "ageSpouse" : 50,
+    "income" : [
+      {
+        "type" : "socialSecuritySelf",
+        "amount" : 39248,
+        "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881"
+      },
+      {
+        "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
+        "amount" : 44619,
+        "type" : "taxExemptInterest"
+      },
+      {
+        "amount" : 253905.43,
+        "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85",
+        "type" : "longTermCapitalGains"
+      },
+      {
+        "amount" : 182203.54,
+        "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
+        "type" : "shortTermCapitalGains"
+      },
+      {
+        "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA",
+        "type" : "qualifiedDividends",
+        "amount" : 104993
+      },
+      {
+        "type" : "ordinaryDividends",
+        "amount" : 107151.64,
+        "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7"
+      },
+      {
+        "amount" : 13357.96,
+        "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B",
+        "type" : "interest"
+      },
+      {
+        "type" : "carryforwardLoss",
+        "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB",
+        "amount" : 2279214
+      }
+    ]
   },
   {
-    "employmentStatus" : "Retired",
-    "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
-    "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
-    "name" : "$0 Tax on $100,000",
+    "facts" : "OfficialTaxFacts2024",
     "credits" : [
 
     ],
-    "income" : [
-
-    ],
-    "deductions" : [
-
-    ],
+    "ageSelf" : 65,
+    "employmentStatus" : "Retired",
+    "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
     "adjustments" : [
 
     ],
-    "facts" : "OfficialTaxFacts2024",
-    "filingStatus" : "Single"
+    "filingStatus" : "Married Filing Jointly",
+    "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
+    "ageSpouse" : 65,
+    "deductions" : [
+
+    ],
+    "name" : "$0 Tax on $100,000",
+    "income" : [
+      {
+        "id" : "865CA641-D988-4F0C-8DF6-641CD22E1797",
+        "amount" : 62400,
+        "type" : "socialSecuritySelf"
+      },
+      {
+        "id" : "FA8C43B7-D34C-4C7A-B770-C31D25332F67",
+        "type" : "qualifiedDividends",
+        "amount" : 10000
+      }
+    ]
   }
 ]

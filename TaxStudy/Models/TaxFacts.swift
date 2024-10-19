@@ -13,13 +13,18 @@ class TaxFacts : Codable, Identifiable {
     var year: Int? = 2024
     var ordinaryTaxBrackets: [FilingStatus: TaxBrackets]
     var capitalGainTaxBrackets: [FilingStatus: TaxBrackets]
+    
+    /// The FICA Income thresholds for Social Security Taxes
     var ssTaxThresholds: [FilingStatus: TaxBrackets]
+    /// The FICA income thresholds for Medicare Taxes
     var medicareTaxThresholds: [FilingStatus: TaxBrackets]
     var provisionalIncomeThresholds: [FilingStatus: TaxBrackets]
     var niitThresholds: [FilingStatus: Double]
     var niitRate: Double
     var capitalLossLimit: Double // 3000
-    var standardDeduction: [FilingStatus: Double] // 14600 in 2023 standard deduction for single filers
+    var standardDeduction: [FilingStatus: Double]
+    var standardDeductionBonus: [FilingStatus: Double]
+    var standardDeductionBonusAge: Int
     var ssdiThreshold: Double // 34000
     var charitableCashThreadholdRate: Double = 0.6
     var charitableAssetThreadholdRate: Double = 0.3
@@ -36,6 +41,8 @@ class TaxFacts : Codable, Identifiable {
         niitThresholds: [FilingStatus : Double],
         niitRate: Double,
         standardDeduction: [FilingStatus : Double],
+        startardDeductionBonus: [FilingStatus : Double],
+        standardDeductionBonusAge: Int,
         capitalLossLimit: Double,
         ssdiThreshold: Double
     ) {
@@ -50,6 +57,8 @@ class TaxFacts : Codable, Identifiable {
         self.niitRate = niitRate
         self.capitalLossLimit = capitalLossLimit
         self.standardDeduction = standardDeduction
+        self.standardDeductionBonus = startardDeductionBonus
+        self.standardDeductionBonusAge = standardDeductionBonusAge
         self.ssdiThreshold = ssdiThreshold
     }
 }
@@ -153,6 +162,14 @@ let DefaultTaxFacts2024 = TaxFacts(
         .qualifiedWidow: 29_200,
         .headOfHousehold: 21_900
     ],
+    startardDeductionBonus: [
+        .single: 1_950,
+        .marriedFilingSeparately: 1_550,
+        .marriedFilingJointly: 1_550,
+        .qualifiedWidow: 1_950,
+        .headOfHousehold: 1_950
+    ],
+    standardDeductionBonusAge: 65,
     capitalLossLimit: 3000,
     ssdiThreshold: 34000
 )

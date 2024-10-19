@@ -22,14 +22,14 @@ class TaxScenario: Codable, Identifiable {
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
     var facts: String
     var ageSelf: Int = 50
-    var ageSpouce: Int = 50
+    var ageSpouse: Int = 50
     
-    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, ageSelf: Int = 50, ageSpouce: Int = 50, facts: TaxFacts? = nil) {
+    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, ageSelf: Int = 50, ageSpouse: Int = 50, facts: TaxFacts? = nil) {
         self.name = name
         self.filingStatus = filingStatus
         self.employmentStatus = employmentStatus
         self.ageSelf = ageSelf
-        self.ageSpouce = ageSpouce
+        self.ageSpouse = ageSpouse
         self.facts = facts?.id ?? DefaultTaxFacts2024.id
     }
     
@@ -168,6 +168,8 @@ class TaxScenario: Codable, Identifiable {
         case description
         case filingStatus
         case employmentStatus
+        case ageSelf
+        case ageSpouse
         
         case income
         case deductions
@@ -184,6 +186,8 @@ class TaxScenario: Codable, Identifiable {
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         filingStatus = try container.decode(FilingStatus.self, forKey: .filingStatus)
         employmentStatus = try container.decode(EmploymentStatus.self, forKey: .employmentStatus)
+        ageSelf = try container.decodeIfPresent(Int.self, forKey: .ageSelf) ?? 50
+        ageSpouse = try container.decodeIfPresent(Int.self, forKey: .ageSpouse) ?? 50
         facts = try container.decode(String.self, forKey: .facts)
         income = try container.decodeIfPresent(IncomeSources.self, forKey: .income) ?? IncomeSources()
         credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
@@ -198,6 +202,8 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(description, forKey: .description)
         try container.encode(filingStatus, forKey: .filingStatus)
         try container.encode(employmentStatus, forKey: .employmentStatus)
+        try container.encode(ageSelf, forKey: .ageSelf)
+        try container.encode(ageSpouse, forKey: .ageSpouse)
         try container.encode(facts, forKey: .facts)
 
         try container.encode(income, forKey: .income)
