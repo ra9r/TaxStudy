@@ -1,322 +1,37 @@
 {
   "facts" : {
     "2024" : {
-      "ordinaryTaxBrackets" : [
-        "marriedFilingJointly",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.1,
-              "threshold" : 0
-            },
-            {
-              "threshold" : 23201,
-              "rate" : 0.12
-            },
-            {
-              "rate" : 0.22,
-              "threshold" : 94301
-            },
-            {
-              "rate" : 0.24,
-              "threshold" : 201051
-            },
-            {
-              "threshold" : 383901,
-              "rate" : 0.32
-            },
-            {
-              "rate" : 0.35,
-              "threshold" : 487451
-            },
-            {
-              "threshold" : 731201,
-              "rate" : 0.37
-            }
-          ]
-        },
-        "single",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.1,
-              "threshold" : 0
-            },
-            {
-              "rate" : 0.12,
-              "threshold" : 11600
-            },
-            {
-              "rate" : 0.22,
-              "threshold" : 47150
-            },
-            {
-              "threshold" : 100525,
-              "rate" : 0.24
-            },
-            {
-              "threshold" : 191950,
-              "rate" : 0.32
-            },
-            {
-              "rate" : 0.35,
-              "threshold" : 234726
-            },
-            {
-              "rate" : 0.37,
-              "threshold" : 609351
-            }
-          ]
-        },
-        "headOfHousehold",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.1,
-              "threshold" : 0
-            },
-            {
-              "threshold" : 16550,
-              "rate" : 0.12
-            },
-            {
-              "threshold" : 63101,
-              "rate" : 0.22
-            },
-            {
-              "rate" : 0.24,
-              "threshold" : 100501
-            },
-            {
-              "threshold" : 191951,
-              "rate" : 0.32
-            },
-            {
-              "rate" : 0.35,
-              "threshold" : 243701
-            },
-            {
-              "threshold" : 609351,
-              "rate" : 0.37
-            }
-          ]
-        }
-      ],
-      "charitableMileageRate" : 0.14,
-      "provisionalIncomeThresholds" : [
-        "headOfHousehold",
-        {
-          "brackets" : [
-            {
-              "rate" : 0,
-              "threshold" : 0
-            },
-            {
-              "rate" : 0.5,
-              "threshold" : 25000
-            },
-            {
-              "rate" : 0.85,
-              "threshold" : 34000
-            }
-          ]
-        },
-        "marriedFilingSeparately",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.85,
-              "threshold" : 0
-            }
-          ]
-        },
-        "marriedFilingJointly",
-        {
-          "brackets" : [
-            {
-              "rate" : 0,
-              "threshold" : 0
-            },
-            {
-              "threshold" : 32000,
-              "rate" : 0.5
-            },
-            {
-              "threshold" : 44000,
-              "rate" : 0.85
-            }
-          ]
-        },
-        "single",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0
-            },
-            {
-              "threshold" : 25000,
-              "rate" : 0.5
-            },
-            {
-              "rate" : 0.85,
-              "threshold" : 34000
-            }
-          ]
-        }
-      ],
-      "capitalGainTaxBrackets" : [
-        "single",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0
-            },
-            {
-              "rate" : 0.15,
-              "threshold" : 47026
-            },
-            {
-              "threshold" : 518901,
-              "rate" : 0.2
-            }
-          ]
-        },
-        "marriedFilingJointly",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0
-            },
-            {
-              "threshold" : 94051,
-              "rate" : 0.15
-            },
-            {
-              "threshold" : 583751,
-              "rate" : 0.2
-            }
-          ]
-        },
-        "headOfHousehold",
-        {
-          "brackets" : [
-            {
-              "rate" : 0,
-              "threshold" : 0
-            },
-            {
-              "rate" : 0.15,
-              "threshold" : 63001
-            },
-            {
-              "threshold" : 551351,
-              "rate" : 0.2
-            }
-          ]
-        }
-      ],
-      "year" : 2024,
-      "niitRate" : 0.038,
-      "ssTaxThresholds" : [
-        "marriedFilingSeparately",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0.062
-            },
-            {
-              "threshold" : 168600,
-              "rate" : 0
-            }
-          ]
-        },
-        "headOfHousehold",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0.062
-            },
-            {
-              "threshold" : 168600,
-              "rate" : 0
-            }
-          ]
-        },
-        "qualifiedWidow",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.062,
-              "threshold" : 0
-            },
-            {
-              "threshold" : 168600,
-              "rate" : 0
-            }
-          ]
-        },
-        "single",
-        {
-          "brackets" : [
-            {
-              "rate" : 0.062,
-              "threshold" : 0
-            },
-            {
-              "threshold" : 168600,
-              "rate" : 0
-            }
-          ]
-        },
-        "marriedFilingJointly",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0.062
-            },
-            {
-              "threshold" : 168600,
-              "rate" : 0
-            }
-          ]
-        }
-      ],
-      "capitalLossLimit" : 3000,
       "standardDeductionBonus" : [
-        "qualifiedWidow",
-        1950,
-        "single",
-        1950,
-        "headOfHousehold",
-        1950,
         "marriedFilingSeparately",
         1550,
         "marriedFilingJointly",
-        1550
+        1550,
+        "single",
+        1950,
+        "qualifiedWidow",
+        1950,
+        "headOfHousehold",
+        1950
       ],
+      "id" : "OfficialTaxFacts2024",
       "standardDeductionBonusAge" : 65,
+      "charitableMileageRate" : 0.14,
       "charitableAssetThreadholdRate" : 0.3,
       "medicareTaxThresholds" : [
-        "single",
+        "headOfHousehold",
         {
           "brackets" : [
             {
-              "threshold" : 0,
-              "rate" : 0.029
+              "rate" : 0.045,
+              "threshold" : 0
             },
             {
-              "rate" : 0.009,
-              "threshold" : 200000
+              "threshold" : 200000,
+              "rate" : 0.009
             }
           ]
         },
-        "marriedFilingSeparately",
+        "single",
         {
           "brackets" : [
             {
@@ -324,21 +39,8 @@
               "threshold" : 0
             },
             {
-              "rate" : 0.009,
-              "threshold" : 125000
-            }
-          ]
-        },
-        "headOfHousehold",
-        {
-          "brackets" : [
-            {
-              "threshold" : 0,
-              "rate" : 0.045
-            },
-            {
-              "rate" : 0.009,
-              "threshold" : 200000
+              "threshold" : 200000,
+              "rate" : 0.009
             }
           ]
         },
@@ -367,60 +69,370 @@
               "threshold" : 200000
             }
           ]
+        },
+        "marriedFilingSeparately",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.029
+            },
+            {
+              "rate" : 0.009,
+              "threshold" : 125000
+            }
+          ]
         }
       ],
-      "id" : "OfficialTaxFacts2024",
+      "niitRate" : 0.038,
+      "year" : 2024,
       "niitThresholds" : [
-        "marriedFilingJointly",
-        250000,
+        "headOfHousehold",
+        200000,
         "marriedFilingSeparately",
         125000,
-        "single",
-        200000,
         "qualifiedWidow",
         250000,
+        "single",
+        200000,
+        "marriedFilingJointly",
+        250000
+      ],
+      "provisionalIncomeThresholds" : [
         "headOfHousehold",
-        200000
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0
+            },
+            {
+              "rate" : 0.5,
+              "threshold" : 25000
+            },
+            {
+              "rate" : 0.85,
+              "threshold" : 34000
+            }
+          ]
+        },
+        "marriedFilingJointly",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0
+            },
+            {
+              "threshold" : 32000,
+              "rate" : 0.5
+            },
+            {
+              "rate" : 0.85,
+              "threshold" : 44000
+            }
+          ]
+        },
+        "marriedFilingSeparately",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.85
+            }
+          ]
+        },
+        "single",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0
+            },
+            {
+              "rate" : 0.5,
+              "threshold" : 25000
+            },
+            {
+              "threshold" : 34000,
+              "rate" : 0.85
+            }
+          ]
+        }
       ],
       "standardDeduction" : [
-        "marriedFilingJointly",
-        29200,
-        "headOfHousehold",
-        21900,
         "marriedFilingSeparately",
         14600,
+        "headOfHousehold",
+        21900,
         "single",
         14600,
+        "marriedFilingJointly",
+        29200,
         "qualifiedWidow",
         29200
       ],
-      "charitableCashThreadholdRate" : 0.6
+      "ssTaxThresholds" : [
+        "marriedFilingJointly",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.062
+            },
+            {
+              "rate" : 0,
+              "threshold" : 168600
+            }
+          ]
+        },
+        "headOfHousehold",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.062
+            },
+            {
+              "threshold" : 168600,
+              "rate" : 0
+            }
+          ]
+        },
+        "marriedFilingSeparately",
+        {
+          "brackets" : [
+            {
+              "rate" : 0.062,
+              "threshold" : 0
+            },
+            {
+              "threshold" : 168600,
+              "rate" : 0
+            }
+          ]
+        },
+        "qualifiedWidow",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.062
+            },
+            {
+              "rate" : 0,
+              "threshold" : 168600
+            }
+          ]
+        },
+        "single",
+        {
+          "brackets" : [
+            {
+              "rate" : 0.062,
+              "threshold" : 0
+            },
+            {
+              "threshold" : 168600,
+              "rate" : 0
+            }
+          ]
+        }
+      ],
+      "charitableCashThreadholdRate" : 0.6,
+      "capitalLossLimit" : 3000,
+      "capitalGainTaxBrackets" : [
+        "headOfHousehold",
+        {
+          "brackets" : [
+            {
+              "rate" : 0,
+              "threshold" : 0
+            },
+            {
+              "threshold" : 63001,
+              "rate" : 0.15
+            },
+            {
+              "rate" : 0.2,
+              "threshold" : 551351
+            }
+          ]
+        },
+        "single",
+        {
+          "brackets" : [
+            {
+              "rate" : 0,
+              "threshold" : 0
+            },
+            {
+              "rate" : 0.15,
+              "threshold" : 47026
+            },
+            {
+              "threshold" : 518901,
+              "rate" : 0.2
+            }
+          ]
+        },
+        "marriedFilingJointly",
+        {
+          "brackets" : [
+            {
+              "rate" : 0,
+              "threshold" : 0
+            },
+            {
+              "rate" : 0.15,
+              "threshold" : 94051
+            },
+            {
+              "rate" : 0.2,
+              "threshold" : 583751
+            }
+          ]
+        }
+      ],
+      "ordinaryTaxBrackets" : [
+        "marriedFilingJointly",
+        {
+          "brackets" : [
+            {
+              "threshold" : 0,
+              "rate" : 0.1
+            },
+            {
+              "threshold" : 23201,
+              "rate" : 0.12
+            },
+            {
+              "rate" : 0.22,
+              "threshold" : 94301
+            },
+            {
+              "threshold" : 201051,
+              "rate" : 0.24
+            },
+            {
+              "rate" : 0.32,
+              "threshold" : 383901
+            },
+            {
+              "rate" : 0.35,
+              "threshold" : 487451
+            },
+            {
+              "threshold" : 731201,
+              "rate" : 0.37
+            }
+          ]
+        },
+        "headOfHousehold",
+        {
+          "brackets" : [
+            {
+              "rate" : 0.1,
+              "threshold" : 0
+            },
+            {
+              "rate" : 0.12,
+              "threshold" : 16550
+            },
+            {
+              "threshold" : 63101,
+              "rate" : 0.22
+            },
+            {
+              "threshold" : 100501,
+              "rate" : 0.24
+            },
+            {
+              "rate" : 0.32,
+              "threshold" : 191951
+            },
+            {
+              "rate" : 0.35,
+              "threshold" : 243701
+            },
+            {
+              "rate" : 0.37,
+              "threshold" : 609351
+            }
+          ]
+        },
+        "single",
+        {
+          "brackets" : [
+            {
+              "rate" : 0.1,
+              "threshold" : 0
+            },
+            {
+              "rate" : 0.12,
+              "threshold" : 11600
+            },
+            {
+              "rate" : 0.22,
+              "threshold" : 47150
+            },
+            {
+              "threshold" : 100525,
+              "rate" : 0.24
+            },
+            {
+              "threshold" : 191950,
+              "rate" : 0.32
+            },
+            {
+              "threshold" : 234726,
+              "rate" : 0.35
+            },
+            {
+              "rate" : 0.37,
+              "threshold" : 609351
+            }
+          ]
+        }
+      ]
     }
   },
   "scenarios" : [
     {
-      "filingStatus" : "marriedFilingJointly",
+      "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
       "profileSelf" : {
-        "age" : 50,
         "name" : "Rodney Aiglstorfer",
-        "socialSecurity" : 39248,
-        "employmentStatus" : "retired",
-        "wages" : 0
-      },
-      "name" : "Current Year Estimates",
-      "profileSpouse" : {
-        "age" : 52,
-        "name" : "Nobuko Aiglstorfer",
-        "socialSecurity" : 0,
         "wages" : 0,
+        "age" : 50,
+        "socialSecurity" : 39248,
         "employmentStatus" : "retired"
       },
-      "id" : "50D3BB2F-485A-4F03-B10B-AC68AFB0E3AE",
+      "facts" : "OfficialTaxFacts2024",
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "name" : "Nobuko Aiglstorfer",
+        "age" : 52,
+        "socialSecurity" : 0,
+        "wages" : 0
+      },
+      "deductions" : [
+        {
+          "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC",
+          "amount" : 40012.49,
+          "type" : "marginInterestDeduction"
+        },
+        {
+          "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
+          "amount" : 11174.98,
+          "type" : "stateAndLocalTaxDeduction"
+        }
+      ],
+      "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
       "income" : [
         {
           "id" : "ADEDA1C7-E711-49C6-937E-9AA6940FD860",
-          "type" : "taxExemptInterest",
-          "amount" : 44619
+          "amount" : 44619,
+          "type" : "taxExemptInterest"
         },
         {
           "id" : "40B5B03E-2F0E-4852-BEA8-13F6739F6E85",
@@ -428,95 +440,82 @@
           "type" : "longTermCapitalGains"
         },
         {
-          "type" : "shortTermCapitalGains",
+          "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979",
           "amount" : 182203.54,
-          "id" : "D3B4716D-809A-472F-AECF-AEEB8C1CE979"
+          "type" : "shortTermCapitalGains"
         },
         {
-          "type" : "qualifiedDividends",
           "amount" : 104993,
+          "type" : "qualifiedDividends",
           "id" : "495AD549-14BB-4464-AB15-7CFBE6315DAA"
         },
         {
-          "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7",
           "amount" : 107151.64,
+          "id" : "AD7B3CAC-A52F-4334-97AD-EF2012792CF7",
           "type" : "ordinaryDividends"
         },
         {
-          "amount" : 13357.96,
           "id" : "6C043C7A-A9B5-4F21-9E90-523348DB6B7B",
-          "type" : "interest"
+          "type" : "interest",
+          "amount" : 13357.96
         },
         {
+          "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB",
           "type" : "carryforwardLoss",
-          "amount" : 2279214,
-          "id" : "4683E95E-76A0-4FEF-A3C1-E3748E17AEEB"
+          "amount" : 2279214
         }
       ],
-      "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
-      "facts" : "OfficialTaxFacts2024",
-      "deductions" : [
-        {
-          "amount" : 40012.49,
-          "type" : "marginInterestDeduction",
-          "id" : "4B75C445-05D6-49C5-BDF7-4380ECD583FC"
-        },
-        {
-          "id" : "65CC944E-93D6-43FD-B42A-A5073F770D5A",
-          "type" : "stateAndLocalTaxDeduction",
-          "amount" : 11174.98
-        }
-      ],
-      "credits" : [
-        {
-          "type" : "lifetimeLearningCredit",
-          "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379",
-          "amount" : 2000
-        }
-      ],
+      "filingStatus" : "marriedFilingJointly",
+      "name" : "Current Year Estimates",
       "adjustments" : [
         {
           "id" : "AC0C6C0E-9AEC-441A-81E7-FBCDD89CC3A9",
           "type" : "hsaContribution",
           "amount" : 8300
         }
+      ],
+      "credits" : [
+        {
+          "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379",
+          "amount" : 2000,
+          "type" : "lifetimeLearningCredit"
+        }
       ]
     },
     {
-      "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B",
-      "profileSpouse" : {
+      "profileSelf" : {
+        "name" : "Rodney Aiglstorfer",
+        "age" : 50,
         "wages" : 0,
-        "employmentStatus" : "retired",
-        "socialSecurity" : 0,
-        "name" : "Nobuko Aiglstorfer",
-        "age" : 52
+        "socialSecurity" : 42816,
+        "employmentStatus" : "retired"
       },
-      "adjustments" : [
-        {
-          "type" : "hsaContribution",
-          "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39",
-          "amount" : 8000
-        }
-      ],
+      "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B",
+      "description" : "",
+      "profileSpouse" : {
+        "age" : 52,
+        "socialSecurity" : 0,
+        "employmentStatus" : "retired",
+        "name" : "Nobuko Aiglstorfer",
+        "wages" : 0
+      },
+      "name" : "Current CoreFolio w\/Rodney",
       "facts" : "OfficialTaxFacts2024",
-      "deductions" : [
-
-      ],
       "income" : [
         {
-          "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
           "type" : "qualifiedDividends",
+          "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
           "amount" : 53418.56
         },
         {
-          "type" : "qualifiedDividends",
           "id" : "811B1C17-3253-405A-8055-464EEB0B752D",
-          "amount" : 27145.76
+          "amount" : 27145.76,
+          "type" : "qualifiedDividends"
         },
         {
           "type" : "ordinaryDividends",
-          "amount" : 57823.96,
-          "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39"
+          "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39",
+          "amount" : 57823.96
         },
         {
           "amount" : 12500,
@@ -525,24 +524,30 @@
         }
       ],
       "filingStatus" : "marriedFilingJointly",
+      "deductions" : [
+
+      ],
       "credits" : [
         {
-          "type" : "lifetimeLearningCredit",
           "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
-          "amount" : 0
+          "amount" : 0,
+          "type" : "lifetimeLearningCredit"
         }
       ],
-      "name" : "Current CoreFolio w\/Rodney",
-      "description" : "",
-      "profileSelf" : {
-        "socialSecurity" : 42816,
-        "name" : "Rodney Aiglstorfer",
-        "age" : 50,
-        "employmentStatus" : "retired",
-        "wages" : 0
-      }
+      "adjustments" : [
+        {
+          "amount" : 8000,
+          "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39",
+          "type" : "hsaContribution"
+        }
+      ]
     },
     {
+      "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
+      "credits" : [
+
+      ],
+      "name" : "$0 Tax on $100,000",
       "income" : [
         {
           "amount" : 10000,
@@ -551,8 +556,8 @@
         },
         {
           "id" : "79881996-8523-4B14-BD7D-F9C6AB466029",
-          "amount" : 11600,
-          "type" : "iraWithdrawal"
+          "type" : "iraWithdrawal",
+          "amount" : 11600
         },
         {
           "id" : "B5D21C96-CCB1-4C69-991E-6995CC24CB0A",
@@ -565,114 +570,151 @@
           "type" : "otherTaxExemptIncome"
         }
       ],
+      "profileSelf" : {
+        "socialSecurity" : 38400,
+        "wages" : 0,
+        "age" : 65,
+        "employmentStatus" : "retired",
+        "name" : "Bob"
+      },
+      "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
+      "profileSpouse" : {
+        "wages" : 0,
+        "socialSecurity" : 24000,
+        "employmentStatus" : "retired",
+        "age" : 65,
+        "name" : "Angie"
+      },
+      "filingStatus" : "marriedFilingJointly",
       "adjustments" : [
 
       ],
-      "name" : "$0 Tax on $100,000",
-      "profileSelf" : {
-        "socialSecurity" : 38400,
-        "employmentStatus" : "retired",
-        "name" : "Bob",
-        "age" : 65,
-        "wages" : 0
-      },
-      "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
-      "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
       "facts" : "OfficialTaxFacts2024",
-      "credits" : [
-
-      ],
-      "profileSpouse" : {
-        "wages" : 0,
-        "employmentStatus" : "retired",
-        "age" : 65,
-        "name" : "Angie",
-        "socialSecurity" : 24000
-      },
-      "filingStatus" : "marriedFilingJointly",
       "deductions" : [
 
       ]
     },
     {
       "facts" : "OfficialTaxFacts2024",
-      "name" : "$0 Tax on $120,000",
-      "filingStatus" : "marriedFilingJointly",
-      "profileSelf" : {
-        "age" : 65,
-        "name" : "Bob",
-        "socialSecurity" : 0,
-        "wages" : 0,
-        "employmentStatus" : "retired"
-      },
-      "credits" : [
-
-      ],
-      "income" : [
-        {
-          "amount" : 30000,
-          "id" : "3D405528-D42A-4171-82F3-2270583680E8",
-          "type" : "iraWithdrawal"
-        },
-        {
-          "type" : "longTermCapitalGains",
-          "amount" : 67500,
-          "id" : "7ED776DD-63B2-4785-8858-A399BDD0E732"
-        },
-        {
-          "type" : "otherTaxExemptIncome",
-          "id" : "A2638736-D9A9-4118-814C-80BC44CCB1E2",
-          "amount" : 22500
-        }
-      ],
-      "deductions" : [
-
-      ],
       "adjustments" : [
 
       ],
       "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
-      "id" : "0BD75978-2901-493A-AC93-55463A99F397",
-      "profileSpouse" : {
-        "socialSecurity" : 0,
-        "name" : "Angie",
-        "employmentStatus" : "retired",
-        "age" : 65,
-        "wages" : 0
-      }
-    },
-    {
-      "name" : "$100,000 in Wages Only",
-      "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
-      "facts" : "OfficialTaxFacts2024",
+      "income" : [
+        {
+          "id" : "3D405528-D42A-4171-82F3-2270583680E8",
+          "type" : "iraWithdrawal",
+          "amount" : 30000
+        },
+        {
+          "amount" : 67500,
+          "id" : "7ED776DD-63B2-4785-8858-A399BDD0E732",
+          "type" : "longTermCapitalGains"
+        },
+        {
+          "type" : "otherTaxExemptIncome",
+          "amount" : 22500,
+          "id" : "A2638736-D9A9-4118-814C-80BC44CCB1E2"
+        }
+      ],
       "credits" : [
 
       ],
+      "name" : "$0 Tax on $120,000",
       "deductions" : [
 
       ],
-      "profileSpouse" : {
-        "age" : 65,
+      "profileSelf" : {
+        "wages" : 0,
         "socialSecurity" : 0,
-        "wages" : 50000,
+        "name" : "Bob",
+        "age" : 65,
+        "employmentStatus" : "retired"
+      },
+      "profileSpouse" : {
+        "socialSecurity" : 0,
+        "name" : "Angie",
+        "age" : 65,
         "employmentStatus" : "retired",
-        "name" : "Angie"
+        "wages" : 0
       },
       "filingStatus" : "marriedFilingJointly",
-      "description" : "",
+      "id" : "0BD75978-2901-493A-AC93-55463A99F397"
+    },
+    {
+      "deductions" : [
+
+      ],
+      "name" : "$100,000 in Wages Only",
       "profileSelf" : {
-        "employmentStatus" : "retired",
-        "name" : "Bob",
         "wages" : 50000,
+        "name" : "Bob",
         "socialSecurity" : 0,
-        "age" : 65
+        "age" : 65,
+        "employmentStatus" : "retired"
       },
       "adjustments" : [
 
       ],
+      "profileSpouse" : {
+        "socialSecurity" : 0,
+        "name" : "Angie",
+        "age" : 65,
+        "employmentStatus" : "retired",
+        "wages" : 50000
+      },
+      "description" : "",
       "income" : [
 
-      ]
+      ],
+      "filingStatus" : "marriedFilingJointly",
+      "credits" : [
+
+      ],
+      "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
+      "facts" : "OfficialTaxFacts2024"
+    },
+    {
+      "id" : "50ADCF77-140C-480A-ACE4-7C90EBA79957",
+      "profileSelf" : {
+        "wages" : 0,
+        "name" : "Taxpayer 1",
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "socialSecurity" : 42816
+      },
+      "income" : [
+        {
+          "id" : "A676148E-707E-4662-8B60-234940497E51",
+          "amount" : 66000,
+          "type" : "qualifiedDividends"
+        },
+        {
+          "type" : "interest",
+          "id" : "B2B2DBA8-A138-4DED-8185-94C31B77613E",
+          "amount" : 12250
+        }
+      ],
+      "name" : "Alt CoreFolio Lower Dividend",
+      "filingStatus" : "marriedFilingJointly",
+      "deductions" : [
+
+      ],
+      "description" : "",
+      "adjustments" : [
+
+      ],
+      "credits" : [
+
+      ],
+      "facts" : "OfficialTaxFacts2024",
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "wages" : 0,
+        "age" : 52,
+        "socialSecurity" : 0,
+        "name" : "Taxpayer 2"
+      }
     }
   ]
 }
