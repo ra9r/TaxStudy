@@ -47,15 +47,3 @@ struct TaxChart: View {
     
 }
 
-#Preview {
-    @Previewable @State var manager = TaxScenarioManager()
-    TaxChart(manager.selectedTaxScenario)
-        .onAppear() {
-            do {
-                try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
-            } catch {
-                print(error)
-            }
-        }
-    
-}

@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct FileCommands: Commands {
-    @State var manager: TaxScenarioManager
+    @State var appServices: AppServices
     
     var body: some Commands {
         CommandGroup(replacing: .newItem) {
@@ -29,19 +29,19 @@ struct FileCommands: Commands {
                 saveFile()
             }
             .keyboardShortcut("S", modifiers: [.command])
-            .disabled(manager.currentFile == nil)
+            .disabled(appServices.currentFile == nil)
             
             Button("Save As...") {
                 saveFileAs()
             }
             .keyboardShortcut("S", modifiers: [.command, .shift])
-            .disabled(manager.taxScenarios.isEmpty)
+            .disabled(appServices.data.scenarios.isEmpty)
         }
     }
     
     func openFile() {
         do {
-            try manager.openFile()
+            try appServices.openFile()
         } catch {
             print(error)
         }
@@ -49,7 +49,7 @@ struct FileCommands: Commands {
     
     func saveFileAs() {
         do {
-            try manager.saveAsFile()
+            try appServices.saveAsFile()
         } catch {
             print(error)
         }
@@ -57,7 +57,7 @@ struct FileCommands: Commands {
     
     func saveFile() {
         do {
-            try manager.saveFile()
+            try appServices.saveFile()
         } catch {
             print(error)
         }
@@ -73,7 +73,7 @@ struct FileCommands: Commands {
             ForEach(recentDocuments, id: \.self) { url in
                 Button(action: {
                     do {
-                        try manager.open(from: url)
+                        try appServices.open(from: url)
                     } catch {
                         print(error)
                     }
@@ -95,7 +95,7 @@ struct FileCommands: Commands {
         newWindow.center()
         
         let contentView = ContentView()
-            .environment(manager)
+            .environment(appServices)
         
         newWindow.contentView = NSHostingView(rootView: contentView)
         

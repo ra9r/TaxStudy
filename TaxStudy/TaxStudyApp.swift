@@ -10,15 +10,15 @@ import SwiftUI
 
 @main
 struct TaxStudyApp: App {
-    @State var manager = TaxScenarioManager()
+    @State var appService: AppServices = AppServices.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(appService)
                 .background(.white)
-                .environment(manager)
                 .onAppear {
                     do {
-                        try manager.openLastSavedFile()
+                        try appService.openLastSavedFile()
                     } catch {
                         print("No saved file found.")
                         print(error)
@@ -26,7 +26,7 @@ struct TaxStudyApp: App {
                 }
         }
         .commands {
-            FileCommands(manager: manager)
+            FileCommands(appServices: appService)
             ToolbarCommands()
             SidebarCommands()
             TextEditingCommands()

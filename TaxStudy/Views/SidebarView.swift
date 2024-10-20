@@ -7,43 +7,47 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @Environment(TaxScenarioManager.self) var manager
+    @Environment(AppServices.self) var appSErvices
+    @Binding var scenario: TaxScenario?
+    
+    init(_ scenario: Binding<TaxScenario?>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
-        @Bindable var m = manager
-        List {
-            ForEach(manager.taxScenarios) { scenario in
-                NavigationLink(scenario.name, value: scenario)
-                    .contextMenu {
-                        Button(action: {
-                            print("Clicked Duplicate!")
-                        }) {
-                            Text("Duplicate")
-                            Image(systemName: "doc.on.doc")
-                        }
-                        Button(action: {
-                            manager.delete(id: scenario.id)
-                        }) {
-                            Text("Delete")
-                            Image(systemName: "trash")
-                        }
-                    }            }
-            .onMove(perform: move)
+        List(appSErvices.data.scenarios, selection: $scenario) { scenario in
+            NavigationLink(scenario.name, value: scenario)
+                .contextMenu {
+                    Button(action: {
+                        print("Clicked Duplicate!")
+                    }) {
+                        Text("Duplicate")
+                        Image(systemName: "doc.on.doc")
+                    }
+                    Button(action: {
+                        appSErvices.data.delete(id: scenario.id)
+                    }) {
+                        Text("Delete")
+                        Image(systemName: "trash")
+                    }
+                }
+//                .onMove(perform: move)
         }
+        
         .frame(minWidth: 250)
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button {
-                    manager.add(TaxScenario(name: "New Scenario"))
+                    appSErvices.data.add(TaxScenario(name: "New Scenario"))
                 } label: {
                     Label("Add Scenario", systemImage: "plus")
                 }
             }
         }
-        .navigationTitle(manager.selectedTaxScenario.name)
+
     }
     
     func move(from source: IndexSet, to destination: Int) {
-        manager.taxScenarios.move(fromOffsets: source, toOffset: destination)
+        appSErvices.data.scenarios.move(fromOffsets: source, toOffset: destination)
     }
 }

@@ -7,13 +7,17 @@
 import SwiftUI
 
 struct SummaryView : View {
-    @Binding var ts: TaxScenario
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
-                Header(ts: $ts)
-                KeyFigures(ts: $ts)
+                Header($scenario)
+                KeyFigures($scenario)
             }
             .padding()
         }

@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct KeyFigures: View {
-    @Binding var ts: TaxScenario
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
 
     var body: some View {
-        let federalTaxes = FederalTaxCalc(ts)
-        let stateTaxes = NCTaxCalc(ts)
+        let federalTaxes = FederalTaxCalc(scenario)
+        let stateTaxes = NCTaxCalc(scenario)
         CardView("Key Metrics") {
             HStack(alignment: .top) {
                 VStack {
@@ -27,14 +31,14 @@ struct KeyFigures: View {
                 }
                 Divider()
                 VStack {
-                    CardPicker("Filing Status", selection: $ts.filingStatus)
+                    CardPicker("Filing Status", selection: $scenario.filingStatus)
                     CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)
                     CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
                     CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency(0))
-                    CardNumberField("Age (Self)", amount: $ts.ageSelf)
-                    CardNumberField("Age (Spouse)", amount: $ts.ageSpouse)
-                    CardPicker("Employment Status", selection: $ts.employmentStatus)
+                    CardNumberField("Age (Self)", amount: $scenario.ageSelf)
+                    CardNumberField("Age (Spouse)", amount: $scenario.ageSpouse)
+                    CardPicker("Employment Status", selection: $scenario.employmentStatus)
                 }
                 Divider()
                 VStack {

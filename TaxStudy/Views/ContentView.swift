@@ -9,21 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-
+    @Environment(AppServices.self) var services
+    @State var activeScenario: TaxScenario?
+    
     var body: some View {
         NavigationSplitView {
-            SidebarView()
-            
+            SidebarView($activeScenario)
         } detail: {
-            ScenarioView()
-                
+            if let activeScenario {
+                ScenarioView(Binding($activeScenario)!)
+            } else {
+                EmptyView()
+            }
         }
     }
 }
 
 #Preview {
     ContentView()
-        .environment(TaxScenarioManager())
+        .environment(AppData())
 }
 
 

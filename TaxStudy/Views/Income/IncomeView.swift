@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct IncomeView: View {
-    @Binding var ts: TaxScenario
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
         ScrollView {
             HStack(alignment: .top, spacing: 10) {
-                IncomeEditor("Tax Exempt Income", $ts.income, filter: IncomeType.taxExempt)
-                IncomeEditor("Ordinary Income", $ts.income, filter: IncomeType.ordinary)
-                IncomeEditor("Investment Income", $ts.income, filter: IncomeType.investment)
+                IncomeEditor("Tax Exempt Income", $scenario.income, filter: IncomeType.taxExempt)
+                IncomeEditor("Ordinary Income", $scenario.income, filter: IncomeType.ordinary)
+                IncomeEditor("Investment Income", $scenario.income, filter: IncomeType.investment)
             }
             .padding()
         }
         .frame(minWidth: 800)
     }
-}
-
-#Preview {
-    @Previewable @State var scenario = TaxScenario(name: "Test Scenario")
-    IncomeView(ts: $scenario)
 }

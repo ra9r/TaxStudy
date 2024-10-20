@@ -7,55 +7,21 @@
 import SwiftUI
 
 struct ScenarioView : View {
-    @Environment(TaxScenarioManager.self) var manager
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
-        @Bindable var manager = manager
         ScrollView {
             VStack {
-                SummaryView(ts: $manager.selectedTaxScenario)
-                IncomeView(ts: $manager.selectedTaxScenario)
-                DeductionsView(ts: $manager.selectedTaxScenario)
+                SummaryView($scenario)
+                IncomeView($scenario)
+                DeductionsView($scenario)
             }
         }
         .tint(Color.accentColor)
-        .toolbar {
-            // Add a button to the title bar's trailing side (right side)
-            ToolbarItem(placement: .status) {
-                Button(action: {
-                    print("Loading ...")
-                    do {
-                        try manager.open(from: URL(fileURLWithPath: manager.currentFile!.path))
-                    } catch {
-                        print(error)
-                    }
-                }) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
-                }
-            }
-            ToolbarItem(placement: .automatic) {
-                Button {
-                    manager.delete(id: manager.selectedTaxScenario.id)
-                    
-                } label: {
-                    Label("Delete Scenario", systemImage: "trash")
-                }
-            }
-        }
-        .navigationTitle(manager.selectedTaxScenario.name)
+        .navigationTitle(scenario.name)
     }
-}
-
-#Preview {
-    
-    @Previewable @State var manager = TaxScenarioManager()
-    ScenarioView()
-        .environment(manager)
-        .onAppear() {
-            do {
-                try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
-            } catch {
-                print(error)
-            }
-        }
 }

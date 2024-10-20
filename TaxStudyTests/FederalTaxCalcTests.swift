@@ -12,7 +12,7 @@ import Foundation
 
 final class FederalTaxCalcTests {
     
-    let manager: TaxScenarioManager
+    let manager: AppData
     
     init () async throws {
         // Access the test bundle
@@ -21,7 +21,7 @@ final class FederalTaxCalcTests {
         // Locate the JSON file
         let fileURL = try #require(bundle.url(forResource: "2024EstimatedTax", withExtension: "json"))
         
-        self.manager = TaxScenarioManager()
+        self.manager = AppData()
         try self.manager.open(from: fileURL)
     }
     

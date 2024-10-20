@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct Header: View {
-    @Binding var ts: TaxScenario
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
         HStack(alignment: .top, spacing: 25) {
@@ -25,7 +29,7 @@ struct Header: View {
                 .font(.largeTitle)
             Divider()
             VStack(alignment: .trailing) {
-                Text("\(FederalTaxCalc(ts).grossIncome.asCurrency)")
+                Text("\(FederalTaxCalc(scenario).grossIncome.asCurrency)")
                     .font(.headline)
                 Text("Gross Income")
                     .font(.subheadline)
@@ -42,12 +46,12 @@ struct Header: View {
         VStack(alignment: .leading) {
             HStack(alignment: .firstTextBaseline) {
                 Text("Scenario:")
-                TextField("name", text: $ts.name)
+                TextField("name", text: $scenario.name)
                     .textFieldStyle(PlainTextFieldStyle())
             }
             .font(.title)
             
-            TextEditor(text: $ts.description)
+            TextEditor(text: $scenario.description)
                 .textEditorStyle(.plain)
                 .scrollDisabled(true)
                 .lineLimit(3)

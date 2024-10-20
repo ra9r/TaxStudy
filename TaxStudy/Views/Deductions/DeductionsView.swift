@@ -8,30 +8,21 @@
 import SwiftUI
 
 struct DeductionsView: View {
-    @Binding var ts: TaxScenario
+    @Binding var scenario: TaxScenario
+    
+    init(_ scenario: Binding<TaxScenario>) {
+        self._scenario = scenario
+    }
     
     var body: some View {
         ScrollView {
             HStack(alignment: .top, spacing: 10) {
-                DeductionEditor("Adjustments", $ts.adjustments)
-                DeductionEditor("Deductions", $ts.deductions)
-                DeductionEditor("Credits", $ts.credits)
+                DeductionEditor("Adjustments", $scenario.adjustments)
+                DeductionEditor("Deductions", $scenario.deductions)
+                DeductionEditor("Credits", $scenario.credits)
             }
             .padding()
         }
         .frame(minWidth: 800)
     }
-}
-
-#Preview {
-    @Previewable @State var manager = TaxScenarioManager()
-    DeductionsView(ts: $manager.selectedTaxScenario)
-        .environment(manager)
-        .onAppear() {
-            do {
-                try manager.open(from: URL(fileURLWithPath: "/Users/rodney/Desktop/2024EstimatedTax.json"))
-            } catch {
-                print(error)
-            }
-        }
 }
