@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @Environment(AppServices.self) var appSErvices
+    @Environment(AppServices.self) var appServices
     @Binding var scenario: TaxScenario?
     
     init(_ scenario: Binding<TaxScenario?>) {
@@ -15,30 +15,32 @@ struct SidebarView: View {
     }
     
     var body: some View {
-        List(appSErvices.data.scenarios, selection: $scenario) { scenario in
-            NavigationLink(scenario.name, value: scenario)
-                .contextMenu {
-                    Button(action: {
-                        print("Clicked Duplicate!")
-                    }) {
-                        Text("Duplicate")
-                        Image(systemName: "doc.on.doc")
+        List(selection: $scenario) {
+            ForEach(appServices.data.scenarios) { scenario in
+                NavigationLink(scenario.name, value: scenario)
+                    .contextMenu {
+                        Button(action: {
+                            print("Clicked Duplicate!")
+                        }) {
+                            Text("Duplicate")
+                            Image(systemName: "doc.on.doc")
+                        }
+                        Button(action: {
+                            appServices.data.delete(id: scenario.id)
+                        }) {
+                            Text("Delete")
+                            Image(systemName: "trash")
+                        }
                     }
-                    Button(action: {
-                        appSErvices.data.delete(id: scenario.id)
-                    }) {
-                        Text("Delete")
-                        Image(systemName: "trash")
-                    }
-                }
-//                .onMove(perform: move)
+            }
+            .onMove(perform: move)
         }
         
         .frame(minWidth: 250)
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button {
-                    appSErvices.data.add(TaxScenario(name: "New Scenario"))
+                    appServices.data.add(TaxScenario(name: "New Scenario"))
                 } label: {
                     Label("Add Scenario", systemImage: "plus")
                 }
@@ -48,6 +50,6 @@ struct SidebarView: View {
     }
     
     func move(from source: IndexSet, to destination: Int) {
-        appSErvices.data.scenarios.move(fromOffsets: source, toOffset: destination)
+        appServices.data.scenarios.move(fromOffsets: source, toOffset: destination)
     }
 }
