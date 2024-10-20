@@ -184,9 +184,6 @@
     "Earned Income Tax Credit" : {
 
     },
-    "Edit Tax Brackets for %@" : {
-
-    },
     "Elderly or Disabled Tax Credit" : {
 
     },
@@ -194,6 +191,9 @@
 
     },
     "Energy Efficiency Improvement" : {
+
+    },
+    "Facts: %@" : {
 
     },
     "Filing as a qualified widow or widower" : {
@@ -238,6 +238,9 @@
     "Head of Household" : {
 
     },
+    "Head of Houshold" : {
+
+    },
     "Health Coverage Tax Credit" : {
 
     },
@@ -266,9 +269,6 @@
 
     },
     "Income from royalties" : {
-
-    },
-    "Income Threadhold" : {
 
     },
     "Interest" : {
@@ -311,6 +311,9 @@
 
     },
     "Married Filing Jointly" : {
+
+    },
+    "Married Filing Separate" : {
 
     },
     "Married Filing Separately" : {

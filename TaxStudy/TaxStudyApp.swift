@@ -33,10 +33,10 @@ struct TaxStudyApp: App {
             ToolbarCommands()
             SidebarCommands()
             TextEditingCommands()
-//            TextFormattingCommands()
         }
         Window("Settings", id: "settings") {
-            TaxBracketEditor(filingStatus: .single, taxBrackets: DefaultTaxFacts2024.ordinaryTaxBrackets[.single]!)
+            SettingsView()
+                .environment(appService)
         }
     }
 

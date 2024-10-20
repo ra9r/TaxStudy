@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081D82CC59B15007E5CF0 /* Setttings.swift */; };
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
 		2A51CB202CB9A3650075BBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB192CB9A3650075BBA0 /* Assets.xcassets */; };
 		2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A4081D82CC59B15007E5CF0 /* Setttings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setttings.swift; sourceTree = "<group>"; };
 		2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrencyField.swift; sourceTree = "<group>"; };
 		2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB042CB9A3650075BBA0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 			);
 			path = Settings;
@@ -461,6 +464,7 @@
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,
 				2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */,
 				2AA0B5132CC4476C00546505 /* SidebarView.swift in Sources */,
+				2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */,
 				2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */,
 				2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */,
 				2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */,
