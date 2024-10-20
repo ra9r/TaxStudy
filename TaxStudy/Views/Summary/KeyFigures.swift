@@ -36,9 +36,6 @@ struct KeyFigures: View {
                     CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
                     CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency(0))
-                    CardNumberField("Age (Self)", amount: $scenario.ageSelf)
-                    CardNumberField("Age (Spouse)", amount: $scenario.ageSpouse)
-                    CardPicker("Employment Status", selection: $scenario.employmentStatus)
                 }
                 Divider()
                 VStack {

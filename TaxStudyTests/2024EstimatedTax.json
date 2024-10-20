@@ -403,15 +403,8 @@
       "filingStatus" : "marriedFilingJointly",
       "description" : "This is a scenario based on the projections for 2024.  It inclues all Fidelity, Merrill Lynch, Coinbase, and Treasury Direct gains.  It also itemizes based of projected expenses that are deductible under the US Tax Code.",
       "facts" : "OfficialTaxFacts2024",
-      "ageSelf" : 50,
       "name" : "Current Year Estimates",
-      "ageSpouse" : 50,
       "income" : [
-        {
-          "type" : "socialSecuritySelf",
-          "amount" : 39248,
-          "id" : "C0D6C5F3-0C9B-47C2-84F6-7D3FC1EFF881"
-        },
         {
           "amount" : 44619,
           "type" : "taxExemptInterest",
@@ -474,12 +467,23 @@
           "id" : "E498EB15-66B4-4D1C-A5EC-FDFE12C74379"
         }
       ],
-      "employmentStatus" : "retired"
+      "profileSelf": {
+          "name": "Rodney Aiglstorfer",
+          "age": 50,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 39248
+      },
+      "profileSpouse": {
+          "name": "Nobuko Aiglstorfer",
+          "age": 52,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 0
+      }
     },
     {
-      "employmentStatus" : "retired",
       "description" : "",
-      "ageSpouse" : 52,
       "deductions" : [
 
       ],
@@ -493,13 +497,21 @@
       "filingStatus" : "marriedFilingJointly",
       "name" : "Current CoreFolio w\/Rodney",
       "facts" : "OfficialTaxFacts2024",
-      "ageSelf" : 50,
+      "profileSelf": {
+          "name": "Rodney Aiglstorfer",
+          "age": 50,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 42816
+      },
+      "profileSpouse": {
+          "name": "Nobuko Aiglstorfer",
+          "age": 52,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 0
+      },
       "income" : [
-        {
-          "amount" : 42816,
-          "id" : "D5B87AD7-75C5-426C-B2F9-7F7D7F648E96",
-          "type" : "socialSecuritySelf"
-        },
         {
           "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
           "type" : "qualifiedDividends",
@@ -531,7 +543,6 @@
       "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B"
     },
     {
-      "ageSelf" : 65,
       "filingStatus" : "marriedFilingJointly",
       "credits" : [
 
@@ -544,12 +555,21 @@
       "adjustments" : [
 
       ],
+      "profileSelf": {
+          "name": "Bob",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 38400
+      },
+      "profileSpouse": {
+          "name": "Angie",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 24000
+      },
       "income" : [
-        {
-          "type" : "socialSecuritySelf",
-          "id" : "865CA641-D988-4F0C-8DF6-641CD22E1797",
-          "amount" : 38400
-        },
         {
           "type" : "qualifiedDividends",
           "id" : "FA8C43B7-D34C-4C7A-B770-C31D25332F67",
@@ -569,16 +589,9 @@
           "amount" : 8000,
           "id" : "C6F63E19-19BF-4F76-922C-B36278CACD87",
           "type" : "otherTaxExemptIncome"
-        },
-        {
-          "id" : "AC3F2450-13C6-468C-9065-013946592E8C",
-          "amount" : 24000,
-          "type" : "socialSecuritySpouse"
         }
       ],
-      "employmentStatus" : "retired",
       "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
-      "ageSpouse" : 65,
       "name" : "$0 Tax on $100,000"
     },
     {
@@ -605,7 +618,6 @@
       "deductions" : [
 
       ],
-      "employmentStatus" : "retired",
       "facts" : "OfficialTaxFacts2024",
       "filingStatus" : "marriedFilingJointly",
       "credits" : [
@@ -613,26 +625,27 @@
       ],
       "id" : "0BD75978-2901-493A-AC93-55463A99F397",
       "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
-      "ageSelf" : 65,
       "name" : "$0 Tax on $120,000",
-      "ageSpouse" : 65
+      "profileSelf": {
+          "name": "Bob",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 0
+      },
+      "profileSpouse": {
+          "name": "Angie",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 0,
+          "socialSecurity": 0
+      }
     },
     {
       "ageSelf" : 50,
-      "employmentStatus" : "retired",
       "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
-      "ageSpouse" : 50,
       "income" : [
-        {
-          "type" : "wagesSelf",
-          "amount" : 50000,
-          "id" : "9912CD1E-CD98-4ABE-995E-74BA1D928F11"
-        },
-        {
-          "amount" : 50000,
-          "type" : "wagesSpouse",
-          "id" : "0BA81810-CE35-449C-A530-239F9FC682D2"
-        }
+        
       ],
       "credits" : [
 
@@ -646,7 +659,21 @@
 
       ],
       "description" : "",
-      "facts" : "OfficialTaxFacts2024"
+      "facts" : "OfficialTaxFacts2024",
+      "profileSelf": {
+          "name": "Bob",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 50000,
+          "socialSecurity": 0
+      },
+      "profileSpouse": {
+          "name": "Angie",
+          "age": 65,
+          "employmentStatus" : "retired",
+          "wages": 50000,
+          "socialSecurity": 0
+      }
     }
   ]
 }

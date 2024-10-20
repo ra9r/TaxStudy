@@ -18,6 +18,7 @@ struct SummaryView : View {
             VStack(alignment: .center) {
                 Header($scenario)
                 KeyFigures($scenario)
+                ProfileView($scenario)
             }
             .padding()
         }

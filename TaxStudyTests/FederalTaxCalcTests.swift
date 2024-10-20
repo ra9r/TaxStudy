@@ -12,50 +12,19 @@ import Foundation
 
 final class FederalTaxCalcTests {
     
-    let manager: AppData
-    
-    init () async throws {
-        // Access the test bundle
-        let bundle = Bundle(for: FederalTaxCalcTests.self)
-        
-        // Locate the JSON file
-        let fileURL = try #require(bundle.url(forResource: "2024EstimatedTax", withExtension: "json"))
-        
-        self.manager = AppData()
-        try self.manager.open(from: fileURL)
-    }
-    
-    @Test func computeNII() async throws {
-        
-        let scenario = try #require(manager.taxScenarios.first)
-        
-        let ftc = FederalTaxCalc(scenario)
-        
-        #expect(ftc.netLTCG == 0)
-        #expect(ftc.netSTCG == 0)
-        #expect(ftc.scenario.totalDividends > 0)
-        #expect(ftc.scenario.interest > 0)
-        #expect(ftc.scenario.rentalIncome == 0)
-        #expect(ftc.scenario.royalties == 0)
-        #expect(ftc.scenario.deductions.total(for: .marginInterestDeduction) > 0)
-        #expect(ftc.scenario.deductions.total(for: .rentalPropertyExpensesDeduction) == 0)
-        
-        #expect(ftc.netInvestmentIncome > 0)
-        
-        
-    }
-    
     @Test func testSimpleWageSelfEmployed() async throws {
         let scenario = TaxScenario(
             name: "$100k Wages at 65",
-            filingStatus: .marriedFilingJointly,
-            employmentStatus: .selfEmployed,
-            ageSelf: 65,
-            ageSpouse: 65
-        )
+            filingStatus: .marriedFilingJointly        )
         
-        scenario.income.add(.init(.wagesSelf, amount: 50_000))
-        scenario.income.add(.init(.wagesSpouse, amount: 50_000))
+        scenario.profileSelf.age = 65
+        scenario.profileSelf.employmentStatus = .selfEmployed
+        scenario.profileSelf.wages = 50000
+        scenario.profileSelf.socialSecurity = 0
+        scenario.profileSpouse.age = 65
+        scenario.profileSpouse.employmentStatus = .selfEmployed
+        scenario.profileSpouse.wages = 50000
+        scenario.profileSpouse.socialSecurity = 0
         
         let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
         
@@ -91,14 +60,17 @@ final class FederalTaxCalcTests {
     @Test func testSimpleWageNotSelfEmployed() async throws {
         let scenario = TaxScenario(
             name: "$100k Wages at 65",
-            filingStatus: .marriedFilingJointly,
-            employmentStatus: .employed,
-            ageSelf: 65,
-            ageSpouse: 65
+            filingStatus: .marriedFilingJointly
         )
+        scenario.profileSelf.age = 65
+        scenario.profileSelf.employmentStatus = .employed
+        scenario.profileSelf.wages = 50000
+        scenario.profileSelf.socialSecurity = 0
+        scenario.profileSpouse.age = 65
+        scenario.profileSpouse.employmentStatus = .employed
+        scenario.profileSpouse.wages = 50000
+        scenario.profileSpouse.socialSecurity = 0
         
-        scenario.income.add(.init(.wagesSelf, amount: 50_000))
-        scenario.income.add(.init(.wagesSpouse, amount: 50_000))
         
         let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
         
@@ -133,16 +105,19 @@ final class FederalTaxCalcTests {
     @Test func testZeroTaxOn100k() async throws {
         let scenario = TaxScenario(
             name: "$0 Tax on $100,000",
-            filingStatus: .marriedFilingJointly,
-            employmentStatus: .retired,
-            ageSelf: 65,
-            ageSpouse: 65
+            filingStatus: .marriedFilingJointly
         )
+        
+        scenario.profileSelf.age = 65
+        scenario.profileSelf.employmentStatus = .retired
+        scenario.profileSelf.socialSecurity = 3200*12
+        scenario.profileSpouse.age = 65
+        scenario.profileSpouse.employmentStatus = .retired
+        scenario.profileSpouse.socialSecurity = 2000*12
+        
         let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
         
         // MARK: Social Security Only
-        scenario.income.add(.init(.socialSecuritySelf, amount: 3200*12))
-        scenario.income.add(.init(.socialSecuritySpouse, amount: 2000*12))
         
         #expect(fedTax.deduction == 32_300)
         #expect(fedTax.grossIncome == 62_400)

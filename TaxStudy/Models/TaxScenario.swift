@@ -15,38 +15,37 @@ class TaxScenario: Codable, Identifiable {
     var name: String
     var description: String = ""
     var filingStatus: FilingStatus = FilingStatus.single
-    var employmentStatus: EmploymentStatus = .retired
     var income: IncomeSources = IncomeSources()
     var deductions: Deductions<TaxDeductionType> = Deductions()
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
     var facts: String
-    var ageSelf: Int = 50
-    var ageSpouse: Int = 50
+    var profileSelf: Profile
+    var profileSpouse: Profile
+
     
-    init(name: String, filingStatus: FilingStatus = .single, employmentStatus: EmploymentStatus = .retired, ageSelf: Int = 50, ageSpouse: Int = 50, facts: TaxFacts? = nil) {
+    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: TaxFacts? = nil) {
         self.name = name
         self.filingStatus = filingStatus
-        self.employmentStatus = employmentStatus
-        self.ageSelf = ageSelf
-        self.ageSpouse = ageSpouse
         self.facts = facts?.id ?? DefaultTaxFacts2024.id
+        self.profileSelf = Profile("Taxpayer 1")
+        self.profileSpouse = Profile("Taxpayer 2")
     }
     
     // MARK: - Wages
     var wagesSelf: Double {
-        income.total(for: .wagesSelf)
+        profileSelf.wages
     }
     var wagesSpouse: Double {
-        income.total(for: .wagesSpouse)
+        profileSpouse.wages
     }
     
     // MARK: - Social Security
     var socialSecuritySelf: Double {
-        income.total(for: .socialSecuritySelf)
+        profileSelf.socialSecurity
     }
     var socialSecuritySpouse: Double {
-        income.total(for: .socialSecuritySpouse)
+        profileSpouse.socialSecurity
     }
     
     // MARK: - Investment Income
@@ -168,8 +167,8 @@ class TaxScenario: Codable, Identifiable {
         case description
         case filingStatus
         case employmentStatus
-        case ageSelf
-        case ageSpouse
+        case profileSelf
+        case profileSpouse
         
         case income
         case deductions
@@ -185,9 +184,8 @@ class TaxScenario: Codable, Identifiable {
         name = try container.decode(String.self, forKey: .name)
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         filingStatus = try container.decode(FilingStatus.self, forKey: .filingStatus)
-        employmentStatus = try container.decode(EmploymentStatus.self, forKey: .employmentStatus)
-        ageSelf = try container.decodeIfPresent(Int.self, forKey: .ageSelf) ?? 50
-        ageSpouse = try container.decodeIfPresent(Int.self, forKey: .ageSpouse) ?? 50
+        profileSelf = try container.decode(Profile.self, forKey: .profileSelf)
+        profileSpouse = try container.decode(Profile.self, forKey: .profileSpouse)
         facts = try container.decode(String.self, forKey: .facts)
         income = try container.decodeIfPresent(IncomeSources.self, forKey: .income) ?? IncomeSources()
         credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
@@ -201,9 +199,8 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(name, forKey: .name)
         try container.encode(description, forKey: .description)
         try container.encode(filingStatus, forKey: .filingStatus)
-        try container.encode(employmentStatus, forKey: .employmentStatus)
-        try container.encode(ageSelf, forKey: .ageSelf)
-        try container.encode(ageSpouse, forKey: .ageSpouse)
+        try container.encode(profileSelf, forKey: .profileSelf)
+        try container.encode(profileSpouse, forKey: .profileSpouse)
         try container.encode(facts, forKey: .facts)
 
         try container.encode(income, forKey: .income)

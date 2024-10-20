@@ -9,17 +9,17 @@ import SwiftUI
 enum IncomeType: String, Codable, CaseIterable {
     // MARK: - Wages
     
-    /// Wages earned by the filer
-    case wagesSelf
-    /// Wages earned by the spouse
-    case wagesSpouse
-    
-    // MARK: - Social Security
-    
-    /// Social Security benefits received by the filer
-    case socialSecuritySelf
-    /// Social Security benefits received by the spouse
-    case socialSecuritySpouse
+//    /// Wages earned by the filer
+//    case wagesSelf
+//    /// Wages earned by the spouse
+//    case wagesSpouse
+//    
+//    // MARK: - Social Security
+//    
+//    /// Social Security benefits received by the filer
+//    case socialSecuritySelf
+//    /// Social Security benefits received by the spouse
+//    case socialSecuritySpouse
     
     // MARK: - Investment Income (Schedule D)
     
@@ -94,10 +94,10 @@ extension IncomeType: Identifiable {
     
     
     static let  ordinary: [IncomeType] = [
-        .wagesSelf,
-        .wagesSpouse,
-        .socialSecuritySelf,
-        .socialSecuritySpouse,
+//        .wagesSelf,
+//        .wagesSpouse,
+//        .socialSecuritySelf,
+//        .socialSecuritySpouse,
         .rentalIncome,
         .royalties,
         .businessIncome,
@@ -112,14 +112,14 @@ extension IncomeType: Identifiable {
 extension IncomeType {
     var label: String {
         switch self {
-        case .wagesSelf:
-            return String(localized: "Wages (Self)")
-        case .wagesSpouse:
-            return String(localized: "Wages (Spouse)")
-        case .socialSecuritySelf:
-            return String(localized: "Social Security (Self)")
-        case .socialSecuritySpouse:
-            return String(localized: "Social Security (Spouse)")
+//        case .wagesSelf:
+//            return String(localized: "Wages (Self)")
+//        case .wagesSpouse:
+//            return String(localized: "Wages (Spouse)")
+//        case .socialSecuritySelf:
+//            return String(localized: "Social Security (Self)")
+//        case .socialSecuritySpouse:
+//            return String(localized: "Social Security (Spouse)")
         case .interest:
             return String(localized: "Interest")
         case .taxExemptInterest:
@@ -161,14 +161,14 @@ extension IncomeType {
     
     var description: String {
         switch self {
-        case .wagesSelf:
-            return String(localized: "Wages earned by the filer")
-        case .wagesSpouse:
-            return String(localized: "Wages earned by the spouse")
-        case .socialSecuritySelf:
-            return String(localized: "Social Security benefits received by the filer")
-        case .socialSecuritySpouse:
-            return String(localized: "Social Security benefits received by the spouse")
+//        case .wagesSelf:
+//            return String(localized: "Wages earned by the filer")
+//        case .wagesSpouse:
+//            return String(localized: "Wages earned by the spouse")
+//        case .socialSecuritySelf:
+//            return String(localized: "Social Security benefits received by the filer")
+//        case .socialSecuritySpouse:
+//            return String(localized: "Social Security benefits received by the spouse")
         case .interest:
             return String(localized: "Taxable interest income")
         case .taxExemptInterest:

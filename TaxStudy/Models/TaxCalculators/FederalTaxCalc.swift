@@ -216,8 +216,8 @@ class FederalTaxCalc {
             return 0
         }
         
-        let selfBonus = scenario.ageSelf >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
-        let spouceBonus = scenario.ageSpouse >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
+        let selfBonus = scenario.profileSelf.age >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
+        let spouceBonus = scenario.profileSpouse.age >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
         
         switch scenario.filingStatus {
         case .marriedFilingJointly:
@@ -364,10 +364,10 @@ class FederalTaxCalc {
     
     /// Return the portion of FICA taxes for Sociai Security
     var totalFICATaxSocialSecurity: Double {
-        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
+        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
         
         if scenario.filingStatus == .marriedFilingJointly {
-            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
+            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
             return forSelf + forSpouse
         } else {
             return forSelf
@@ -376,10 +376,10 @@ class FederalTaxCalc {
     
     /// Returns the portion of FICA taxes for Medicare
     var totalFICATaxMedicare: Double {
-        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
+        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
         
         if scenario.filingStatus == .marriedFilingJointly {
-            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
+            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
             return forSelf + forSpouse
         } else {
             return forSelf
