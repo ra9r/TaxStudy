@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct FileCommands: Commands {
+    @Environment(\.openWindow) var openWindow
     @State var appServices: AppServices
     
     var body: some Commands {
@@ -36,6 +37,12 @@ struct FileCommands: Commands {
             }
             .keyboardShortcut("S", modifiers: [.command, .shift])
             .disabled(appServices.data.scenarios.isEmpty)
+        }
+        CommandGroup(replacing: .appSettings) {
+            Button("Settings...") {
+                openWindow(id: "settings")
+            }
+            .keyboardShortcut(",", modifiers: [.command])
         }
     }
     

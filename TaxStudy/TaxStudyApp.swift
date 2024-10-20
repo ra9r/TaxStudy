@@ -12,6 +12,7 @@ import SwiftUI
 struct TaxStudyApp: App {
     @State var appService: AppServices = AppServices.shared
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
                 .environment(appService)
@@ -33,6 +34,9 @@ struct TaxStudyApp: App {
             SidebarCommands()
             TextEditingCommands()
 //            TextFormattingCommands()
+        }
+        Window("Settings", id: "settings") {
+            TaxBracketEditor(filingStatus: .single, taxBrackets: DefaultTaxFacts2024.ordinaryTaxBrackets[.single]!)
         }
     }
 
