@@ -13,7 +13,7 @@ struct TaxBracketEditor: View {
     @State var selection: Set<TaxBracket.ID> = []
     var body: some View {
         VStack {
-            Text("Edit Tax Brackets for \(filingStatus.rawValue)")
+            Text("Edit Tax Brackets for \(filingStatus.label)")
                 .font(.headline)
             
             Table(taxBrackets.brackets, selection: $selection) {

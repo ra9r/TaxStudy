@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardPicker<T: CaseIterable & Hashable & RawRepresentable>: View {
+struct CardPicker<T: CaseIterable & Hashable & Displayable>: View {
     var label: String
     @Binding var selection: T
 
@@ -26,12 +26,12 @@ struct CardPicker<T: CaseIterable & Hashable & RawRepresentable>: View {
 
                 Menu {
                     ForEach(Array(T.allCases), id: \.self) { option in
-                        Button("\(option.rawValue)"){
+                        Button("\(option.label)"){
                             selection = option
                         }
                     }
                 } label: {
-                    Text("\(selection.rawValue)")
+                    Text("\(selection.label)")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.gray)
                 }

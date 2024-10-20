@@ -56,10 +56,4 @@ struct MetaCard: View {
     }
 }
 
-struct FilingStatusView_Previews: PreviewProvider {
-    static var previews: some View {
-        MetaCard(symbolName: FilingStatus.single.symbol, label: "Employment Status", value: FilingStatus.single.rawValue)
-            .previewLayout(.sizeThatFits)
-        //            .padding()
-    }
-}
+
