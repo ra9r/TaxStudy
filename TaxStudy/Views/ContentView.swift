@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationSplitView {
             SidebarView($activeScenario)
         } detail: {
-            if let activeScenario {
+            if activeScenario != nil {
                 ScenarioView(Binding($activeScenario)!)
             } else {
                 EmptyView()
