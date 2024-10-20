@@ -57,3 +57,19 @@ class IncomeSources: Codable {
         self.sources = try container.decode([Income].self)
     }
 }
+
+extension IncomeSources: DeepCopyable {
+    var deepCopy: IncomeSources {
+        return IncomeSources(sources: self.sources.map { $0.deepCopy })
+    }
+}
+
+extension Income: DeepCopyable {
+    var deepCopy: Income {
+        return Income(
+            self.type,
+            amount: self.amount,
+            note: self.note
+        )
+    }
+}

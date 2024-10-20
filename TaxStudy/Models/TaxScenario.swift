@@ -15,21 +15,29 @@ class TaxScenario: Codable, Identifiable {
     var name: String
     var description: String = ""
     var filingStatus: FilingStatus = FilingStatus.single
+    var facts: String
+    var profileSelf: Profile
+    var profileSpouse: Profile
     var income: IncomeSources = IncomeSources()
     var deductions: Deductions<TaxDeductionType> = Deductions()
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
-    var facts: String
-    var profileSelf: Profile
-    var profileSpouse: Profile
 
     
-    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: TaxFacts? = nil) {
+//    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: TaxFacts? = nil) {
+//        self.name = name
+//        self.filingStatus = filingStatus
+//        self.facts = facts?.id ?? DefaultTaxFacts2024.id
+//        self.profileSelf = Profile("Taxpayer 1")
+//        self.profileSpouse = Profile("Taxpayer 2")
+//    }
+    
+    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: String? = nil) {
         self.name = name
         self.filingStatus = filingStatus
-        self.facts = facts?.id ?? DefaultTaxFacts2024.id
-        self.profileSelf = Profile("Taxpayer 1")
-        self.profileSpouse = Profile("Taxpayer 2")
+        self.facts = facts ?? DefaultTaxFacts2024.id
+        self.profileSelf = profleSelf ?? Profile("Taxpayer 1")
+        self.profileSpouse = profileSpouse ?? Profile("Taxpayer 2")
     }
     
     // MARK: - Wages
@@ -225,5 +233,22 @@ extension TaxScenario : Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+}
+
+extension TaxScenario : DeepCopyable {
+    var deepCopy: TaxScenario {
+        let copy = TaxScenario(
+            name: "\(name) Copy",
+            filingStatus: filingStatus,
+            profleSelf: profileSelf.deepCopy,
+            profileSpouse: profileSpouse.deepCopy,
+            facts: facts)
+        
+        copy.income = income.deepCopy
+        copy.deductions = deductions.deepCopy
+        copy.credits = credits.deepCopy
+        copy.adjustments = adjustments.deepCopy
+        return copy
     }
 }

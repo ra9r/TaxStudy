@@ -20,7 +20,7 @@ struct SidebarView: View {
                 NavigationLink(scenario.name, value: scenario)
                     .contextMenu {
                         Button(action: {
-                            print("Clicked Duplicate!")
+                            appServices.data.add(scenario.deepCopy)
                         }) {
                             Text("Duplicate")
                             Image(systemName: "doc.on.doc")

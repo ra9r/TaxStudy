@@ -13,12 +13,12 @@ class Profile: Codable {
     var wages: Double
     var socialSecurity: Double
     
-    init(_ name: String, age: Int = 50, employmentStatus: EmploymentStatus = .retired, wages: Double = 0, socialSecurityIncome: Double = 0) {
+    init(_ name: String, age: Int = 50, employmentStatus: EmploymentStatus = .retired, wages: Double = 0, socialSecurity: Double = 0) {
         self.name = name
         self.age = age
         self.employmentStatus = employmentStatus
         self.wages = wages
-        self.socialSecurity = socialSecurityIncome
+        self.socialSecurity = socialSecurity
     }
     
     enum CodingKeys: String, CodingKey {
@@ -45,5 +45,18 @@ class Profile: Codable {
         try container.encode(employmentStatus, forKey: .employmentStatus)
         try container.encode(wages, forKey: .wages)
         try container.encode(socialSecurity, forKey: .socialSecurity)
+    }
+}
+
+extension Profile: DeepCopyable {
+    var deepCopy: Profile {
+        let copy = Profile(
+            name,
+            age: age,
+            employmentStatus: employmentStatus,
+            wages: wages,
+            socialSecurity: socialSecurity
+        )
+        return copy
     }
 }

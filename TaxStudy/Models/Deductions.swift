@@ -60,3 +60,19 @@ class Deductions<T: DeductionType>: Codable {
         self.items = try container.decode([Deduction<T>].self)
     }
 }
+
+extension Deductions : DeepCopyable {
+    var deepCopy: Deductions<T> {
+        return Deductions(deductions: self.items.map { $0.deepCopy })
+    }
+}
+
+extension Deduction: DeepCopyable {
+    var deepCopy: Deduction<T> {
+        return Deduction(
+            self.type,
+            amount: self.amount,
+            description: self.description
+        )
+    }
+}
