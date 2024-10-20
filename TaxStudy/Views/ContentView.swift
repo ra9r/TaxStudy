@@ -10,14 +10,15 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(AppServices.self) var services
-    @State var activeScenario: TaxScenario?
+//    @State var activeScenario: TaxScenario?
     
     var body: some View {
+        @Bindable var s = services
         NavigationSplitView {
-            SidebarView($activeScenario)
+            SidebarView()
         } detail: {
-            if activeScenario != nil {
-                ScenarioView(Binding($activeScenario)!)
+            if s.activeScenario != nil {
+                ScenarioView(Binding($s.activeScenario)!)
             } else {
                 EmptyView()
             }

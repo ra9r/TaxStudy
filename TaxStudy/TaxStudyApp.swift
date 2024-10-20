@@ -17,11 +17,13 @@ struct TaxStudyApp: App {
                 .environment(appService)
                 .background(.white)
                 .onAppear {
-                    do {
-                        try appService.openLastSavedFile()
-                    } catch {
-                        print("No saved file found.")
-                        print(error)
+                    if appService.currentFile == nil {
+                        do {
+                            try appService.openLastSavedFile()
+                        } catch {
+                            print("No saved file found.")
+                            print(error)
+                        }
                     }
                 }
         }

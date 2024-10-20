@@ -13,6 +13,7 @@ class AppServices {
     
     var data: AppData = AppData()
     var currentFile: URL?
+    var activeScenario: TaxScenario? = nil
     
     private init() { /* Do Nothing */ }
     

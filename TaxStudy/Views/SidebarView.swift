@@ -8,25 +8,23 @@ import SwiftUI
 
 struct SidebarView: View {
     @Environment(AppServices.self) var appServices
-    @Binding var scenario: TaxScenario?
-    
-    init(_ scenario: Binding<TaxScenario?>) {
-        self._scenario = scenario
-    }
+
     
     var body: some View {
-        List(selection: $scenario) {
-            ForEach(appServices.data.scenarios) { scenario in
+        @Bindable var s = appServices
+        List(selection: $s.activeScenario) {
+            ForEach(s.data.scenarios) { scenario in
                 NavigationLink(scenario.name, value: scenario)
                     .contextMenu {
                         Button(action: {
-                            appServices.data.add(scenario.deepCopy)
+                            s.data.add(scenario.deepCopy)
                         }) {
                             Text("Duplicate")
                             Image(systemName: "doc.on.doc")
                         }
                         Button(action: {
-                            appServices.data.delete(id: scenario.id)
+                            s.data.delete(id: scenario.id)
+//                            s.activeScenario = nil
                         }) {
                             Text("Delete")
                             Image(systemName: "trash")
