@@ -153,11 +153,17 @@ class TaxScenario: Codable, Identifiable {
     
     // MARK: - Wages and Social Security
     var totalWages: Double {
-        return wagesSelf + wagesSpouse
+        if filingStatus == .marriedFilingJointly {
+            return wagesSelf + wagesSpouse
+        }
+        return wagesSelf
     }
     
     var totalSocialSecurityIncome: Double {
-        return socialSecuritySelf + socialSecuritySpouse
+        if filingStatus == .marriedFilingJointly {
+            return socialSecuritySelf + socialSecuritySpouse
+        }
+        return socialSecuritySelf
     }
     
     // MARK: - Codable

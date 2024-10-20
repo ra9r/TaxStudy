@@ -19,28 +19,38 @@ struct ProfileView: View {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     CardItem("Self", value: scenario.profileSelf.name)
-                    CardItem("Spouse", value: scenario.profileSpouse.name)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardItem("Spouse", value: scenario.profileSpouse.name)
+                    }
                 }
                 Divider()
                 VStack(alignment: .leading) {
                     CardNumberField("Age", amount: $scenario.profileSelf.age)
-                    CardNumberField("Age", amount: $scenario.profileSpouse.age)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardNumberField("Age", amount: $scenario.profileSpouse.age)
+                    }
                 }
                 Divider()
                 VStack(alignment: .leading) {
                     CardPicker("Employment Status", selection: $scenario.profileSelf.employmentStatus)
-                    CardPicker("Employment Status", selection: $scenario.profileSpouse.employmentStatus)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardPicker("Employment Status", selection: $scenario.profileSpouse.employmentStatus)
+                    }
                 }
                 Divider()
                 VStack(alignment: .leading) {
                     CardCurrencyField("Wages", amount: $scenario.profileSelf.wages)
-                    CardCurrencyField("Wages", amount: $scenario.profileSpouse.wages)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardCurrencyField("Wages", amount: $scenario.profileSpouse.wages)
+                    }
                     
                 }
                 Divider()
                 VStack(alignment: .leading) {
                     CardCurrencyField("Social Security", amount: $scenario.profileSelf.socialSecurity)
-                    CardCurrencyField("Social Security", amount: $scenario.profileSpouse.socialSecurity)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardCurrencyField("Social Security", amount: $scenario.profileSpouse.socialSecurity)
+                    }
                 }
             }
         }

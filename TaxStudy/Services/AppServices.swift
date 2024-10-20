@@ -44,7 +44,7 @@ class AppServices {
         let recentDocuments = NSDocumentController.shared.recentDocumentURLs
         
         if recentDocuments.isEmpty == false {
-            try open(from: recentDocuments.first!)
+            try open(from: recentDocuments.last!)
         } else {
             try openFile()
         }
