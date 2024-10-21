@@ -13,7 +13,7 @@ struct FileCommands: Commands {
     var body: some Commands {
         CommandGroup(replacing: .newItem) {
             Button("New...") {
-                openNewWindow()
+                openWindow(id: "scenarios")
             }
             .keyboardShortcut("N", modifiers: [.command])
             Button("Open...") {
@@ -91,22 +91,22 @@ struct FileCommands: Commands {
         }
     }
     
-    func openNewWindow() {
-        let newWindow = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
-            styleMask: [.titled, .closable, .resizable],
-            backing: .buffered, defer: false
-        )
-        
-        newWindow.title = "New Window"
-        newWindow.center()
-        
-        let contentView = ContentView()
-            .environment(appServices)
-        
-        newWindow.contentView = NSHostingView(rootView: contentView)
-        
-        let windowController = NSWindowController(window: newWindow)
-        windowController.showWindow(nil)
-    }
+//    func openNewWindow() {
+//        let newWindow = NSWindow(
+//            contentRect: NSRect(x: 0, y: 0, width: 400, height: 300),
+//            styleMask: [.titled, .closable, .resizable],
+//            backing: .buffered, defer: false
+//        )
+//        
+//        newWindow.title = "New Window"
+//        newWindow.center()
+//        
+//        let contentView = ContentView()
+//            .environment(appServices)
+//        
+//        newWindow.contentView = NSHostingView(rootView: contentView)
+//        
+//        let windowController = NSWindowController(window: newWindow)
+//        windowController.showWindow(nil)
+//    }
 }
