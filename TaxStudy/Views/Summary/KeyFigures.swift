@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct KeyFigures: View {
+    @Environment(AppServices.self) var appServices
     @Binding var scenario: TaxScenario
     
     init(_ scenario: Binding<TaxScenario>) {
@@ -16,8 +17,9 @@ struct KeyFigures: View {
     
 
     var body: some View {
-        let federalTaxes = FederalTaxCalc(scenario)
-        let stateTaxes = NCTaxCalc(scenario)
+        let facts = appServices.data.facts[scenario.facts]!
+        let federalTaxes = FederalTaxCalc(scenario, facts: facts)
+        let stateTaxes = NCTaxCalc(scenario, facts: facts)
         CardView("Key Metrics") {
             HStack(alignment: .top) {
                 VStack {

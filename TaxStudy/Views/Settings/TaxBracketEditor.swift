@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct TaxBracketEditor: View {
-    @State var filingStatus: FilingStatus // The selected filing status
     var taxBrackets: TaxBrackets
     @State var selection: Set<TaxBracket.ID> = []
+    
+    
     var body: some View {
         VStack {
-            Text("Edit Tax Brackets for \(filingStatus.label)")
-                .font(.headline)
-            
             Table(taxBrackets.brackets, selection: $selection) {
                 TableColumn("Tax Rate", value: \.rate.asPercentage)
-                TableColumn("Income Threadhold") { bracket in
-                    Text(bracket.threshold.asCurrency)
-                }
+                TableColumn("Single", value: \.thresholds[.single]!.asCurrency)
+                TableColumn("Married Filing Jointly", value: \.thresholds[.marriedFilingJointly]!.asCurrency)
+                TableColumn("Married Filing Separate", value: \.thresholds[.marriedFilingSeparately]!.asCurrency)
+                TableColumn("Head of Houshold", value: \.thresholds[.headOfHousehold]!.asCurrency)
+                TableColumn("Qualified Widow(er)", value: \.thresholds[.qualifiedWidow]!.asCurrency)
             }
             
             // Add New Tax Bracket Button
@@ -37,8 +37,28 @@ struct TaxBracketEditor: View {
     }
 }
 
-#Preview {
-    @Previewable @State var manager = AppData()
-    TaxBracketEditor(filingStatus: .single, taxBrackets: DefaultTaxFacts2024.ordinaryTaxBrackets[.single]!)
-        .environment(manager)
+class InternalTaxBracket : Identifiable {
+    var id: UUID = UUID()
+    var rate: Double = 0
+    var singleThreshold: Double = 0
+    var marriedFilingJointlyThreadold: Double = 0
+    var marriedFilingSeparatelyThreadold: Double = 0
+    var headOfHouseholdThreadold: Double = 0
+    var qualifiedWidowThreadold: Double = 0
+    
+    init(
+        rate: Double,
+        singleThreshold: Double,
+        marriedFilingJointlyThreadold: Double = 0,
+        marriedFilingSeparatelyThreadold: Double = 0,
+        headOfHouseholdThreadold: Double = 0,
+        qualifiedWidowThreadold: Double = 0
+    ) {
+        self.rate = rate
+        self.singleThreshold = singleThreshold
+        self.marriedFilingJointlyThreadold = marriedFilingJointlyThreadold
+        self.marriedFilingSeparatelyThreadold = marriedFilingSeparatelyThreadold
+        self.headOfHouseholdThreadold = headOfHouseholdThreadold
+        self.qualifiedWidowThreadold = qualifiedWidowThreadold
+    }
 }

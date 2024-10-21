@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081D82CC59B15007E5CF0 /* Setttings.swift */; };
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
 		2A51CB202CB9A3650075BBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB192CB9A3650075BBA0 /* Assets.xcassets */; };
 		2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */; };
@@ -50,6 +51,7 @@
 		2AA0B51E2CC4A83A00546505 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51D2CC4A82E00546505 /* ProfileView.swift */; };
 		2AA0B5202CC4AEDA00546505 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51F2CC4AED500546505 /* Profiles.swift */; };
 		2AA0B52E2CC5636800546505 /* DeepCopyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B52D2CC5636400546505 /* DeepCopyable.swift */; };
+		2AA0B5342CC5D4BF00546505 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B5332CC5D4BB00546505 /* AppErrors.swift */; };
 		2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */; };
 		2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */; };
 		2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */; };
@@ -68,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A4081D82CC59B15007E5CF0 /* Setttings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setttings.swift; sourceTree = "<group>"; };
 		2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrencyField.swift; sourceTree = "<group>"; };
 		2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB042CB9A3650075BBA0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		2AA0B51D2CC4A82E00546505 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2AA0B51F2CC4AED500546505 /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		2AA0B52D2CC5636400546505 /* DeepCopyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepCopyable.swift; sourceTree = "<group>"; };
+		2AA0B5332CC5D4BB00546505 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracketEditor.swift; sourceTree = "<group>"; };
 		2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTypes.swift; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 		2AA0B5182CC48DFC00546505 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2AA0B5332CC5D4BB00546505 /* AppErrors.swift */,
 				2AA0B5192CC48E1200546505 /* AppServices.swift */,
 				2A51CB0B2CB9A3650075BBA0 /* AppData.swift */,
 			);
@@ -314,6 +319,7 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 			);
 			path = Settings;
@@ -461,9 +467,11 @@
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,
 				2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */,
 				2AA0B5132CC4476C00546505 /* SidebarView.swift in Sources */,
+				2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */,
 				2A51CB322CB9A3650075BBA0 /* SummaryView.swift in Sources */,
 				2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */,
 				2A51CB332CB9A3650075BBA0 /* ScenarioView.swift in Sources */,
+				2AA0B5342CC5D4BF00546505 /* AppErrors.swift in Sources */,
 				2A51CB342CB9A3650075BBA0 /* ContentView.swift in Sources */,
 				2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */,
 				2A7CB29F2CBDC264008334E1 /* TaxAdjustments.swift in Sources */,

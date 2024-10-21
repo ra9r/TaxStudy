@@ -12,7 +12,8 @@ import SwiftUI
 struct TaxStudyApp: App {
     @State var appService: AppServices = AppServices.shared
     var body: some Scene {
-        WindowGroup {
+        
+        WindowGroup("Scenarios", id: "scenarios") {
             ContentView()
                 .environment(appService)
                 .background(.white)
@@ -32,7 +33,10 @@ struct TaxStudyApp: App {
             ToolbarCommands()
             SidebarCommands()
             TextEditingCommands()
-//            TextFormattingCommands()
+        }
+        Window("Settings", id: "settings") {
+            SettingsView()
+                .environment(appService)
         }
     }
 

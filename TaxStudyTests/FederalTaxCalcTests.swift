@@ -15,7 +15,7 @@ final class FederalTaxCalcTests {
     @Test func testSimpleWageSelfEmployed() async throws {
         let scenario = TaxScenario(
             name: "$100k Wages at 65",
-            filingStatus: .marriedFilingJointly        )
+            filingStatus: .marriedFilingJointly, facts: "2024")
         
         scenario.profileSelf.age = 65
         scenario.profileSelf.employmentStatus = .selfEmployed
@@ -60,7 +60,8 @@ final class FederalTaxCalcTests {
     @Test func testSimpleWageNotSelfEmployed() async throws {
         let scenario = TaxScenario(
             name: "$100k Wages at 65",
-            filingStatus: .marriedFilingJointly
+            filingStatus: .marriedFilingJointly,
+            facts: "2024"
         )
         scenario.profileSelf.age = 65
         scenario.profileSelf.employmentStatus = .employed
@@ -105,7 +106,8 @@ final class FederalTaxCalcTests {
     @Test func testZeroTaxOn100k() async throws {
         let scenario = TaxScenario(
             name: "$0 Tax on $100,000",
-            filingStatus: .marriedFilingJointly
+            filingStatus: .marriedFilingJointly,
+            facts: "2024"
         )
         
         scenario.profileSelf.age = 65
@@ -143,6 +145,12 @@ final class FederalTaxCalcTests {
         #expect(fedTax.netLTCG == 0)
         #expect(fedTax.netSTCG == 0)
         #expect(fedTax.taxableIncome == 0)
+        #expect(fedTax.ordinaryIncome == 0)
+        #expect(fedTax.ordinaryIncomeTax == 0)
+        #expect(fedTax.preferentialIncome == 10_000)
+        #expect(fedTax.qualifiedDividendTax == 0)
+        #expect(fedTax.capitalGainsTax == 0)
+        #expect(fedTax.netInvestmentIncomeTax == 0)
         #expect(fedTax.taxesOwed == 0)
         #expect(fedTax.taxableSSI == 4_600)
         #expect(fedTax.provisionalIncome == 41_200)
