@@ -40,7 +40,7 @@ struct TaxChart: View {
     }
     
     func segments() -> [BarSegment] {
-        let federalTaxes = FederalTaxCalc(scenario, facts: appServices.data.facts[scenario.facts]!)
+        let federalTaxes = FederalTaxCalc(scenario, facts: appServices.facts[scenario.facts]!)
         var data: [BarSegment] = []
         data.append(.init(name: "Capital Gains", value: federalTaxes.capitalGainsTax, color: .accent.opacity(0.8)))
         data.append(.init(name: "Qualified Dividends", value: federalTaxes.qualifiedDividendTax, color: .accent.opacity(0.7)))

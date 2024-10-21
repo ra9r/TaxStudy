@@ -17,7 +17,7 @@ struct KeyFigures: View {
     
 
     var body: some View {
-        let facts = appServices.data.facts[scenario.facts]!
+        let facts = appServices.facts[scenario.facts]!
         let federalTaxes = FederalTaxCalc(scenario, facts: facts)
         let stateTaxes = NCTaxCalc(scenario, facts: facts)
         CardView("Key Metrics") {

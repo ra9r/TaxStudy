@@ -7,21 +7,21 @@
 import SwiftUI
 
 struct ScenarioView : View {
-    @Binding var scenario: TaxScenario
+    @Binding var document: TaxScenarioDocument
     
-    init(_ scenario: Binding<TaxScenario>) {
-        self._scenario = scenario
+    init(_ document: Binding<TaxScenarioDocument>) {
+        self._document = document
     }
     
     var body: some View {
         ScrollView {
             VStack {
-                SummaryView($scenario)
-                IncomeView($scenario)
-                DeductionsView($scenario)
+                SummaryView($document.scenario)
+                IncomeView($document.scenario)
+                DeductionsView($document.scenario)
             }
         }
         .tint(Color.accentColor)
-        .navigationTitle(scenario.name)
+        .navigationTitle(document.scenario.name)
     }
 }

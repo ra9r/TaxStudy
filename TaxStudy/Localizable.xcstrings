@@ -46,9 +46,6 @@
     "Add New Tax Bracket" : {
 
     },
-    "Add Scenario" : {
-
-    },
     "Adoption Credit" : {
 
     },
@@ -173,9 +170,6 @@
 
     },
     "Distributions from an HSA for qualified medical expenses" : {
-
-    },
-    "Duplicate" : {
 
     },
     "Early Withdrawal Penalties" : {
@@ -334,9 +328,6 @@
     "Net Operating Loss Carryforward" : {
 
     },
-    "New..." : {
-
-    },
     "No applicable tax bracket found for %@ and '%@'" : {
       "localizations" : {
         "en" : {
@@ -347,9 +338,6 @@
         }
       }
     },
-    "No recent files" : {
-
-    },
     "Nothing to see here!" : {
 
     },
@@ -357,12 +345,6 @@
 
     },
     "Offers up to $2,000 per return for post-secondary education or job skills improvement, with no limit on the number of years claimed." : {
-
-    },
-    "Open Recent" : {
-
-    },
-    "Open..." : {
 
     },
     "Ordinary Dividends" : {
@@ -440,19 +422,10 @@
     "Royalties" : {
 
     },
-    "Save" : {
-
-    },
-    "Save As..." : {
-
-    },
     "Saver’s Credit" : {
 
     },
     "Scenario:" : {
-
-    },
-    "Scenarios" : {
 
     },
     "Self-Employed Business Expense" : {

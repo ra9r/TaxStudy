@@ -25,7 +25,7 @@ struct Header: View {
     }
     
     var grossIncome: Double {
-        guard let facts = appServices.data.facts[scenario.facts] else { return 0 }
+        guard let facts = appServices.facts[scenario.facts] else { return 0 }
         return FederalTaxCalc(scenario, facts: facts).grossIncome
     }
     

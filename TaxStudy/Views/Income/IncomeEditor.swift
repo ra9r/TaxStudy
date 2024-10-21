@@ -72,6 +72,3 @@ struct IncomeEditor: View {
     
 }
 
-#Preview {
-    ContentView()
-}
