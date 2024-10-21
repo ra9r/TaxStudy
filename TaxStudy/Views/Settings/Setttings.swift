@@ -24,8 +24,16 @@ struct SettingsView : View {
         } detail: {
             if let selectedFacts {
                 if let facts = appServices.data.facts[selectedFacts] {
-                    TaxBracketEditor(facts.ordinaryTaxBrackets)
+                    switch selectedSetting {
+                    case .ordinaryTaxBrackets:
+                        TaxBracketEditor(taxBrackets: facts.ordinaryTaxBrackets)
+                    case .capitalGainsTaxBrackets:
+                        TaxBracketEditor(taxBrackets: facts.capitalGainTaxBrackets)
+                    }
+                    
                 }
+            } else {
+                Text("Nothing to see here!")
             }
             
         }

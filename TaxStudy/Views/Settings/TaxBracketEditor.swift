@@ -8,56 +8,19 @@
 import SwiftUI
 
 struct TaxBracketEditor: View {
-    @State var internalTaxBrackets: [InternalTaxBracket] = []
-    @State var selection: Set<InternalTaxBracket.ID> = []
+    var taxBrackets: TaxBrackets
+    @State var selection: Set<TaxBracket.ID> = []
     
-    init(_ taxBrackets: [FilingStatus: TaxBrackets]) {
-        var ib: [InternalTaxBracket] = []
-        if let brackets = taxBrackets[.single] {
-            for bracket in brackets.brackets {
-                ib.append(InternalTaxBracket(rate: bracket.rate, singleThreshold: bracket.threshold))
-            }
-        }
-        if let brackets = taxBrackets[.marriedFilingJointly] {
-            for bracket in brackets.brackets {
-                if let internalBracket = ib.first(where: { bracket.rate == $0.rate}) {
-                    internalBracket.marriedFilingJointlyThreadold = bracket.threshold
-                }
-            }
-        }
-        if let brackets = taxBrackets[.marriedFilingSeparately] {
-            for bracket in brackets.brackets {
-                if let internalBracket = ib.first(where: { bracket.rate == $0.rate}) {
-                    internalBracket.marriedFilingSeparatelyThreadold = bracket.threshold
-                }
-            }
-        }
-        if let brackets = taxBrackets[.headOfHousehold] {
-            for bracket in brackets.brackets {
-                if let internalBracket = ib.first(where: { bracket.rate == $0.rate}) {
-                    internalBracket.headOfHouseholdThreadold = bracket.threshold
-                }
-            }
-        }
-        if let brackets = taxBrackets[.qualifiedWidow] {
-            for bracket in brackets.brackets {
-                if let internalBracket = internalTaxBrackets.first(where: { bracket.rate == $0.rate}) {
-                    internalBracket.qualifiedWidowThreadold = bracket.threshold
-                }
-            }
-        }
-        self.internalTaxBrackets = ib
-    }
     
     var body: some View {
         VStack {
-            Table(internalTaxBrackets, selection: $selection) {
+            Table(taxBrackets.brackets, selection: $selection) {
                 TableColumn("Tax Rate", value: \.rate.asPercentage)
-                TableColumn("Single", value: \.singleThreshold.asCurrency)
-                TableColumn("Married Filing Jointly", value: \.marriedFilingJointlyThreadold.asCurrency)
-                TableColumn("Married Filing Separate", value: \.marriedFilingSeparatelyThreadold.asCurrency)
-                TableColumn("Head of Houshold", value: \.headOfHouseholdThreadold.asCurrency)
-                TableColumn("Qualified Widow(er)", value: \.qualifiedWidowThreadold.asCurrency)
+                TableColumn("Single", value: \.thresholds[.single]!.asCurrency)
+                TableColumn("Married Filing Jointly", value: \.thresholds[.marriedFilingJointly]!.asCurrency)
+                TableColumn("Married Filing Separate", value: \.thresholds[.marriedFilingSeparately]!.asCurrency)
+                TableColumn("Head of Houshold", value: \.thresholds[.headOfHousehold]!.asCurrency)
+                TableColumn("Qualified Widow(er)", value: \.thresholds[.qualifiedWidow]!.asCurrency)
             }
             
             // Add New Tax Bracket Button
@@ -98,10 +61,4 @@ class InternalTaxBracket : Identifiable {
         self.headOfHouseholdThreadold = headOfHouseholdThreadold
         self.qualifiedWidowThreadold = qualifiedWidowThreadold
     }
-}
-
-#Preview {
-    @Previewable @State var manager = AppData()
-    TaxBracketEditor(DefaultTaxFacts2024.ordinaryTaxBrackets)
-        .environment(manager)
 }
