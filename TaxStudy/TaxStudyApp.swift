@@ -16,6 +16,7 @@ struct TaxStudyApp: App {
             ScenarioView(file.$document)
                 .environment(appService)
                 .setTabbingMode(.preferred) // Not working but leaving in
+                .frame(minWidth: 1280, minHeight: 800)
         }
         .commands {
             SettingsCommand(appServices: appService)

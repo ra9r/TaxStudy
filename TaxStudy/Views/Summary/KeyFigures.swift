@@ -38,6 +38,8 @@ struct KeyFigures: View {
                     CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
                     CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
                     CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency(0))
+                    CardItem("IRMAA Plan B Surcharge", value: federalTaxes.irmaaPlanBSurcharge.asCurrency(0))
+                    CardItem("IRMAA Plan D Surcharge", value: federalTaxes.irmaaPlanDSurcharge.asCurrency(0))
                 }
                 Divider()
                 VStack {
