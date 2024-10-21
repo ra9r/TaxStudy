@@ -218,3 +218,57 @@ let ProvisionalIncomeThresholds2024 = TaxBrackets(
         .qualifiedWidow: 44_000
     ])
 )
+
+let PlanBSurchargethresholds2024 = TaxBrackets(
+    .init(0.0, thresholds: [
+        .single: 0,
+        .marriedFilingJointly: 0
+    ]),
+    .init(70.0, thresholds: [
+        .single: 103000,
+        .marriedFilingJointly: 206000
+    ]),
+    .init(175.0, thresholds: [
+        .single: 123000,
+        .marriedFilingJointly: 246000
+    ]),
+    .init(280.0, thresholds: [
+        .single: 153000,
+        .marriedFilingJointly: 306000
+    ]),
+    .init(285, thresholds: [
+        .single: 183000,
+        .marriedFilingJointly: 366000
+    ]),
+    .init(280.0, thresholds: [
+        .single: 500000,
+        .marriedFilingJointly: 750000
+    ])
+)
+
+let PlanDSurchargethresholds2024 = TaxBrackets(
+    .init(0.0, thresholds: [
+        .single: 0,
+        .marriedFilingJointly: 0
+    ]),
+    .init(12.0, thresholds: [
+        .single: 103000,
+        .marriedFilingJointly: 206000
+    ]),
+    .init(31.0, thresholds: [
+        .single: 123000,
+        .marriedFilingJointly: 246000
+    ]),
+    .init(50.0, thresholds: [
+        .single: 153000,
+        .marriedFilingJointly: 306000
+    ]),
+    .init(70.0, thresholds: [
+        .single: 183000,
+        .marriedFilingJointly: 366000
+    ]),
+    .init(76.0, thresholds: [
+        .single: 500000,
+        .marriedFilingJointly: 750000
+    ])
+)

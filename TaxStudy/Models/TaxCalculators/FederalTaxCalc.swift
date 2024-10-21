@@ -72,6 +72,16 @@ class FederalTaxCalc {
         return totalIncome - scenario.totalSocialSecurityIncome - scenario.totalAdjustments
     }
     
+    var magiForIRMAA: Double {
+        return agi +
+        scenario.iraContribtuion +
+        scenario.taxExemptInterest +
+//        scenario.deductions.total(for: .studentLoanInterestDeduction) +
+//        scenario.deductions.total(for: .tuitionAndFeesDeduction) +
+//        scenario.adjustments.total(for: .foreignHousingExclusion) +
+        scenario.adjustments.total(for: .foreignEarnedIncomeExclusion)
+    }
+    
     var magiForIRA: Double {
         return agi +
         scenario.iraContribtuion +
@@ -460,6 +470,28 @@ class FederalTaxCalc {
     
     var isSubjectToFICA: Bool {
         return scenario.totalWages > 0
+    }
+    
+    // MARK: - IRMAA Surcharges
+    
+    var irmaaPlanBSurcharge: Double {
+        do {
+            let bracket = try facts.irmaaPlanBThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
+            return bracket.rate
+        } catch {
+            print("Error: Failed to find IRMAA Plan B surcharge for \(scenario.filingStatus), default to 0")
+            return 0
+        }
+    }
+    
+    var irmaaPlanDSurcharge: Double {
+        do {
+            let bracket = try facts.irmaaPlanDThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
+            return bracket.rate
+        } catch {
+            print("Error: Failed to find IRMAA Plan B surcharge for \(scenario.filingStatus), default to 0")
+            return 0
+        }
     }
     
 }

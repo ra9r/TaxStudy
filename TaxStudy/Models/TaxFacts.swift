@@ -21,6 +21,10 @@ class TaxFacts : Codable, Identifiable {
     
     var provisionalIncomeThresholds: TaxBrackets
     
+    /// IRMAA (Plan B)
+    var irmaaPlanBThresholds: TaxBrackets
+    var irmaaPlanDThresholds: TaxBrackets
+    
     var niitThresholds: [FilingStatus: Double]
     var niitRate: Double
     
@@ -42,6 +46,8 @@ class TaxFacts : Codable, Identifiable {
         ssTaxThresholds: TaxBrackets,
         medicareTaxThresholds: TaxBrackets,
         provisionalIncomeThresholds: TaxBrackets,
+        irmaaPlanBThresholds: TaxBrackets,
+        irmaaPlanDThresholds: TaxBrackets,
         niitThresholds: [FilingStatus : Double],
         niitRate: Double,
         standardDeduction: [FilingStatus : Double],
@@ -56,6 +62,8 @@ class TaxFacts : Codable, Identifiable {
         self.ssTaxThresholds = ssTaxThresholds
         self.medicareTaxThresholds = medicareTaxThresholds
         self.provisionalIncomeThresholds = provisionalIncomeThresholds
+        self.irmaaPlanBThresholds = irmaaPlanBThresholds
+        self.irmaaPlanDThresholds = irmaaPlanDThresholds
         self.niitThresholds = niitThresholds
         self.niitRate = niitRate
         self.capitalLossLimit = capitalLossLimit
@@ -73,6 +81,8 @@ let DefaultTaxFacts2024 = TaxFacts(
     ssTaxThresholds: SSTaxThresholds2024,
     medicareTaxThresholds: MedicareTaxThresholds2024,
     provisionalIncomeThresholds: ProvisionalIncomeThresholds2024,
+    irmaaPlanBThresholds: PlanBSurchargethresholds2024,
+    irmaaPlanDThresholds: PlanDSurchargethresholds2024,
     niitThresholds: [
         .single: 200_000,
         .marriedFilingJointly: 250_000,
