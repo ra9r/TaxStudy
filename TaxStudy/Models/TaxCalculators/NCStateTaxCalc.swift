@@ -8,7 +8,7 @@
 class NCTaxCalc : StateTaxCalc {
     var federalTaxCalc: FederalTaxCalc
     
-    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+    init(_ scenario: TaxScenario, facts: TaxFacts) {
         self.federalTaxCalc = FederalTaxCalc(scenario, facts: facts)
     }
     

@@ -32,10 +32,10 @@ class TaxScenario: Codable, Identifiable {
 //        self.profileSpouse = Profile("Taxpayer 2")
 //    }
     
-    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: String? = nil) {
+    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: String) {
         self.name = name
         self.filingStatus = filingStatus
-        self.facts = facts ?? DefaultTaxFacts2024.id
+        self.facts = facts 
         self.profileSelf = profleSelf ?? Profile("Taxpayer 1")
         self.profileSpouse = profileSpouse ?? Profile("Taxpayer 2")
     }

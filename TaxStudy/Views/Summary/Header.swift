@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Header: View {
+    @Environment(AppServices.self) var appServices
     @Binding var scenario: TaxScenario
     
     init(_ scenario: Binding<TaxScenario>) {
@@ -23,13 +24,18 @@ struct Header: View {
         .padding(.bottom, 20)
     }
     
+    var grossIncome: Double {
+        guard let facts = appServices.data.facts[scenario.facts] else { return 0 }
+        return FederalTaxCalc(scenario, facts: facts).grossIncome
+    }
+    
     var blueBox: some View {
         HStack {
             Text("2024")
                 .font(.largeTitle)
             Divider()
             VStack(alignment: .trailing) {
-                Text("\(FederalTaxCalc(scenario).grossIncome.asCurrency)")
+                Text("\(grossIncome.asCurrency)")
                     .font(.headline)
                 Text("Gross Income")
                     .font(.subheadline)

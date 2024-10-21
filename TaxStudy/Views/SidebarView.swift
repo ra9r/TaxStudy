@@ -38,7 +38,10 @@ struct SidebarView: View {
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button {
-                    appServices.data.add(TaxScenario(name: "New Scenario"))
+                    if appServices.data.facts.isEmpty == false {
+                        let firstFact = appServices.data.facts.first!
+                        appServices.data.add(TaxScenario(name: "New Scenario", facts: firstFact.key))
+                    }
                 } label: {
                     Label("Add Scenario", systemImage: "plus")
                 }

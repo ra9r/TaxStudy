@@ -16,9 +16,9 @@ class FederalTaxCalc {
     var scenario: TaxScenario
     var facts: TaxFacts
     
-    init(_ scenario: TaxScenario, facts: TaxFacts? = nil) {
+    init(_ scenario: TaxScenario, facts: TaxFacts) {
         self.scenario = scenario
-        self.facts = facts ?? DefaultTaxFacts2024
+        self.facts = facts
     }
     
     // MARK: - Income
