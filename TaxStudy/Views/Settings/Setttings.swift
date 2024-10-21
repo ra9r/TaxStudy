@@ -14,7 +14,7 @@ struct SettingsView : View {
     
     var body: some View {
         NavigationSplitView {
-            List(Array(appServices.data.facts.keys).sorted(), id: \.self,  selection: $selectedFacts) { key in
+            List(Array(appServices.facts.keys).sorted(), id: \.self,  selection: $selectedFacts) { key in
                 NavigationLink("Facts: \(key)", value: key)
             }
         } content: {
@@ -23,7 +23,7 @@ struct SettingsView : View {
             }
         } detail: {
             if let selectedFacts {
-                if let facts = appServices.data.facts[selectedFacts] {
+                if let facts = appServices.facts[selectedFacts] {
                     switch selectedSetting {
                     case .ordinaryTaxBrackets:
                         TaxBracketEditor(taxBrackets: facts.ordinaryTaxBrackets)
