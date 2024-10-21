@@ -136,7 +136,7 @@ let OrdinaryTaxBrackets2024 = TaxBrackets(
 )
 
 let CapitalGainTaxBrackets2024 = TaxBrackets(
-    .init(0.10, thresholds: [
+    .init(0.0, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
         .marriedFilingSeparately: 0,

@@ -29,8 +29,13 @@ struct SettingsView : View {
                         TaxBracketEditor(taxBrackets: facts.ordinaryTaxBrackets)
                     case .capitalGainsTaxBrackets:
                         TaxBracketEditor(taxBrackets: facts.capitalGainTaxBrackets)
+                    case .ssTaxThresholds:
+                        TaxBracketEditor(taxBrackets: facts.ssTaxThresholds)
+                    case .medicareTaxThresholds:
+                        TaxBracketEditor(taxBrackets: facts.medicareTaxThresholds)
+                    case .provisionalIncomeThresholds:
+                        TaxBracketEditor(taxBrackets: facts.provisionalIncomeThresholds)
                     }
-                    
                 }
             } else {
                 Text("Nothing to see here!")
@@ -41,8 +46,11 @@ struct SettingsView : View {
 }
 
 enum SettingTypes: String, CaseIterable {
-    case ordinaryTaxBrackets = "Ordinary Tax Brackets"
-    case capitalGainsTaxBrackets = "Capital Gains Tax Brackets"
+    case ordinaryTaxBrackets = "Ordinary Income Tax"
+    case capitalGainsTaxBrackets = "Capital Gains Tax"
+    case ssTaxThresholds = "Social Security Tax"
+    case medicareTaxThresholds = "Medicare Tax"
+    case provisionalIncomeThresholds = "Provisional Income"
 }
 
 

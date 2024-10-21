@@ -30,7 +30,6 @@ class TaxFacts : Codable, Identifiable {
     var standardDeductionBonus: [FilingStatus: Double]
     var standardDeductionBonusAge: Int
     
-//    var ssdiThreshold: Double // 34000
     var charitableCashThreadholdRate: Double = 0.6
     var charitableAssetThreadholdRate: Double = 0.3
     var charitableMileageRate: Double = 0.14
@@ -49,7 +48,6 @@ class TaxFacts : Codable, Identifiable {
         startardDeductionBonus: [FilingStatus : Double],
         standardDeductionBonusAge: Int,
         capitalLossLimit: Double
-//        ssdiThreshold: Double
     ) {
         self.id = id ?? UUID().uuidString
         self.year = year
@@ -64,7 +62,6 @@ class TaxFacts : Codable, Identifiable {
         self.standardDeduction = standardDeduction
         self.standardDeductionBonus = startardDeductionBonus
         self.standardDeductionBonusAge = standardDeductionBonusAge
-//        self.ssdiThreshold = ssdiThreshold
     }
 }
 

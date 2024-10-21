@@ -290,16 +290,15 @@ class FederalTaxCalc {
     }
     
     var ordinaryIncome: Double {
+        if taxableIncome <= 0 {
+            return 0
+        }
         return taxableIncome - preferentialIncome - capitalLossAdjustment
     }
     
     // MARK: - Computed Taxes
     
     var ordinaryIncomeTax: Double {
-        //        guard let ordinaryTaxBrackets = facts.ordinaryTaxBrackets[scenario.filingStatus] else {
-        //            print("Failed to find tax brackets for \(scenario.filingStatus)")
-        //            return 0
-        //        }
         do {
             let progressiveTax = try facts.ordinaryTaxBrackets.progressiveTax(for: ordinaryIncome, filingStatus: scenario.filingStatus)
             return progressiveTax
@@ -310,10 +309,6 @@ class FederalTaxCalc {
     }
     
     var qualifiedDividendTax: Double {
-        //        guard let capitalGainTaxBrackets = facts.capitalGainTaxBrackets[scenario.filingStatus] else {
-        //            print("Failed to find tax brackets for \(scenario.filingStatus)")
-        //            return 0
-        //        }
         do {
             let highestBracket = try facts.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
             return scenario.qualifiedDividends * highestBracket.rate
@@ -327,10 +322,6 @@ class FederalTaxCalc {
     }
     
     var capitalGainsTax: Double {
-        //        guard let capitalGainTaxBrackets = facts.capitalGainTaxBrackets[scenario.filingStatus] else {
-        //            print("Failed to find tax brackets for \(scenario.filingStatus)")
-        //            return 0
-        //        }
         do {
             let highestBracket = try facts.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
             return netLTCG * highestBracket.rate
@@ -363,10 +354,6 @@ class FederalTaxCalc {
     // MARK: - FICA Taxes
     
     func totalFICATax(forWages: Double, employmentStatus: EmploymentStatus, ficaThresholds: TaxBrackets) -> Double {
-        //        guard let taxRates = ficaThresholds[scenario.filingStatus] else {
-        //            print("Error: Failed to find SS tax rates for \(scenario.filingStatus)")
-        //            return 0
-        //        }
         do {
             let taxOwed = try ficaThresholds.progressiveTax(for: forWages, filingStatus: scenario.filingStatus)
             if employmentStatus == .selfEmployed {
