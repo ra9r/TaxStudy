@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 struct TaxFactsDocument: FileDocument {
     
     // The file format this document supports
-    static var readableContentTypes: [UTType] { [.json] }
+    static var readableContentTypes: [UTType] { [.init(exportedAs: "me.a9r.taxstudy.facts")] }
 
     // The data model that will hold the decoded JSON content
     var facts: [TaxFacts]

@@ -13,7 +13,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>me.a9r.TaxStudy.scenario</string>
+				<string>me.a9r.taxstudy.scenario</string>
 			</array>
 		</dict>
 		<dict>
@@ -25,7 +25,7 @@
 			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>me.a9r.TaxStudy.facts</string>
+				<string>me.a9r.taxstudy.facts</string>
 			</array>
 		</dict>
 	</array>
@@ -46,7 +46,7 @@
 				<string>TXSCN</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>me.a9r.TaxStudy.scenario</string>
+			<string>me.a9r.taxstudy.scenario</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -74,7 +74,7 @@
 				<string>TXCFG</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>me.a9r.TaxStudy.facts</string>
+			<string>me.a9r.taxstudy.facts</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

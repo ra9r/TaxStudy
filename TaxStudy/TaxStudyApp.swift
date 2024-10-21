@@ -15,6 +15,7 @@ struct TaxStudyApp: App {
         DocumentGroup(newDocument: TaxScenarioDocument()) { file in
             ScenarioView(file.$document)
                 .environment(appService)
+                .setTabbingMode(.preferred) // Not working but leaving in
         }
         .commands {
             SettingsCommand(appServices: appService)
