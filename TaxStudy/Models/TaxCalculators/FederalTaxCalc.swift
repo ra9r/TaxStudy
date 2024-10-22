@@ -506,7 +506,15 @@ class FederalTaxCalc {
         let hsaContribution = scenario.adjustments.total(for: .hsaContribution)
         let earlyWithDrawalPenalties = scenario.adjustments.total(for: .earlyWithDrawalPenalties)
         let businessExpenses = scenario.adjustments.total(for: .businessExpenses)
-        return totalIncome - iraOr401kContribution - hsaContribution - earlyWithDrawalPenalties - businessExpenses
+        let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
+        let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
+        return totalIncome -
+            iraOr401kContribution -
+            hsaContribution -
+            earlyWithDrawalPenalties -
+            businessExpenses -
+            marginInterest -
+            mortgageInterest
     }
     
     var amtExemption: Double {
