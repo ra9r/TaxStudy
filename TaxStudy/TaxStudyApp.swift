@@ -15,17 +15,16 @@ struct TaxStudyApp: App {
         DocumentGroup(newDocument: TaxScenarioDocument()) { file in
             ScenarioView(file.$document)
                 .environment(appService)
-                .setTabbingMode(.preferred) // Not working but leaving in
+                .setTabbingMode(.automatic) // Not working but leaving in
                 .frame(minWidth: 1280, minHeight: 800)
         }
         .commands {
             SettingsCommand(appServices: appService)
         }
         
-        DocumentGroup(newDocument: TaxFactsDocument()) { file in
+        DocumentGroup(viewing: TaxFactsDocument.self) { file in
             TaxFactsImportView(file.$document)
                 .environment(appService)
-                .setTabbingMode(.preferred) // Not working but leaving in
                 .frame(minWidth: 1280, minHeight: 800)
         }
          
