@@ -45,21 +45,21 @@ final class FederalTaxCalcTests {
         
         #expect(fedTax.grossIncome == 194_714.28)
         #expect(fedTax.totalIncome == 194_714.28)
-        #expect(fedTax.amtIncome == 194_714.28)
+        #expect(fedTax.amtIncome.asCurrency ==  "$186,414.28")
         #expect(fedTax.amtExemption == 126_500)
         #expect(fedTax.amtPhaseOutTheshold == 1_156_300)
         #expect(fedTax.amtReducedExemption == 126_500)
-        #expect(fedTax.amtTaxableIncome == 68_214.28)
+        #expect(fedTax.amtTaxableIncome.asCurrency == "$59,914.28")
         let taxParts = fedTax.amtTaxParts
         #expect(taxParts.isEmpty == false)
         #expect(taxParts.count == 1)
         // 0% Bracket
         #expect(taxParts[0].rate == 0.26)
         #expect(taxParts[0].threshold == 0)
-        #expect(taxParts[0].taxableAtRate == 68_214.28)
-        #expect(taxParts[0].computedTax.asCurrency(2) == "$17,735.71")
+        #expect(taxParts[0].taxableAtRate.asCurrency == "$59,914.28")
+        #expect(taxParts[0].computedTax.asCurrency == "$15,577.71")
         // 26% Bracket
-        #expect(fedTax.amtTax.asCurrency == "$17,735.71")
+        #expect(fedTax.amtTax.asCurrency == "$15,577.71")
         #expect(fedTax.taxesOwed.asCurrency(0) == "$7,945")
         #expect(fedTax.isSubjectToAMT == true)
     }

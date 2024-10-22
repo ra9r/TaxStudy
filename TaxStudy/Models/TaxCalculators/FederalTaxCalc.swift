@@ -502,7 +502,11 @@ class FederalTaxCalc {
     // The starting income for the AMT calculations (AMT version of totalIncome)
     var amtIncome: Double {
         // TODO: what deductions and adjustments disallowed under AMT should be added back?
-        return totalIncome // For now return totalIncome
+        let iraOr401kContribution = scenario.adjustments.total(for: .iraOr401kContribution)
+        let hsaContribution = scenario.adjustments.total(for: .hsaContribution)
+        let earlyWithDrawalPenalties = scenario.adjustments.total(for: .earlyWithDrawalPenalties)
+        let businessExpenses = scenario.adjustments.total(for: .businessExpenses)
+        return totalIncome - iraOr401kContribution - hsaContribution - earlyWithDrawalPenalties - businessExpenses
     }
     
     var amtExemption: Double {
