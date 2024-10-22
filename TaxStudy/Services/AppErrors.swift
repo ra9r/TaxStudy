@@ -9,6 +9,7 @@ import SwiftUI
 enum AppErrors: LocalizedError {
     case missingFilingStatus(String)
     case unknownTaxFact(String)
+    case fileNotFound(String)
     
     var errorDescription: String? {
         switch self {
@@ -16,6 +17,8 @@ enum AppErrors: LocalizedError {
             return "Missing filing status: \(filingStatus)"
         case .unknownTaxFact(let taxFact):
             return "Unknown tax fact: \(taxFact)"
+        case .fileNotFound(let fileName):
+            return "File not not found: \(fileName)"
         }
     }
 }

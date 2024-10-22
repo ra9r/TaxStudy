@@ -1,60 +1,60 @@
 {
-    "profileSelf" : {
-        "name" : "Rodney Aiglstorfer",
-        "age" : 50,
-        "wages" : 0,
-        "socialSecurity" : 42816,
-        "employmentStatus" : "retired"
+  "adjustments" : [
+    {
+      "amount" : 8300,
+      "type" : "hsaContribution",
+      "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39"
+    }
+  ],
+  "profileSelf" : {
+    "employmentStatus" : "retired",
+    "wages" : 0,
+    "name" : "Rodney Aiglstorfer",
+    "age" : 50,
+    "socialSecurity" : 43826
+  },
+  "filingStatus" : "marriedFilingJointly",
+  "name" : "Current CoreFolio w\/Rodney",
+  "credits" : [
+    {
+      "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
+      "type" : "lifetimeLearningCredit",
+      "amount" : 0
+    }
+  ],
+  "profileSpouse" : {
+    "employmentStatus" : "retired",
+    "name" : "Nobuko Aiglstorfer",
+    "wages" : 0,
+    "socialSecurity" : 0,
+    "age" : 52
+  },
+  "deductions" : [
+
+  ],
+  "facts" : "2024",
+  "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B",
+  "description" : "",
+  "income" : [
+    {
+      "amount" : 53418.56,
+      "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
+      "type" : "qualifiedDividends"
     },
-    "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B",
-    "description" : "",
-    "profileSpouse" : {
-        "age" : 52,
-        "socialSecurity" : 0,
-        "employmentStatus" : "retired",
-        "name" : "Nobuko Aiglstorfer",
-        "wages" : 0
+    {
+      "id" : "811B1C17-3253-405A-8055-464EEB0B752D",
+      "type" : "qualifiedDividends",
+      "amount" : 27145.76
     },
-    "name" : "Current CoreFolio w\/Rodney",
-    "facts" : "2024",
-    "income" : [
-        {
-            "type" : "qualifiedDividends",
-            "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
-            "amount" : 53418.56
-        },
-        {
-            "id" : "811B1C17-3253-405A-8055-464EEB0B752D",
-            "amount" : 27145.76,
-            "type" : "qualifiedDividends"
-        },
-        {
-            "type" : "ordinaryDividends",
-            "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39",
-            "amount" : 57823.96
-        },
-        {
-            "amount" : 12500,
-            "id" : "0687C494-CA98-41ED-AD2A-A04D3896A42F",
-            "type" : "interest"
-        }
-    ],
-    "filingStatus" : "marriedFilingJointly",
-    "deductions" : [
-        
-    ],
-    "credits" : [
-        {
-            "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
-            "amount" : 0,
-            "type" : "lifetimeLearningCredit"
-        }
-    ],
-    "adjustments" : [
-        {
-            "amount" : 8000,
-            "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39",
-            "type" : "hsaContribution"
-        }
-    ]
+    {
+      "type" : "ordinaryDividends",
+      "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39",
+      "amount" : 57823.96
+    },
+    {
+      "type" : "interest",
+      "amount" : 12500,
+      "id" : "0687C494-CA98-41ED-AD2A-A04D3896A42F"
+    }
+  ]
 }

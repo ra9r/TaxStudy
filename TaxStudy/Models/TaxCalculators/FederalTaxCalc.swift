@@ -493,5 +493,69 @@ class FederalTaxCalc {
             return 0
         }
     }
+       
+    // MARK: - Alternative Minimum Tax (AMT)
+    var isSubjectToAMT: Bool {
+        return amtTax > taxesOwed
+    }
+    
+    // The starting income for the AMT calculations (AMT version of totalIncome)
+    var amtIncome: Double {
+        // TODO: what deductions and adjustments disallowed under AMT should be added back?
+        return totalIncome // For now return totalIncome
+    }
+    
+    var amtExemption: Double {
+        guard let exemption = facts.amtExemptions[scenario.filingStatus] else {
+            print("Error: failed to compute amtReducedExemption, defaulting to 0")
+            return 0
+        }
+        return exemption
+    }
+    
+    var amtPhaseOutTheshold: Double {
+        guard let phaseOutTheshold = facts.amtPhaseOutThesholds[scenario.filingStatus] else {
+            print("Error: failed to compute amtReducedExemption, defaulting to 0")
+            return 0
+        }
+        return phaseOutTheshold
+    }
+    
+    var amtReducedExemption: Double {
+        var reducedExemption: Double = 0
+        if (amtIncome > amtPhaseOutTheshold) {
+            // compute the reduction of amtExemption, if that amount exceeds amtExemption, return 0
+            reducedExemption = max(0, (amtExemption - (amtIncome - amtPhaseOutTheshold) * 0.25))
+        } else {
+            // if below the threshold then you automatically get the full exemption
+            reducedExemption = amtExemption
+        }
+        return reducedExemption
+    }
+    
+    // The amount of income that is taxable under the AMT rates
+    var amtTaxableIncome: Double {
+        return amtIncome - amtReducedExemption
+    }
+    
+    var amtTax: Double {
+        do {
+            return try facts.amtBrackets.progressiveTax(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
+        } catch {
+            print("Error: failed to compute amt before phase out, defaulting to 0")
+            return 0
+        }
+    }
+    
+    var amtTaxParts: [ProgressiveTaxPart] {
+        do {
+            return try facts.amtBrackets.progressiveTaxParts(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
+        } catch {
+            print("Error: failed to compute amt tax parts, defaulting to 0")
+            return []
+        }
+    }
+    
+    
     
 }

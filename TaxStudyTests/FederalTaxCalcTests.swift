@@ -12,6 +12,94 @@ import Foundation
 
 final class FederalTaxCalcTests {
     
+    // Define the path relative to the test file
+    var samplePath: URL {
+        let currentDirectory = URL(fileURLWithPath: #file).deletingLastPathComponent()
+        return currentDirectory.appendingPathComponent("Samples")
+    }
+    
+    func loadTaxScenario(filename: String) throws -> TaxScenario? {
+        let fileURL = samplePath.appendingPathComponent(filename, conformingTo: .txscn)
+        guard FileManager.default.fileExists(atPath: fileURL.path) else {
+//            throw AppErrors.fileNotFound(fileURL.path)
+            print("Error: File not found: \(fileURL.path)")
+            #expect(Bool(false))
+            return nil
+        }
+        
+        // Load the data from the file
+        let data = try Data(contentsOf: fileURL)
+        
+        // Decode the data into your model
+        let decoder = JSONDecoder()
+        return try decoder.decode(TaxScenario.self, from: data)
+    }
+    
+    @Test func testAMForCoreFolio() async throws {
+        guard let scenario = try loadTaxScenario(filename: "CurrentCoreFolioWRodney.txscn") else {
+            print("Error: Sample TaxScenario  Not Loaded")
+            #expect(Bool(false))
+            return
+        }
+        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        
+        #expect(fedTax.grossIncome == 194_714.28)
+        #expect(fedTax.totalIncome == 194_714.28)
+        #expect(fedTax.amtIncome == 194_714.28)
+        #expect(fedTax.amtExemption == 126_500)
+        #expect(fedTax.amtPhaseOutTheshold == 1_156_300)
+        #expect(fedTax.amtReducedExemption == 126_500)
+        #expect(fedTax.amtTaxableIncome == 68_214.28)
+        let taxParts = fedTax.amtTaxParts
+        #expect(taxParts.isEmpty == false)
+        #expect(taxParts.count == 1)
+        // 0% Bracket
+        #expect(taxParts[0].rate == 0.26)
+        #expect(taxParts[0].threshold == 0)
+        #expect(taxParts[0].taxableAtRate == 68_214.28)
+        #expect(taxParts[0].computedTax.asCurrency(2) == "$17,735.71")
+        // 26% Bracket
+        #expect(fedTax.amtTax.asCurrency == "$17,735.71")
+        #expect(fedTax.taxesOwed.asCurrency(0) == "$7,945")
+        #expect(fedTax.isSubjectToAMT == true)
+    }
+    
+    @Test func testAMT700k() async throws {
+        let scenario = TaxScenario(
+            name: "$100k Wages at 65",
+            filingStatus: .single, facts: "2024")
+        
+        scenario.profileSelf.age = 50
+        scenario.profileSelf.employmentStatus = .selfEmployed
+        scenario.profileSelf.wages = 700_000
+        scenario.profileSelf.socialSecurity = 0
+
+        
+        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        
+        #expect(fedTax.amtIncome == 700_000)
+        #expect(fedTax.amtExemption == 81_300)
+        #expect(fedTax.amtPhaseOutTheshold == 578_150)
+        #expect(fedTax.amtReducedExemption.asCurrency == "$50,837.50")
+        #expect(fedTax.amtTaxableIncome.asCurrency == "$649,162.50")
+        let taxParts = fedTax.amtTaxParts
+        #expect(taxParts.isEmpty == false)
+        #expect(taxParts.count == 2)
+        // 0% Bracket
+        #expect(taxParts[0].rate == 0.26)
+        #expect(taxParts[0].threshold == 0)
+        #expect(taxParts[0].taxableAtRate.asCurrency(0) == "$220,700")
+        #expect(taxParts[0].computedTax.asCurrency == "$57,382.00")
+        // 26% Bracket
+        #expect(taxParts[1].rate == 0.28)
+        #expect(taxParts[1].threshold == 220_700)
+        #expect(taxParts[1].taxableAtRate.asCurrency == "$428,462.50")
+        #expect(taxParts[1].computedTax.asCurrency == "$119,969.50")
+        #expect(fedTax.amtTax.asCurrency == "$177,351.50")
+        #expect(fedTax.taxesOwed == 212055.70)
+        #expect(fedTax.isSubjectToAMT == false)
+    }
+    
     @Test func testSimpleWageSelfEmployed() async throws {
         let scenario = TaxScenario(
             name: "$100k Wages at 65",

@@ -8,6 +8,20 @@
 import Foundation
 import SwiftData
 
+struct ProgressiveTaxPart : Codable {
+    var rate: Double
+    var threshold: Double
+    var taxableAtRate: Double
+    var computedTax: Double
+    
+    init(rate: Double = 0, threshold: Double = 0, taxableAtRate: Double = 0, computedTax: Double = 0) {
+        self.rate = rate
+        self.threshold = threshold
+        self.taxableAtRate = taxableAtRate
+        self.computedTax = computedTax
+    }
+}
+
 struct TaxBracket : Codable, Identifiable {
     var id: Double {
         return rate
@@ -62,24 +76,37 @@ class TaxBrackets : Codable {
         throw AppErrors.missingFilingStatus(String(localized: "No applicable tax bracket found for \(amount.asCurrency) and '\(filingStatus.label)'"))
     }
     
+    
+    
+    func progressiveTaxParts(for income: Double, filingStatus: FilingStatus) throws -> [ProgressiveTaxPart] {
+        var txParts: [ProgressiveTaxPart] = []
+         
+         for (i, bracket) in brackets.enumerated() {
+             var txPart = ProgressiveTaxPart()
+             txPart.rate = bracket.rate
+             txPart.threshold = try bracket.threshold(for: filingStatus)
+             if income > txPart.threshold {
+                 var nextThreshold = income
+                 if (i + 1 < brackets.count) {
+                     nextThreshold = try brackets[i + 1].threshold(for: filingStatus)
+                 }
+                 txPart.taxableAtRate = min(income, nextThreshold) - txPart.threshold
+                 txPart.computedTax = txPart.taxableAtRate * bracket.rate
+                 txParts.append(txPart)
+             } else {
+                 break
+             }
+         }
+        
+        return txParts
+    }
+    
     func progressiveTax(for income: Double, filingStatus: FilingStatus) throws -> Double {
-        var computedTax: Double = 0
+        var txParts = try progressiveTaxParts(for: income, filingStatus: filingStatus)
         
-        for (i, bracket) in brackets.enumerated() {
-            let threshold = try bracket.threshold(for: filingStatus)
-            if income > threshold {
-                var nextThreshold = income
-                if (i + 1 < brackets.count) {
-                    nextThreshold = try brackets[i + 1].threshold(for: filingStatus)
-                }
-                let taxableAtRate = min(income, nextThreshold) - threshold
-                computedTax += taxableAtRate * bracket.rate
-            } else {
-                break
-            }
+        return txParts.reduce(0) { partialResult, txPart in
+            return partialResult + txPart.computedTax
         }
-        
-        return computedTax
     }
     
     // Custom Encodable conformance

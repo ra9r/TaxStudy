@@ -37,6 +37,11 @@ class TaxFacts : Codable, Identifiable {
     var charitableAssetThreadholdRate: Double = 0.3
     var charitableMileageRate: Double = 0.14
     
+    var amtExemptionReductionRate: Double = 0.25
+    var amtExemptions: [FilingStatus: Double]
+    var amtPhaseOutThesholds: [FilingStatus: Double]
+    var amtBrackets: TaxBrackets
+    
     init(
         id: String,
         ordinaryTaxBrackets: TaxBrackets,
@@ -51,7 +56,11 @@ class TaxFacts : Codable, Identifiable {
         standardDeduction: [FilingStatus : Double],
         startardDeductionBonus: [FilingStatus : Double],
         standardDeductionBonusAge: Int,
-        capitalLossLimit: Double
+        capitalLossLimit: Double,
+        amtExemptionReductionRate: Double,
+        amtExemptions: [FilingStatus: Double],
+        amtPhaseOutThesholds: [FilingStatus: Double],
+        amtBrackets: TaxBrackets
     ) {
         self.id = id
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
@@ -67,6 +76,10 @@ class TaxFacts : Codable, Identifiable {
         self.standardDeduction = standardDeduction
         self.standardDeductionBonus = startardDeductionBonus
         self.standardDeductionBonusAge = standardDeductionBonusAge
+        self.amtExemptions = amtExemptions
+        self.amtPhaseOutThesholds = amtPhaseOutThesholds
+        self.amtExemptionReductionRate = amtExemptionReductionRate
+        self.amtBrackets = amtBrackets
     }
 }
 
@@ -102,5 +115,32 @@ let DefaultTaxFacts2024 = TaxFacts(
         .headOfHousehold: 1_950
     ],
     standardDeductionBonusAge: 65,
-    capitalLossLimit: 3000
+    capitalLossLimit: 3000,
+    amtExemptionReductionRate: 0.25,
+    amtExemptions: [
+        .single: 81_300,
+        .marriedFilingJointly: 126_500,
+        .marriedFilingSeparately: 63_250,
+        .headOfHousehold: 81_300,
+    ],
+    amtPhaseOutThesholds: [
+        .single: 578_150,
+        .marriedFilingJointly: 1_156_300,
+        .marriedFilingSeparately: 578_150,
+        .headOfHousehold: 578_150,
+    ],
+    amtBrackets: TaxBrackets(
+        .init(0.26, thresholds: [
+            .single: 0,
+            .marriedFilingJointly: 0,
+            .marriedFilingSeparately: 0,
+            .headOfHousehold: 0,
+        ]),
+        .init(0.28, thresholds: [
+            .single: 220_700,
+            .marriedFilingJointly: 220_700 * 2.0,
+            .marriedFilingSeparately: 110_350,
+            .headOfHousehold: 227_700,
+        ])
+    )
 )
