@@ -27,6 +27,7 @@ struct KeyFigures: View {
                         CardItem("AGI", value: federalTaxes.agi.asCurrency(0))
                         CardItem("Deductions", value: federalTaxes.deduction.asCurrency(0))
                         CardItem("Taxable Income", value: federalTaxes.taxableIncome.asCurrency(0))
+                        CardItem("AMT Income", value: federalTaxes.amtIncome.asCurrency(0))
                         CardItem("AMT Tax", value: federalTaxes.amtTax.asCurrency(0))
                         CardItem("Federal Taxes", value: federalTaxes.taxesOwed.asCurrency(0))
                         CardItem("FICA Taxes", value: federalTaxes.totalFICATax.asCurrency(0))
