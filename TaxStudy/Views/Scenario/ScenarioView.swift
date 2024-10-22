@@ -8,6 +8,7 @@ import SwiftUI
 
 struct ScenarioView : View {
     @Binding var document: TaxScenarioDocument
+    @State var showAlert: Bool = false
     
     init(_ document: Binding<TaxScenarioDocument>) {
         self._document = document
@@ -26,5 +27,15 @@ struct ScenarioView : View {
         }
         .tint(Color.accentColor)
         .navigationTitle(document.scenario.name)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Alert") {
+                    showAlert.toggle()
+                }
+            }
+        }
+        .alert(isPresented: $showAlert, error: AppErrors.unknownTaxFact("2025")) {
+            Text("Alert Text Here!!")
+        }
     }
 }

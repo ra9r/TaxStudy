@@ -10,6 +10,22 @@ import SwiftUI
 struct JSONView: View {
     @Environment(AppServices.self) var appServices
     public var body: some View {
+        HStack {
+            ZStack {
+                // App Icon
+                Image("AppIcon") // Replace with your actual AppIcon name
+                    .resizable()
+                    .frame(width: 64, height: 64)
+                    .cornerRadius(10)
+                
+                // Exclamation mark icon
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .resizable()
+                    .foregroundColor(.yellow)
+                    .frame(width: 28, height: 28)
+                    .offset(x: 18, y: -18)
+            }
+        }
         ScrollView {
             Button(action: {
                 let textToCopy = String.prettyPrint(appServices.facts) ?? "No Data"

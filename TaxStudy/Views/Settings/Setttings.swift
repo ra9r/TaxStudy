@@ -35,6 +35,18 @@ struct SettingsView : View {
                         TaxBracketEditor(taxBrackets: facts.medicareTaxThresholds)
                     case .provisionalIncomeThresholds:
                         TaxBracketEditor(taxBrackets: facts.provisionalIncomeThresholds)
+                    case .hsaLimits:
+                        Text("HSA Limits")
+                    case .iraLimits:
+                        Text("IRA Limits")
+                    case .irmaaSurcharges:
+                        Text("IRMAA Surcharges")
+                    case .niiTax:
+                        Text("Net Invetment Income Tax (NIIT)")
+                    case .standardDeductions:
+                        Text("Standard Deductions")
+                    case .charitableDeductions:
+                        Text("Charitable Deductions")
                     }
                 }
             } else {
@@ -46,11 +58,17 @@ struct SettingsView : View {
 }
 
 enum SettingTypes: String, CaseIterable {
-    case ordinaryTaxBrackets = "Ordinary Income Tax"
-    case capitalGainsTaxBrackets = "Capital Gains Tax"
-    case ssTaxThresholds = "Social Security Tax"
-    case medicareTaxThresholds = "Medicare Tax"
+    case ordinaryTaxBrackets = "Ordinary Income"
+    case capitalGainsTaxBrackets = "Capital Gains"
+    case ssTaxThresholds = "Social Security"
+    case medicareTaxThresholds = "Medicare"
     case provisionalIncomeThresholds = "Provisional Income"
+    case hsaLimits = "HSAs"
+    case iraLimits = "IRA and Roth"
+    case irmaaSurcharges = "IRMAA Surcharges"
+    case niiTax = "Net Invetment Income"
+    case standardDeductions = "Standard Deductions"
+    case charitableDeductions = "Charitable Deductions"
 }
 
 

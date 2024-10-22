@@ -49,6 +49,12 @@
     "Adoption Credit" : {
 
     },
+    "Alert" : {
+
+    },
+    "Alert Text Here!!" : {
+
+    },
     "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible." : {
 
     },
@@ -92,6 +98,9 @@
 
     },
     "Charitable Contribution of Mileage" : {
+
+    },
+    "Charitable Deductions" : {
 
     },
     "Charitable Stock or Asset Contribution" : {
@@ -253,6 +262,9 @@
     "Home Office" : {
 
     },
+    "HSA Limits" : {
+
+    },
     "HSA or MSA Contribution" : {
 
     },
@@ -286,10 +298,16 @@
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
 
     },
+    "IRA Limits" : {
+
+    },
     "IRA or 401(k) Contribution" : {
 
     },
     "IRA Withdrawal" : {
+
+    },
+    "IRMAA Surcharges" : {
 
     },
     "Itemized" : {
@@ -335,6 +353,9 @@
 
     },
     "name" : {
+
+    },
+    "Net Invetment Income Tax (NIIT)" : {
 
     },
     "Net Operating Loss Carryforward" : {
@@ -468,6 +489,9 @@
 
     },
     "Standard" : {
+
+    },
+    "Standard Deductions" : {
 
     },
     "State and Local Tax" : {
