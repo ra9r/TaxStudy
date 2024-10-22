@@ -1,0 +1,47 @@
+{
+  "adjustments" : [
+
+  ],
+  "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
+  "facts" : "2024",
+  "deductions" : [
+
+  ],
+  "filingStatus" : "marriedFilingJointly",
+  "profileSelf" : {
+    "socialSecurity" : 0,
+    "name" : "Bob",
+    "wages" : 0,
+    "age" : 65,
+    "employmentStatus" : "retired"
+  },
+  "id" : "0BD75978-2901-493A-AC93-55463A99F397",
+  "name" : "$0 Tax on $120,000",
+  "credits" : [
+
+  ],
+  "profileSpouse" : {
+    "socialSecurity" : 0,
+    "name" : "Angie",
+    "wages" : 0,
+    "age" : 65,
+    "employmentStatus" : "retired"
+  },
+  "income" : [
+    {
+      "amount" : 30000,
+      "id" : "3D405528-D42A-4171-82F3-2270583680E8",
+      "type" : "iraWithdrawal"
+    },
+    {
+      "amount" : 67500,
+      "type" : "longTermCapitalGains",
+      "id" : "7ED776DD-63B2-4785-8858-A399BDD0E732"
+    },
+    {
+      "id" : "A2638736-D9A9-4118-814C-80BC44CCB1E2",
+      "amount" : 22500,
+      "type" : "otherTaxExemptIncome"
+    }
+  ]
+}

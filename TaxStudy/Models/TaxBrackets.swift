@@ -81,6 +81,18 @@ class TaxBrackets : Codable {
         
         return computedTax
     }
+    
+    // Custom Encodable conformance
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(brackets)
+    }
+    
+    // Custom Decodable conformance
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self.brackets = try container.decode([TaxBracket].self)
+    }
 }
 
 let OrdinaryTaxBrackets2024 = TaxBrackets(

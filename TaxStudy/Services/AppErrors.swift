@@ -7,4 +7,5 @@
 
 enum AppErrors: Error {
     case missingFilingStatus(String)
+    case unknownTaxFact(String)
 }

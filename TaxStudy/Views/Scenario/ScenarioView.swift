@@ -16,10 +16,13 @@ struct ScenarioView : View {
     var body: some View {
         ScrollView {
             VStack {
-                SummaryView($document.scenario)
+                Header($document.scenario)
+                KeyFigures($document.scenario)
+                ProfileView($document.scenario)
                 IncomeView($document.scenario)
                 DeductionsView($document.scenario)
             }
+            .padding()
         }
         .tint(Color.accentColor)
         .navigationTitle(document.scenario.name)

@@ -1,0 +1,52 @@
+{
+  "id" : "AC68F856-1362-4E83-B260-3AE72E2706E8",
+  "credits" : [
+
+  ],
+  "name" : "$0 Tax on $100,000",
+  "income" : [
+    {
+      "type" : "qualifiedDividends",
+      "amount" : 10000,
+      "id" : "FA8C43B7-D34C-4C7A-B770-C31D25332F67"
+    },
+    {
+      "type" : "iraWithdrawal",
+      "amount" : 11600,
+      "id" : "79881996-8523-4B14-BD7D-F9C6AB466029"
+    },
+    {
+      "id" : "B5D21C96-CCB1-4C69-991E-6995CC24CB0A",
+      "type" : "longTermCapitalGains",
+      "amount" : 8000
+    },
+    {
+      "type" : "otherTaxExemptIncome",
+      "id" : "C6F63E19-19BF-4F76-922C-B36278CACD87",
+      "amount" : 8000
+    }
+  ],
+  "deductions" : [
+
+  ],
+  "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
+  "profileSpouse" : {
+    "wages" : 0,
+    "socialSecurity" : 24000,
+    "employmentStatus" : "retired",
+    "age" : 65,
+    "name" : "Angie"
+  },
+  "adjustments" : [
+
+  ],
+  "profileSelf" : {
+    "name" : "Bob",
+    "employmentStatus" : "retired",
+    "socialSecurity" : 38400,
+    "wages" : 0,
+    "age" : 65
+  },
+  "facts" : "2024",
+  "filingStatus" : "marriedFilingJointly"
+}

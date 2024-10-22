@@ -106,6 +106,9 @@
     "Child Tax Credit" : {
 
     },
+    "Copy to Clipboard" : {
+
+    },
     "Deduct 50% of your self-employment taxes (SECA)." : {
 
     },
@@ -187,6 +190,12 @@
     "Energy Efficiency Improvement" : {
 
     },
+    "Error: No facts found for %@." : {
+
+    },
+    "Export Config..." : {
+
+    },
     "Facts: %@" : {
 
     },
@@ -245,6 +254,9 @@
 
     },
     "HSA or MSA Contribution" : {
+
+    },
+    "Import %lld TaxFacts?" : {
 
     },
     "Income earned outside the United States" : {

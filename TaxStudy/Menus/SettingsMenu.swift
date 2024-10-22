@@ -17,5 +17,11 @@ struct SettingsCommand: Commands {
             }
             .keyboardShortcut(",", modifiers: [.command])
         }
+        CommandGroup(replacing: .importExport) {
+            Button("Export Config...") {
+                openWindow(id: "exportConfig")
+            }
+            .keyboardShortcut("x", modifiers: [.command, .shift])
+        }
     }
 }

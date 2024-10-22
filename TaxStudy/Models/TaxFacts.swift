@@ -9,8 +9,7 @@ import Foundation
 
 /// Collection of tax brackets and other contraints and limits that are used in computing the taxes for a given year.
 class TaxFacts : Codable, Identifiable {
-    var id: String = UUID().uuidString
-    var year: Int? = 2024
+    var id: String
     var ordinaryTaxBrackets: TaxBrackets
     var capitalGainTaxBrackets: TaxBrackets
     
@@ -39,8 +38,7 @@ class TaxFacts : Codable, Identifiable {
     var charitableMileageRate: Double = 0.14
     
     init(
-        id: String? = nil,
-        year: Int? = 2024,
+        id: String,
         ordinaryTaxBrackets: TaxBrackets,
         capitalGainTaxBrackets: TaxBrackets,
         ssTaxThresholds: TaxBrackets,
@@ -55,8 +53,7 @@ class TaxFacts : Codable, Identifiable {
         standardDeductionBonusAge: Int,
         capitalLossLimit: Double
     ) {
-        self.id = id ?? UUID().uuidString
-        self.year = year
+        self.id = id
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
         self.ssTaxThresholds = ssTaxThresholds
@@ -74,8 +71,7 @@ class TaxFacts : Codable, Identifiable {
 }
 
 let DefaultTaxFacts2024 = TaxFacts(
-    id: "OfficialTaxFacts2024",
-    year: 2024,
+    id: "2024",
     ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
     capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
     ssTaxThresholds: SSTaxThresholds2024,
@@ -107,5 +103,4 @@ let DefaultTaxFacts2024 = TaxFacts(
     ],
     standardDeductionBonusAge: 65,
     capitalLossLimit: 3000
-//    ssdiThreshold: 34000
 )

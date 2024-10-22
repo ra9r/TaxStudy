@@ -21,7 +21,6 @@ struct DeductionsView: View {
                 DeductionEditor("Deductions", $scenario.deductions)
                 DeductionEditor("Credits", $scenario.credits)
             }
-            .padding()
         }
         .frame(minWidth: 800)
     }

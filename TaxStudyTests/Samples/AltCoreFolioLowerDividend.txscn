@@ -1,0 +1,42 @@
+{
+    "id" : "50ADCF77-140C-480A-ACE4-7C90EBA79957",
+    "profileSelf" : {
+        "wages" : 0,
+        "name" : "Taxpayer 1",
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "socialSecurity" : 42816
+    },
+    "income" : [
+        {
+            "id" : "A676148E-707E-4662-8B60-234940497E51",
+            "amount" : 66000,
+            "type" : "qualifiedDividends"
+        },
+        {
+            "type" : "interest",
+            "id" : "B2B2DBA8-A138-4DED-8185-94C31B77613E",
+            "amount" : 12250
+        }
+    ],
+    "name" : "Ta",
+    "filingStatus" : "marriedFilingJointly",
+    "deductions" : [
+        
+    ],
+    "description" : "",
+    "adjustments" : [
+        
+    ],
+    "credits" : [
+        
+    ],
+    "facts" : "2024",
+    "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "wages" : 0,
+        "age" : 52,
+        "socialSecurity" : 0,
+        "name" : "Taxpayer 2"
+    }
+}

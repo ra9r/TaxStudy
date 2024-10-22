@@ -22,8 +22,20 @@ struct TaxStudyApp: App {
             SettingsCommand(appServices: appService)
         }
         
+        DocumentGroup(newDocument: TaxFactsDocument()) { file in
+            TaxFactsImportView(file.$document)
+                .environment(appService)
+                .setTabbingMode(.preferred) // Not working but leaving in
+                .frame(minWidth: 1280, minHeight: 800)
+        }
+         
         Window("Settings", id: "settings") {
             SettingsView()
+                .environment(appService)
+        }
+        
+        Window("Settings", id: "exportConfig") {
+            JSONView()
                 .environment(appService)
         }
     }

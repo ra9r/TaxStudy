@@ -14,8 +14,8 @@ struct SettingsView : View {
     
     var body: some View {
         NavigationSplitView {
-            List(Array(appServices.facts.keys).sorted(), id: \.self,  selection: $selectedFacts) { key in
-                NavigationLink("Facts: \(key)", value: key)
+            List(appServices.facts.map({ $0.id }), id: \.self,  selection: $selectedFacts) { id in
+                NavigationLink("Facts: \(id)", value: id)
             }
         } content: {
             List(SettingTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
@@ -23,7 +23,7 @@ struct SettingsView : View {
             }
         } detail: {
             if let selectedFacts {
-                if let facts = appServices.facts[selectedFacts] {
+                if let facts = appServices.facts(for: selectedFacts) {
                     switch selectedSetting {
                     case .ordinaryTaxBrackets:
                         TaxBracketEditor(taxBrackets: facts.ordinaryTaxBrackets)

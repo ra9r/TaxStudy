@@ -21,7 +21,6 @@ struct IncomeView: View {
                 IncomeEditor("Ordinary Income", $scenario.income, filter: IncomeType.ordinary)
                 IncomeEditor("Investment Income", $scenario.income, filter: IncomeType.investment)
             }
-            .padding()
         }
         .frame(minWidth: 800)
     }

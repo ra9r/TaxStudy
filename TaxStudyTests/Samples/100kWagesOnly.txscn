@@ -1,0 +1,33 @@
+{
+    "deductions" : [
+        
+    ],
+    "name" : "$100,000 in Wages Only",
+    "profileSelf" : {
+        "wages" : 50000,
+        "name" : "Bob",
+        "socialSecurity" : 0,
+        "age" : 65,
+        "employmentStatus" : "retired"
+    },
+    "adjustments" : [
+        
+    ],
+    "profileSpouse" : {
+        "socialSecurity" : 0,
+        "name" : "Angie",
+        "age" : 65,
+        "employmentStatus" : "retired",
+        "wages" : 50000
+    },
+    "description" : "",
+    "income" : [
+        
+    ],
+    "filingStatus" : "marriedFilingJointly",
+    "credits" : [
+        
+    ],
+    "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
+    "facts" : "2024"
+}

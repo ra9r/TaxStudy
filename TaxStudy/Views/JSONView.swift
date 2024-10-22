@@ -8,12 +8,33 @@
 import SwiftUI
 
 struct JSONView: View {
-    var taxScenario: TaxScenario
+    @Environment(AppServices.self) var appServices
     public var body: some View {
         ScrollView {
-            Text(String.prettyPrint(taxScenario) ?? "No Data")
+            Button(action: {
+                let textToCopy = String.prettyPrint(appServices.facts) ?? "No Data"
+                copyToClipboard(textToCopy)
+            }) {
+                Text("Copy to Clipboard")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+            .padding()
+            Text(String.prettyPrint(appServices.facts) ?? "No Data")
                 .frame(maxWidth: .infinity, alignment: .leading) // Forces the Text to fill the width
-                                .padding()
+                .padding()
         }
+        // Function to handle copying text to clipboard
+    }
+    private func copyToClipboard(_ text: String) {
+#if os(iOS)
+        UIPasteboard.general.string = text
+#elseif os(macOS)
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
+#endif
     }
 }
