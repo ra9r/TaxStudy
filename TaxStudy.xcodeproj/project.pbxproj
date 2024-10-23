@@ -274,8 +274,8 @@
 		2A6BA2AE2CBE6026007C3A27 /* Income */ = {
 			isa = PBXGroup;
 			children = (
-				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
 				2ACC20152CC0CCFD00D2A907 /* IncomeView.swift */,
+				2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */,
 			);
 			path = Income;
 			sourceTree = "<group>";
