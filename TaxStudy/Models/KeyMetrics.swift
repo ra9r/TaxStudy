@@ -29,9 +29,10 @@ enum KeyMetricTypes: Codable {
     case grossIncome
     case totalIncome
     case totalTaxExemptInterestIncome
-    case totalExcludedIncome
+    case totalAdjustments
     case totalWages
     case totalSSAIncome
+    case totalDividends
     case totalIncomeOfType(IncomeType)
     case totalDeductionOftype(TaxDeductionType)
     case totalAdjustmentOfType(TaxAdjustmentType)
@@ -54,12 +55,6 @@ enum KeyMetricTypes: Codable {
     case carryforwardLoss
     case dividends
     case capitalGains
-    case totalDividends
-    case totalRentalIncome
-    case totalRoyalties
-    case totalBusinessIncome
-    case totalForeignEarnedIncome
-    case totalRetirementContributions
     
     // MARK: - Investment Computed
     case netLTCG
@@ -181,7 +176,7 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "Total Credits of Type")
         case .totalTaxExemptInterestIncome:
             return String(localized: "Total Tax Exempt Interest Income")
-        case .totalExcludedIncome:
+        case .totalAdjustments:
             return String(localized: "Total Excluded Income")
         case .totalWages:
             return String(localized: "Total Wages")
@@ -206,23 +201,13 @@ extension KeyMetricTypes : Displayable {
         case .magiForSocialSecurity:
             return String(localized: "MAGI for Social Security")
         case .interest:
-            return String(localized: "Interest Taxable / Exempt")
+            return String(localized: "Interest Exempt / Taxable")
         case .carryforwardLoss:
             return String(localized: "Carryforward Loss")
         case .dividends:
             return String(localized: "Dividends Qualfied/Ordinary")
         case .totalDividends:
             return String(localized: "Total Dividends")
-        case .totalRentalIncome:
-            return String(localized: "Total Rental Income")
-        case .totalRoyalties:
-            return String(localized: "Total Royalties")
-        case .totalBusinessIncome:
-            return String(localized: "Total Business Income")
-        case .totalForeignEarnedIncome:
-            return String(localized: "Total Foreign Earned Income")
-        case .totalRetirementContributions:
-            return String(localized: "Total Retirement Contributions")
         case .capitalGains:
             return String(localized: "Capital Gains STCG/LTCG")
         case .netLTCG:
@@ -329,262 +314,189 @@ extension KeyMetricTypes : Displayable {
     }
 }
 
-
-extension KeyMetricTypes : CaseIterable {
-    static var allCases: [KeyMetricTypes] {
-        return [
-            .selfName,
-            .spouseName,
-            .selfAge,
-            .spouseAge,
-            .selfWages,
-            .spouseWages,
-            .selfSSI,
-            .spouseSSI,
-            .selfMedical,
-            .spouseMedical,
-            .selfEmployement,
-            .spouseEmployement,
-            .filingStatus,
-            .taxRules,
-            .grossIncome,
-            .totalIncome,
-            .totalTaxExemptInterestIncome,
-            .totalExcludedIncome,
-            .totalWages,
-            .totalSSAIncome,
-            .agi,
-            .agiBeforeSSI,
-            .magiForIRMAA,
-            .magiForIRA,
-            .magiForRothIRA,
-            .magiForNIIT,
-            .magiForACASubsidies,
-            .magiForPassiveActivityLossRules,
-            .magiForSocialSecurity,
-            .interest,
-            .carryforwardLoss,
-            .dividends,
-            .capitalGains,
-            .totalDividends,
-            .totalRentalIncome,
-            .totalRoyalties,
-            .totalBusinessIncome,
-            .totalForeignEarnedIncome,
-            .totalRetirementContributions,
-            .netLTCG,
-            .netSTCG,
-            .futureCarryForwardLoss,
-            .netInvestmentIncome,
-            .capitalLossAdjustment,
-            .provisionalIncome,
-            .provisionalTaxRate,
-            .taxableSSAIncome,
-            .standardDeduction,
-            .deductibleMedicalExpenses,
-            .deductibleCharitableCashContributions,
-            .deductibleCharitableAssetContributions,
-            .totalDecutibleChartitableContributions,
-            .totalItemizedDeductions,
-            .deduction,
-            .deductionMethod,
-            .taxableIncome,
-            .preferentialIncome,
-            .ordinaryIncome,
-            .ordinaryIncomeTax,
-            .qualifiedDividendTax,
-            .capitalGainsTax,
-            .netInvestmentIncomeTax,
-            .federalTax,
-            .safeHarborTax,
-            .totalFICATax,
-            .totalFICATaxSocialSecurity,
-            .totalFICATaxMedicare,
-            .maginalCapitalGainsTaxRate,
-            .marginalOrdinaryTaxRate,
-            .averageTaxRate,
-            .effectiveTaxRate,
-            .isSubjectToNIIT,
-            .isSubjectToFICA,
-            .isSubjectToIRMAA,
-            .irmaaPlanDSurcharge,
-            .irmaaPlanBSurcharge,
-            .irmaaSurcharges,
-            .isSubjectToAMT,
-            .amtIncome,
-            .amtExemption,
-            .amtPhaseOutTheshold,
-            .amtReducedExemption,
-            .amtTaxableIncome,
-            .amtTax
-        ]
-    }
-}
-
 extension KeyMetricTypes: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(self.label)
     }
 }
 
-enum KeyMetricCategories: String, CaseIterable {
-    case profile
-    case income
-    case agiAndMagis
-    case investments
-    case socialSecurity
-    case deductions
-    case taxes
-    case wages
-    case irmaa
-    case amt
-    case taxRates
-    case computedFlags
-    
-    var types: [KeyMetricTypes] {
+extension KeyMetricTypes {
+    func resolve(for scenario: TaxScenario, facts: TaxFacts) throws -> String {
+        let fedTax = FederalTaxCalc(scenario, facts: facts)
         switch self {
-        case .profile: return [
-            .selfName,
-            .spouseName,
-            .selfAge,
-            .spouseAge,
-            .selfWages,
-            .spouseWages,
-            .selfSSI,
-            .spouseSSI,
-            .selfMedical,
-            .spouseMedical,
-            .selfEmployement,
-            .spouseEmployement,
-            .filingStatus,
-            ]
-        case .income: return [
-            .taxRules,
-            .grossIncome,
-            .totalIncome,
-            .taxableIncome,
-            .totalTaxExemptInterestIncome,
-            .totalExcludedIncome,
-            .totalWages,
-            .totalSSAIncome,
-            .preferentialIncome,
-            .ordinaryIncome,
-            ]
-        case .agiAndMagis: return [
-            .agi,
-            .agiBeforeSSI,
-            .magiForIRMAA,
-            .magiForIRA,
-            .magiForRothIRA,
-            .magiForNIIT,
-            .magiForACASubsidies,
-            .magiForPassiveActivityLossRules,
-            .magiForSocialSecurity,
-            ]
-        case .investments: return [
-            .interest,
-            .carryforwardLoss,
-            .dividends,
-            .capitalGains,
-            .totalDividends,
-            .totalRentalIncome,
-            .totalRoyalties,
-            .totalBusinessIncome,
-            .totalForeignEarnedIncome,
-            .totalRetirementContributions,
-            .netLTCG,
-            .netSTCG,
-            .futureCarryForwardLoss,
-            .netInvestmentIncome,
-            .capitalLossAdjustment,
-            ]
-        case .socialSecurity: return [
-            .totalSSAIncome,
-            .provisionalIncome,
-            .provisionalTaxRate,
-            .taxableSSAIncome,
-            ]
-        case .deductions: return [
-            .standardDeduction,
-            .deductibleMedicalExpenses,
-            .deductibleCharitableCashContributions,
-            .deductibleCharitableAssetContributions,
-            .totalDecutibleChartitableContributions,
-            .totalItemizedDeductions,
-            .deduction,
-            .deductionMethod,
-            ]
-        case .taxes: return [
-            .ordinaryIncomeTax,
-            .qualifiedDividendTax,
-            .capitalGainsTax,
-            .netInvestmentIncomeTax,
-            .amtTax,
-            .federalTax,
-            .safeHarborTax,
-            .totalFICATax,
-            .totalFICATaxSocialSecurity,
-            .totalFICATaxMedicare,
-            ]
-        case .wages: return [
-            .selfWages,
-            .spouseWages,
-            .totalWages,
-            .totalFICATax,
-            .totalFICATaxSocialSecurity,
-            .totalFICATaxMedicare,
-            ]
-        case .irmaa: return [
-            .isSubjectToIRMAA,
-            .irmaaPlanDSurcharge,
-            .irmaaPlanBSurcharge,
-            .irmaaSurcharges,
-            ]
-        case .amt: return [
-            .isSubjectToAMT,
-            .amtIncome,
-            .amtExemption,
-            .amtPhaseOutTheshold,
-            .amtReducedExemption,
-            .amtTaxableIncome,
-            .amtTax,
-            ]
-        case .taxRates: return [
-            .maginalCapitalGainsTaxRate,
-            .marginalOrdinaryTaxRate,
-            .averageTaxRate,
-            .effectiveTaxRate,
-            ]
-        case .computedFlags: return [
-            .isSubjectToNIIT,
-            .isSubjectToFICA,
-            .isSubjectToIRMAA,
-            .isSubjectToAMT,
-            ]
+            
+        case .selfName:
+            return scenario.profileSelf.name
+        case .spouseName:
+            return scenario.profileSpouse.name
+        case .selfAge:
+            return "\(scenario.profileSelf.age)"
+        case .spouseAge:
+            return "\(scenario.profileSpouse.age)"
+        case .selfWages:
+            return scenario.profileSelf.wages.asCurrency(0)
+        case .spouseWages:
+            return scenario.profileSpouse.wages.asCurrency(0)
+        case .selfSSI:
+            return scenario.profileSelf.socialSecurity.asCurrency(0)
+        case .spouseSSI:
+            return scenario.profileSpouse.socialSecurity.asCurrency(0)
+        case .selfMedical:
+            return scenario.profileSelf.medicalCoverage.label
+        case .spouseMedical:
+            return scenario.profileSpouse.medicalCoverage.label
+        case .selfEmployement:
+            return scenario.profileSelf.employmentStatus.label
+        case .spouseEmployement:
+            return scenario.profileSpouse.employmentStatus.label
+        case .filingStatus:
+            return scenario.filingStatus.label
+        case .taxRules:
+            return scenario.facts
+        case .grossIncome:
+            return fedTax.grossIncome.asCurrency(0)
+        case .totalIncome:
+            return fedTax.totalIncome.asCurrency(0)
+        case .totalTaxExemptInterestIncome:
+            return fedTax.totalTaxExemptIncome.asCurrency(0)
+        case .totalAdjustments:
+            return scenario.totalAdjustments.asCurrency(0)
+        case .totalWages:
+            return scenario.totalWages.asCurrency(0)
+        case .totalSSAIncome:
+            return scenario.totalSocialSecurityIncome.asCurrency(0)
+        case .totalIncomeOfType(let incomeType):
+            return scenario.income.total(for: incomeType).asCurrency(0)
+        case .totalDeductionOftype(let deductionType):
+            return scenario.deductions.total(for: deductionType).asCurrency(0)
+        case .totalAdjustmentOfType(let adjustmentType):
+            return scenario.adjustments.total(for: adjustmentType).asCurrency(0)
+        case .totalCreditsOfType(let creditType):
+            return scenario.credits.total(for: creditType).asCurrency(0)
+        case .agi:
+            return fedTax.agi.asCurrency(0)
+        case .agiBeforeSSI:
+            return fedTax.agiBeforeSSI.asCurrency(0)
+        case .magiForIRMAA:
+            return fedTax.magiForIRMAA.asCurrency(0)
+        case .magiForIRA:
+            return fedTax.magiForIRA.asCurrency(0)
+        case .magiForRothIRA:
+            return fedTax.magiForRothIRA.asCurrency(0)
+        case .magiForNIIT:
+            return fedTax.magiForNIIT.asCurrency(0)
+        case .magiForACASubsidies:
+            return fedTax.magiForACASubsidies.asCurrency(0)
+        case .magiForPassiveActivityLossRules:
+            return fedTax.magiForPassiveActivityLossRules.asCurrency(0)
+        case .magiForSocialSecurity:
+            return fedTax.magiForSocialSecurity.asCurrency(0)
+        case .interest:
+            let exemptInterest = fedTax.totalTaxExemptIncome.asCurrency(0)
+            let taxableInterst = scenario.income.total(for: .interest).asCurrency(0)
+            return "\(exemptInterest) / \(taxableInterst)"
+        case .carryforwardLoss:
+            return scenario.carryforwardLoss.asCurrency(0)
+        case .dividends:
+            return "\(scenario.qualifiedDividends) / \(scenario.ordinaryDividends)"
+        case .capitalGains:
+            return "\(fedTax.netSTCG) / \(fedTax.netLTCG)"
+        case .totalDividends:
+            return scenario.totalDividends.asCurrency(0)
+        case .netLTCG:
+            return fedTax.netLTCG.asCurrency(0)
+        case .netSTCG:
+            return fedTax.netSTCG.asCurrency(0)
+        case .futureCarryForwardLoss:
+            return fedTax.futureCarryForwardLoss.asCurrency(0)
+        case .netInvestmentIncome:
+            return fedTax.netInvestmentIncome.asCurrency(0)
+        case .capitalLossAdjustment:
+            return fedTax.capitalLossAdjustment.asCurrency(0)
+        case .provisionalIncome:
+            return fedTax.provisionalIncome.asCurrency(0)
+        case .provisionalTaxRate:
+            return fedTax.provisionalTaxRate.asPercentage
+        case .taxableSSAIncome:
+            return fedTax.taxableSSI.asCurrency(0)
+        case .standardDeduction:
+            return fedTax.standardDeduction.asCurrency(0)
+        case .deductibleMedicalExpenses:
+            return fedTax.deductibleMedicalExpenses.asCurrency(0)
+        case .deductibleCharitableCashContributions:
+            return fedTax.deductibleCharitableCashContributions.asCurrency(0)
+        case .deductibleCharitableAssetContributions:
+            return fedTax.deductibleCharitableAssetContributions.asCurrency(0)
+        case .totalDecutibleChartitableContributions:
+            return fedTax.totalChartitableContributions.asCurrency(0)
+        case .totalItemizedDeductions:
+            return fedTax.totalItemizedDeductions.asCurrency(0)
+        case .deduction:
+            return fedTax.deduction.asCurrency(0)
+        case .deductionMethod:
+            return fedTax.deductionMethod
+        case .taxableIncome:
+            return fedTax.taxableIncome.asCurrency(0)
+        case .preferentialIncome:
+            return fedTax.preferentialIncome.asCurrency(0)
+        case .ordinaryIncome:
+            return fedTax.ordinaryIncome.asCurrency(0)
+        case .ordinaryIncomeTax:
+            return fedTax.ordinaryIncomeTax.asCurrency(0)
+        case .qualifiedDividendTax:
+            return fedTax.qualifiedDividendTax.asCurrency(0)
+        case .capitalGainsTax:
+            return fedTax.capitalGainsTax.asCurrency(0)
+        case .netInvestmentIncomeTax:
+            return fedTax.netInvestmentIncomeTax.asCurrency(0)
+        case .federalTax:
+            return fedTax.federalTax.asCurrency(0)
+        case .safeHarborTax:
+            let safeHarborTax = fedTax.safeHarborTax
+            return "\((safeHarborTax/4).asCurrency(0)) / \(safeHarborTax.asCurrency(0))"
+        case .totalFICATax:
+            return fedTax.totalFICATax.asCurrency(0)
+        case .totalFICATaxSocialSecurity:
+            return fedTax.totalFICATaxSocialSecurity.asCurrency(0)
+        case .totalFICATaxMedicare:
+            return fedTax.totalFICATaxMedicare.asCurrency(0)
+        case .maginalCapitalGainsTaxRate:
+            return fedTax.maginalCapitalGainsTaxRate.asCurrency(0)
+        case .marginalOrdinaryTaxRate:
+            return fedTax.marginalOrdinaryTaxRate.asCurrency(0)
+        case .averageTaxRate:
+            return fedTax.averageTaxRate.asCurrency(0)
+        case .effectiveTaxRate:
+            return "??" // TODO: Implement .effectiveTaxRate
+        case .isSubjectToNIIT:
+            return fedTax.isSubjectToNIIT ? "Yes" : "No"
+        case .isSubjectToFICA:
+            return fedTax.isSubjectToFICA ? "Yes" : "No"
+        case .isSubjectToIRMAA:
+            return fedTax.isSubjectToAMT ? "Yes" : "No"
+        case .irmaaPlanDSurcharge:
+            return fedTax.irmaaPlanDSurcharge.asCurrency(0)
+        case .irmaaPlanBSurcharge:
+            return fedTax.irmaaPlanBSurcharge.asCurrency(0)
+        case .irmaaSurcharges:
+            let planB = fedTax.irmaaPlanBSurcharge.asCurrency(0)
+            let planD =  fedTax.irmaaPlanDSurcharge.asCurrency(0)
+            return "\(planB) / \(planD)"
+        case .isSubjectToAMT:
+            return fedTax.isSubjectToAMT ? "Yes" : "No"
+        case .amtIncome:
+            return fedTax.amtIncome.asCurrency(0)
+        case .amtExemption:
+            return fedTax.amtExemption.asCurrency(0)
+        case .amtPhaseOutTheshold:
+            return fedTax.amtPhaseOutTheshold.asCurrency(0)
+        case .amtReducedExemption:
+            return fedTax.amtReducedExemption.asCurrency(0)
+        case .amtTaxableIncome:
+            return fedTax.amtTaxableIncome.asCurrency(0)
+        case .amtTax:
+            return fedTax.amtTax.asCurrency(0)
+            
         }
-    }
-    
-}
-
-extension KeyMetricCategories: Displayable {
-    var label: String {
-        switch self {
-        case .profile: return String(localized:"Profile")
-        case .income: return String(localized:"Income")
-        case .agiAndMagis: return String(localized:"AGI and MAGIS")
-        case .investments: return String(localized:"Investments")
-        case .socialSecurity: return String(localized:"Social Security")
-        case .deductions: return String(localized:"Deductions")
-        case .taxes: return String(localized:"Taxes")
-        case .wages: return String(localized:"Wages")
-        case .taxRates: return String(localized:"Tax Rates")
-        case .computedFlags: return String(localized:"Computed Flags")
-        case .irmaa: return String(localized:"IRMAA")
-        case .amt: return String(localized:"AMT")
-        }
-    }
-    
-    var description: String? {
-        return nil
     }
 }
