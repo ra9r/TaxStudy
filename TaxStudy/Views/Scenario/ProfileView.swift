@@ -30,11 +30,12 @@ struct ProfileView: View {
                         CardNumberField("Age", amount: $scenario.profileSpouse.age)
                     }
                 }
+                .frame(maxWidth: 100)
                 Divider()
                 VStack(alignment: .leading) {
-                    CardPicker("Employment Status", selection: $scenario.profileSelf.employmentStatus)
+                    CardPicker("Employment", selection: $scenario.profileSelf.employmentStatus)
                     if scenario.filingStatus == .marriedFilingJointly {
-                        CardPicker("Employment Status", selection: $scenario.profileSpouse.employmentStatus)
+                        CardPicker("Employment", selection: $scenario.profileSpouse.employmentStatus)
                     }
                 }
                 Divider()
@@ -47,9 +48,16 @@ struct ProfileView: View {
                 }
                 Divider()
                 VStack(alignment: .leading) {
-                    CardCurrencyField("Social Security", amount: $scenario.profileSelf.socialSecurity)
+                    CardCurrencyField("SSA Benefits", amount: $scenario.profileSelf.socialSecurity)
                     if scenario.filingStatus == .marriedFilingJointly {
-                        CardCurrencyField("Social Security", amount: $scenario.profileSpouse.socialSecurity)
+                        CardCurrencyField("SSA Benefits", amount: $scenario.profileSpouse.socialSecurity)
+                    }
+                }
+                Divider()
+                VStack(alignment: .leading) {
+                    CardPicker("Medical", selection: $scenario.profileSelf.medicalCoverage)
+                    if scenario.filingStatus == .marriedFilingJointly {
+                        CardPicker("Medical", selection: $scenario.profileSpouse.medicalCoverage)
                     }
                 }
             }

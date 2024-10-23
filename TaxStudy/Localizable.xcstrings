@@ -43,6 +43,12 @@
     "A refundable credit for low- to moderate-income individuals and families, designed to reduce tax burden and increase refunds." : {
 
     },
+    "ACA Market Plan" : {
+
+    },
+    "ACA Off-Market Plan" : {
+
+    },
     "Add New Tax Bracket" : {
 
     },
@@ -289,6 +295,21 @@
     "Income from royalties" : {
 
     },
+    "Individual is able to use Medicare benefits" : {
+
+    },
+    "Individual is may be using other insurance (Corporate, Private, ACA Marketplace, or Nothing" : {
+
+    },
+    "Individual is receiving Medicaid benefits" : {
+
+    },
+    "Individual is using ACA Plan purchase from the Marketplace which provide subsidies for qualified individuals" : {
+
+    },
+    "Individual is using off-market ACA Plans which do not provide subsidies" : {
+
+    },
     "Interest" : {
 
     },
@@ -343,7 +364,13 @@
     "Married Filing Separately" : {
 
     },
+    "Medicaid" : {
+
+    },
     "Medical and Dental" : {
+
+    },
+    "Medicare" : {
 
     },
     "Mileage" : {
@@ -402,6 +429,9 @@
 
     },
     "Other Tax-Exempt Income" : {
+
+    },
+    "Other/None" : {
 
     },
     "Premium Tax Credit" : {

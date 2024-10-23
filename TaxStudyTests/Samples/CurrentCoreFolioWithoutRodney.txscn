@@ -1,0 +1,60 @@
+{
+  "filingStatus" : "single",
+  "credits" : [
+    {
+      "type" : "lifetimeLearningCredit",
+      "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
+      "amount" : 0
+    }
+  ],
+  "name" : "Current CoreFolio w\/out Rodney",
+  "adjustments" : [
+    {
+      "amount" : 4300,
+      "type" : "hsaContribution",
+      "id" : "79651265-AE45-4B12-AB87-BC09DD70AC5B"
+    }
+  ],
+  "facts" : "2024",
+  "deductions" : [
+
+  ],
+  "income" : [
+    {
+      "type" : "qualifiedDividends",
+      "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20",
+      "amount" : 53418.56
+    },
+    {
+      "id" : "811B1C17-3253-405A-8055-464EEB0B752D",
+      "type" : "qualifiedDividends",
+      "amount" : 27145.76
+    },
+    {
+      "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39",
+      "type" : "ordinaryDividends",
+      "amount" : 57823.96
+    },
+    {
+      "id" : "0687C494-CA98-41ED-AD2A-A04D3896A42F",
+      "type" : "interest",
+      "amount" : 12500
+    }
+  ],
+  "profileSelf" : {
+    "socialSecurity" : 0,
+    "age" : 50,
+    "name" : "Rodney Aiglstorfer",
+    "employmentStatus" : "retired",
+    "wages" : 0
+  },
+  "description" : "This is a scenario what the current CoreFolio investment approach would look like after Rodney dies.  Total income is reduced (no more SSDI) but filing status changes to Single which results is much more taxes being owed.",
+  "profileSpouse" : {
+    "age" : 52,
+    "employmentStatus" : "retired",
+    "wages" : 0,
+    "socialSecurity" : 0,
+    "name" : "Nobuko Aiglstorfer"
+  },
+  "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B"
+}

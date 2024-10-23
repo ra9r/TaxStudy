@@ -31,12 +31,14 @@ struct CardPicker<T: CaseIterable & Hashable & Displayable>: View {
                         }
                     }
                 } label: {
+                    Spacer()
                     Text("\(selection.label)")
+                        .multilineTextAlignment(.trailing)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.gray)
                 }
                 .buttonStyle(PlainButtonStyle())
-//                .frame(width: 200)
+                .frame(maxWidth: .infinity)
             }
             .padding(2.5)
         }

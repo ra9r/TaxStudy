@@ -26,6 +26,7 @@ struct CardItem: View {
             Text(value)
                 .font(.system(size: 12, weight: .medium))
                 .foregroundColor(.gray)
+                .multilineTextAlignment(.trailing)
         }
         .padding(2.5)
     }

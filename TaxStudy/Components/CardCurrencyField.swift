@@ -28,7 +28,7 @@ struct CardCurrencyField: View {
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
-                    .frame(width: 100)
+                    .frame(maxWidth: .infinity)
                     .textFieldStyle(.plain)
             }
             .padding(2.5)
