@@ -7,5 +7,5 @@
 
 protocol Displayable {
     var label: String { get }
-    var description: String { get }
+    var description: String? { get }
 }

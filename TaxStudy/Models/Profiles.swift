@@ -28,7 +28,7 @@ enum MedicalCoverageTypes: String, Codable, CaseIterable, Displayable {
         }
     }
     
-    var description: String {
+    var description: String? {
         switch self {
         case .medicare:
             return String(localized: "Individual is able to use Medicare benefits")

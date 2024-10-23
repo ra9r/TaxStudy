@@ -102,7 +102,7 @@ class TaxBrackets : Codable {
     }
     
     func progressiveTax(for income: Double, filingStatus: FilingStatus) throws -> Double {
-        var txParts = try progressiveTaxParts(for: income, filingStatus: filingStatus)
+        let txParts = try progressiveTaxParts(for: income, filingStatus: filingStatus)
         
         return txParts.reduce(0) { partialResult, txPart in
             return partialResult + txPart.computedTax

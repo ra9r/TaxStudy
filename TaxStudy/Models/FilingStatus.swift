@@ -29,7 +29,7 @@ enum FilingStatus : String, Codable, CaseIterable {
 }
  
 extension FilingStatus : Displayable {
-    var description: String {
+    var description: String? {
         switch self {
         case .single:
             return String(localized: "Filing as an individual tax payer")

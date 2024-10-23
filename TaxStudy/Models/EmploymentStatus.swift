@@ -22,7 +22,7 @@ extension EmploymentStatus: Displayable {
         }
     }
     
-    var description: String {
+    var description: String? {
         switch self {
         case .employed: return "Employed"
         case .selfEmployed: return "Self-Employed"

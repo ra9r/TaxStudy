@@ -55,6 +55,21 @@
     "Adoption Credit" : {
 
     },
+    "Age (self)" : {
+
+    },
+    "Age (spouse)" : {
+
+    },
+    "AGI" : {
+
+    },
+    "AGI and MAGIS" : {
+
+    },
+    "AGI Before SSI" : {
+
+    },
     "Alert" : {
 
     },
@@ -73,6 +88,27 @@
     "Amount" : {
 
     },
+    "AMT" : {
+
+    },
+    "AMT Exemption" : {
+
+    },
+    "AMT Income" : {
+
+    },
+    "AMT Phase Out Threshold" : {
+
+    },
+    "AMT Reduced Exemption" : {
+
+    },
+    "AMT Tax" : {
+
+    },
+    "AMT Taxable Income" : {
+
+    },
     "Any foreign earned income that is reported on Form 2555 can be deducted." : {
 
     },
@@ -82,13 +118,28 @@
     "Any penalties paid for the early withdrawal of money from a CD or savings bond that is reported on Form 1099-INT or 1099-DIV can be deducted." : {
 
     },
+    "Average Tax Rate" : {
+
+    },
     "Business Expenses" : {
 
     },
     "Business Income" : {
 
     },
+    "Capital Gains STCG/LTCG" : {
+
+    },
+    "Capital Gains Tax" : {
+
+    },
+    "Capital Loss Adjustment (Last Year)" : {
+
+    },
     "Carry forward business losses to offset future taxable income." : {
+
+    },
+    "Carryforward Loss" : {
 
     },
     "Casualty and Theft Loss" : {
@@ -119,6 +170,9 @@
 
     },
     "Child Tax Credit" : {
+
+    },
+    "Computed Flags" : {
 
     },
     "Copy to Clipboard" : {
@@ -178,6 +232,21 @@
     "Deduct up to 20% of qualified business income for eligible taxpayers under IRC §199A." : {
 
     },
+    "Deductible Charitable Asset Contributions" : {
+
+    },
+    "Deductible Charitable Cash Contributions" : {
+
+    },
+    "Deductible Medical Expenses" : {
+
+    },
+    "Deduction Method" : {
+
+    },
+    "Deductions" : {
+
+    },
     "Delete" : {
 
     },
@@ -190,6 +259,9 @@
     "Distributions from an HSA for qualified medical expenses" : {
 
     },
+    "Dividends Qualfied/Ordinary" : {
+
+    },
     "Early Withdrawal Penalties" : {
 
     },
@@ -199,10 +271,19 @@
     "Earning Limits for SSA Income" : {
 
     },
+    "Effective Tax Rate" : {
+
+    },
     "Elderly or Disabled Tax Credit" : {
 
     },
     "Electric Vehicle Credit" : {
+
+    },
+    "Employement (self)" : {
+
+    },
+    "Employement (spouse)" : {
 
     },
     "Energy Efficiency Improvement" : {
@@ -217,6 +298,9 @@
     "Facts: %@" : {
 
     },
+    "Federal Tax" : {
+
+    },
     "Filing as a qualified widow or widower" : {
 
     },
@@ -227,6 +311,9 @@
 
     },
     "Filing separately as a married couple" : {
+
+    },
+    "Filing Status" : {
 
     },
     "Filing together as a married couple" : {
@@ -245,6 +332,9 @@
 
     },
     "Foreign Tax Credit" : {
+
+    },
+    "Future Carryforward Loss" : {
 
     },
     "Gambling Loss" : {
@@ -278,6 +368,9 @@
 
     },
     "Import %lld TaxFacts?" : {
+
+    },
+    "Income" : {
 
     },
     "Income earned outside the United States" : {
@@ -319,7 +412,13 @@
     "Interest income exempt from federal taxes" : {
 
     },
+    "Interest Taxable / Exempt" : {
+
+    },
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
+
+    },
+    "Investments" : {
 
     },
     "IRA Limits" : {
@@ -331,7 +430,31 @@
     "IRA Withdrawal" : {
 
     },
+    "IRMAA" : {
+
+    },
+    "IRMAA Surcharge (Plan B)" : {
+
+    },
+    "IRMAA Surcharge (Plan D)" : {
+
+    },
     "IRMAA Surcharges" : {
+
+    },
+    "IRMAA Surcharges Plan B / Plan D" : {
+
+    },
+    "Is Subject to AMT" : {
+
+    },
+    "Is Subject to FICA" : {
+
+    },
+    "Is Subject to IRMAA" : {
+
+    },
+    "Is Subject to NIIT" : {
 
     },
     "Itemized" : {
@@ -355,7 +478,34 @@
     "Losses carried forward from previous years" : {
 
     },
+    "MAGI for ACA Subsidies" : {
+
+    },
+    "MAGI for IRA" : {
+
+    },
+    "MAGI for IRMAA" : {
+
+    },
+    "MAGI for NIIT" : {
+
+    },
+    "MAGI for Passive Activity Loss Rules" : {
+
+    },
+    "MAGI for Roth IRA" : {
+
+    },
+    "MAGI for Social Security" : {
+
+    },
     "Margin Interest" : {
+
+    },
+    "Marginal Capital Gains Tax Rate" : {
+
+    },
+    "Marginal Ordinary Tax Rate" : {
 
     },
     "Married Filing Jointly" : {
@@ -368,6 +518,12 @@
 
     },
     "Medicaid" : {
+
+    },
+    "Medical (self)" : {
+
+    },
+    "Medical (spouse)" : {
 
     },
     "Medical and Dental" : {
@@ -385,10 +541,28 @@
     "name" : {
 
     },
+    "Name (self)" : {
+
+    },
+    "Name (spouse)" : {
+
+    },
+    "Net Investment Income (NII)" : {
+
+    },
+    "Net Investment Income Tax (NIIT)" : {
+
+    },
     "Net Invetment Income Tax (NIIT)" : {
 
     },
+    "Net LTCG" : {
+
+    },
     "Net Operating Loss Carryforward" : {
+
+    },
+    "Net STCG" : {
 
     },
     "No applicable tax bracket found for %@ and '%@'" : {
@@ -411,6 +585,12 @@
 
     },
     "Ordinary Dividends" : {
+
+    },
+    "Ordinary Income" : {
+
+    },
+    "Ordinary Income Tax" : {
 
     },
     "Other Adjustment" : {
@@ -437,10 +617,16 @@
     "Other/None" : {
 
     },
+    "Preferential Income" : {
+
+    },
     "Premium Tax Credit" : {
 
     },
     "Previous Carryforward Loss" : {
+
+    },
+    "Profile" : {
 
     },
     "Provides a credit for installing renewable energy systems in a home, like solar panels or wind turbines." : {
@@ -455,7 +641,16 @@
     "Provides up to $500 for dependents who don't qualify for the Child Tax Credit, like older children or elderly relatives." : {
 
     },
+    "Provisional Income" : {
+
+    },
+    "Provisional Tax Rate" : {
+
+    },
     "Qualified Business Income" : {
+
+    },
+    "Qualified Dividend Tax" : {
 
     },
     "Qualified Dividends" : {
@@ -486,6 +681,9 @@
 
     },
     "Royalties" : {
+
+    },
+    "Safe Harbor Tax Quarter/Yearly" : {
 
     },
     "Saver’s Credit" : {
@@ -521,7 +719,19 @@
     "Single Bar" : {
 
     },
+    "Social Security" : {
+
+    },
+    "SSI (self)" : {
+
+    },
+    "SSI (spouse)" : {
+
+    },
     "Standard" : {
+
+    },
+    "Standard Deduction" : {
 
     },
     "Standard Deductions" : {
@@ -536,10 +746,25 @@
     "Tax Rate" : {
 
     },
+    "Tax Rates" : {
+
+    },
+    "Tax Rules" : {
+
+    },
     "Tax-Exempt Interest" : {
 
     },
+    "Taxable Income" : {
+
+    },
     "Taxable interest income" : {
+
+    },
+    "Taxable SSA Income" : {
+
+    },
+    "Taxes" : {
 
     },
     "Threshold not defined for %@ and '%@'" : {
@@ -552,13 +777,85 @@
         }
       }
     },
+    "Total Adjustment of Type" : {
+
+    },
+    "Total Business Income" : {
+
+    },
+    "Total Credits of Type" : {
+
+    },
+    "Total Decutible Chartitable Contributions" : {
+
+    },
+    "Total Deduction" : {
+
+    },
+    "Total Deduction of Type" : {
+
+    },
+    "Total Dividends" : {
+
+    },
+    "Total Excluded Income" : {
+
+    },
+    "Total FICA Tax" : {
+
+    },
+    "Total FICA Tax (Medicare)" : {
+
+    },
+    "Total FICA Tax (Social Security)" : {
+
+    },
+    "Total Foreign Earned Income" : {
+
+    },
+    "Total Income" : {
+
+    },
+    "Total Income of Type" : {
+
+    },
+    "Total Itemized Deductions" : {
+
+    },
     "Total ordinary dividends, including both qualified and non-qualified" : {
+
+    },
+    "Total Rental Income" : {
+
+    },
+    "Total Retirement Contributions" : {
+
+    },
+    "Total Royalties" : {
+
+    },
+    "Total SSI" : {
+
+    },
+    "Total Tax Exempt Interest Income" : {
+
+    },
+    "Total Wages" : {
 
     },
     "Tuition and Fees" : {
 
     },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {
+
+    },
+    "Wages" : {
+
+    },
+    "Wages (self)" : {
+
+    },
+    "Wages (spouse)" : {
 
     },
     "Withdrawals from a Roth IRA (tax-free under qualifying conditions)" : {
