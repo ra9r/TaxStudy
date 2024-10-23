@@ -17,8 +17,8 @@ struct ScenarioView : View {
     var body: some View {
         ScrollView {
             VStack {
-                Header($document.scenario)
-                KeyFigures($document.scenario)
+                HeaderView($document.scenario)
+                KeyMetricsView($document.scenario)
                 ProfileView($document.scenario)
                 IncomeView($document.scenario)
                 DeductionsView($document.scenario)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KeyFigures: View {
+struct KeyMetricsView: View {
     @Environment(AppServices.self) var appServices
     @Binding var scenario: TaxScenario
     

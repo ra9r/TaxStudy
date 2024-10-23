@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Header: View {
+struct HeaderView: View {
     @Environment(AppServices.self) var appServices
     @Binding var scenario: TaxScenario
     
