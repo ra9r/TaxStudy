@@ -47,6 +47,8 @@ struct SettingsView : View {
                         Text("Standard Deductions")
                     case .charitableDeductions:
                         Text("Charitable Deductions")
+                    case .earmingsLimits:
+                        Text("Earning Limits for SSA Income")
                     }
                 }
             } else {
@@ -69,6 +71,7 @@ enum SettingTypes: String, CaseIterable {
     case niiTax = "Net Invetment Income"
     case standardDeductions = "Standard Deductions"
     case charitableDeductions = "Charitable Deductions"
+    case earmingsLimits = "SSA Earning Limits"
 }
 
 
