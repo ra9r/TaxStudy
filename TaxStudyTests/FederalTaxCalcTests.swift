@@ -60,7 +60,7 @@ final class FederalTaxCalcTests {
         #expect(taxParts[0].computedTax.asCurrency == "$15,577.71")
         // 26% Bracket
         #expect(fedTax.amtTax.asCurrency == "$15,577.71")
-        #expect(fedTax.taxesOwed.asCurrency(0) == "$7,945")
+        #expect(fedTax.federalTax.asCurrency(0) == "$7,945")
         #expect(fedTax.isSubjectToAMT == true)
     }
     
@@ -96,7 +96,7 @@ final class FederalTaxCalcTests {
         #expect(taxParts[1].taxableAtRate.asCurrency == "$428,462.50")
         #expect(taxParts[1].computedTax.asCurrency == "$119,969.50")
         #expect(fedTax.amtTax.asCurrency == "$177,351.50")
-        #expect(fedTax.taxesOwed == 212055.70)
+        #expect(fedTax.federalTax == 212055.70)
         #expect(fedTax.isSubjectToAMT == false)
     }
     
@@ -121,7 +121,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.agi == 100_000)
         #expect(fedTax.deduction == 32_300)
         #expect(fedTax.taxableIncome.roundedCurrency() == 67_700)
-        #expect(fedTax.taxesOwed.roundedCurrency() == 7_660)
+        #expect(fedTax.federalTax.roundedCurrency() == 7_660)
         #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 7.7)
         
@@ -168,7 +168,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.agi == 100_000)
         #expect(fedTax.deduction == 32_300)
         #expect(fedTax.taxableIncome.roundedCurrency() == 67_700)
-        #expect(fedTax.taxesOwed.roundedCurrency() == 7_660)
+        #expect(fedTax.federalTax.roundedCurrency() == 7_660)
         #expect(fedTax.marginalOrdinaryTaxRate == 0.12)
         #expect(fedTax.averageTaxRate.roundedPercentage(1) == 7.7)
         
@@ -217,7 +217,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.netLTCG == 0)
         #expect(fedTax.netSTCG == 0)
         #expect(fedTax.taxableIncome == 0)
-        #expect(fedTax.taxesOwed == 0)
+        #expect(fedTax.federalTax == 0)
         #expect(fedTax.taxableSSI == 0)
         #expect(fedTax.provisionalIncome == 31_200)
         #expect(fedTax.provisionalTaxRate == 0.0)
@@ -239,7 +239,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.qualifiedDividendTax == 0)
         #expect(fedTax.capitalGainsTax == 0)
         #expect(fedTax.netInvestmentIncomeTax == 0)
-        #expect(fedTax.taxesOwed == 0)
+        #expect(fedTax.federalTax == 0)
         #expect(fedTax.taxableSSI == 4_600)
         #expect(fedTax.provisionalIncome == 41_200)
         #expect(fedTax.provisionalTaxRate == 0.5)
@@ -255,7 +255,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.netLTCG == 0)
         #expect(fedTax.netSTCG == 0)
         #expect(fedTax.taxableIncome == 2_780)
-        #expect(fedTax.taxesOwed == 0)
+        #expect(fedTax.federalTax == 0)
         #expect(fedTax.taxableSSI == 13_480)
         #expect(fedTax.provisionalIncome == 52_800)
         #expect(fedTax.provisionalTaxRate == 0.85)
@@ -272,7 +272,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.netLTCG == 8000)
         #expect(fedTax.netSTCG == 0)
         #expect(fedTax.taxableIncome == 17_580)
-        #expect(fedTax.taxesOwed == 0)
+        #expect(fedTax.federalTax == 0)
         #expect(fedTax.taxableSSI == 20_280)
         #expect(fedTax.provisionalIncome == 60_800)
         #expect(fedTax.provisionalTaxRate == 0.85)
@@ -286,7 +286,7 @@ final class FederalTaxCalcTests {
         #expect(fedTax.totalIncome == 92_000)
         #expect(fedTax.netLTCG == 8_000)
         #expect(fedTax.netSTCG == 0)
-        #expect(fedTax.taxesOwed == 0)
+        #expect(fedTax.federalTax == 0)
         #expect(fedTax.taxableSSI == 20_280)
         #expect(fedTax.provisionalIncome == 60_800)
         #expect(fedTax.provisionalTaxRate == 0.85)

@@ -22,15 +22,6 @@ class TaxScenario: Codable, Identifiable {
     var deductions: Deductions<TaxDeductionType> = Deductions()
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
-
-    
-//    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: TaxFacts? = nil) {
-//        self.name = name
-//        self.filingStatus = filingStatus
-//        self.facts = facts?.id ?? DefaultTaxFacts2024.id
-//        self.profileSelf = Profile("Taxpayer 1")
-//        self.profileSpouse = Profile("Taxpayer 2")
-//    }
     
     init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: String) {
         self.name = name

@@ -29,7 +29,7 @@ struct KeyMetricsView: View {
                         CardItem("Taxable Income", value: federalTaxes.taxableIncome.asCurrency(0))
                         CardItem("AMT Income", value: federalTaxes.amtIncome.asCurrency(0))
                         CardItem("AMT Tax", value: federalTaxes.amtTax.asCurrency(0))
-                        CardItem("Federal Taxes", value: federalTaxes.taxesOwed.asCurrency(0))
+                        CardItem("Federal Taxes", value: federalTaxes.federalTax.asCurrency(0))
                         CardItem("FICA Taxes", value: federalTaxes.totalFICATax.asCurrency(0))
                         CardItem("State Taxes", value: stateTaxes.taxesOwed.asCurrency(0))
                     }
