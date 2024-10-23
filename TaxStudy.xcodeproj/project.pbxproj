@@ -63,6 +63,7 @@
 		2ACFDDDE2CC8A4F40033B5B8 /* KeyMetricsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */; };
 		2ACFDDE02CC8BA510033B5B8 /* KeyMetricsLayoutEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */; };
 		2ACFDDE22CC8BCD70033B5B8 /* KeyMetricCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */; };
+		2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDE32CC8C86F0033B5B8 /* KeyMetricGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsPickerView.swift; sourceTree = "<group>"; };
 		2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsLayoutEditor.swift; sourceTree = "<group>"; };
 		2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricCategories.swift; sourceTree = "<group>"; };
+		2ACFDDE32CC8C86F0033B5B8 /* KeyMetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -206,6 +208,7 @@
 		2A51CB0C2CB9A3650075BBA0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2ACFDDE32CC8C86F0033B5B8 /* KeyMetricGroup.swift */,
 				2ACFDDDB2CC87A080033B5B8 /* KeyMetrics.swift */,
 				2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */,
 				2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */,
@@ -479,6 +482,7 @@
 				2A51CB2B2CB9A3650075BBA0 /* AppData.swift in Sources */,
 				2AA0B51A2CC48E3A00546505 /* AppServices.swift in Sources */,
 				2A826EB22CC6F4B500BEFFD2 /* TaxFactsImportView.swift in Sources */,
+				2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */,
 				2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */,
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,

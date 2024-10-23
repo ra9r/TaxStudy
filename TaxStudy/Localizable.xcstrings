@@ -7,9 +7,6 @@
     "%lld kWh" : {
 
     },
-    "2024" : {
-
-    },
     "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
 
     },
@@ -409,10 +406,10 @@
     "Interest" : {
 
     },
-    "Interest income exempt from federal taxes" : {
+    "Interest Exempt / Taxable" : {
 
     },
-    "Interest Taxable / Exempt" : {
+    "Interest income exempt from federal taxes" : {
 
     },
     "Interest that's paid on federal student loans is deductible up to a certain amount. Anyone who pays more than $600 in student loan interest should receive Form 1098-E: Student Loan Interest Statement. You are allowed to deduct up to $2,500 or the total amount of interest paid—whichever is lower." : {
@@ -783,9 +780,6 @@
     "Total Adjustment of Type" : {
 
     },
-    "Total Business Income" : {
-
-    },
     "Total Credits of Type" : {
 
     },
@@ -813,9 +807,6 @@
     "Total FICA Tax (Social Security)" : {
 
     },
-    "Total Foreign Earned Income" : {
-
-    },
     "Total Income" : {
 
     },
@@ -826,15 +817,6 @@
 
     },
     "Total ordinary dividends, including both qualified and non-qualified" : {
-
-    },
-    "Total Rental Income" : {
-
-    },
-    "Total Retirement Contributions" : {
-
-    },
-    "Total Royalties" : {
 
     },
     "Total SSI" : {

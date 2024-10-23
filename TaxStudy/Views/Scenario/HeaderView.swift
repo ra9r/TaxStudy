@@ -31,7 +31,7 @@ struct HeaderView: View {
     
     var blueBox: some View {
         HStack {
-            Text("2024")
+            Text(scenario.facts)
                 .font(.largeTitle)
             Divider()
             VStack(alignment: .trailing) {
