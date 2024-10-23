@@ -1,32 +1,41 @@
 {
+  "facts" : "2024",
+  "description" : "",
   "deductions" : [
 
   ],
-  "description" : "",
-  "profileSelf" : {
-    "wages" : 0,
-    "socialSecurity" : 43826,
-    "name" : "Rodney Aiglstorfer",
-    "age" : 50,
-    "employmentStatus" : "retired"
-  },
-  "profileSpouse" : {
-    "employmentStatus" : "retired",
-    "wages" : 0,
-    "name" : "Nobuko Aiglstorfer",
-    "age" : 52,
-    "socialSecurity" : 0
-  },
-  "name" : "Current CoreFolio w\/Rodney",
-  "filingStatus" : "marriedFilingJointly",
-  "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B",
   "adjustments" : [
     {
-      "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39",
       "type" : "hsaContribution",
-      "amount" : 8300
+      "amount" : 8300,
+      "id" : "5B6F97FC-63D1-49A4-914E-DEB6FD5FBA39"
     }
   ],
+  "name" : "Current CoreFolio w\/Rodney",
+  "profileSelf" : {
+    "medicalCoverage" : "otherOrNone",
+    "employmentStatus" : "retired",
+    "wages" : 0,
+    "age" : 50,
+    "name" : "Rodney Aiglstorfer",
+    "socialSecurity" : 43826
+  },
+  "credits" : [
+    {
+      "amount" : 0,
+      "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
+      "type" : "lifetimeLearningCredit"
+    }
+  ],
+  "profileSpouse" : {
+    "medicalCoverage" : "otherOrNone",
+    "socialSecurity" : 0,
+    "name" : "Nobuko Aiglstorfer",
+    "age" : 52,
+    "employmentStatus" : "retired",
+    "wages" : 0
+  },
+  "filingStatus" : "marriedFilingJointly",
   "income" : [
     {
       "type" : "qualifiedDividends",
@@ -34,27 +43,20 @@
       "id" : "7CA32D20-2919-429C-9AD9-666EC658DF20"
     },
     {
-      "id" : "811B1C17-3253-405A-8055-464EEB0B752D",
+      "amount" : 27145.76,
       "type" : "qualifiedDividends",
-      "amount" : 27145.76
+      "id" : "811B1C17-3253-405A-8055-464EEB0B752D"
     },
     {
       "id" : "525B9C85-22BB-4ADC-9DE9-C9EA70556E39",
-      "type" : "ordinaryDividends",
-      "amount" : 57823.96
+      "amount" : 57823.96,
+      "type" : "ordinaryDividends"
     },
     {
-      "amount" : 12500,
+      "id" : "0687C494-CA98-41ED-AD2A-A04D3896A42F",
       "type" : "interest",
-      "id" : "0687C494-CA98-41ED-AD2A-A04D3896A42F"
+      "amount" : 12500
     }
   ],
-  "credits" : [
-    {
-      "id" : "8093C9E9-79E4-42BC-80D4-C6957D62A9C6",
-      "type" : "lifetimeLearningCredit",
-      "amount" : 0
-    }
-  ],
-  "facts" : "2024"
+  "id" : "3E6976D8-D069-43EF-9818-57D448B27A5B"
 }
