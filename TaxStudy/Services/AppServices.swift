@@ -22,6 +22,10 @@ class AppServices : ObservableObject {
         return fact
     }
     
+    func firstFact() -> TaxFacts? {
+        document.facts.first
+    }
+    
     func move(from source: IndexSet, to destination: Int) {
         document.scenarios.move(fromOffsets: source, toOffset: destination)
     }
