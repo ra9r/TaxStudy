@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// Collection of tax brackets and other contraints and limits that are used in computing the taxes for a given year.
 class TaxFacts : Codable, Identifiable {
     var id: String
     var ordinaryTaxBrackets: TaxBrackets

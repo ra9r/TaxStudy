@@ -10,23 +10,12 @@ import SwiftUI
 
 @main
 struct TaxStudyApp: App {
-    @State var appService: AppServices = AppServices.shared
+    
     var body: some Scene {
-        DocumentGroup(newDocument: TaxScenarioDocument()) { file in
-            ScenarioView(file.$document)
-                .environment(appService)
-                .setTabbingMode(.automatic) // Not working but leaving in
-                .frame(minWidth: 1280, minHeight: 800)
-        }
-        .commands {
-            SettingsCommands()
-            ExportCommands()
-        }
-         
-        Window("Settings", id: "settings") {
-            SettingsView()
-                .environment(appService)
-        }
+        DocumentGroup(newDocument: TaxProjectDocument()) { file in
+            ProjectView(file.$document)
+                .tabViewStyle(.automatic)
+        }  
     }
 
 }

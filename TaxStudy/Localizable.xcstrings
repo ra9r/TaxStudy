@@ -67,12 +67,6 @@
     "AGI Before SSI" : {
 
     },
-    "Alert" : {
-
-    },
-    "Alert Text Here!!" : {
-
-    },
     "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible." : {
 
     },
@@ -169,6 +163,9 @@
     "Child Tax Credit" : {
 
     },
+    "Compare Feature Not Available" : {
+
+    },
     "Computed Flags" : {
 
     },
@@ -262,6 +259,9 @@
     "Dividends Qualfied/Ordinary" : {
 
     },
+    "Documents" : {
+
+    },
     "Early Withdrawal Penalties" : {
 
     },
@@ -290,9 +290,6 @@
 
     },
     "Error: %@" : {
-
-    },
-    "Export TaxFacts..." : {
 
     },
     "Facts: %@" : {
@@ -365,9 +362,6 @@
 
     },
     "HSA or MSA Contribution" : {
-
-    },
-    "Import %lld TaxFacts?" : {
 
     },
     "Income" : {
@@ -617,6 +611,9 @@
     "Other/None" : {
 
     },
+    "Please select a Tax Scenario" : {
+
+    },
     "Preferential Income" : {
 
     },
@@ -704,12 +701,6 @@
     "Self-Employment Tax" : {
 
     },
-    "Settings" : {
-
-    },
-    "Settings..." : {
-
-    },
     "Short-Term Capital Gains" : {
 
     },
@@ -768,6 +759,9 @@
 
     },
     "Taxes" : {
+
+    },
+    "This feature is still a work in progress" : {
 
     },
     "Threshold not defined for %@ and '%@'" : {
@@ -853,6 +847,9 @@
 
     },
     "Work Opportunity Tax Credit" : {
+
+    },
+    "You'll need to select a tax scenario to beign editing." : {
 
     }
   },

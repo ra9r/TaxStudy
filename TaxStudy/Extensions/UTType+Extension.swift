@@ -8,7 +8,5 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-    static let txcfg = UTType(exportedAs: "me.a9r.taxstudy.facts")
-    static let txscn = UTType(exportedAs: "me.a9r.taxstudy.scenario")
     static let txproj = UTType(exportedAs: "me.a9r.taxstudy.project")
 }

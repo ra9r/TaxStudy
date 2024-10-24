@@ -25,7 +25,9 @@ struct HeaderView: View {
     }
     
     var grossIncome: Double {
-        guard let facts = appServices.facts(for: scenario.facts) else { return 0 }
+        guard let facts = appServices.facts(for: scenario.facts) else {
+            fatalError("No tax facts found with id: '\(scenario.facts)'")
+        }
         return FederalTaxCalc(scenario, facts: facts).grossIncome
     }
     

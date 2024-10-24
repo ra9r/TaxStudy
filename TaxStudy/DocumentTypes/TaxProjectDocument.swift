@@ -8,17 +8,19 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct TaxScenarioDocument: FileDocument {
+struct TaxProjectDocument: FileDocument, Identifiable {
+    
+    var id = UUID()
     
     // The file format this document supports
-    static var readableContentTypes: [UTType] { [.init(exportedAs: "me.a9r.taxstudy.scenario")] }
+    static var readableContentTypes: [UTType] = [.txproj]
 
     // The data model that will hold the decoded JSON content
-    var scenario: TaxScenario
+    var content: TaxProjectDocumentData
     
     // Default initializer
-    init(scenario: TaxScenario = TaxScenario(name: "New Tax Scenario", facts: "2024")) {
-        self.scenario = scenario
+    init() {
+        self.content = TaxProjectDocumentData()
     }
     
     // Required initializer to read the file from disk
@@ -29,14 +31,26 @@ struct TaxScenarioDocument: FileDocument {
         
         // Decode the JSON data from the file
         let decoder = JSONDecoder()
-        self.scenario = try decoder.decode(TaxScenario.self, from: data)
+        self.content = try decoder.decode(TaxProjectDocumentData.self, from: data)
     }
     
     // Required function to save/write the document to disk
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let jsonData = try encoder.encode(scenario)
+        let jsonData = try encoder.encode(content)
         return FileWrapper(regularFileWithContents: jsonData)
+    }
+}
+
+class TaxProjectDocumentData : Codable {
+    var name: String
+    var facts: [TaxFacts]
+    var scenarios: [TaxScenario]
+    
+    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario]? = nil) {
+        self.name = name ?? "New Project"
+        self.facts = facts ?? [DefaultTaxFacts2024]
+        self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
     }
 }

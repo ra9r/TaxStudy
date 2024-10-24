@@ -8,7 +8,6 @@ import SwiftUI
 
 struct SettingsView : View {
     @Environment(AppServices.self) var appServices
-    
     @State var selectedFacts: String?
     @State var selectedSetting: SettingTypes = .ordinaryTaxBrackets
     

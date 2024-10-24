@@ -9,11 +9,13 @@ import SwiftUI
 
 @Observable
 class AppServices {
-    static let shared = AppServices()
+    var facts: [TaxFacts]
+    var scenarios: [TaxScenario]
     
-//    var data: AppData = AppData()
-//    var currentFile: URL?
-    var facts: [TaxFacts] = [DefaultTaxFacts2024]
+    init(facts: [TaxFacts]? = nil, scenarios: [TaxScenario] = []) {
+        self.facts = facts ?? [DefaultTaxFacts2024]
+        self.scenarios = scenarios
+    }
     
     func facts(for id: String) -> TaxFacts? {
         guard let fact = facts.first(where: { $0.id == id }) else {
@@ -22,9 +24,4 @@ class AppServices {
         }
         return fact
     }
-    
-    private init() { /* Do Nothing */ }
-    
-    
-    
 }
