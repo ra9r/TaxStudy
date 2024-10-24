@@ -71,6 +71,7 @@ enum KeyMetricTypes: Codable {
     // MARK: - Deductions
     case standardDeduction
     case deductibleMedicalExpenses
+    case deductibleMedicalExpensesForAMT
     case deductibleCharitableCashContributions
     case deductibleCharitableAssetContributions
     case totalDecutibleChartitableContributions
@@ -230,6 +231,8 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "Standard Deduction")
         case .deductibleMedicalExpenses:
             return String(localized: "Deductible Medical Expenses")
+        case .deductibleMedicalExpensesForAMT:
+            return String(localized: "Deductible Medical Expenses (AMT)")
         case .deductibleCharitableCashContributions:
             return String(localized: "Deductible Charitable Cash Contributions")
         case .deductibleCharitableAssetContributions:
@@ -423,6 +426,8 @@ extension KeyMetricTypes {
             return fedTax.standardDeduction.asCurrency(0)
         case .deductibleMedicalExpenses:
             return fedTax.deductibleMedicalExpenses.asCurrency(0)
+        case .deductibleMedicalExpensesForAMT:
+            return fedTax.deductibleMedicalExpensesForAMT.asCurrency(0)
         case .deductibleCharitableCashContributions:
             return fedTax.deductibleCharitableCashContributions.asCurrency(0)
         case .deductibleCharitableAssetContributions:

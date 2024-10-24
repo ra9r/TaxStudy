@@ -39,9 +39,12 @@ struct TaxFactsDocument: FileDocument {
     
     // Required function to save/write the document to disk
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        return try FileWrapper(regularFileWithContents: jsonData())
+    }
+    
+    func jsonData() throws -> Data {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let jsonData = try encoder.encode(facts)
-        return FileWrapper(regularFileWithContents: jsonData)
+        return try encoder.encode(facts)
     }
 }

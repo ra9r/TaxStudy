@@ -19,22 +19,12 @@ struct TaxStudyApp: App {
                 .frame(minWidth: 1280, minHeight: 800)
         }
         .commands {
-            SettingsCommand(appServices: appService)
-        }
-        
-        DocumentGroup(viewing: TaxFactsDocument.self) { file in
-            TaxFactsImportView(file.$document)
-                .environment(appService)
-                .frame(minWidth: 1280, minHeight: 800)
+            SettingsCommand()
+            ExportConfigCommand()
         }
          
         Window("Settings", id: "settings") {
             SettingsView()
-                .environment(appService)
-        }
-        
-        Window("Settings", id: "exportConfig") {
-            JSONView()
                 .environment(appService)
         }
     }
