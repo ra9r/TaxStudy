@@ -19,8 +19,8 @@ struct TaxStudyApp: App {
                 .frame(minWidth: 1280, minHeight: 800)
         }
         .commands {
-            SettingsCommand()
-            ExportConfigCommand()
+            SettingsCommands()
+            ExportCommands()
         }
          
         Window("Settings", id: "settings") {

@@ -10,7 +10,7 @@
 		2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081D82CC59B15007E5CF0 /* Setttings.swift */; };
 		2A4081EF2CC6B2EC007E5CF0 /* TaxScenarioDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081EE2CC6B2E3007E5CF0 /* TaxScenarioDocument.swift */; };
 		2A4081F12CC6B3A5007E5CF0 /* TaxFactsDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F02CC6B3A5007E5CF0 /* TaxFactsDocument.swift */; };
-		2A4081F32CC6BB18007E5CF0 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F22CC6BB0F007E5CF0 /* SettingsMenu.swift */; };
+		2A4081F32CC6BB18007E5CF0 /* SettingsCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F22CC6BB0F007E5CF0 /* SettingsCommands.swift */; };
 		2A4081F52CC6BDDE007E5CF0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */; };
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
 		2A51CB202CB9A3650075BBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB192CB9A3650075BBA0 /* Assets.xcassets */; };
@@ -64,6 +64,7 @@
 		2ACFDDE02CC8BA510033B5B8 /* KeyMetricsLayoutEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */; };
 		2ACFDDE22CC8BCD70033B5B8 /* KeyMetricCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */; };
 		2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDDE32CC8C86F0033B5B8 /* KeyMetricGroup.swift */; };
+		2ACFDE122CC9E5980033B5B8 /* ExportCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE112CC9E5980033B5B8 /* ExportCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +82,7 @@
 		2A4081EC2CC6A9C8007E5CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A4081EE2CC6B2E3007E5CF0 /* TaxScenarioDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxScenarioDocument.swift; sourceTree = "<group>"; };
 		2A4081F02CC6B3A5007E5CF0 /* TaxFactsDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactsDocument.swift; sourceTree = "<group>"; };
-		2A4081F22CC6BB0F007E5CF0 /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		2A4081F22CC6BB0F007E5CF0 /* SettingsCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCommands.swift; sourceTree = "<group>"; };
 		2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrencyField.swift; sourceTree = "<group>"; };
 		2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricsLayoutEditor.swift; sourceTree = "<group>"; };
 		2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricCategories.swift; sourceTree = "<group>"; };
 		2ACFDDE32CC8C86F0033B5B8 /* KeyMetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricGroup.swift; sourceTree = "<group>"; };
+		2ACFDE112CC9E5980033B5B8 /* ExportCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -279,7 +281,8 @@
 		2A51CB392CBA9ACA0075BBA0 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				2A4081F22CC6BB0F007E5CF0 /* SettingsMenu.swift */,
+				2A4081F22CC6BB0F007E5CF0 /* SettingsCommands.swift */,
+				2ACFDE112CC9E5980033B5B8 /* ExportCommands.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -488,7 +491,7 @@
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
 				2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */,
-				2A4081F32CC6BB18007E5CF0 /* SettingsMenu.swift in Sources */,
+				2A4081F32CC6BB18007E5CF0 /* SettingsCommands.swift in Sources */,
 				2ACFDDE22CC8BCD70033B5B8 /* KeyMetricCategories.swift in Sources */,
 				2A4081EF2CC6B2EC007E5CF0 /* TaxScenarioDocument.swift in Sources */,
 				2ACC20162CC0CCFD00D2A907 /* IncomeView.swift in Sources */,
@@ -517,6 +520,7 @@
 				2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */,
 				2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */,
 				2ACFDDDE2CC8A4F40033B5B8 /* KeyMetricsPickerView.swift in Sources */,
+				2ACFDE122CC9E5980033B5B8 /* ExportCommands.swift in Sources */,
 				2A7CB2972CBCDE5D008334E1 /* TaxChart.swift in Sources */,
 				2AA0B52E2CC5636800546505 /* DeepCopyable.swift in Sources */,
 			);

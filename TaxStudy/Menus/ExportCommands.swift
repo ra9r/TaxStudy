@@ -1,27 +1,13 @@
 //
-//  SettingsMenu.swift
+//  ExportConfigCommand.swift
 //  TaxStudy
 //
-//  Created by Rodney Aiglstorfer on 10/21/24.
+//  Created by Rodney Aiglstorfer on 10/23/24.
 //
 import SwiftUI
 
-struct SettingsCommand: Commands {
-    @Environment(\.openWindow) var openWindow
-    
-    
-    var body: some Commands {
-        CommandGroup(replacing: .appSettings) {
-            Button("Settings...") {
-                openWindow(id: "settings")
-            }
-            .keyboardShortcut(",", modifiers: [.command])
-        }
-    }
-}
-
 // Export Command
-struct ExportConfigCommand: Commands {
+struct ExportCommands: Commands {
     var body: some Commands {
         CommandGroup(after: .importExport) {
             Button("Export TaxFacts...") {
