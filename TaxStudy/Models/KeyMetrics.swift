@@ -324,7 +324,7 @@ extension KeyMetricTypes: Hashable {
 }
 
 extension KeyMetricTypes {
-    func resolve(fedTax: FederalTaxCalc, stateTax: any StateTaxCalc) throws -> String {
+    func resolve(fedTax: FederalTaxCalc, stateTax: any StateTaxCalc) -> String {
         
         switch self {
             
@@ -401,9 +401,9 @@ extension KeyMetricTypes {
         case .carryforwardLoss:
             return fedTax.scenario.carryforwardLoss.asCurrency(0)
         case .dividends:
-            return "\(fedTax.scenario.qualifiedDividends) / \(fedTax.scenario.ordinaryDividends)"
+            return "\(fedTax.scenario.qualifiedDividends.asCurrency(0)) / \(fedTax.scenario.ordinaryDividends.asCurrency(0))"
         case .capitalGains:
-            return "\(fedTax.netSTCG) / \(fedTax.netLTCG)"
+            return "\(fedTax.netSTCG.asCurrency(0)) / \(fedTax.netLTCG.asCurrency(0))"
         case .totalDividends:
             return fedTax.scenario.totalDividends.asCurrency(0)
         case .netLTCG:

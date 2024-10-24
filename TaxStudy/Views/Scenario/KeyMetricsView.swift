@@ -12,6 +12,7 @@ struct KeyMetricsView: View {
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
+            .grossIncome,
             .totalIncome,
             .agi,
             .deduction,
@@ -28,6 +29,8 @@ struct KeyMetricsView: View {
             .averageTaxRate,
             .safeHarborTax,
             .irmaaSurcharges,
+            .deductibleMedicalExpenses,
+            .deductibleMedicalExpensesForAMT
         ]),
         .init(title: "Column Right", keyMetrics: [
             .totalTaxExemptInterestIncome,
@@ -38,6 +41,9 @@ struct KeyMetricsView: View {
             .totalSSAIncome,
         ])
     ]
+    @State var federalTaxes: FederalTaxCalc?
+    @State var stateTaxes: NCTaxCalc?
+    @State var errorMessage: String?
     
     init(_ scenario: Binding<TaxScenario>) {
         self._scenario = scenario
@@ -45,66 +51,40 @@ struct KeyMetricsView: View {
     
     
     var body: some View {
-        if let facts = appServices.facts(for: scenario.facts) {
-            let federalTaxes = FederalTaxCalc(scenario, facts: facts)
-            let stateTaxes = NCTaxCalc(scenario, facts: facts)
-            
-            CardView("Key Metrics") {
+        CardView("Key Metrics") {
+            if let federalTaxes = federalTaxes, let stateTaxes = stateTaxes {
                 HStack(alignment: .top) {
                     VStack {
                         ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
-                            KeyMetricItem(keyMetric: keyMetric, federalTaxes: federalTaxes, stateTaxes: stateTaxes)
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
                         }
                     }
                     Divider()
                     VStack {
                         ForEach(keyMetricGroups[1].keyMetrics, id: \.label) { keyMetric in
-                            KeyMetricItem(keyMetric: keyMetric, federalTaxes: federalTaxes, stateTaxes: stateTaxes)
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
                         }
                     }
                     Divider()
                     VStack {
                         ForEach(keyMetricGroups[2].keyMetrics, id: \.label) { keyMetric in
-                            KeyMetricItem(keyMetric: keyMetric, federalTaxes: federalTaxes, stateTaxes: stateTaxes)
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
                         }
                     }
                 }
+            } else {
+                Text("Error: \(errorMessage ?? "No data found.")")
             }
-        } else {
-            Text("Error: No facts found for \(scenario.facts).")
         }
+        .onAppear() {
+            guard let facts = appServices.facts(for: scenario.facts) else {
+                errorMessage = "No facts found for \(scenario.facts)."
+                return
+            }
+            self.federalTaxes = FederalTaxCalc(scenario, facts: facts)
+            self.stateTaxes = NCTaxCalc(scenario, facts: facts)
+        }
+        
     }
 }
 
-struct KeyMetricItem : View {
-    let keyMetric: KeyMetricTypes
-    let federalTaxes: FederalTaxCalc
-    let stateTaxes: NCTaxCalc
-    @State var showError: Bool = false
-    @State var errorMessage: String?
-    @State var value: String?
-    
-    var body: some View {
-        Group {
-            if showError {
-                CardItem(keyMetric.label, value: "error")
-                    .help(errorMessage!)
-            } else {
-                if let value {
-                    CardItem(keyMetric.label, value: value)
-//                        .help(keyMetric.description)
-                } else {
-                    CardItem(keyMetric.label, value: "--")
-                }
-            }
-        }
-        .task {
-            do {
-                self.value = try keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes)
-            } catch {
-                self.errorMessage = error.localizedDescription
-                self.showError.toggle()
-            }
-        }
-    }
-}
