@@ -9,25 +9,29 @@ import SwiftUI
 
 struct ProjectView : View {
     @State var multiSelection = Set<Int>()
-    @State var appServices: AppServices = AppServices()
+    @ObservedObject var appServices: AppServices
     
     @Binding var document: TaxProjectDocument
     
     init(_ document: Binding<TaxProjectDocument>) {
         _document = document
+        _appServices = ObservedObject(wrappedValue: AppServices(document: document))
     }
     
     var body: some View {
-        @Bindable var services = appServices
         NavigationSplitView {
             // Sidebar showing a list of open documents
-            List(appServices.scenarios.indices, id:\.self, selection: $multiSelection) { index in
-                NavigationLink("\(appServices.scenarios[index].name)", value: index)
+            List(selection: $multiSelection) {
+                ForEach(appServices.document.scenarios.indices, id:\.self) { index in
+                    let name = appServices.document.scenarios[index].name
+                    NavigationLink(name, value: index)
+                }
+                .onMove(perform: move)
             }
             .navigationTitle("Documents")
         } detail: {
             if multiSelection.count == 1, let index = multiSelection.first {
-                ScenarioView($services.scenarios[index])
+                ScenarioView($appServices.document.scenarios[index])
             } else if multiSelection.count >= 1{
                 ContentUnavailableView("Compare Feature Not Available",
                                        systemImage: "wrench.circle",
@@ -38,11 +42,17 @@ struct ProjectView : View {
                                        description: Text("You'll need to select a tax scenario to beign editing."))
             }
         }
-        .environment(appServices)
+        .environmentObject(appServices)
         .onAppear {
-            appServices.facts = document.content.facts
-            appServices.scenarios.append(contentsOf: document.content.scenarios)
+            appServices.document = document
         }
         
     }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        appServices.move(from: source, to: destination)
+        multiSelection.removeAll()
+    }
+    
+    
 }

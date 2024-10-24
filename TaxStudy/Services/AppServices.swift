@@ -7,21 +7,22 @@
 
 import SwiftUI
 
-@Observable
-class AppServices {
-    var facts: [TaxFacts]
-    var scenarios: [TaxScenario]
+class AppServices : ObservableObject {
+    @Binding var document: TaxProjectDocument
     
-    init(facts: [TaxFacts]? = nil, scenarios: [TaxScenario] = []) {
-        self.facts = facts ?? [DefaultTaxFacts2024]
-        self.scenarios = scenarios
+    init(document: Binding<TaxProjectDocument>) {
+        self._document = document
     }
     
     func facts(for id: String) -> TaxFacts? {
-        guard let fact = facts.first(where: { $0.id == id }) else {
+        guard let fact = document.facts.first(where: { $0.id == id }) else {
             print("Error: No Fact Found for \(id)")
             return nil
         }
         return fact
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        document.scenarios.move(fromOffsets: source, toOffset: destination)
     }
 }

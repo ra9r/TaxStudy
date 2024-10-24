@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct ScenarioView : View {
-    @Environment(AppServices.self) var appServices
+    @EnvironmentObject var appServices: AppServices
     @Binding var scenario: TaxScenario
     
     init(_ scenario: Binding<TaxScenario>) {

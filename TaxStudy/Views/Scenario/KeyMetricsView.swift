@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    @Environment(AppServices.self) var appServices
+    @EnvironmentObject var appServices: AppServices
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [

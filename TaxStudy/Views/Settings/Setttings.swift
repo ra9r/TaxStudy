@@ -7,13 +7,13 @@
 import SwiftUI
 
 struct SettingsView : View {
-    @Environment(AppServices.self) var appServices
+    @EnvironmentObject var appServices: AppServices
     @State var selectedFacts: String?
     @State var selectedSetting: SettingTypes = .ordinaryTaxBrackets
     
     var body: some View {
         NavigationSplitView {
-            List(appServices.facts.map({ $0.id }), id: \.self,  selection: $selectedFacts) { id in
+            List(appServices.document.facts.map({ $0.id }), id: \.self,  selection: $selectedFacts) { id in
                 NavigationLink("Facts: \(id)", value: id)
             }
         } content: {
