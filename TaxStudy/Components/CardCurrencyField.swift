@@ -24,7 +24,7 @@ struct CardCurrencyField: View {
                 
                 Spacer()
                 
-                TextField("Amount", value: $amount, format: .currency(code: "USD"))
+                TextField("Amount", value: $amount, format: .number)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
@@ -35,3 +35,4 @@ struct CardCurrencyField: View {
         }
     }
 }
+
