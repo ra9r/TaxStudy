@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @EnvironmentObject var appServices: AppServices
+    @EnvironmentObject var projServices: ProjectServices
     @Binding var scenario: TaxScenario
     
     init(_ scenario: Binding<TaxScenario>) {
@@ -25,7 +25,7 @@ struct HeaderView: View {
     }
     
     var grossIncome: Double {
-        guard let facts = appServices.facts(for: scenario.facts) else {
+        guard let facts = projServices.facts(for: scenario.facts) else {
             fatalError("No tax facts found with id: '\(scenario.facts)'")
         }
         return FederalTaxCalc(scenario, facts: facts).grossIncome

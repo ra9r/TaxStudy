@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class AppServices : ObservableObject {
+class ProjectServices : ObservableObject {
     @Binding var document: TaxProjectDocument
     
     init(document: Binding<TaxProjectDocument>) {

@@ -8,72 +8,83 @@
 import SwiftUI
 
 struct ProjectView : View {
+    @State var showSettings: Bool = false
     @State var multiSelection = Set<Int>()
-    @ObservedObject var appServices: AppServices
+    @ObservedObject var projServices: ProjectServices
     
     @Binding var document: TaxProjectDocument
     
     init(_ document: Binding<TaxProjectDocument>) {
         _document = document
-        _appServices = ObservedObject(wrappedValue: AppServices(document: document))
+        _projServices = ObservedObject(wrappedValue: ProjectServices(document: document))
     }
     
     var body: some View {
         NavigationSplitView {
             // Sidebar showing a list of open documents
             List(selection: $multiSelection) {
-                ForEach(appServices.document.scenarios.indices, id:\.self) { index in
-                    let name = appServices.document.scenarios[index].name
+                ForEach(projServices.document.scenarios.indices, id:\.self) { index in
+                    let name = projServices.document.scenarios[index].name
                     NavigationLink(name, value: index)
                 }
                 .onMove(perform: move)
             }
             .frame(minWidth: 200)
-            .navigationTitle("Documents")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        guard let facts = appServices.firstFact() else { fatalError("No Tax Facts Found") }
-                        appServices.document.scenarios.append(TaxScenario(name: "New Scenario", facts: facts.id))
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                
-            }
+            
         } detail: {
-            Group {
-                if multiSelection.count == 1, let index = multiSelection.first {
-                    ScenarioView($appServices.document.scenarios[index])
-                } else if multiSelection.count >= 1{
-                    ContentUnavailableView("Compare Feature Not Available",
-                                           systemImage: "wrench.circle",
-                                           description: Text("This feature is still a work in progress"))
-                } else {
-                    ContentUnavailableView("Please select a Tax Scenario",
-                                           systemImage: "square.dashed",
-                                           description: Text("You'll need to select a tax scenario to beign editing."))
+            if multiSelection.count == 1, let index = multiSelection.first {
+                ScenarioView($projServices.document.scenarios[index])
+            } else if multiSelection.count >= 1{
+                ContentUnavailableView("Compare Feature Not Available",
+                                       systemImage: "wrench.circle",
+                                       description: Text("This feature is still a work in progress"))
+            } else {
+                ContentUnavailableView("Please select a Tax Scenario",
+                                       systemImage: "square.dashed",
+                                       description: Text("You'll need to select a tax scenario to beign editing."))
+            }
+        }
+        .frame(minWidth: 1100)
+        .environmentObject(projServices)
+        .toolbar {
+            ToolbarItem(placement: .secondaryAction) {
+                Button {
+                    guard let facts = projServices.firstFact() else { fatalError("No Tax Facts Found") }
+                    projServices.document.scenarios.append(TaxScenario(name: "New Scenario", facts: facts.id))
+                } label: {
+                    Image(systemName: "square.and.pencil")
                 }
             }
-            .frame(minWidth: 1100)
+            
+            ToolbarItem(placement: .status) {
+                Button {
+                    showSettings.toggle()
+                } label: {
+                    Image(systemName: "wrench.and.screwdriver")
+                }
+            }
         }
-        .environmentObject(appServices)
         .onAppear {
-            appServices.document = document
+            projServices.document = document
+        }
+        .sheet(isPresented: $showSettings) {
+            SettingsView()
+                .frame(width: 1024, height: 500)
+                .environmentObject(projServices)
         }
         
     }
     
     func move(from source: IndexSet, to destination: Int) {
         // Track the actual selected items before the move
-        let selectedItems = multiSelection.map { appServices.document.scenarios[$0].name }
+        let selectedItems = multiSelection.map { projServices.document.scenarios[$0].name }
         
         // Perform the move in the document
-        appServices.move(from: source, to: destination)
+        projServices.move(from: source, to: destination)
         
         // Update multiSelection by finding the new indices of the previously selected items
         multiSelection = Set(selectedItems.compactMap { name in
-            appServices.document.scenarios.firstIndex(where: { $0.name == name })
+            projServices.document.scenarios.firstIndex(where: { $0.name == name })
         })
     }
     

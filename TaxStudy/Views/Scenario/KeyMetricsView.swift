@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    @EnvironmentObject var appServices: AppServices
+    @EnvironmentObject var projServices: ProjectServices
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
@@ -77,7 +77,7 @@ struct KeyMetricsView: View {
             }
         }
         .onAppear() {
-            guard let facts = appServices.facts(for: scenario.facts) else {
+            guard let facts = projServices.facts(for: scenario.facts) else {
                 errorMessage = "No facts found for \(scenario.facts)."
                 return
             }
