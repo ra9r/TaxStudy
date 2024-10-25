@@ -14,7 +14,6 @@ struct TaxStudyApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: TaxProjectDocument()) { file in
             ProjectView(file.$document)
-//                .presentedWindowToolbarStyle(.unified)
         }
     }
 
