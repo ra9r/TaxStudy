@@ -1,19 +1,19 @@
 //
-//  CurrencyField.swift
+//  CardTextField.swift
 //  TaxStudy
 //
-//  Created by Rodney Aiglstorfer on 9/30/24.
+//  Created by Rodney Aiglstorfer on 10/25/24.
 //
 
 import SwiftUI
 
-struct CardNumberField: View {
+struct CardTextField: View {
     var label: String
-    @Binding var amount: Int
+    @Binding var value: String
     
-    init(_ label: String, amount: Binding<Int>) {
+    init(_ label: String, value: Binding<String>) {
         self.label = label
-        self._amount = amount
+        self._value = value
     }
     
     var body: some View {
@@ -24,7 +24,7 @@ struct CardNumberField: View {
                 
                 Spacer()
                 
-                TextField("Amount", value: $amount, format: .number)
+                TextField("", text: $value)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
