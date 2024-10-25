@@ -466,11 +466,11 @@ extension KeyMetricTypes {
         case .totalFICATaxMedicare:
             return fedTax.totalFICATaxMedicare.asCurrency(0)
         case .marginalCapitalGainsTaxRate:
-            return fedTax.maginalCapitalGainsTaxRate.asCurrency(0)
+            return fedTax.maginalCapitalGainsTaxRate.asPercentage
         case .marginalOrdinaryTaxRate:
-            return fedTax.marginalOrdinaryTaxRate.asCurrency(0)
+            return fedTax.marginalOrdinaryTaxRate.asPercentage
         case .averageTaxRate:
-            return fedTax.averageTaxRate.asCurrency(0)
+            return fedTax.averageTaxRate.asPercentage
         case .effectiveTaxRate:
             return "??" // TODO: Implement .effectiveTaxRate
         case .isSubjectToNIIT:

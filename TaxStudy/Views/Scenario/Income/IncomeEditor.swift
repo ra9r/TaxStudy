@@ -62,9 +62,9 @@ struct IncomeEditor: View {
                 }
                 
                 // Only show the divider if it's not the last visible item
-                if index != filteredSources.indices.last {
-                    Divider()
-                }
+//                if index != filteredSources.indices.last {
+//                    Divider()
+//                }
             }
         }
     }
