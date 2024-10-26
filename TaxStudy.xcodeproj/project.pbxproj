@@ -44,7 +44,6 @@
 		2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */; };
 		2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50A2CC2F3B000546505 /* CardPicker.swift */; };
 		2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50C2CC35EE800546505 /* CardNumberField.swift */; };
-		2AA0B51A2CC48E3A00546505 /* ProjectServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B5192CC48E1200546505 /* ProjectServices.swift */; };
 		2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51B2CC4A11300546505 /* Displayable.swift */; };
 		2AA0B51E2CC4A83A00546505 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51D2CC4A82E00546505 /* ProfileView.swift */; };
 		2AA0B5202CC4AEDA00546505 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51F2CC4AED500546505 /* Profiles.swift */; };
@@ -117,7 +116,6 @@
 		2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Extension.swift"; sourceTree = "<group>"; };
 		2AA0B50A2CC2F3B000546505 /* CardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPicker.swift; sourceTree = "<group>"; };
 		2AA0B50C2CC35EE800546505 /* CardNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberField.swift; sourceTree = "<group>"; };
-		2AA0B5192CC48E1200546505 /* ProjectServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectServices.swift; sourceTree = "<group>"; };
 		2AA0B51B2CC4A11300546505 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		2AA0B51D2CC4A82E00546505 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2AA0B51F2CC4AED500546505 /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
@@ -349,9 +347,8 @@
 		2ACFDE2A2CCA45AC0033B5B8 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */,
 				2ACFDE2B2CCA47A70033B5B8 /* ProjectView.swift */,
-				2AA0B5192CC48E1200546505 /* ProjectServices.swift */,
+				2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -482,7 +479,6 @@
 				2ACFDDE02CC8BA510033B5B8 /* KeyMetricsLayoutEditor.swift in Sources */,
 				2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */,
 				2A51CB2B2CB9A3650075BBA0 /* AppData.swift in Sources */,
-				2AA0B51A2CC48E3A00546505 /* ProjectServices.swift in Sources */,
 				2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */,
 				2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */,
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
