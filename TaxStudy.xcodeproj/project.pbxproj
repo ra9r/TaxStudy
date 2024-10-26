@@ -280,6 +280,8 @@
 				2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */,
 				2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */,
 				2ACC20262CC267B500D2A907 /* KeyMetricsView.swift */,
+				2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */,
+				2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */,
 				2AA0B51D2CC4A82E00546505 /* ProfileView.swift */,
 				2A7CB2A42CBE0A66008334E1 /* Deductions */,
 				2A6BA2AE2CBE6026007C3A27 /* Income */,
@@ -327,8 +329,6 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */,
-				2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 			);
