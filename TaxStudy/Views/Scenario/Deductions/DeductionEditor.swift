@@ -55,9 +55,9 @@ struct DeductionEditor<T : DeductionType & CaseIterable>: View where T.AllCases:
                     }
                 }
                 
-                if index != deductions.items.indices.last {
-                    Divider()
-                }
+//                if index != deductions.items.indices.last {
+//                    Divider()
+//                }
             }
         }
     }

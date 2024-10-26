@@ -1,19 +1,19 @@
 //
-//  CurrencyField.swift
+//  CardTextField.swift
 //  TaxStudy
 //
-//  Created by Rodney Aiglstorfer on 9/30/24.
+//  Created by Rodney Aiglstorfer on 10/25/24.
 //
 
 import SwiftUI
 
-struct CardCurrencyField: View {
+struct CardTextField: View {
     var label: String
-    @Binding var amount: Double
+    @Binding var value: String
     
-    init(_ label: String, amount: Binding<Double>) {
+    init(_ label: String, value: Binding<String>) {
         self.label = label
-        self._amount = amount
+        self._value = value
     }
     
     var body: some View {
@@ -21,13 +21,14 @@ struct CardCurrencyField: View {
             HStack {
                 Text(label)
                     .font(.system(size: 12, weight: .semibold))
+                
                 Spacer()
-                Text("$")
-                TextField("Amount", value: $amount, format: .number)
+                
+                TextField("", text: $value)
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.trailing)
-                    .frame(maxWidth: 80)
+                    .frame(maxWidth: .infinity)
                     .textFieldStyle(.plain)
                     .overlay(Rectangle()
                         .frame(height: 1) // Thin underline
@@ -39,4 +40,3 @@ struct CardCurrencyField: View {
         }
     }
 }
-

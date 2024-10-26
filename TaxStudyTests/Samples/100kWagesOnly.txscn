@@ -1,35 +1,35 @@
 {
+  "description" : "",
+  "facts" : "2024",
+  "adjustments" : [
+
+  ],
   "profileSelf" : {
-    "employmentStatus" : "retired",
     "age" : 65,
+    "medicalCoverage" : "otherOrNone",
     "name" : "Bob",
+    "employmentStatus" : "retired",
+    "socialSecurity" : 0,
+    "wages" : 50000
+  },
+  "profileSpouse" : {
+    "employmentStatus" : "retired",
+    "name" : "Angie",
+    "age" : 65,
     "wages" : 50000,
     "socialSecurity" : 0,
     "medicalCoverage" : "otherOrNone"
   },
-  "filingStatus" : "marriedFilingJointly",
-  "description" : "",
-  "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0",
-  "credits" : [
-
-  ],
-  "name" : "$100,000 in Wages Only",
-  "profileSpouse" : {
-    "name" : "Angie",
-    "medicalCoverage" : "otherOrNone",
-    "wages" : 50000,
-    "employmentStatus" : "retired",
-    "socialSecurity" : 0,
-    "age" : 65
-  },
   "deductions" : [
 
   ],
+  "name" : "$100,000 in Wages Only",
   "income" : [
 
   ],
-  "facts" : "2024",
-  "adjustments" : [
+  "filingStatus" : "marriedFilingJointly",
+  "credits" : [
 
-  ]
+  ],
+  "id" : "CCEDF541-88F9-4654-934E-74CC51B124E0"
 }

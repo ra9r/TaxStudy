@@ -2,40 +2,29 @@
 //  ScenarioView.swift
 //  TaxStudy
 //
-//  Created by Rodney Aiglstorfer on 10/1/24.
+//  Created by Rodney Aiglstorfer on 10/24/24.
 //
 import SwiftUI
 
 struct ScenarioView : View {
-    @Binding var document: TaxScenarioDocument
-    @State var showAlert: Bool = false
+    @EnvironmentObject var projServices: ProjectServices
+    @Binding var scenario: TaxScenario
     
-    init(_ document: Binding<TaxScenarioDocument>) {
-        self._document = document
+    init(_ scenario: Binding<TaxScenario>) {
+        _scenario = scenario
     }
     
     var body: some View {
         ScrollView {
             VStack {
-                HeaderView($document.scenario)
-                KeyMetricsView($document.scenario)
-                ProfileView($document.scenario)
-                IncomeView($document.scenario)
-                DeductionsView($document.scenario)
+                HeaderView($scenario)
+                KeyMetricsView($scenario)
+                ProfileView($scenario)
+                IncomeView($scenario)
+                DeductionsView($scenario)
             }
             .padding()
         }
         .tint(Color.accentColor)
-        .navigationTitle(document.scenario.name)
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button("Alert") {
-                    showAlert.toggle()
-                }
-            }
-        }
-        .alert(isPresented: $showAlert, error: AppErrors.unknownTaxFact("2025")) {
-            Text("Alert Text Here!!")
-        }
     }
 }

@@ -30,6 +30,11 @@ struct CardNumberField: View {
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity)
                     .textFieldStyle(.plain)
+                    .overlay(Rectangle()
+                        .frame(height: 1) // Thin underline
+                        .foregroundColor(.gray.opacity(0.5)), // Line color
+                             alignment: .bottom
+                    )
             }
             .padding(2.5)
         }

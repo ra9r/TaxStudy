@@ -1,10 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
     "%lld kWh" : {
+
+    },
+    "$" : {
 
     },
     "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
@@ -65,12 +71,6 @@
 
     },
     "AGI Before SSI" : {
-
-    },
-    "Alert" : {
-
-    },
-    "Alert Text Here!!" : {
 
     },
     "All contributions made to traditional individual retirement accounts (IRAs) and qualified plans such as 401(k), 403(b), and 457 plans are deductible." : {
@@ -169,6 +169,9 @@
     "Child Tax Credit" : {
 
     },
+    "Compare Feature Not Available" : {
+
+    },
     "Computed Flags" : {
 
     },
@@ -238,6 +241,9 @@
     "Deductible Medical Expenses" : {
 
     },
+    "Deductible Medical Expenses (AMT)" : {
+
+    },
     "Deduction Method" : {
 
     },
@@ -257,6 +263,9 @@
 
     },
     "Dividends Qualfied/Ordinary" : {
+
+    },
+    "Duplicate" : {
 
     },
     "Early Withdrawal Penalties" : {
@@ -286,10 +295,7 @@
     "Energy Efficiency Improvement" : {
 
     },
-    "Error: No facts found for %@." : {
-
-    },
-    "Export Config..." : {
+    "Error: %@" : {
 
     },
     "Facts: %@" : {
@@ -362,9 +368,6 @@
 
     },
     "HSA or MSA Contribution" : {
-
-    },
-    "Import %lld TaxFacts?" : {
 
     },
     "Income" : {
@@ -614,6 +617,9 @@
     "Other/None" : {
 
     },
+    "Please select a Tax Scenario" : {
+
+    },
     "Preferential Income" : {
 
     },
@@ -662,6 +668,9 @@
     "Qualified Widow(er)" : {
 
     },
+    "Rename" : {
+
+    },
     "Rental Income" : {
 
     },
@@ -699,12 +708,6 @@
 
     },
     "Self-Employment Tax" : {
-
-    },
-    "Settings" : {
-
-    },
-    "Settings..." : {
 
     },
     "Short-Term Capital Gains" : {
@@ -765,6 +768,9 @@
 
     },
     "Taxes" : {
+
+    },
+    "This feature is still a work in progress" : {
 
     },
     "Threshold not defined for %@ and '%@'" : {
@@ -850,6 +856,9 @@
 
     },
     "Work Opportunity Tax Credit" : {
+
+    },
+    "You'll need to select a tax scenario to beign editing." : {
 
     }
   },

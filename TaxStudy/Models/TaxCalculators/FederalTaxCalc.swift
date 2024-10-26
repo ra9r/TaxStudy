@@ -26,6 +26,8 @@ class FederalTaxCalc {
     /// **Gross Income** is a complete total of all income generated regarless of any exemptions, adjustements, deductions and credits
     var grossIncome: Double {
         return totalIncome +
+        scenario.longTermCapitalGains +
+        scenario.shortTermCapitalGains +
         totalTaxExemptIncome
     }
     
@@ -229,7 +231,13 @@ class FederalTaxCalc {
     
     var deductibleMedicalExpenses: Double {
         let medicalExpenses = scenario.deductions.total(for: .medicalAndDentalDeduction)
-        let threshold = 0.075 * agi
+        let threshold = facts.medicalDeductionThreasholdRate * agi
+        return max(0, medicalExpenses - threshold)
+    }
+    
+    var deductibleMedicalExpensesForAMT: Double {
+        let medicalExpenses = scenario.deductions.total(for: .medicalAndDentalDeduction)
+        let threshold = facts.medicalDeductionThreasholdRateForAMT * agi
         return max(0, medicalExpenses - threshold)
     }
     
@@ -482,13 +490,15 @@ class FederalTaxCalc {
         let businessExpenses = scenario.adjustments.total(for: .businessExpenses)
         let marginInterest = scenario.deductions.total(for: .marginInterestDeduction)
         let mortgageInterest = scenario.deductions.total(for: .mortgageInterestDeduction)
+        let medicalExpenses = deductibleMedicalExpensesForAMT
         return totalIncome -
             iraOr401kContribution -
             hsaContribution -
             earlyWithDrawalPenalties -
             businessExpenses -
             marginInterest -
-            mortgageInterest
+            mortgageInterest -
+            medicalExpenses
     }
     
     var amtExemption: Double {

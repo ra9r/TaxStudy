@@ -17,7 +17,7 @@ struct BarSegment: Identifiable {
 
 
 struct TaxChart: View {
-    @Environment(AppServices.self) var appServices
+    @EnvironmentObject var appServices: ProjectServices
     var scenario: TaxScenario
     
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JSONView: View {
-    @Environment(AppServices.self) var appServices
+    var facts: [TaxFacts]
     public var body: some View {
         HStack {
             ZStack {
@@ -28,7 +28,7 @@ struct JSONView: View {
         }
         ScrollView {
             Button(action: {
-                let textToCopy = String.prettyPrint(appServices.facts) ?? "No Data"
+                let textToCopy = String.prettyPrint(facts) ?? "No Data"
                 copyToClipboard(textToCopy)
             }) {
                 Text("Copy to Clipboard")
@@ -38,7 +38,7 @@ struct JSONView: View {
                     .cornerRadius(8)
             }
             .padding()
-            Text(String.prettyPrint(appServices.facts) ?? "No Data")
+            Text(String.prettyPrint(facts) ?? "No Data")
                 .frame(maxWidth: .infinity, alignment: .leading) // Forces the Text to fill the width
                 .padding()
         }

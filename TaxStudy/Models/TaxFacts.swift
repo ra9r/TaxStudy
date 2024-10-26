@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// Collection of tax brackets and other contraints and limits that are used in computing the taxes for a given year.
 class TaxFacts : Codable, Identifiable {
     var id: String
     var ordinaryTaxBrackets: TaxBrackets
@@ -36,7 +35,8 @@ class TaxFacts : Codable, Identifiable {
     var charitableCashThreadholdRate: Double = 0.6
     var charitableAssetThreadholdRate: Double = 0.3
     var charitableMileageRate: Double = 0.14
-    
+    var medicalDeductionThreasholdRate: Double = 0.075
+    var medicalDeductionThreasholdRateForAMT: Double = 0.10
     var amtExemptionReductionRate: Double = 0.25
     var amtExemptions: [FilingStatus: Double]
     var amtPhaseOutThesholds: [FilingStatus: Double]

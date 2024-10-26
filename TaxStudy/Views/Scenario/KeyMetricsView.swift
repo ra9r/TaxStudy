@@ -8,8 +8,42 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    @Environment(AppServices.self) var appServices
+    @EnvironmentObject var projServices: ProjectServices
     @Binding var scenario: TaxScenario
+    @State var keyMetricGroups: [KeyMetricGroup] = [
+        .init(title: "Column Left", keyMetrics: [
+            .grossIncome,
+            .totalIncome,
+            .agi,
+            .deduction,
+            .taxableIncome,
+            .amtIncome,
+            .amtTax,
+            .federalTax,
+            .totalFICATax,
+        ]),
+        .init(title: "Column Middle", keyMetrics: [
+            .filingStatus,
+            .marginalOrdinaryTaxRate,
+            .marginalCapitalGainsTaxRate,
+            .averageTaxRate,
+            .safeHarborTax,
+            .irmaaSurcharges,
+            .deductibleMedicalExpenses,
+            .deductibleMedicalExpensesForAMT
+        ]),
+        .init(title: "Column Right", keyMetrics: [
+            .totalTaxExemptInterestIncome,
+            .dividends,
+            .capitalGains,
+            .futureCarryForwardLoss,
+            .provisionalIncome,
+            .totalSSAIncome,
+        ])
+    ]
+    @State var federalTaxes: FederalTaxCalc?
+    @State var stateTaxes: NCTaxCalc?
+    @State var errorMessage: String?
     
     init(_ scenario: Binding<TaxScenario>) {
         self._scenario = scenario
@@ -17,46 +51,40 @@ struct KeyMetricsView: View {
     
     
     var body: some View {
-        if let facts = appServices.facts(for: scenario.facts) {
-            let federalTaxes = FederalTaxCalc(scenario, facts: facts)
-            let stateTaxes = NCTaxCalc(scenario, facts: facts)
-            CardView("Key Metrics") {
+        CardView("Key Metrics") {
+            if let federalTaxes = federalTaxes, let stateTaxes = stateTaxes {
                 HStack(alignment: .top) {
                     VStack {
-                        CardItem("Total Income", value: federalTaxes.totalIncome.asCurrency(0))
-                        CardItem("AGI", value: federalTaxes.agi.asCurrency(0))
-                        CardItem("Deductions", value: federalTaxes.deduction.asCurrency(0))
-                        CardItem("Taxable Income", value: federalTaxes.taxableIncome.asCurrency(0))
-                        CardItem("AMT Income", value: federalTaxes.amtIncome.asCurrency(0))
-                        CardItem("AMT Tax", value: federalTaxes.amtTax.asCurrency(0))
-                        CardItem("Federal Taxes", value: federalTaxes.federalTax.asCurrency(0))
-                        CardItem("FICA Taxes", value: federalTaxes.totalFICATax.asCurrency(0))
-                        CardItem("State Taxes", value: stateTaxes.taxesOwed.asCurrency(0))
+                        ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
                     }
                     Divider()
                     VStack {
-                        CardPicker("Filing Status", selection: $scenario.filingStatus)
-                        CardItem("Marginal Rate (Capital Gains)", value: federalTaxes.maginalCapitalGainsTaxRate.asPercentage)
-                        CardItem("Marginal Rate (Ordinary Income)", value: federalTaxes.marginalOrdinaryTaxRate.asPercentage)
-                        CardItem("Average Rate", value: federalTaxes.averageTaxRate.asPercentage)
-                        CardItem("Safe Harbor", value: federalTaxes.safeHarborTax.asCurrency(0))
-                        CardItem("IRMAA Plan B Surcharge", value: federalTaxes.irmaaPlanBSurcharge.asCurrency(0))
-                        CardItem("IRMAA Plan D Surcharge", value: federalTaxes.irmaaPlanDSurcharge.asCurrency(0))
+                        ForEach(keyMetricGroups[1].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
                     }
                     Divider()
                     VStack {
-                        CardItem("Tax Exempt Interest", value: federalTaxes.scenario.taxExemptInterest.asCurrency(0))
-                        CardItem("Qualified / Ordinary Dividends", value: "\(federalTaxes.scenario.qualifiedDividends.asCurrency(0)) / \(federalTaxes.scenario.ordinaryDividends.asCurrency(0))")
-                        CardItem("ST / LT Capital Gains", value: "\(federalTaxes.netSTCG.asCurrency(0)) / \(federalTaxes.netLTCG.asCurrency(0))")
-                        CardItem("Carryforward Loss", value: federalTaxes.futureCarryForwardLoss.asCurrency(0))
-                        CardItem("Provisional Income", value: federalTaxes.provisionalIncome.asCurrency(0))
-                        CardItem("Total / Taxable Social Security", value: "\(federalTaxes.scenario.totalSocialSecurityIncome.asCurrency(0)) / \(federalTaxes.taxableSSI.asCurrency(0)) (\(federalTaxes.provisionalTaxRate.asPercentage))")
+                        ForEach(keyMetricGroups[2].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
                     }
                 }
+            } else {
+                Text("Error: \(errorMessage ?? "No data found.")")
             }
-        } else {
-            Text("Error: No facts found for \(scenario.facts).")
         }
+        .onAppear() {
+            guard let facts = projServices.facts(for: scenario.facts) else {
+                errorMessage = "No facts found for \(scenario.facts)."
+                return
+            }
+            self.federalTaxes = FederalTaxCalc(scenario, facts: facts)
+            self.stateTaxes = NCTaxCalc(scenario, facts: facts)
+        }
+        
     }
 }
 

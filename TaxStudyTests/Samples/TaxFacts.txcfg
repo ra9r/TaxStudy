@@ -1,0 +1,473 @@
+[
+  {
+    "niitRate" : 0.038,
+    "standardDeductionBonusAge" : 65,
+    "charitableCashThreadholdRate" : 0.6,
+    "amtExemptionReductionRate" : 0.25,
+    "irmaaPlanBThresholds" : [
+      {
+        "rate" : 0,
+        "thresholds" : [
+          "single",
+          0,
+          "marriedFilingJointly",
+          0
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          103000,
+          "marriedFilingJointly",
+          206000
+        ],
+        "rate" : 70
+      },
+      {
+        "rate" : 175,
+        "thresholds" : [
+          "single",
+          123000,
+          "marriedFilingJointly",
+          246000
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          153000,
+          "marriedFilingJointly",
+          306000
+        ],
+        "rate" : 280
+      },
+      {
+        "rate" : 280,
+        "thresholds" : [
+          "marriedFilingJointly",
+          750000,
+          "single",
+          500000
+        ]
+      },
+      {
+        "rate" : 285,
+        "thresholds" : [
+          "single",
+          183000,
+          "marriedFilingJointly",
+          366000
+        ]
+      }
+    ],
+    "charitableMileageRate" : 0.14,
+    "niitThresholds" : [
+      "marriedFilingJointly",
+      250000,
+      "marriedFilingSeparately",
+      125000,
+      "single",
+      200000,
+      "headOfHousehold",
+      200000,
+      "qualifiedWidow",
+      250000
+    ],
+    "amtExemptions" : [
+      "marriedFilingSeparately",
+      63250,
+      "headOfHousehold",
+      81300,
+      "single",
+      81300,
+      "marriedFilingJointly",
+      126500
+    ],
+    "provisionalIncomeThresholds" : [
+      {
+        "rate" : 0,
+        "thresholds" : [
+          "headOfHousehold",
+          0,
+          "single",
+          0,
+          "marriedFilingSeparately",
+          0,
+          "qualifiedWidow",
+          0,
+          "marriedFilingJointly",
+          0
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          25000,
+          "qualifiedWidow",
+          32000,
+          "headOfHousehold",
+          25000,
+          "marriedFilingJointly",
+          32000,
+          "marriedFilingSeparately",
+          25000
+        ],
+        "rate" : 0.5
+      },
+      {
+        "rate" : 0.85,
+        "thresholds" : [
+          "marriedFilingJointly",
+          44000,
+          "marriedFilingSeparately",
+          34000,
+          "headOfHousehold",
+          34000,
+          "qualifiedWidow",
+          44000,
+          "single",
+          34000
+        ]
+      }
+    ],
+    "irmaaPlanDThresholds" : [
+      {
+        "rate" : 0,
+        "thresholds" : [
+          "single",
+          0,
+          "marriedFilingJointly",
+          0
+        ]
+      },
+      {
+        "rate" : 12,
+        "thresholds" : [
+          "marriedFilingJointly",
+          206000,
+          "single",
+          103000
+        ]
+      },
+      {
+        "thresholds" : [
+          "marriedFilingJointly",
+          246000,
+          "single",
+          123000
+        ],
+        "rate" : 31
+      },
+      {
+        "rate" : 50,
+        "thresholds" : [
+          "single",
+          153000,
+          "marriedFilingJointly",
+          306000
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          183000,
+          "marriedFilingJointly",
+          366000
+        ],
+        "rate" : 70
+      },
+      {
+        "thresholds" : [
+          "marriedFilingJointly",
+          750000,
+          "single",
+          500000
+        ],
+        "rate" : 76
+      }
+    ],
+    "id" : "2024",
+    "ssTaxThresholds" : [
+      {
+        "thresholds" : [
+          "marriedFilingJointly",
+          0,
+          "marriedFilingSeparately",
+          0,
+          "qualifiedWidow",
+          0,
+          "single",
+          0,
+          "headOfHousehold",
+          0
+        ],
+        "rate" : 0.062
+      },
+      {
+        "rate" : 0,
+        "thresholds" : [
+          "marriedFilingSeparately",
+          168600,
+          "marriedFilingJointly",
+          168600,
+          "qualifiedWidow",
+          168600,
+          "headOfHousehold",
+          168600,
+          "single",
+          168600
+        ]
+      }
+    ],
+    "standardDeduction" : [
+      "qualifiedWidow",
+      29200,
+      "single",
+      14600,
+      "marriedFilingJointly",
+      29200,
+      "headOfHousehold",
+      21900,
+      "marriedFilingSeparately",
+      14600
+    ],
+    "capitalGainTaxBrackets" : [
+      {
+        "rate" : 0,
+        "thresholds" : [
+          "qualifiedWidow",
+          0,
+          "single",
+          0,
+          "marriedFilingJointly",
+          0,
+          "marriedFilingSeparately",
+          0,
+          "headOfHousehold",
+          0
+        ]
+      },
+      {
+        "rate" : 0.15,
+        "thresholds" : [
+          "qualifiedWidow",
+          0,
+          "marriedFilingJointly",
+          94051,
+          "marriedFilingSeparately",
+          0,
+          "single",
+          47026,
+          "headOfHousehold",
+          63001
+        ]
+      },
+      {
+        "rate" : 0.2,
+        "thresholds" : [
+          "headOfHousehold",
+          551351,
+          "qualifiedWidow",
+          0,
+          "single",
+          518901,
+          "marriedFilingSeparately",
+          0,
+          "marriedFilingJointly",
+          583751
+        ]
+      }
+    ],
+    "ordinaryTaxBrackets" : [
+      {
+        "thresholds" : [
+          "qualifiedWidow",
+          0,
+          "marriedFilingSeparately",
+          0,
+          "marriedFilingJointly",
+          0,
+          "single",
+          0,
+          "headOfHousehold",
+          0
+        ],
+        "rate" : 0.1
+      },
+      {
+        "rate" : 0.12,
+        "thresholds" : [
+          "marriedFilingJointly",
+          23201,
+          "marriedFilingSeparately",
+          0,
+          "headOfHousehold",
+          16550,
+          "single",
+          11600,
+          "qualifiedWidow",
+          0
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          47150,
+          "headOfHousehold",
+          63101,
+          "marriedFilingJointly",
+          94301,
+          "qualifiedWidow",
+          0,
+          "marriedFilingSeparately",
+          0
+        ],
+        "rate" : 0.22
+      },
+      {
+        "rate" : 0.24,
+        "thresholds" : [
+          "marriedFilingJointly",
+          201051,
+          "headOfHousehold",
+          100501,
+          "marriedFilingSeparately",
+          0,
+          "single",
+          100525,
+          "qualifiedWidow",
+          0
+        ]
+      },
+      {
+        "rate" : 0.32,
+        "thresholds" : [
+          "marriedFilingJointly",
+          383901,
+          "headOfHousehold",
+          191951,
+          "marriedFilingSeparately",
+          0,
+          "qualifiedWidow",
+          0,
+          "single",
+          191950
+        ]
+      },
+      {
+        "thresholds" : [
+          "single",
+          234726,
+          "headOfHousehold",
+          243701,
+          "marriedFilingJointly",
+          487451,
+          "qualifiedWidow",
+          0,
+          "marriedFilingSeparately",
+          0
+        ],
+        "rate" : 0.35
+      },
+      {
+        "rate" : 0.37,
+        "thresholds" : [
+          "headOfHousehold",
+          609351,
+          "marriedFilingJointly",
+          731201,
+          "marriedFilingSeparately",
+          0,
+          "qualifiedWidow",
+          0,
+          "single",
+          609351
+        ]
+      }
+    ],
+    "standardDeductionBonus" : [
+      "single",
+      1950,
+      "marriedFilingSeparately",
+      1550,
+      "marriedFilingJointly",
+      1550,
+      "qualifiedWidow",
+      1950,
+      "headOfHousehold",
+      1950
+    ],
+    "charitableAssetThreadholdRate" : 0.3,
+    "amtPhaseOutThesholds" : [
+      "marriedFilingJointly",
+      1156300,
+      "single",
+      578150,
+      "marriedFilingSeparately",
+      578150,
+      "headOfHousehold",
+      578150
+    ],
+    "amtBrackets" : [
+      {
+        "rate" : 0.26,
+        "thresholds" : [
+          "single",
+          0,
+          "marriedFilingJointly",
+          0,
+          "marriedFilingSeparately",
+          0,
+          "headOfHousehold",
+          0
+        ]
+      },
+      {
+        "rate" : 0.28,
+        "thresholds" : [
+          "single",
+          220700,
+          "headOfHousehold",
+          227700,
+          "marriedFilingJointly",
+          441400,
+          "marriedFilingSeparately",
+          110350
+        ]
+      }
+    ],
+    "medicareTaxThresholds" : [
+      {
+        "thresholds" : [
+          "single",
+          0,
+          "marriedFilingJointly",
+          0,
+          "headOfHousehold",
+          0,
+          "qualifiedWidow",
+          0,
+          "marriedFilingSeparately",
+          0
+        ],
+        "rate" : 0.029
+      },
+      {
+        "rate" : 0.009,
+        "thresholds" : [
+          "single",
+          200000,
+          "marriedFilingJointly",
+          250000,
+          "marriedFilingSeparately",
+          125000,
+          "qualifiedWidow",
+          200000,
+          "headOfHousehold",
+          200000
+        ]
+      }
+    ],
+    "capitalLossLimit" : 3000
+  }
+]

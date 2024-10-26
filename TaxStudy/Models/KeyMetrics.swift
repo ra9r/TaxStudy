@@ -71,6 +71,7 @@ enum KeyMetricTypes: Codable {
     // MARK: - Deductions
     case standardDeduction
     case deductibleMedicalExpenses
+    case deductibleMedicalExpensesForAMT
     case deductibleCharitableCashContributions
     case deductibleCharitableAssetContributions
     case totalDecutibleChartitableContributions
@@ -97,7 +98,7 @@ enum KeyMetricTypes: Codable {
     case totalFICATaxMedicare
     
     // MARK: - Tax Rates
-    case maginalCapitalGainsTaxRate
+    case marginalCapitalGainsTaxRate
     case marginalOrdinaryTaxRate
     case averageTaxRate
     case effectiveTaxRate
@@ -230,6 +231,8 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "Standard Deduction")
         case .deductibleMedicalExpenses:
             return String(localized: "Deductible Medical Expenses")
+        case .deductibleMedicalExpensesForAMT:
+            return String(localized: "Deductible Medical Expenses (AMT)")
         case .deductibleCharitableCashContributions:
             return String(localized: "Deductible Charitable Cash Contributions")
         case .deductibleCharitableAssetContributions:
@@ -266,7 +269,7 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "Total FICA Tax (Social Security)")
         case .totalFICATaxMedicare:
             return String(localized: "Total FICA Tax (Medicare)")
-        case .maginalCapitalGainsTaxRate:
+        case .marginalCapitalGainsTaxRate:
             return String(localized: "Marginal Capital Gains Tax Rate")
         case .marginalOrdinaryTaxRate:
             return String(localized: "Marginal Ordinary Tax Rate")
@@ -321,38 +324,38 @@ extension KeyMetricTypes: Hashable {
 }
 
 extension KeyMetricTypes {
-    func resolve(for scenario: TaxScenario, facts: TaxFacts) throws -> String {
-        let fedTax = FederalTaxCalc(scenario, facts: facts)
+    func resolve(fedTax: FederalTaxCalc, stateTax: any StateTaxCalc) -> String {
+        
         switch self {
             
         case .selfName:
-            return scenario.profileSelf.name
+            return fedTax.scenario.profileSelf.name
         case .spouseName:
-            return scenario.profileSpouse.name
+            return fedTax.scenario.profileSpouse.name
         case .selfAge:
-            return "\(scenario.profileSelf.age)"
+            return "\(fedTax.scenario.profileSelf.age)"
         case .spouseAge:
-            return "\(scenario.profileSpouse.age)"
+            return "\(fedTax.scenario.profileSpouse.age)"
         case .selfWages:
-            return scenario.profileSelf.wages.asCurrency(0)
+            return fedTax.scenario.profileSelf.wages.asCurrency(0)
         case .spouseWages:
-            return scenario.profileSpouse.wages.asCurrency(0)
+            return fedTax.scenario.profileSpouse.wages.asCurrency(0)
         case .selfSSI:
-            return scenario.profileSelf.socialSecurity.asCurrency(0)
+            return fedTax.scenario.profileSelf.socialSecurity.asCurrency(0)
         case .spouseSSI:
-            return scenario.profileSpouse.socialSecurity.asCurrency(0)
+            return fedTax.scenario.profileSpouse.socialSecurity.asCurrency(0)
         case .selfMedical:
-            return scenario.profileSelf.medicalCoverage.label
+            return fedTax.scenario.profileSelf.medicalCoverage.label
         case .spouseMedical:
-            return scenario.profileSpouse.medicalCoverage.label
+            return fedTax.scenario.profileSpouse.medicalCoverage.label
         case .selfEmployement:
-            return scenario.profileSelf.employmentStatus.label
+            return fedTax.scenario.profileSelf.employmentStatus.label
         case .spouseEmployement:
-            return scenario.profileSpouse.employmentStatus.label
+            return fedTax.scenario.profileSpouse.employmentStatus.label
         case .filingStatus:
-            return scenario.filingStatus.label
+            return fedTax.scenario.filingStatus.label
         case .taxRules:
-            return scenario.facts
+            return fedTax.scenario.facts
         case .grossIncome:
             return fedTax.grossIncome.asCurrency(0)
         case .totalIncome:
@@ -360,19 +363,19 @@ extension KeyMetricTypes {
         case .totalTaxExemptInterestIncome:
             return fedTax.totalTaxExemptIncome.asCurrency(0)
         case .totalAdjustments:
-            return scenario.totalAdjustments.asCurrency(0)
+            return fedTax.scenario.totalAdjustments.asCurrency(0)
         case .totalWages:
-            return scenario.totalWages.asCurrency(0)
+            return fedTax.scenario.totalWages.asCurrency(0)
         case .totalSSAIncome:
-            return scenario.totalSocialSecurityIncome.asCurrency(0)
+            return fedTax.scenario.totalSocialSecurityIncome.asCurrency(0)
         case .totalIncomeOfType(let incomeType):
-            return scenario.income.total(for: incomeType).asCurrency(0)
+            return fedTax.scenario.income.total(for: incomeType).asCurrency(0)
         case .totalDeductionOftype(let deductionType):
-            return scenario.deductions.total(for: deductionType).asCurrency(0)
+            return fedTax.scenario.deductions.total(for: deductionType).asCurrency(0)
         case .totalAdjustmentOfType(let adjustmentType):
-            return scenario.adjustments.total(for: adjustmentType).asCurrency(0)
+            return fedTax.scenario.adjustments.total(for: adjustmentType).asCurrency(0)
         case .totalCreditsOfType(let creditType):
-            return scenario.credits.total(for: creditType).asCurrency(0)
+            return fedTax.scenario.credits.total(for: creditType).asCurrency(0)
         case .agi:
             return fedTax.agi.asCurrency(0)
         case .agiBeforeSSI:
@@ -393,16 +396,16 @@ extension KeyMetricTypes {
             return fedTax.magiForSocialSecurity.asCurrency(0)
         case .interest:
             let exemptInterest = fedTax.totalTaxExemptIncome.asCurrency(0)
-            let taxableInterst = scenario.income.total(for: .interest).asCurrency(0)
+            let taxableInterst = fedTax.scenario.income.total(for: .interest).asCurrency(0)
             return "\(exemptInterest) / \(taxableInterst)"
         case .carryforwardLoss:
-            return scenario.carryforwardLoss.asCurrency(0)
+            return fedTax.scenario.carryforwardLoss.asCurrency(0)
         case .dividends:
-            return "\(scenario.qualifiedDividends) / \(scenario.ordinaryDividends)"
+            return "\(fedTax.scenario.qualifiedDividends.asCurrency(0)) / \(fedTax.scenario.ordinaryDividends.asCurrency(0))"
         case .capitalGains:
-            return "\(fedTax.netSTCG) / \(fedTax.netLTCG)"
+            return "\(fedTax.netSTCG.asCurrency(0)) / \(fedTax.netLTCG.asCurrency(0))"
         case .totalDividends:
-            return scenario.totalDividends.asCurrency(0)
+            return fedTax.scenario.totalDividends.asCurrency(0)
         case .netLTCG:
             return fedTax.netLTCG.asCurrency(0)
         case .netSTCG:
@@ -423,6 +426,8 @@ extension KeyMetricTypes {
             return fedTax.standardDeduction.asCurrency(0)
         case .deductibleMedicalExpenses:
             return fedTax.deductibleMedicalExpenses.asCurrency(0)
+        case .deductibleMedicalExpensesForAMT:
+            return fedTax.deductibleMedicalExpensesForAMT.asCurrency(0)
         case .deductibleCharitableCashContributions:
             return fedTax.deductibleCharitableCashContributions.asCurrency(0)
         case .deductibleCharitableAssetContributions:
@@ -460,12 +465,12 @@ extension KeyMetricTypes {
             return fedTax.totalFICATaxSocialSecurity.asCurrency(0)
         case .totalFICATaxMedicare:
             return fedTax.totalFICATaxMedicare.asCurrency(0)
-        case .maginalCapitalGainsTaxRate:
-            return fedTax.maginalCapitalGainsTaxRate.asCurrency(0)
+        case .marginalCapitalGainsTaxRate:
+            return fedTax.maginalCapitalGainsTaxRate.asPercentage
         case .marginalOrdinaryTaxRate:
-            return fedTax.marginalOrdinaryTaxRate.asCurrency(0)
+            return fedTax.marginalOrdinaryTaxRate.asPercentage
         case .averageTaxRate:
-            return fedTax.averageTaxRate.asCurrency(0)
+            return fedTax.averageTaxRate.asPercentage
         case .effectiveTaxRate:
             return "??" // TODO: Implement .effectiveTaxRate
         case .isSubjectToNIIT:

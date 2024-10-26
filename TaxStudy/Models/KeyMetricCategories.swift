@@ -126,7 +126,7 @@ enum KeyMetricCategories: String, CaseIterable {
             .amtTax,
             ]
         case .taxRates: return [
-            .maginalCapitalGainsTaxRate,
+            .marginalCapitalGainsTaxRate,
             .marginalOrdinaryTaxRate,
             .averageTaxRate,
             .effectiveTaxRate,

@@ -36,6 +36,13 @@ struct CardPicker<T: CaseIterable & Hashable & Displayable>: View {
                         .multilineTextAlignment(.trailing)
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(.gray)
+                        .overlay(Rectangle()
+                            .frame(height: 1) // Thin underline
+                            .foregroundColor(.gray.opacity(0.5)), // Line color
+                                 alignment: .bottom
+                        )
+                    Image(systemName: "chevron.up.chevron.down.square.fill")
+                        .foregroundColor(.accent)
                 }
                 .buttonStyle(PlainButtonStyle())
                 .frame(maxWidth: .infinity)
