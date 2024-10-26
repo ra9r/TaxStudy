@@ -265,6 +265,9 @@
     "Dividends Qualfied/Ordinary" : {
 
     },
+    "Duplicate" : {
+
+    },
     "Early Withdrawal Penalties" : {
 
     },
@@ -562,12 +565,6 @@
     "Net STCG" : {
 
     },
-    "New Project" : {
-
-    },
-    "New Scenario" : {
-
-    },
     "No applicable tax bracket found for %@ and '%@'" : {
       "localizations" : {
         "en" : {
@@ -669,6 +666,9 @@
 
     },
     "Qualified Widow(er)" : {
+
+    },
+    "Rename" : {
 
     },
     "Rental Income" : {

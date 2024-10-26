@@ -26,6 +26,16 @@ struct ProjectView : View {
                 ForEach(projServices.document.scenarios.indices, id:\.self) { index in
                     let name = projServices.document.scenarios[index].name
                     NavigationLink(name, value: index)
+                        .contextMenu {
+                            if multiSelection.count == 1 {
+                                Button("Duplicate") {
+                                    projServices.duplicate(at: index)
+                                }
+                                Button("Delete", role: .destructive) {
+                                    projServices.delete(at: index)
+                                }
+                            }
+                        }
                 }
                 .onMove(perform: move)
             }
@@ -49,8 +59,7 @@ struct ProjectView : View {
         .toolbar {
             ToolbarItem(placement: .secondaryAction) {
                 Button {
-                    guard let facts = projServices.firstFact() else { fatalError("No Tax Facts Found") }
-                    projServices.document.scenarios.append(TaxScenario(name: "New Scenario", facts: facts.id))
+                    projServices.newScenario()
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }
