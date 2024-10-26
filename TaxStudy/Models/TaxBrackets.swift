@@ -22,7 +22,7 @@ struct ProgressiveTaxPart : Codable {
     }
 }
 
-struct TaxBracket : Codable, Identifiable {
+class TaxBracket : Codable, Identifiable {
     var id: Double {
         return rate
     }
@@ -44,6 +44,7 @@ struct TaxBracket : Codable, Identifiable {
     }
 }
 
+@Observable
 class TaxBrackets : Codable {
    
     var brackets: [TaxBracket] = []

@@ -352,13 +352,13 @@
     "Head of Household" : {
 
     },
-    "Head of Houshold" : {
-
-    },
     "Health Coverage Tax Credit" : {
 
     },
     "Helps reduce the cost of health insurance premiums for individuals and families purchasing coverage through the ACA Marketplace." : {
+
+    },
+    "HoH" : {
 
     },
     "Home Office" : {
@@ -511,9 +511,6 @@
     "Married Filing Jointly" : {
 
     },
-    "Married Filing Separate" : {
-
-    },
     "Married Filing Separately" : {
 
     },
@@ -530,6 +527,12 @@
 
     },
     "Medicare" : {
+
+    },
+    "MFJ" : {
+
+    },
+    "MFS" : {
 
     },
     "Mileage" : {
@@ -666,6 +669,12 @@
 
     },
     "Qualified Widow(er)" : {
+
+    },
+    "QW" : {
+
+    },
+    "Rate" : {
 
     },
     "Rental Income" : {

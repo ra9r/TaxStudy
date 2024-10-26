@@ -8,24 +8,42 @@
 import SwiftUI
 
 struct TaxBracketEditor: View {
-    var taxBrackets: TaxBrackets
-    @State var selection: Set<TaxBracket.ID> = []
+    @Binding var taxBrackets: TaxBrackets
     
     
     var body: some View {
         VStack {
-            Table(taxBrackets.brackets, selection: $selection) {
-                TableColumn("Tax Rate", value: \.rate.asPercentage)
-                TableColumn("Single", value: \.thresholds[.single]!.asCurrency)
-                TableColumn("Married Filing Jointly", value: \.thresholds[.marriedFilingJointly]!.asCurrency)
-                TableColumn("Married Filing Separate", value: \.thresholds[.marriedFilingSeparately]!.asCurrency)
-                TableColumn("Head of Houshold", value: \.thresholds[.headOfHousehold]!.asCurrency)
-                TableColumn("Qualified Widow(er)", value: \.thresholds[.qualifiedWidow]!.asCurrency)
+            Table(taxBrackets.brackets) {
+                TableColumn("Rate") { bracket in
+                    RateField(bracket: bracket, taxBrackets: $taxBrackets)
+                }
+                .width(50)
+                TableColumn("Single") { bracket in
+                    ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets)
+                }
+                TableColumn("MFJ") { bracket in
+                    ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets)
+                }
+                TableColumn("MFS") { bracket in
+                    ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets)
+                }
+                TableColumn("HoH") { bracket in
+                    ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets)
+                }
+                TableColumn("QW") { bracket in
+                    ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets)
+                }
             }
             
             // Add New Tax Bracket Button
             Button(action: {
-                print("Clicked!")
+                taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
+                    .single: 0.0,
+                    .marriedFilingJointly: 0.0,
+                    .marriedFilingSeparately: 0.0,
+                    .headOfHousehold: 0.0,
+                    .qualifiedWidow: 0.0
+                ]))
             }) {
                 Text("Add New Tax Bracket")
             }
@@ -37,28 +55,49 @@ struct TaxBracketEditor: View {
     }
 }
 
-class InternalTaxBracket : Identifiable {
-    var id: UUID = UUID()
-    var rate: Double = 0
-    var singleThreshold: Double = 0
-    var marriedFilingJointlyThreadold: Double = 0
-    var marriedFilingSeparatelyThreadold: Double = 0
-    var headOfHouseholdThreadold: Double = 0
-    var qualifiedWidowThreadold: Double = 0
-    
-    init(
-        rate: Double,
-        singleThreshold: Double,
-        marriedFilingJointlyThreadold: Double = 0,
-        marriedFilingSeparatelyThreadold: Double = 0,
-        headOfHouseholdThreadold: Double = 0,
-        qualifiedWidowThreadold: Double = 0
-    ) {
-        self.rate = rate
-        self.singleThreshold = singleThreshold
-        self.marriedFilingJointlyThreadold = marriedFilingJointlyThreadold
-        self.marriedFilingSeparatelyThreadold = marriedFilingSeparatelyThreadold
-        self.headOfHouseholdThreadold = headOfHouseholdThreadold
-        self.qualifiedWidowThreadold = qualifiedWidowThreadold
+struct RateField : View {
+    var bracket: TaxBracket
+    @Binding var taxBrackets: TaxBrackets
+    var body: some View {
+        TextField(
+            "Rate",
+            value: Binding(
+                get: { bracket.rate },
+                set: { newValue in
+                    if let index = taxBrackets.brackets.firstIndex(where: { $0.id == bracket.id }) {
+                        taxBrackets.brackets[index].rate = newValue
+                    }
+                }
+            ),
+            format: .percent
+        )
+        .textFieldStyle(.plain)
+        
     }
+}
+
+struct ThresholdField : View {
+    var filingStatus: FilingStatus
+    var bracket: TaxBracket
+    @Binding var taxBrackets: TaxBrackets
+    var body: some View {
+        TextField(
+            "",
+            value: Binding(
+                get: { bracket.thresholds[filingStatus]! },
+                set: { newValue in
+                    if let index = taxBrackets.brackets.firstIndex(where: { $0.id == bracket.id }) {
+                        taxBrackets.brackets[index].thresholds[filingStatus]! = newValue
+                    }
+                }
+            ),
+            format: .currency(code: "USD")
+        )
+        .textFieldStyle(.plain)
+    }
+}
+
+#Preview {
+    @Previewable @State var taxBrackets = OrdinaryTaxBrackets2024
+    TaxBracketEditor(taxBrackets: $taxBrackets)
 }

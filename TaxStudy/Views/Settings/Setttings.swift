@@ -8,13 +8,13 @@ import SwiftUI
 
 struct SettingsView : View {
     @Binding var facts: [TaxFacts]
-    @State var selectedFacts: String?
+    @State var selectedFacts: Int?
     @State var selectedSetting: SettingTypes = .ordinaryTaxBrackets
     
     var body: some View {
         NavigationSplitView {
-            List(facts.map({ $0.id }), id: \.self,  selection: $selectedFacts) { id in
-                NavigationLink("Facts: \(id)", value: id)
+            List(facts.indices, id: \.self,  selection: $selectedFacts) { index in
+                NavigationLink("Facts: \(facts[index].id)", value: index)
             }
         } content: {
             List(SettingTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
@@ -22,38 +22,40 @@ struct SettingsView : View {
             }
         } detail: {
             if let selectedFacts {
-                if let facts = facts.first(where: { $0.id == selectedFacts }) {
-                    switch selectedSetting {
-                    case .ordinaryTaxBrackets:
-                        TaxBracketEditor(taxBrackets: facts.ordinaryTaxBrackets)
-                    case .capitalGainsTaxBrackets:
-                        TaxBracketEditor(taxBrackets: facts.capitalGainTaxBrackets)
-                    case .ssTaxThresholds:
-                        TaxBracketEditor(taxBrackets: facts.ssTaxThresholds)
-                    case .medicareTaxThresholds:
-                        TaxBracketEditor(taxBrackets: facts.medicareTaxThresholds)
-                    case .provisionalIncomeThresholds:
-                        TaxBracketEditor(taxBrackets: facts.provisionalIncomeThresholds)
-                    case .hsaLimits:
-                        Text("HSA Limits")
-                    case .iraLimits:
-                        Text("IRA Limits")
-                    case .irmaaSurcharges:
-                        Text("IRMAA Surcharges")
-                    case .niiTax:
-                        Text("Net Invetment Income Tax (NIIT)")
-                    case .standardDeductions:
-                        Text("Standard Deductions")
-                    case .charitableDeductions:
-                        Text("Charitable Deductions")
-                    case .earmingsLimits:
-                        Text("Earning Limits for SSA Income")
-                    }
+                switch selectedSetting {
+                case .ordinaryTaxBrackets:
+                    TaxBracketEditor(taxBrackets: $facts[selectedFacts].ordinaryTaxBrackets)
+                case .capitalGainsTaxBrackets:
+                    TaxBracketEditor(taxBrackets: $facts[selectedFacts].capitalGainTaxBrackets)
+                case .ssTaxThresholds:
+                    TaxBracketEditor(taxBrackets: $facts[selectedFacts].ssTaxThresholds)
+                case .medicareTaxThresholds:
+                    TaxBracketEditor(taxBrackets: $facts[selectedFacts].medicareTaxThresholds)
+                case .provisionalIncomeThresholds:
+                    TaxBracketEditor(taxBrackets: $facts[selectedFacts].provisionalIncomeThresholds)
+                case .hsaLimits:
+                    Text("HSA Limits")
+                case .iraLimits:
+                    Text("IRA Limits")
+                case .irmaaSurcharges:
+                    Text("IRMAA Surcharges")
+                case .niiTax:
+                    Text("Net Invetment Income Tax (NIIT)")
+                case .standardDeductions:
+                    Text("Standard Deductions")
+                case .charitableDeductions:
+                    Text("Charitable Deductions")
+                case .earmingsLimits:
+                    Text("Earning Limits for SSA Income")
                 }
             } else {
                 Text("Nothing to see here!")
             }
-            
+        }
+        .onAppear {
+            if selectedFacts == nil && facts.isEmpty == false {
+                selectedFacts = 0
+            }
         }
     }
 }
