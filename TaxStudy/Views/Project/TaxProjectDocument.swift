@@ -8,6 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+@Observable
 class TaxProjectDocument: FileDocument, Identifiable {
     
     
@@ -21,10 +22,10 @@ class TaxProjectDocument: FileDocument, Identifiable {
     var scenarios: [TaxScenario]
     
     // Default initializer
-    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario]? = nil) {
+    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario] = []) {
         self.name = name ?? "New Project"
         self.facts = facts ?? [DefaultTaxFacts2024]
-        self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
+        self.scenarios = scenarios
     }
     
     // Required initializer to read the file from disk

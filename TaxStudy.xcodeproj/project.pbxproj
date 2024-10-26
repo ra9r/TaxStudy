@@ -165,14 +165,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A4081ED2CC6B02C007E5CF0 /* DocumentTypes */ = {
-			isa = PBXGroup;
-			children = (
-				2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */,
-			);
-			path = DocumentTypes;
-			sourceTree = "<group>";
-		};
 		2A51CB022CB9A3650075BBA0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +259,6 @@
 				2A51CB022CB9A3650075BBA0 /* Components */,
 				2A51CB052CB9A3650075BBA0 /* Extensions */,
 				2AA0B5182CC48DFC00546505 /* Services */,
-				2A4081ED2CC6B02C007E5CF0 /* DocumentTypes */,
 				2A51CB0C2CB9A3650075BBA0 /* Models */,
 				2A51CB0E2CB9A3650075BBA0 /* Preview Content */,
 			);
@@ -347,6 +338,7 @@
 		2ACFDE2A2CCA45AC0033B5B8 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */,
 				2ACFDE2B2CCA47A70033B5B8 /* ProjectView.swift */,
 				2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */,
 			);
