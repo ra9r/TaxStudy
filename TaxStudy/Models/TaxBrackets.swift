@@ -22,7 +22,8 @@ struct ProgressiveTaxPart : Codable {
     }
 }
 
-class TaxBracket : Codable, Identifiable {
+class TaxBracket : Codable, Identifiable, DeepCopyable {
+    
     var id: Double {
         return rate
     }
@@ -42,10 +43,14 @@ class TaxBracket : Codable, Identifiable {
         
         return threshold
     }
+    
+    var deepCopy: TaxBracket {
+        return TaxBracket(self.rate, thresholds: self.thresholds)
+    }
 }
 
 @Observable
-class TaxBrackets : Codable {
+class TaxBrackets : Codable, DeepCopyable {
    
     var brackets: [TaxBracket] = []
     
@@ -55,7 +60,10 @@ class TaxBrackets : Codable {
         } else {
             self.brackets = brackets.sorted { $0.rate > $1.rate }
         }
-        
+    }
+    
+    init(_ brackets: [TaxBracket]) {
+        self.brackets = brackets
     }
     
     func highestBracket(for amount: Double, filingStatus: FilingStatus) throws -> TaxBracket {
@@ -120,6 +128,11 @@ class TaxBrackets : Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         self.brackets = try container.decode([TaxBracket].self)
+    }
+    
+    var deepCopy: TaxBrackets {
+        let copiedBrackets = self.brackets.map { $0.deepCopy }
+        return TaxBrackets(copiedBrackets)
     }
 }
 

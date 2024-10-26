@@ -358,9 +358,6 @@
     "Helps reduce the cost of health insurance premiums for individuals and families purchasing coverage through the ACA Marketplace." : {
 
     },
-    "HoH" : {
-
-    },
     "Home Office" : {
 
     },
@@ -529,12 +526,6 @@
     "Medicare" : {
 
     },
-    "MFJ" : {
-
-    },
-    "MFS" : {
-
-    },
     "Mileage" : {
 
     },
@@ -671,9 +662,6 @@
     "Qualified Widow(er)" : {
 
     },
-    "QW" : {
-
-    },
     "Rate" : {
 
     },
@@ -681,6 +669,9 @@
 
     },
     "Rental Property Expenses" : {
+
+    },
+    "Reset to Initial State" : {
 
     },
     "Residential Renewable Energy" : {
@@ -750,9 +741,6 @@
 
     },
     "Student Loan Interest" : {
-
-    },
-    "Tax Rate" : {
 
     },
     "Tax Rates" : {
