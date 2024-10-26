@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
@@ -557,6 +560,12 @@
 
     },
     "Net STCG" : {
+
+    },
+    "New Project" : {
+
+    },
+    "New Scenario" : {
 
     },
     "No applicable tax bracket found for %@ and '%@'" : {

@@ -5,7 +5,6 @@
 //  Created by Rodney Aiglstorfer on 9/27/24.
 //
 
-import SwiftData
 import SwiftUI
 
 @main

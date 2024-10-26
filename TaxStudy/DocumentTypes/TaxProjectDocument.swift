@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct TaxProjectDocument: FileDocument, Identifiable {
+class TaxProjectDocument: FileDocument, Identifiable {
     
     var id = UUID()
     
@@ -28,7 +28,7 @@ struct TaxProjectDocument: FileDocument, Identifiable {
     }
     
     // Required initializer to read the file from disk
-    init(configuration: ReadConfiguration) throws {
+    required init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents else {
             throw CocoaError(.fileReadCorruptFile)
         }
@@ -51,6 +51,10 @@ struct TaxProjectDocument: FileDocument, Identifiable {
             scenarios: self.scenarios
         ))
         return FileWrapper(regularFileWithContents: jsonData)
+    }
+    
+    func newScenario() {
+        self.scenarios.append(TaxScenario(name: "New Scenario", facts: self.facts[0].id))
     }
 }
 
