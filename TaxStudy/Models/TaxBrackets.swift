@@ -8,50 +8,15 @@
 import Foundation
 import SwiftData
 
-struct ProgressiveTaxPart : Codable {
-    var rate: Double
-    var threshold: Double
-    var taxableAtRate: Double
-    var computedTax: Double
-    
-    init(rate: Double = 0, threshold: Double = 0, taxableAtRate: Double = 0, computedTax: Double = 0) {
-        self.rate = rate
-        self.threshold = threshold
-        self.taxableAtRate = taxableAtRate
-        self.computedTax = computedTax
-    }
-}
 
-class TaxBracket : Codable, Identifiable, DeepCopyable {
-    
-    var id: Double {
-        return rate
-    }
 
-    var rate: Double
-    var thresholds: [FilingStatus: Double]
-    
-    init(_ rate: Double, thresholds: [FilingStatus: Double]) {
-        self.rate = rate
-        self.thresholds = thresholds
-    }
-    
-    func threshold(for filingStatus: FilingStatus) throws -> Double {
-        guard let threshold = thresholds[filingStatus] else {
-            throw AppErrors.missingFilingStatus(String(localized: "Threshold not defined for \(rate.asPercentage) and '\(filingStatus.label)'"))
-        }
-        
-        return threshold
-    }
-    
-    var deepCopy: TaxBracket {
-        return TaxBracket(self.rate, thresholds: self.thresholds)
-    }
-}
+
 
 @Observable
-class TaxBrackets : Codable, DeepCopyable {
-   
+class TaxBrackets : Codable, Identifiable {
+    
+    var id: UUID = UUID()
+    
     var brackets: [TaxBracket] = []
     
     init(_ brackets: TaxBracket..., ascending: Bool = true) {
@@ -84,28 +49,26 @@ class TaxBrackets : Codable, DeepCopyable {
         
         throw AppErrors.missingFilingStatus(String(localized: "No applicable tax bracket found for \(amount.asCurrency) and '\(filingStatus.label)'"))
     }
-    
-    
-    
+
     func progressiveTaxParts(for income: Double, filingStatus: FilingStatus) throws -> [ProgressiveTaxPart] {
         var txParts: [ProgressiveTaxPart] = []
-         
-         for (i, bracket) in brackets.enumerated() {
-             var txPart = ProgressiveTaxPart()
-             txPart.rate = bracket.rate
-             txPart.threshold = try bracket.threshold(for: filingStatus)
-             if income > txPart.threshold {
-                 var nextThreshold = income
-                 if (i + 1 < brackets.count) {
-                     nextThreshold = try brackets[i + 1].threshold(for: filingStatus)
-                 }
-                 txPart.taxableAtRate = min(income, nextThreshold) - txPart.threshold
-                 txPart.computedTax = txPart.taxableAtRate * bracket.rate
-                 txParts.append(txPart)
-             } else {
-                 break
-             }
-         }
+        
+        for (i, bracket) in brackets.enumerated() {
+            var txPart = ProgressiveTaxPart()
+            txPart.rate = bracket.rate
+            txPart.threshold = try bracket.threshold(for: filingStatus)
+            if income > txPart.threshold {
+                var nextThreshold = income
+                if (i + 1 < brackets.count) {
+                    nextThreshold = try brackets[i + 1].threshold(for: filingStatus)
+                }
+                txPart.taxableAtRate = min(income, nextThreshold) - txPart.threshold
+                txPart.computedTax = txPart.taxableAtRate * bracket.rate
+                txParts.append(txPart)
+            } else {
+                break
+            }
+        }
         
         return txParts
     }
@@ -129,12 +92,40 @@ class TaxBrackets : Codable, DeepCopyable {
         let container = try decoder.singleValueContainer()
         self.brackets = try container.decode([TaxBracket].self)
     }
+}
+
+extension TaxBrackets : Hashable {
+    static func == (lhs: TaxBrackets, rhs: TaxBrackets) -> Bool {
+        return lhs.id == rhs.id
+    }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension TaxBrackets : DeepCopyable {
     var deepCopy: TaxBrackets {
         let copiedBrackets = self.brackets.map { $0.deepCopy }
         return TaxBrackets(copiedBrackets)
     }
 }
+
+struct ProgressiveTaxPart : Codable {
+    var rate: Double
+    var threshold: Double
+    var taxableAtRate: Double
+    var computedTax: Double
+    
+    init(rate: Double = 0, threshold: Double = 0, taxableAtRate: Double = 0, computedTax: Double = 0) {
+        self.rate = rate
+        self.threshold = threshold
+        self.taxableAtRate = taxableAtRate
+        self.computedTax = computedTax
+    }
+}
+
+// MARK: - Default Brackets
 
 let OrdinaryTaxBrackets2024 = TaxBrackets(
     .init(0.10, thresholds: [

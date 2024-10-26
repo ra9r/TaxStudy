@@ -9,13 +9,11 @@ import SwiftUI
 
 struct TaxBracketEditor: View {
     @Binding var taxBrackets: TaxBrackets
-    @State var multiSelection: Set<Int> = []
-    private var initialTaxBrackets: TaxBrackets
+    @State var multiSelection: Set<TaxBracket> = []
     
     // Initialize the initialTaxBrackets with the current taxBrackets
     init(taxBrackets: Binding<TaxBrackets>) {
         self._taxBrackets = taxBrackets
-        self.initialTaxBrackets = taxBrackets.wrappedValue.deepCopy
     }
     
     
@@ -30,8 +28,7 @@ struct TaxBracketEditor: View {
                 Heading("QW")
             }
             List(selection: $multiSelection) {
-                ForEach(taxBrackets.brackets.indices, id: \.self) { index in
-                    let bracket = taxBrackets.brackets[index]
+                ForEach(taxBrackets.brackets, id: \.id) { bracket in
                     HStack {
                         RateField(bracket: bracket, taxBrackets: $taxBrackets)
                         ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets)
@@ -40,17 +37,15 @@ struct TaxBracketEditor: View {
                         ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets)
                         ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets)
                     }
+                    .tag(bracket)
                     .contextMenu {
                         Button("Delete") {
-                            print("Delete Clicked")
+                            delete()
                         }
                     }
                 }
                 .onMove(perform: move)
-            }
-            HStack {
-                // Add New Tax Bracket Button
-                Button(action: {
+                Button {
                     taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
                         .single: 0.0,
                         .marriedFilingJointly: 0.0,
@@ -58,35 +53,42 @@ struct TaxBracketEditor: View {
                         .headOfHousehold: 0.0,
                         .qualifiedWidow: 0.0
                     ]))
-                }) {
-                    Text("Add New Tax Bracket")
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add New Tax Bracket")
+                    }
                 }
-                Button(action: reset) {
-                    Text("Reset to Initial State")
-                }
-                .padding()
-                
+                .buttonStyle(.plain)
             }
             Spacer()
         }
         .padding()
+        
     }
     
-    // The reset function to restore the original state
-    func reset() {
-        taxBrackets = initialTaxBrackets
+    func delete() {
+        DispatchQueue.main.async {
+            // Remove the selected brackets
+            for bracket in multiSelection {
+                taxBrackets.brackets.removeAll(where: { $0.id == bracket.id })
+            }
+            
+            // Clear the selection after deletion
+            multiSelection.removeAll()
+        }
     }
     
     func move(from source: IndexSet, to destination: Int) {
         // Track the actual selected items before the move
-        let selectedItems = multiSelection.map { taxBrackets.brackets[$0].rate }
+        let selectedItems = multiSelection.map { $0.id }
         
         // Perform the move in the document
         taxBrackets.brackets.move(fromOffsets: source, toOffset: destination)
         
         // Update multiSelection by finding the new indices of the previously selected items
-        multiSelection = Set(selectedItems.compactMap { rate in
-            taxBrackets.brackets.firstIndex(where: { $0.rate == rate })
+        multiSelection = Set(selectedItems.compactMap { id in
+            taxBrackets.brackets.first(where: { $0.id == id })
         })
     }
 }
