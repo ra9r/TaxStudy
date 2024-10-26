@@ -10,12 +10,12 @@ import UniformTypeIdentifiers
 
 class TaxProjectDocument: FileDocument, Identifiable {
     
-    var id = UUID()
     
     // The file format this document supports
     static var readableContentTypes: [UTType] = [.txproj]
 
     // The data model that will hold the decoded JSON content
+    var id = UUID()
     var name: String
     var facts: [TaxFacts]
     var scenarios: [TaxScenario]

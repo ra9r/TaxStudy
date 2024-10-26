@@ -25,6 +25,7 @@
 		2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */; };
 		2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB152CB9A3650075BBA0 /* JSONView.swift */; };
 		2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */; };
+		2A6B0BBC2CCC82E000FEC030 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */; };
 		2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */; };
 		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
 		2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */; };
@@ -96,6 +97,7 @@
 		2A51CB192CB9A3650075BBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaxStudy.entitlements; sourceTree = "<group>"; };
 		2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxStudyApp.swift; sourceTree = "<group>"; };
+		2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		2ACFDE2A2CCA45AC0033B5B8 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */,
 				2ACFDE2B2CCA47A70033B5B8 /* ProjectView.swift */,
 				2AA0B5192CC48E1200546505 /* ProjectServices.swift */,
 			);
@@ -465,6 +468,7 @@
 				2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */,
 				2ACC20272CC267B500D2A907 /* KeyMetricsView.swift in Sources */,
 				2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */,
+				2A6B0BBC2CCC82E000FEC030 /* SideMenu.swift in Sources */,
 				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
 				2A51CB242CB9A3650075BBA0 /* Double+Extension.swift in Sources */,

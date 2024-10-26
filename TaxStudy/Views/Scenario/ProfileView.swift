@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+//    var facts: [TaxFacts]
     @Binding var scenario: TaxScenario
-    
-    init(_ scenario: Binding<TaxScenario>) {
-        self._scenario = scenario
-    }
-    
+     
     var body: some View {
         CardView("Profiles") {
             HStack(alignment: .top) {
@@ -62,7 +59,6 @@ struct ProfileView: View {
                 }
             }
         }
-        //        .frame(maxHeight: 100)
     }
 }
 

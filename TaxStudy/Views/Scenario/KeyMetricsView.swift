@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    @EnvironmentObject var projServices: ProjectServices
+    var facts: [TaxFacts]
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
@@ -44,11 +44,7 @@ struct KeyMetricsView: View {
     @State var federalTaxes: FederalTaxCalc?
     @State var stateTaxes: NCTaxCalc?
     @State var errorMessage: String?
-    
-    init(_ scenario: Binding<TaxScenario>) {
-        self._scenario = scenario
-    }
-    
+        
     
     var body: some View {
         CardView("Key Metrics") {
@@ -77,12 +73,11 @@ struct KeyMetricsView: View {
             }
         }
         .onAppear() {
-            guard let facts = projServices.facts(for: scenario.facts) else {
-                errorMessage = "No facts found for \(scenario.facts)."
-                return
+            guard let fact = facts.first(where: { $0.id == scenario.facts }) else {
+                fatalError("No tax facts found with id: '\(scenario.facts)'")
             }
-            self.federalTaxes = FederalTaxCalc(scenario, facts: facts)
-            self.stateTaxes = NCTaxCalc(scenario, facts: facts)
+            self.federalTaxes = FederalTaxCalc(scenario, facts: fact)
+            self.stateTaxes = NCTaxCalc(scenario, facts: fact)
         }
         
     }
