@@ -7,21 +7,17 @@
 import SwiftUI
 
 struct ScenarioView : View {
-    @EnvironmentObject var projServices: ProjectServices
+    var facts: [TaxFacts]
     @Binding var scenario: TaxScenario
-    
-    init(_ scenario: Binding<TaxScenario>) {
-        _scenario = scenario
-    }
     
     var body: some View {
         ScrollView {
             VStack {
-                HeaderView($scenario)
-                KeyMetricsView($scenario)
-                ProfileView($scenario)
-                IncomeView($scenario)
-                DeductionsView($scenario)
+                HeaderView(facts: facts, scenario: $scenario)
+                KeyMetricsView(facts: facts, scenario: $scenario)
+                ProfileView(scenario: $scenario)
+                IncomeView(scenario: $scenario)
+                DeductionsView(scenario: $scenario)
             }
             .padding()
         }

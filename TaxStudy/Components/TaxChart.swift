@@ -17,13 +17,8 @@ struct BarSegment: Identifiable {
 
 
 struct TaxChart: View {
-    @EnvironmentObject var appServices: ProjectServices
+    var facts: [TaxFacts]
     var scenario: TaxScenario
-    
-    
-    init(_ scenario: TaxScenario) {
-        self.scenario = scenario
-    }
     
     var body: some View {
         
@@ -40,7 +35,7 @@ struct TaxChart: View {
     }
     
     func segments() -> [BarSegment] {
-        if let facts = appServices.facts(for: scenario.facts) {
+        if let facts = facts.first(where: {$0.id == scenario.facts }) {
             let federalTaxes = FederalTaxCalc(scenario, facts: facts)
             var data: [BarSegment] = []
             data.append(.init(name: "Capital Gains", value: federalTaxes.capitalGainsTax, color: .accent.opacity(0.8)))

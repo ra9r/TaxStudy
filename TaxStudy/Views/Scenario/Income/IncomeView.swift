@@ -10,10 +10,6 @@ import SwiftUI
 struct IncomeView: View {
     @Binding var scenario: TaxScenario
     
-    init(_ scenario: Binding<TaxScenario>) {
-        self._scenario = scenario
-    }
-    
     var body: some View {
         ScrollView {
             HStack(alignment: .top, spacing: 10) {

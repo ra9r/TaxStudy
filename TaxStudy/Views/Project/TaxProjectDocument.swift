@@ -8,23 +8,24 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+@Observable
 class TaxProjectDocument: FileDocument, Identifiable {
     
-    var id = UUID()
     
     // The file format this document supports
     static var readableContentTypes: [UTType] = [.txproj]
 
     // The data model that will hold the decoded JSON content
+    var id = UUID()
     var name: String
     var facts: [TaxFacts]
     var scenarios: [TaxScenario]
     
     // Default initializer
-    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario]? = nil) {
+    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario] = []) {
         self.name = name ?? "New Project"
         self.facts = facts ?? [DefaultTaxFacts2024]
-        self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
+        self.scenarios = scenarios
     }
     
     // Required initializer to read the file from disk
