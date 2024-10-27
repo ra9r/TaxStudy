@@ -23,7 +23,7 @@ struct TaxStudyApp: App {
             ProjectCommands()
         }
         
-        WindowGroup("Tax Facts", id: "TaxFactsEditor") {
+        Window("Tax Facts", id: "TaxFactsEditor") {
             SettingsView(facts: $allFacts)
         }
     }

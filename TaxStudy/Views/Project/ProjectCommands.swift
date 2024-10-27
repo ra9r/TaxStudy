@@ -11,12 +11,14 @@ import KeyWindow
 struct ProjectCommands : Commands {
     @Environment(\.openWindow) var openWindow
     @Environment(\.newDocument) var newDocument
+    @Environment(\.openDocument) var openDocument
     
     @KeyWindowValueBinding(TaxProjectDocument.self)
     var document: TaxProjectDocument?
     
     
     var body: some Commands {
+     
         CommandGroup(after: .importExport) {
             Button("Import TaxFacts...") {
                 importTaxFacts()
@@ -25,17 +27,12 @@ struct ProjectCommands : Commands {
                 exportTaxFacts()
             }
         }
-        CommandGroup(replacing: .newItem) {
-            Button("New Project") {
-                newDocument(contentType: .txproj)
-            }
-            .keyboardShortcut("n", modifiers: [.command, .shift])
-            
+        CommandGroup(after: .newItem) {
             Button("New Scenario") {
                 newScenario()
             }
             .disabled(document == nil)
-            .keyboardShortcut("n", modifiers: .command)
+            .keyboardShortcut("n", modifiers: [.command, .shift])
         }
         CommandGroup(after: CommandGroupPlacement.appInfo) {
             Button("Settings...") {
