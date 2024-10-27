@@ -26,6 +26,7 @@ struct ProjectCommands : Commands {
             Button("New Scenario") {
                 newScenario()
             }
+            .disabled(document == nil)
             .keyboardShortcut("n", modifiers: .command)
         }
         CommandGroup(after: CommandGroupPlacement.appInfo) {
