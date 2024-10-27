@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SideMenu: View {
-    @State var showSettings: Bool = false
     @Binding var facts: [TaxFacts]
     @Binding var scenarios: [TaxScenario]
     @Binding var multiSelection: Set<Int>
@@ -32,28 +31,27 @@ struct SideMenu: View {
             }
             .onMove(perform: move)
         }
-        .frame(minWidth: 200)
         .toolbar {
-            ToolbarItem(placement: .secondaryAction) {
+            ToolbarItem {
                 Button {
                     newScenario()
                 } label: {
-                    Image(systemName: "square.and.pencil")
+                    Image(systemName: "plus")
                 }
-            }
-            
-            ToolbarItem(placement: .status) {
-                Button {
-                    showSettings.toggle()
-                } label: {
-                    Image(systemName: "wrench.and.screwdriver")
-                }
+                .buttonStyle(.plain)
             }
         }
-        .sheet(isPresented: $showSettings) {
-            SettingsView(facts: $facts)
-                .frame(width: 1024, height: 500)
+        .frame(minWidth: 200)
+        
+    }
+    
+    func newScenario() {
+        guard let firstFact = facts.first else {
+            fatalError("Unabled to create new TaxScenario, no TaxFacts found")
         }
+        let newScenario = TaxScenario(name: "New Scenario", facts: firstFact.id)
+        
+        scenarios.append(newScenario)
     }
     
     func move(from source: IndexSet, to destination: Int) {
@@ -67,15 +65,6 @@ struct SideMenu: View {
         multiSelection = Set(selectedItems.compactMap { name in
             scenarios.firstIndex(where: { $0.name == name })
         })
-    }
-    
-    func newScenario() {
-        guard let firstFact = facts.first else {
-            fatalError("Unabled to create new TaxScenario, no TaxFacts found")
-        }
-        let newScenario = TaxScenario(name: "New Scenario", facts: firstFact.id)
-        
-       scenarios.append(newScenario)
     }
     
     func delete(at selectedIndex: Int) {

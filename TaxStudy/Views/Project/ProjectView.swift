@@ -12,6 +12,7 @@ struct ProjectView : View {
     @Binding var document: TaxProjectDocument
     @State var multiSelection = Set<Int>()
     
+    
     init(_ document: Binding<TaxProjectDocument>) {
         _document = document
     }

@@ -15,9 +15,16 @@ struct HeaderView: View {
         HStack(alignment: .top, spacing: 25) {
             blueBox
             nameAndDescription
-            Picker("Filing Status", selection: $scenario.filingStatus) {
-                ForEach(FilingStatus.allCases, id: \.label) { status in
-                    Text(status.label).tag(status)
+            VStack {
+                Picker("Filing Status", selection: $scenario.filingStatus) {
+                    ForEach(FilingStatus.allCases, id: \.label) { status in
+                        Text(status.label).tag(status)
+                    }
+                }
+                Picker("Tax Facts", selection: $scenario.facts) {
+                    ForEach(facts, id: \.id) { taxFacts in
+                        Text(taxFacts.id).tag(taxFacts.id)
+                    }
                 }
             }
             Spacer()
