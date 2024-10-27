@@ -20,22 +20,22 @@ struct TaxBracketEditor: View {
     var body: some View {
         VStack {
             HStack {
-                Heading("Rate")
-                Heading("Single")
-                Heading("MFJ")
-                Heading("MFS")
-                Heading("HoH")
-                Heading("QW")
+                Heading("Rate").frame(width: 60)
+                Heading("Single").frame(width: 110)
+                Heading("MFJ").frame(width: 110)
+                Heading("MFS").frame(width: 110)
+                Heading("HoH").frame(width: 110)
+                Heading("QW").frame(width: 110)
             }
             List(selection: $multiSelection) {
                 ForEach(taxBrackets.brackets, id: \.id) { bracket in
                     HStack {
-                        RateField(bracket: bracket, taxBrackets: $taxBrackets)
-                        ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets)
-                        ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets)
-                        ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets)
-                        ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets)
-                        ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets)
+                        RateField(bracket: bracket, taxBrackets: $taxBrackets).frame(width: 60)
+                        ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
+                        ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
+                        ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
+                        ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
+                        ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
                     }
                     .tag(bracket)
                     .contextMenu {
