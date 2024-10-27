@@ -17,6 +17,14 @@ struct ProjectCommands : Commands {
     
     
     var body: some Commands {
+        CommandGroup(after: .importExport) {
+            Button("Import TaxFacts...") {
+                importTaxFacts()
+            }
+            Button("Export TaxFacts...") {
+                exportTaxFacts()
+            }
+        }
         CommandGroup(replacing: .newItem) {
             Button("New Project") {
                 newDocument(contentType: .txproj)
@@ -35,11 +43,6 @@ struct ProjectCommands : Commands {
             }
             .keyboardShortcut(",", modifiers: .command)
         }
-        CommandMenu("Custom") {
-            Button("How many scenarios?") {
-                print("Scenarios: \(document?.scenarios.count ?? 0)")
-            }
-        }
     }
     
     func newScenario() {
@@ -54,5 +57,29 @@ struct ProjectCommands : Commands {
         document.scenarios.append(newScenario)
     }
     
+    func importTaxFacts() {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = true
+        openPanel.canChooseDirectories = false
+        openPanel.allowsMultipleSelection = false
+
+        if openPanel.runModal() == .OK {
+            if let url = openPanel.url {
+                print("Import from: \(url.path)")
+            }
+        }
+    }
     
+    func exportTaxFacts() {
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.nameFieldStringValue = "Untitled" // Default file name
+        savePanel.allowedContentTypes = [.txcfg] // Define the allowed file types (optional)
+        
+        if savePanel.runModal() == .OK {
+            if let url = savePanel.url {
+                print("Export to: \(url.path)")
+            }
+        }
+    }
 }

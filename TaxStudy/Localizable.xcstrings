@@ -175,9 +175,6 @@
     "Computed Flags" : {
 
     },
-    "Custom" : {
-
-    },
     "Deduct 50% of your self-employment taxes (SECA)." : {
 
     },
@@ -298,6 +295,9 @@
     "Error: %@" : {
 
     },
+    "Export TaxFacts..." : {
+
+    },
     "Facts: %@" : {
 
     },
@@ -361,13 +361,13 @@
     "Home Office" : {
 
     },
-    "How many scenarios?" : {
-
-    },
     "HSA Limits" : {
 
     },
     "HSA or MSA Contribution" : {
+
+    },
+    "Import TaxFacts..." : {
 
     },
     "Income" : {
