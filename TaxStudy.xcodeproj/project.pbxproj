@@ -23,7 +23,6 @@
 		2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB112CB9A3650075BBA0 /* StateTaxCalc.swift */; };
 		2A51CB2F2CB9A3650075BBA0 /* DeductionEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */; };
 		2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */; };
-		2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB152CB9A3650075BBA0 /* JSONView.swift */; };
 		2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */; };
 		2A6B0BBC2CCC82E000FEC030 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */; };
 		2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */; };
@@ -93,7 +92,6 @@
 		2A51CB112CB9A3650075BBA0 /* StateTaxCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTaxCalc.swift; sourceTree = "<group>"; };
 		2A51CB132CB9A3650075BBA0 /* DeductionEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionEditor.swift; sourceTree = "<group>"; };
 		2A51CB142CB9A3650075BBA0 /* IncomeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeEditor.swift; sourceTree = "<group>"; };
-		2A51CB152CB9A3650075BBA0 /* JSONView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONView.swift; sourceTree = "<group>"; };
 		2A51CB192CB9A3650075BBA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaxStudy.entitlements; sourceTree = "<group>"; };
 		2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxStudyApp.swift; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 				2ACFDE2A2CCA45AC0033B5B8 /* Project */,
 				2A7CB28F2CBC71A9008334E1 /* Scenario */,
 				2ACC200E2CC00A1000D2A907 /* Settings */,
-				2A51CB152CB9A3650075BBA0 /* JSONView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -491,7 +488,6 @@
 				2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */,
 				2ACFDE302CCA630D0033B5B8 /* TaxProjectDocument.swift in Sources */,
 				2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */,
-				2A51CB312CB9A3650075BBA0 /* JSONView.swift in Sources */,
 				2ACFDE322CCA6D720033B5B8 /* ScenarioView.swift in Sources */,
 				2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */,
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,

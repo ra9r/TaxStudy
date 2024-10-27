@@ -13,20 +13,9 @@ struct HeaderView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 25) {
-            blueBox
-            nameAndDescription
-            VStack {
-                Picker("Filing Status", selection: $scenario.filingStatus) {
-                    ForEach(FilingStatus.allCases, id: \.label) { status in
-                        Text(status.label).tag(status)
-                    }
-                }
-                Picker("Tax Facts", selection: $scenario.facts) {
-                    ForEach(facts, id: \.id) { taxFacts in
-                        Text(taxFacts.id).tag(taxFacts.id)
-                    }
-                }
-            }
+            BlueBox
+            NameAndDescription
+            ConfigBox
             Spacer()
         }
         .padding(.bottom, 20)
@@ -39,7 +28,23 @@ struct HeaderView: View {
         return FederalTaxCalc(scenario, facts: fact).grossIncome
     }
     
-    var blueBox: some View {
+    var ConfigBox: some View {
+        VStack {
+            Picker("Filing Status", selection: $scenario.filingStatus) {
+                ForEach(FilingStatus.allCases, id: \.label) { status in
+                    Text(status.label).tag(status)
+                }
+            }
+            Picker("Tax Facts", selection: $scenario.facts) {
+                ForEach(facts, id: \.id) { taxFacts in
+                    Text(taxFacts.id).tag(taxFacts.id)
+                }
+            }
+        }
+        .frame(maxWidth: 200)
+    }
+    
+    var BlueBox: some View {
         HStack {
             Text(scenario.facts)
                 .font(.largeTitle)
@@ -58,7 +63,7 @@ struct HeaderView: View {
         .cornerRadius(5)
     }
     
-    var nameAndDescription: some View {
+    var NameAndDescription: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .firstTextBaseline) {
                 Text("Scenario:")
