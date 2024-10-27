@@ -175,6 +175,9 @@
     "Computed Flags" : {
 
     },
+    "Custom" : {
+
+    },
     "Deduct 50% of your self-employment taxes (SECA)." : {
 
     },
@@ -356,6 +359,9 @@
 
     },
     "Home Office" : {
+
+    },
+    "How many scenarios?" : {
 
     },
     "HSA Limits" : {
@@ -554,6 +560,12 @@
 
     },
     "Net STCG" : {
+
+    },
+    "New Project" : {
+
+    },
+    "New Scenario" : {
 
     },
     "No applicable tax bracket found for %@ and '%@'" : {

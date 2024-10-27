@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyWindow
 
 @main
 struct TaxStudyApp: App {
@@ -15,14 +16,11 @@ struct TaxStudyApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: TaxProjectDocument()) { file in
             ProjectView(file.$document)
+                .observeWindow()
         }
         .commands {
-            CommandGroup(after: CommandGroupPlacement.appInfo) {
-                Button("Settings...") {
-                    openWindow(id: "TaxFactsEditor")
-                }
-                .keyboardShortcut(",", modifiers: .command)
-            }
+            
+            ProjectCommands()
         }
         
         WindowGroup("Tax Facts", id: "TaxFactsEditor") {

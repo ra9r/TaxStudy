@@ -49,6 +49,8 @@
 		2AA0B52E2CC5636800546505 /* DeepCopyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B52D2CC5636400546505 /* DeepCopyable.swift */; };
 		2AA0B5342CC5D4BF00546505 /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B5332CC5D4BB00546505 /* AppErrors.swift */; };
 		2ACC0F2E2CCD51E2002FEB3B /* TaxBracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC0F2D2CCD51E2002FEB3B /* TaxBracket.swift */; };
+		2ACC0F492CCE518F002FEB3B /* KeyWindow in Frameworks */ = {isa = PBXBuildFile; productRef = 2ACC0F482CCE518F002FEB3B /* KeyWindow */; };
+		2ACC0F4B2CCE5303002FEB3B /* ProjectCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC0F4A2CCE52FE002FEB3B /* ProjectCommands.swift */; };
 		2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */; };
 		2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */; };
 		2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */; };
@@ -122,6 +124,7 @@
 		2AA0B5332CC5D4BB00546505 /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ACC0F2D2CCD51E2002FEB3B /* TaxBracket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracket.swift; sourceTree = "<group>"; };
+		2ACC0F4A2CCE52FE002FEB3B /* ProjectCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCommands.swift; sourceTree = "<group>"; };
 		2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBracketEditor.swift; sourceTree = "<group>"; };
 		2ACC20112CC0B8D400D2A907 /* IncomeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTypes.swift; sourceTree = "<group>"; };
 		2ACC20132CC0BC0A00D2A907 /* IncomeSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeSources.swift; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACC0F492CCE518F002FEB3B /* KeyWindow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,9 +256,9 @@
 			children = (
 				2A4081EC2CC6A9C8007E5CF0 /* Info.plist */,
 				2A51CB192CB9A3650075BBA0 /* Assets.xcassets */,
-				2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */,
 				2A51CB1C2CB9A3650075BBA0 /* TaxStudy.entitlements */,
 				2A7CB2A22CBDE4B2008334E1 /* Localizable.xcstrings */,
+				2A51CB1D2CB9A3650075BBA0 /* TaxStudyApp.swift */,
 				2A51CB182CB9A3650075BBA0 /* Views */,
 				2A51CB022CB9A3650075BBA0 /* Components */,
 				2A51CB052CB9A3650075BBA0 /* Extensions */,
@@ -313,6 +317,7 @@
 				2A6BA2B52CBFE52C007C3A27 /* .gitignore */,
 				2A51CB1E2CB9A3650075BBA0 /* TaxStudy */,
 				2ACC201C2CC23DDC00D2A907 /* TaxStudyTests */,
+				2ACC0F472CCE518F002FEB3B /* Frameworks */,
 				2AB963EC2CA6E1A300E52EDF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -324,6 +329,13 @@
 				2ACC201B2CC23DDC00D2A907 /* TaxStudyTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2ACC0F472CCE518F002FEB3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
@@ -340,6 +352,7 @@
 			children = (
 				2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */,
 				2ACFDE2B2CCA47A70033B5B8 /* ProjectView.swift */,
+				2ACC0F4A2CCE52FE002FEB3B /* ProjectCommands.swift */,
 				2A6B0BBB2CCC82DA00FEC030 /* SideMenu.swift */,
 			);
 			path = Project;
@@ -362,6 +375,7 @@
 			);
 			name = TaxStudy;
 			packageProductDependencies = (
+				2ACC0F482CCE518F002FEB3B /* KeyWindow */,
 			);
 			productName = TaxStudy;
 			productReference = 2AB963EB2CA6E1A300E52EDF /* TaxStudy.app */;
@@ -418,6 +432,9 @@
 			);
 			mainGroup = 2AB963E22CA6E1A300E52EDF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2ACC0F462CCE5119002FEB3B /* XCRemoteSwiftPackageReference "KeyWindow" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2AB963EC2CA6E1A300E52EDF /* Products */;
 			projectDirPath = "";
@@ -474,6 +491,7 @@
 				2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */,
 				2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */,
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
+				2ACC0F4B2CCE5303002FEB3B /* ProjectCommands.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
 				2ACC0F2E2CCD51E2002FEB3B /* TaxBracket.swift in Sources */,
@@ -775,6 +793,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2ACC0F462CCE5119002FEB3B /* XCRemoteSwiftPackageReference "KeyWindow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LostMoa/KeyWindow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2ACC0F482CCE518F002FEB3B /* KeyWindow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2ACC0F462CCE5119002FEB3B /* XCRemoteSwiftPackageReference "KeyWindow" */;
+			productName = KeyWindow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2AB963E32CA6E1A300E52EDF /* Project object */;
 }

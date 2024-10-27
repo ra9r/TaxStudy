@@ -74,3 +74,9 @@ private class TaxProjectDocumentData : Codable, Equatable {
         self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
     }
 }
+
+import KeyWindow
+
+extension TaxProjectDocument : KeyWindowValueKey {
+    public typealias Value = Binding<TaxProjectDocument>
+}

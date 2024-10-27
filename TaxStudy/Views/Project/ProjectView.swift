@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyWindow
 
 struct ProjectView : View {
     
@@ -37,5 +38,6 @@ struct ProjectView : View {
             }
         }
         .frame(minWidth: 1100)
+        .keyWindow(TaxProjectDocument.self, $document)        
     }
 }

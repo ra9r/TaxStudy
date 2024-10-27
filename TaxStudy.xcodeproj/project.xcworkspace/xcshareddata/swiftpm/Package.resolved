@@ -1,0 +1,15 @@
+{
+  "originHash" : "1b76222e1c26d622d5c3060331dc84bb0a4fffcd3ab5fca95787bf10b1f08b33",
+  "pins" : [
+    {
+      "identity" : "keywindow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LostMoa/KeyWindow",
+      "state" : {
+        "revision" : "90a392b96ed861c53eb0a580be842d57ea88741c",
+        "version" : "0.0.4"
+      }
+    }
+  ],
+  "version" : 3
+}
