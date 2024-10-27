@@ -19,11 +19,10 @@ struct TaxStudyApp: App {
                 .observeWindow()
         }
         .commands {
-            
             ProjectCommands()
         }
         
-        Window("Tax Facts", id: "TaxFactsEditor") {
+        Settings {
             SettingsView(facts: $allFacts)
         }
     }

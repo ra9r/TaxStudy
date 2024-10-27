@@ -34,12 +34,6 @@ struct ProjectCommands : Commands {
             .disabled(document == nil)
             .keyboardShortcut("n", modifiers: [.command, .shift])
         }
-        CommandGroup(after: CommandGroupPlacement.appInfo) {
-            Button("Settings...") {
-                openWindow(id: "TaxFactsEditor")
-            }
-            .keyboardShortcut(",", modifiers: .command)
-        }
     }
     
     func newScenario() {
