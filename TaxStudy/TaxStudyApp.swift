@@ -11,7 +11,7 @@ import KeyWindow
 @main
 struct TaxStudyApp: App {
     @Environment(\.openWindow) var openWindow
-    @State var allFacts: [TaxFacts] = [DefaultTaxFacts2024]
+    @State var defaultFacts: [TaxFacts] = [DefaultTaxFacts2024]
     
     var body: some Scene {
               
@@ -22,11 +22,11 @@ struct TaxStudyApp: App {
         .defaultSize(width: 1280, height: 1024)
         .keyboardShortcut("N", modifiers: [.command])
         .commands {
-            ProjectCommands()
+            ProjectCommands(defaultFacts: $defaultFacts)
         }
         
         Settings {
-            SettingsView(facts: $allFacts)
+            SettingsView(facts: $defaultFacts)
         }
     }
 

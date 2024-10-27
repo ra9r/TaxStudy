@@ -83,6 +83,19 @@ class TaxFacts : Codable, Identifiable {
     }
 }
 
+extension TaxFacts : Hashable, Equatable {
+    static func == (lhs: TaxFacts, rhs: TaxFacts) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+}
+
+
+// MARK: - STATIC DEFAULT TAXFACTS
 let DefaultTaxFacts2024 = TaxFacts(
     id: "2024",
     ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
