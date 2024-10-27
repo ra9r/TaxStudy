@@ -14,10 +14,13 @@ struct TaxStudyApp: App {
     @State var allFacts: [TaxFacts] = [DefaultTaxFacts2024]
     
     var body: some Scene {
+              
         DocumentGroup(newDocument: TaxProjectDocument()) { file in
             ProjectView(file.$document)
                 .observeWindow()
         }
+        .defaultSize(width: 1280, height: 1024)
+        .keyboardShortcut("N", modifiers: [.command])
         .commands {
             ProjectCommands()
         }
