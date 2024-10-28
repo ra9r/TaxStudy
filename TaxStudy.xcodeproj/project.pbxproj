@@ -65,6 +65,8 @@
 		2ACFDE302CCA630D0033B5B8 /* TaxProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */; };
 		2ACFDE322CCA6D720033B5B8 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */; };
 		2ACFDE342CCC56080033B5B8 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE332CCC56010033B5B8 /* CardTextField.swift */; };
+		2AEFB41B2CCF562E00B975CF /* ThresholdEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41A2CCF562700B975CF /* ThresholdEditor.swift */; };
+		2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxProjectDocument.swift; sourceTree = "<group>"; };
 		2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		2ACFDE332CCC56010033B5B8 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
+		2AEFB41A2CCF562700B975CF /* ThresholdEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdEditor.swift; sourceTree = "<group>"; };
+		2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIITEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -341,6 +345,8 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */,
+				2AEFB41A2CCF562700B975CF /* ThresholdEditor.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 			);
@@ -493,6 +499,7 @@
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
 				2ACC0F4B2CCE5303002FEB3B /* ProjectCommands.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
+				2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
 				2ACC0F2E2CCD51E2002FEB3B /* TaxBracket.swift in Sources */,
 				2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */,
@@ -507,6 +514,7 @@
 				2ACFDE302CCA630D0033B5B8 /* TaxProjectDocument.swift in Sources */,
 				2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */,
 				2ACFDE322CCA6D720033B5B8 /* ScenarioView.swift in Sources */,
+				2AEFB41B2CCF562E00B975CF /* ThresholdEditor.swift in Sources */,
 				2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */,
 				2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */,
 				2ACC20102CC00A3C00D2A907 /* TaxBracketEditor.swift in Sources */,

@@ -550,9 +550,6 @@
     "Net Investment Income Tax (NIIT)" : {
 
     },
-    "Net Invetment Income Tax (NIIT)" : {
-
-    },
     "Net LTCG" : {
 
     },
@@ -725,6 +722,12 @@
     "Social Security" : {
 
     },
+    "Specify the rate at which the NIIT will be computed." : {
+
+    },
+    "Specify the threshold amounts for each filing status." : {
+
+    },
     "SSI (self)" : {
 
     },
@@ -749,6 +752,9 @@
     "Tax Facts" : {
 
     },
+    "Tax Rate" : {
+
+    },
     "Tax Rates" : {
 
     },
@@ -770,6 +776,9 @@
     "Taxes" : {
 
     },
+    "The Net Investment Income Tax (NIIT) is a tax on certain investment income for individuals, estates, and trusts. It applies to those with modified adjusted gross income (MAGI) above specific thresholds based on filing status." : {
+
+    },
     "This feature is still a work in progress" : {
 
     },
@@ -782,6 +791,9 @@
           }
         }
       }
+    },
+    "Thresholds" : {
+
     },
     "Total Adjustment of Type" : {
 
@@ -835,6 +847,9 @@
 
     },
     "Tuition and Fees" : {
+
+    },
+    "Value" : {
 
     },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {

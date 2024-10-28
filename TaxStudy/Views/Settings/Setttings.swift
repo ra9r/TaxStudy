@@ -16,6 +16,8 @@ struct SettingsView : View {
             List(facts.indices, id: \.self,  selection: $selectedFacts) { index in
                 NavigationLink("Facts: \(facts[index].id)", value: index)
             }
+            .frame(minWidth: 200)
+            .navigationTitle("Tax Facts")
         } content: {
             List(SettingTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
                 NavigationLink(settingType.rawValue, value: settingType)
@@ -40,7 +42,7 @@ struct SettingsView : View {
                 case .irmaaSurcharges:
                     Text("IRMAA Surcharges")
                 case .niiTax:
-                    Text("Net Invetment Income Tax (NIIT)")
+                    NIITEditor(facts: $facts[selectedFacts])
                 case .standardDeductions:
                     Text("Standard Deductions")
                 case .charitableDeductions:
@@ -76,3 +78,7 @@ enum SettingTypes: String, CaseIterable {
 }
 
 
+#Preview(traits: .sizeThatFitsLayout) { 
+    @Previewable @State var facts: [TaxFacts] = [createEmptyTaxFacts(id: "2023"), createEmptyTaxFacts(id: "2024")]
+    SettingsView(facts: $facts)
+}
