@@ -16,7 +16,6 @@ struct HeaderView: View {
             BlueBox
             NameAndDescription
             ConfigBox
-            Spacer()
         }
         .padding(.bottom, 20)
     }
@@ -30,16 +29,31 @@ struct HeaderView: View {
     
     var ConfigBox: some View {
         VStack {
-            Picker("Filing Status", selection: $scenario.filingStatus) {
-                ForEach(FilingStatus.allCases, id: \.label) { status in
-                    Text(status.label).tag(status)
+            Menu {
+                ForEach(FilingStatus.allCases, id: \.self) { option in
+                    Button("\(option.label)"){
+                        scenario.filingStatus = option
+                    }
                 }
+            } label: {
+                Spacer()
+                Text("\(scenario.filingStatus.label)")
+                    .decorated(by: "chevron.down")
             }
-            Picker("Tax Facts", selection: $scenario.facts) {
+            .buttonStyle(PlainButtonStyle())
+            
+            Menu {
                 ForEach(facts, id: \.id) { taxFacts in
-                    Text(taxFacts.id).tag(taxFacts.id)
+                    Button("\(taxFacts.id)"){
+                        scenario.facts = taxFacts.id
+                    }
                 }
+            } label: {
+                Spacer()
+                Text("\(scenario.facts)")
+                    .decorated(by: "chevron.down")
             }
+            .buttonStyle(PlainButtonStyle())
         }
         .frame(maxWidth: 200)
     }
@@ -83,3 +97,10 @@ struct HeaderView: View {
     }
 }
 
+#Preview(traits: .sizeThatFitsLayout) {
+    @Previewable @State var facts: [TaxFacts] = [DefaultTaxFacts2024]
+    @Previewable @State var scenario: TaxScenario = TaxScenario(name: "New Scenario", facts: "2024")
+    HeaderView(facts: facts, scenario: $scenario)
+        .frame(width: 800, height: 100)
+        .padding()
+}
