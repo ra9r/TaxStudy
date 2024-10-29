@@ -67,6 +67,8 @@
 		2ACFDE342CCC56080033B5B8 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE332CCC56010033B5B8 /* CardTextField.swift */; };
 		2AEFB41B2CCF562E00B975CF /* ThresholdEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41A2CCF562700B975CF /* ThresholdEditor.swift */; };
 		2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */; };
+		2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */; };
+		2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +146,8 @@
 		2ACFDE332CCC56010033B5B8 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
 		2AEFB41A2CCF562700B975CF /* ThresholdEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdEditor.swift; sourceTree = "<group>"; };
 		2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIITEditor.swift; sourceTree = "<group>"; };
+		2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextItemStyle.swift; sourceTree = "<group>"; };
+		2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextFieldStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -176,6 +180,8 @@
 		2A51CB022CB9A3650075BBA0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */,
+				2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */,
 				2A7CB28B2CBC2886008334E1 /* MetaCard.swift */,
 				2A7CB2982CBCF3FF008334E1 /* HorizontalBarChartView.swift */,
 				2A7CB2942CBC781D008334E1 /* MasonryLayout.swift */,
@@ -498,8 +504,10 @@
 				2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */,
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
 				2ACC0F4B2CCE5303002FEB3B /* ProjectCommands.swift in Sources */,
+				2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
 				2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */,
+				2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
 				2ACC0F2E2CCD51E2002FEB3B /* TaxBracket.swift in Sources */,
 				2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */,

@@ -22,18 +22,9 @@ struct CardCurrencyField: View {
                 Text(label)
                     .font(.system(size: 12, weight: .semibold))
                 Spacer()
-                Text("$")
                 TextField("Amount", value: $amount, format: .number)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.trailing)
-                    .frame(maxWidth: 80)
-                    .textFieldStyle(.plain)
-                    .overlay(Rectangle()
-                        .frame(height: 1) // Thin underline
-                        .foregroundColor(.gray.opacity(0.5)), // Line color
-                             alignment: .bottom
-                    )
+                    .decorated(by: "dollarsign")
+                    .frame(maxWidth: 150)
             }
             .padding(2.5)
         }

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct CardTextField: View {
     var label: String
+    var symbol: String
     @Binding var value: String
     
-    init(_ label: String, value: Binding<String>) {
+    init(_ label: String, symbol: String, value: Binding<String>) {
         self.label = label
+        self.symbol = symbol
         self._value = value
     }
     
@@ -25,16 +27,17 @@ struct CardTextField: View {
                 Spacer()
                 
                 TextField("", text: $value)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.trailing)
-                    .frame(maxWidth: .infinity)
-                    .textFieldStyle(.plain)
-                    .overlay(Rectangle()
-                        .frame(height: 1) // Thin underline
-                        .foregroundColor(.gray.opacity(0.5)), // Line color
-                             alignment: .bottom
-                    )
+                    .decorated(by: symbol)
+//                    .font(.system(size: 12, weight: .medium))
+//                    .foregroundColor(.gray)
+//                    .multilineTextAlignment(.trailing)
+//                    .frame(maxWidth: .infinity)
+//                    .textFieldStyle(.plain)
+//                    .overlay(Rectangle()
+//                        .frame(height: 1) // Thin underline
+//                        .foregroundColor(.gray.opacity(0.5)), // Line color
+//                             alignment: .bottom
+//                    )
             }
             .padding(2.5)
         }

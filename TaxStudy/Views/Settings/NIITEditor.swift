@@ -14,7 +14,8 @@ struct NIITEditor : View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("Net Investment Income Tax (NIIT)")
-                    .font(.title2)
+                    .font(.title)
+                    .fontWeight(.bold)
                     .padding(.bottom, 5)
                 Text("The Net Investment Income Tax (NIIT) is a tax on certain investment income for individuals, estates, and trusts. It applies to those with modified adjusted gross income (MAGI) above specific thresholds based on filing status.")
                     .frame(maxWidth: 600, alignment: .leading)  // Fills the horizontal space

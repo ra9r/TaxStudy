@@ -15,9 +15,9 @@ struct ProfileView: View {
         CardView("Profiles") {
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
-                    CardTextField("Self", value: $scenario.profileSelf.name)
+                    CardTextField("Self", symbol: "person", value: $scenario.profileSelf.name)
                     if scenario.filingStatus == .marriedFilingJointly {
-                        CardTextField("Spouse", value: $scenario.profileSpouse.name)
+                        CardTextField("Spouse", symbol: "person.2", value: $scenario.profileSpouse.name)
                     }
                 }
                 Divider()
