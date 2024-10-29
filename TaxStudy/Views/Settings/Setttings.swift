@@ -25,6 +25,8 @@ struct SettingsView : View {
         } detail: {
             if let selectedFacts {
                 switch selectedSetting {
+                case .standardDeductions:
+                    StandardDeductionFactsEditor(facts: $facts[selectedFacts])
                 case .ordinaryTaxBrackets:
                     TaxBracketEditor(taxBrackets: $facts[selectedFacts].ordinaryTaxBrackets)
                 case .capitalGainsTaxBrackets:
@@ -43,8 +45,6 @@ struct SettingsView : View {
                     Text("IRMAA Surcharges")
                 case .niiTax:
                     NIITEditor(facts: $facts[selectedFacts])
-                case .standardDeductions:
-                    Text("Standard Deductions")
                 case .charitableDeductions:
                     Text("Charitable Deductions")
                 case .earmingsLimits:
@@ -63,16 +63,16 @@ struct SettingsView : View {
 }
 
 enum SettingTypes: String, CaseIterable {
+    case standardDeductions = "Standard Deductions"
+    case niiTax = "Net Invetment Income"
     case ordinaryTaxBrackets = "Ordinary Income"
     case capitalGainsTaxBrackets = "Capital Gains"
-    case niiTax = "Net Invetment Income"
     case ssTaxThresholds = "Social Security"
     case medicareTaxThresholds = "Medicare"
     case provisionalIncomeThresholds = "Provisional Income"
     case hsaLimits = "HSAs"
     case iraLimits = "IRA and Roth"
     case irmaaSurcharges = "IRMAA Surcharges"
-    case standardDeductions = "Standard Deductions"
     case charitableDeductions = "Charitable Deductions"
     case earmingsLimits = "SSA Earning Limits"
 }

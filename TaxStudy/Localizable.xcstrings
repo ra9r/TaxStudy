@@ -10,9 +10,6 @@
     "%lld kWh" : {
 
     },
-    "$" : {
-
-    },
     "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
 
     },
@@ -116,6 +113,9 @@
 
     },
     "Average Tax Rate" : {
+
+    },
+    "Bonus Age" : {
 
     },
     "Business Expenses" : {
@@ -239,6 +239,12 @@
 
     },
     "Deductible Medical Expenses (AMT)" : {
+
+    },
+    "Deduction Amt" : {
+
+    },
+    "Deduction Bonus" : {
 
     },
     "Deduction Method" : {
@@ -722,12 +728,6 @@
     "Social Security" : {
 
     },
-    "Specify the rate at which the NIIT will be computed." : {
-
-    },
-    "Specify the threshold amounts for each filing status." : {
-
-    },
     "SSI (self)" : {
 
     },
@@ -740,9 +740,6 @@
     "Standard Deduction" : {
 
     },
-    "Standard Deductions" : {
-
-    },
     "State and Local Tax" : {
 
     },
@@ -750,9 +747,6 @@
 
     },
     "Tax Facts" : {
-
-    },
-    "Tax Rate" : {
 
     },
     "Tax Rates" : {
@@ -776,9 +770,6 @@
     "Taxes" : {
 
     },
-    "The Net Investment Income Tax (NIIT) is a tax on certain investment income for individuals, estates, and trusts. It applies to those with modified adjusted gross income (MAGI) above specific thresholds based on filing status." : {
-
-    },
     "This feature is still a work in progress" : {
 
     },
@@ -791,9 +782,6 @@
           }
         }
       }
-    },
-    "Thresholds" : {
-
     },
     "Total Adjustment of Type" : {
 

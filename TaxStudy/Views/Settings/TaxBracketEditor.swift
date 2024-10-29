@@ -19,18 +19,18 @@ struct TaxBracketEditor: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Heading("Rate").frame(width: 60)
-                Heading("Single").frame(width: 110)
-                Heading("MFJ").frame(width: 110)
-                Heading("MFS").frame(width: 110)
-                Heading("HoH").frame(width: 110)
-                Heading("QW").frame(width: 110)
-            }
             List(selection: $multiSelection) {
+                HStack {
+                    Heading("Rate").frame(width: 80)
+                    Heading("Single").frame(width: 110)
+                    Heading("MFJ").frame(width: 110)
+                    Heading("MFS").frame(width: 110)
+                    Heading("HoH").frame(width: 110)
+                    Heading("QW").frame(width: 110)
+                }
                 ForEach(taxBrackets.brackets, id: \.id) { bracket in
                     HStack {
-                        RateField(bracket: bracket, taxBrackets: $taxBrackets).frame(width: 60)
+                        RateField(bracket: bracket, taxBrackets: $taxBrackets).frame(width: 80)
                         ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
                         ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
                         ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
@@ -127,7 +127,7 @@ struct RateField : View {
             ),
             format: .percent
         )
-        .textFieldStyle(.plain)
+        .decorated(by: "percent")
         
     }
 }
@@ -147,13 +147,14 @@ struct ThresholdField : View {
                     }
                 }
             ),
-            format: .currency(code: "USD")
+            format: .number
         )
-        .textFieldStyle(.plain)
+        .decorated(by: "dollarsign")
     }
 }
 
-#Preview {
+#Preview("Content", traits: .sizeThatFitsLayout) {
     @Previewable @State var taxBrackets = OrdinaryTaxBrackets2024
     TaxBracketEditor(taxBrackets: $taxBrackets)
+        .frame(width: 1000)
 }
