@@ -98,7 +98,7 @@ struct HeaderView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var facts: [TaxFacts] = [DefaultTaxFacts2024]
+    @Previewable @State var facts: [TaxFacts] = [TaxFacts.official2024]
     @Previewable @State var scenario: TaxScenario = TaxScenario(name: "New Scenario", facts: "2024")
     HeaderView(facts: facts, scenario: $scenario)
         .frame(width: 800, height: 100)

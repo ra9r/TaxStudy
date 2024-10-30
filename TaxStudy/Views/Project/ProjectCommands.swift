@@ -12,10 +12,14 @@ struct ProjectCommands : Commands {
     @Environment(\.openWindow) var openWindow
     @Environment(\.newDocument) var newDocument
     @Environment(\.openDocument) var openDocument
-    @Binding var defaultFacts: [TaxFacts]
+    @Binding var taxFactsService : TaxFactsService
     
     @KeyWindowValueBinding(TaxProjectDocument.self)
     var document: TaxProjectDocument?
+    
+    init(_ taxFactsService: Binding<TaxFactsService>) {
+        self._taxFactsService = taxFactsService
+    }
     
     
     var body: some Commands {
@@ -57,12 +61,8 @@ struct ProjectCommands : Commands {
 
         if openPanel.runModal() == .OK {
             if let url = openPanel.url {
-                let decoder = JSONDecoder()
                 do {
-                    let data = try Data(contentsOf: url)
-                    let importedFacts = try decoder.decode([TaxFacts].self, from: data)
-                    defaultFacts = importedFacts
-                    print("Imported from: \(url.path)")
+                    try taxFactsService.importFile(from: url)
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }
@@ -78,13 +78,8 @@ struct ProjectCommands : Commands {
         
         if savePanel.runModal() == .OK {
             if let url = savePanel.url {
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                
                 do {
-                    let data = try encoder.encode(defaultFacts)
-                    try data.write(to: url)
-                    print("Exported to: \(url.path)")
+                    try taxFactsService.exportFile(to: url)
                 } catch {
                     print("Error encoding defaultFacts: \(error)")
                 }

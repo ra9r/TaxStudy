@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TaxFactEditorContainer<Content: View> : View {
+struct DescribedContainer<Content: View> : View {
     var title: String
     var description: String? = nil
     var content: Content
@@ -42,8 +42,8 @@ struct TaxFactEditorContainer<Content: View> : View {
 }
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = createEmptyTaxFacts(id: "2024")
-    TaxFactEditorContainer("Net Investment Income Tax (NIIT)",
+    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
+    DescribedContainer("Net Investment Income Tax (NIIT)",
     description: "The Net Investment Income Tax (NIIT) is a tax on certain investment income for individuals, estates, and trusts. It applies to those with modified adjusted gross income (MAGI) above specific thresholds based on filing status.")
     {
         Text("Content Goes here")

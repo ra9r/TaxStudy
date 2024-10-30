@@ -92,12 +92,35 @@ extension TaxFacts : Hashable, Equatable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
 }
 
-func createEmptyTaxFacts(id: String) -> TaxFacts {
-    return TaxFacts(
-        id: id,
+// MARK: - Static Definitions
+extension TaxFacts {
+    static func createNewTaxFacts(id: String) -> TaxFacts {
+        return TaxFacts(
+            id: id,
+            ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
+            capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
+            ssTaxThresholds: SSTaxThresholds2024,
+            medicareTaxThresholds: MedicareTaxThresholds2024,
+            provisionalIncomeThresholds: ProvisionalIncomeThresholds2024,
+            irmaaPlanBThresholds: PlanBSurchargethresholds2024,
+            irmaaPlanDThresholds: PlanDSurchargethresholds2024,
+            niitThresholds: NIITThresholds,
+            niitRate: 0.038,
+            standardDeduction: StandardDeductions,
+            startardDeductionBonus: StandardDeductionBonuses,
+            standardDeductionBonusAge: 65,
+            capitalLossLimit: 3000,
+            amtExemptionReductionRate: 0.25,
+            amtExemptions: AMTExemptions,
+            amtPhaseOutThesholds: AMTPhaseOutThesholds,
+            amtBrackets: AMTBrackets
+        )
+    }
+    
+    static let official2024 = TaxFacts(
+        id: "2024",
         ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
         capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
         ssTaxThresholds: SSTaxThresholds2024,
@@ -105,68 +128,76 @@ func createEmptyTaxFacts(id: String) -> TaxFacts {
         provisionalIncomeThresholds: ProvisionalIncomeThresholds2024,
         irmaaPlanBThresholds: PlanBSurchargethresholds2024,
         irmaaPlanDThresholds: PlanDSurchargethresholds2024,
-        niitThresholds: [
-            .single: 200_000,
-            .marriedFilingJointly: 250_000,
-            .marriedFilingSeparately: 125_000,
-            .headOfHousehold: 200_000,
-            .qualifiedWidow: 250_000
-        ],
+        niitThresholds: NIITThresholds,
         niitRate: 0.038,
-        standardDeduction: [
-            .single: 14_600,
-            .marriedFilingSeparately: 14_600,
-            .marriedFilingJointly: 29_200,
-            .qualifiedWidow: 29_200,
-            .headOfHousehold: 21_900
-        ],
-        startardDeductionBonus: [
-            .single: 1_950,
-            .marriedFilingSeparately: 1_550,
-            .marriedFilingJointly: 1_550,
-            .qualifiedWidow: 1_950,
-            .headOfHousehold: 1_950
-        ],
+        standardDeduction: StandardDeductions,
+        startardDeductionBonus: StandardDeductionBonuses,
         standardDeductionBonusAge: 65,
         capitalLossLimit: 3000,
         amtExemptionReductionRate: 0.25,
-        amtExemptions: [
-            .single: 81_300,
-            .marriedFilingJointly: 126_500,
-            .marriedFilingSeparately: 63_250,
-            .headOfHousehold: 81_300,
-        ],
-        amtPhaseOutThesholds: [
-            .single: 578_150,
-            .marriedFilingJointly: 1_156_300,
-            .marriedFilingSeparately: 578_150,
-            .headOfHousehold: 578_150,
-        ],
-        amtBrackets: TaxBrackets(
-            .init(0.26, thresholds: [
-                .single: 0,
-                .marriedFilingJointly: 0,
-                .marriedFilingSeparately: 0,
-                .headOfHousehold: 0,
-            ]),
-            .init(0.28, thresholds: [
-                .single: 220_700,
-                .marriedFilingJointly: 220_700 * 2.0,
-                .marriedFilingSeparately: 110_350,
-                .headOfHousehold: 227_700,
-            ])
-        )
+        amtExemptions: AMTExemptions,
+        amtPhaseOutThesholds: AMTPhaseOutThesholds,
+        amtBrackets: AMTBrackets
     )
 }
 
-// MARK: - STATIC DEFAULT TAXFACTS
-var DefaultTaxFacts2024: TaxFacts {
-    return createEmptyTaxFacts(id: "2024")
-}
 
-// MARK: - Default Brackets
+// MARK: - Default Brackets & Thresholds
 
-let OrdinaryTaxBrackets2024 = TaxBrackets(
+private let AMTBrackets = TaxBrackets (
+    .init(0.26, thresholds: [
+        .single: 0,
+        .marriedFilingJointly: 0,
+        .marriedFilingSeparately: 0,
+        .headOfHousehold: 0,
+    ]),
+    .init(0.28, thresholds: [
+        .single: 220_700,
+        .marriedFilingJointly: 220_700 * 2.0,
+        .marriedFilingSeparately: 110_350,
+        .headOfHousehold: 227_700,
+    ])
+)
+
+private let AMTPhaseOutThesholds: [FilingStatus : Double] = [
+    .single: 578_150,
+    .marriedFilingJointly: 1_156_300,
+    .marriedFilingSeparately: 578_150,
+    .headOfHousehold: 578_150,
+]
+
+private let AMTExemptions: [FilingStatus : Double] = [
+    .single: 81_300,
+    .marriedFilingJointly: 126_500,
+    .marriedFilingSeparately: 63_250,
+    .headOfHousehold: 81_300,
+]
+
+private let StandardDeductionBonuses: [FilingStatus : Double] = [
+    .single: 1_950,
+    .marriedFilingSeparately: 1_550,
+    .marriedFilingJointly: 1_550,
+    .qualifiedWidow: 1_950,
+    .headOfHousehold: 1_950
+]
+
+private let StandardDeductions: [FilingStatus : Double] = [
+    .single: 14_600,
+    .marriedFilingSeparately: 14_600,
+    .marriedFilingJointly: 29_200,
+    .qualifiedWidow: 29_200,
+    .headOfHousehold: 21_900
+]
+
+private let NIITThresholds: [FilingStatus : Double] = [
+    .single: 200_000,
+    .marriedFilingJointly: 250_000,
+    .marriedFilingSeparately: 125_000,
+    .headOfHousehold: 200_000,
+    .qualifiedWidow: 250_000
+]
+
+private let OrdinaryTaxBrackets2024 = TaxBrackets(
     .init(0.10, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
@@ -218,7 +249,7 @@ let OrdinaryTaxBrackets2024 = TaxBrackets(
     ])
 )
 
-let CapitalGainTaxBrackets2024 = TaxBrackets(
+private let CapitalGainTaxBrackets2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
@@ -242,7 +273,7 @@ let CapitalGainTaxBrackets2024 = TaxBrackets(
     ])
 )
 
-let SSTaxThresholds2024 = TaxBrackets(
+private let SSTaxThresholds2024 = TaxBrackets(
     .init(0.062, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
@@ -260,7 +291,7 @@ let SSTaxThresholds2024 = TaxBrackets(
     ascending: false
 )
 
-let MedicareTaxThresholds2024 = TaxBrackets(
+private let MedicareTaxThresholds2024 = TaxBrackets(
     .init(0.029, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
@@ -278,7 +309,7 @@ let MedicareTaxThresholds2024 = TaxBrackets(
     ascending: false
 )
 
-let ProvisionalIncomeThresholds2024 = TaxBrackets(
+private let ProvisionalIncomeThresholds2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0,
@@ -302,7 +333,7 @@ let ProvisionalIncomeThresholds2024 = TaxBrackets(
     ])
 )
 
-let PlanBSurchargethresholds2024 = TaxBrackets(
+private let PlanBSurchargethresholds2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0
@@ -329,7 +360,7 @@ let PlanBSurchargethresholds2024 = TaxBrackets(
     ])
 )
 
-let PlanDSurchargethresholds2024 = TaxBrackets(
+private let PlanDSurchargethresholds2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
         .marriedFilingJointly: 0

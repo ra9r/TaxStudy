@@ -17,7 +17,6 @@
 		2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB072CB9A3650075BBA0 /* FilingStatus.swift */; };
 		2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB092CB9A3650075BBA0 /* TaxBrackets.swift */; };
 		2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB0A2CB9A3650075BBA0 /* TaxScenario.swift */; };
-		2A51CB2B2CB9A3650075BBA0 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB0B2CB9A3650075BBA0 /* AppData.swift */; };
 		2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB0F2CB9A3650075BBA0 /* FederalTaxCalc.swift */; };
 		2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB102CB9A3650075BBA0 /* NCStateTaxCalc.swift */; };
 		2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB112CB9A3650075BBA0 /* StateTaxCalc.swift */; };
@@ -28,6 +27,7 @@
 		2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */; };
 		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
 		2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */; };
+		2A79DDAC2CD1DF9C0012DA9B /* TaxFactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */; };
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
@@ -65,11 +65,12 @@
 		2ACFDE302CCA630D0033B5B8 /* TaxProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */; };
 		2ACFDE322CCA6D720033B5B8 /* ScenarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */; };
 		2ACFDE342CCC56080033B5B8 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACFDE332CCC56010033B5B8 /* CardTextField.swift */; };
-		2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */; };
+		2AEFB41D2CCF5C8B00B975CF /* NIITFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */; };
 		2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */; };
 		2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */; };
-		2AEFB4272CD072BA00B975CF /* TaxFactEditorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4262CD072A400B975CF /* TaxFactEditorContainer.swift */; };
+		2AEFB4272CD072BA00B975CF /* DescribedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4262CD072A400B975CF /* DescribedContainer.swift */; };
 		2AEFB4292CD0799800B975CF /* StandardDeductionFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */; };
+		2AEFB4462CD0BBAA00B975CF /* TaxFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4452CD0BBA300B975CF /* TaxFactsEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +93,6 @@
 		2A51CB072CB9A3650075BBA0 /* FilingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilingStatus.swift; sourceTree = "<group>"; };
 		2A51CB092CB9A3650075BBA0 /* TaxBrackets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxBrackets.swift; sourceTree = "<group>"; };
 		2A51CB0A2CB9A3650075BBA0 /* TaxScenario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxScenario.swift; sourceTree = "<group>"; };
-		2A51CB0B2CB9A3650075BBA0 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A51CB0F2CB9A3650075BBA0 /* FederalTaxCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FederalTaxCalc.swift; sourceTree = "<group>"; };
 		2A51CB102CB9A3650075BBA0 /* NCStateTaxCalc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCStateTaxCalc.swift; sourceTree = "<group>"; };
@@ -107,6 +107,7 @@
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 		2A6BA2B52CBFE52C007C3A27 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactsService.swift; sourceTree = "<group>"; };
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
@@ -145,11 +146,12 @@
 		2ACFDE2F2CCA630D0033B5B8 /* TaxProjectDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxProjectDocument.swift; sourceTree = "<group>"; };
 		2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioView.swift; sourceTree = "<group>"; };
 		2ACFDE332CCC56010033B5B8 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
-		2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIITEditor.swift; sourceTree = "<group>"; };
+		2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIITFactsEditor.swift; sourceTree = "<group>"; };
 		2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextItemStyle.swift; sourceTree = "<group>"; };
 		2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextFieldStyle.swift; sourceTree = "<group>"; };
-		2AEFB4262CD072A400B975CF /* TaxFactEditorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactEditorContainer.swift; sourceTree = "<group>"; };
+		2AEFB4262CD072A400B975CF /* DescribedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribedContainer.swift; sourceTree = "<group>"; };
 		2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDeductionFactsEditor.swift; sourceTree = "<group>"; };
+		2AEFB4452CD0BBA300B975CF /* TaxFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactsEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -194,6 +196,7 @@
 				2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */,
 				2AA0B50A2CC2F3B000546505 /* CardPicker.swift */,
 				2A7CB2962CBCDE4F008334E1 /* TaxChart.swift */,
+				2AEFB4262CD072A400B975CF /* DescribedContainer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -317,8 +320,8 @@
 		2AA0B5182CC48DFC00546505 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */,
 				2AA0B5332CC5D4BB00546505 /* AppErrors.swift */,
-				2A51CB0B2CB9A3650075BBA0 /* AppData.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -353,10 +356,10 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */,
-				2AEFB4262CD072A400B975CF /* TaxFactEditorContainer.swift */,
-				2AEFB41C2CCF5C7D00B975CF /* NIITEditor.swift */,
+				2AEFB4452CD0BBA300B975CF /* TaxFactsEditor.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
+				2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */,
+				2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 			);
 			path = Settings;
@@ -496,14 +499,13 @@
 				2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
 				2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */,
-				2AEFB4272CD072BA00B975CF /* TaxFactEditorContainer.swift in Sources */,
+				2AEFB4272CD072BA00B975CF /* DescribedContainer.swift in Sources */,
 				2ACFDE342CCC56080033B5B8 /* CardTextField.swift in Sources */,
 				2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */,
 				2A51CB292CB9A3650075BBA0 /* TaxBrackets.swift in Sources */,
 				2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */,
 				2ACFDDE02CC8BA510033B5B8 /* KeyMetricsLayoutEditor.swift in Sources */,
 				2A51CB2A2CB9A3650075BBA0 /* TaxScenario.swift in Sources */,
-				2A51CB2B2CB9A3650075BBA0 /* AppData.swift in Sources */,
 				2ACFDDE42CC8C8780033B5B8 /* KeyMetricGroup.swift in Sources */,
 				2A51CB2C2CB9A3650075BBA0 /* FederalTaxCalc.swift in Sources */,
 				2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */,
@@ -511,7 +513,7 @@
 				2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
 				2AEFB4292CD0799800B975CF /* StandardDeductionFactsEditor.swift in Sources */,
-				2AEFB41D2CCF5C8B00B975CF /* NIITEditor.swift in Sources */,
+				2AEFB41D2CCF5C8B00B975CF /* NIITFactsEditor.swift in Sources */,
 				2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
 				2ACC0F2E2CCD51E2002FEB3B /* TaxBracket.swift in Sources */,
@@ -538,6 +540,8 @@
 				2A7CB29F2CBDC264008334E1 /* TaxAdjustments.swift in Sources */,
 				2A7CB2992CBCF407008334E1 /* HorizontalBarChartView.swift in Sources */,
 				2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */,
+				2A79DDAC2CD1DF9C0012DA9B /* TaxFactsService.swift in Sources */,
+				2AEFB4462CD0BBAA00B975CF /* TaxFactsEditor.swift in Sources */,
 				2AA0B5202CC4AEDA00546505 /* Profiles.swift in Sources */,
 				2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */,
 				2ACFDE2C2CCA47B80033B5B8 /* ProjectView.swift in Sources */,

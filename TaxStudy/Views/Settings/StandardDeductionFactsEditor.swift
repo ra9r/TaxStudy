@@ -12,7 +12,7 @@ struct StandardDeductionFactsEditor : View {
     
     var body: some View {
         ScrollView {
-            TaxFactEditorContainer(
+            DescribedContainer(
                 "Standard Deductions",
                 description: "The standard deduction is a fixed amount that reduces your taxable income, allowing you to lower the amount of income on which you pay taxes. Additionally, taxpayers above the 'Bonus Age' or older can receive an extra deduction based on their filing status.")
             {
@@ -64,6 +64,6 @@ struct StandardDeductionFactsEditor : View {
 }
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = createEmptyTaxFacts(id: "2023")
+    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
     StandardDeductionFactsEditor(facts: $facts)
 }

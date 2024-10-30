@@ -154,7 +154,7 @@ struct ThresholdField : View {
 }
 
 #Preview("Content", traits: .sizeThatFitsLayout) {
-    @Previewable @State var taxBrackets = OrdinaryTaxBrackets2024
+    @Previewable @State var taxBrackets = TaxFacts.official2024.ordinaryTaxBrackets
     TaxBracketEditor(taxBrackets: $taxBrackets)
         .frame(width: 1000)
 }

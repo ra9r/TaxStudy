@@ -22,9 +22,9 @@ class TaxProjectDocument: FileDocument, Identifiable {
     var scenarios: [TaxScenario]
     
     // Default initializer
-    init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario] = []) {
+    init(name: String? = nil, facts: [TaxFacts] = [], scenarios: [TaxScenario] = []) {
         self.name = name ?? "New Project"
-        self.facts = facts ?? [DefaultTaxFacts2024]
+        self.facts = facts
         self.scenarios = scenarios
     }
     
@@ -70,7 +70,7 @@ private class TaxProjectDocumentData : Codable, Equatable {
     
     init(name: String? = nil, facts: [TaxFacts]? = nil, scenarios: [TaxScenario]? = nil) {
         self.name = name ?? "New Project"
-        self.facts = facts ?? [DefaultTaxFacts2024]
+        self.facts = facts ?? []
         self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
     }
 }
