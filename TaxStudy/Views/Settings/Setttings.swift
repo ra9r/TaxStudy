@@ -7,24 +7,31 @@
 import SwiftUI
 
 struct SettingsView : View {
-    @Binding var facts: [TaxFacts]
+    @Environment(TaxFactsManager.self) var taxFactsManager
     @State var selectedFacts: Int?
+    @State var selectedSetting: SettingTypes = .ordinaryTaxBrackets
     
     
     var body: some View {
+        @Bindable var manager = taxFactsManager
         NavigationSplitView {
-            List(facts.indices, id: \.self,  selection: $selectedFacts) { index in
-                NavigationLink("Facts: \(facts[index].id)", value: index)
+            List(taxFactsManager.officialFacts.indices, id: \.self,  selection: $selectedFacts) { index in
+                NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
             }
             .frame(minWidth: 200)
             .navigationTitle("Tax Facts")
+        } content: {
+            List(SettingTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
+                NavigationLink(settingType.rawValue, value: settingType)
+            }
+            .frame(minWidth: 180)
         } detail: {
             if let selectedFacts {
-                TaxFactsEditor(facts: $facts[selectedFacts])
+                TaxFactsEditor(facts: $manager.officialFacts[selectedFacts], selectedSetting: selectedSetting)
             }
         }
         .onAppear {
-            if selectedFacts == nil && facts.isEmpty == false {
+            if selectedFacts == nil && taxFactsManager.officialFacts.isEmpty == false {
                 selectedFacts = 0
             }
         }
@@ -35,6 +42,10 @@ struct SettingsView : View {
 
 
 #Preview(traits: .sizeThatFitsLayout) { 
-    @Previewable @State var facts: [TaxFacts] = [TaxFacts.createNewTaxFacts(id: "2023"), TaxFacts.createNewTaxFacts(id: "2024")]
-    SettingsView(facts: $facts)
+    @Previewable @State var facts: [TaxFacts] = [
+        TaxFacts.createNewTaxFacts(id: "2023"),
+        TaxFacts.createNewTaxFacts(id: "2024")
+    ]
+    SettingsView()
+        .environment(TaxFactsManager())
 }

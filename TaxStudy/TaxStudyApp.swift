@@ -10,7 +10,6 @@ import KeyWindow
 
 @main
 struct TaxStudyApp: App {
-    @Environment(\.openWindow) var openWindow
     @State var taxFactsServices = TaxFactsManager()
     
     var body: some Scene {
@@ -26,9 +25,10 @@ struct TaxStudyApp: App {
             ProjectCommands($taxFactsServices)
         }
         
-//        Settings {
-//            SettingsView(facts: $defaultFacts)
-//        }
+        Settings {
+            SettingsView()
+                .environment(taxFactsServices)
+        }
     }
 
 }
