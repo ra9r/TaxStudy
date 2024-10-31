@@ -41,14 +41,13 @@ struct KeyMetricsView: View {
             .totalSSAIncome,
         ])
     ]
-    @State var federalTaxes: FederalTaxCalc?
-    @State var stateTaxes: NCTaxCalc?
-    @State var errorMessage: String?
         
     
     var body: some View {
         CardView("Key Metrics") {
-            if let federalTaxes = federalTaxes, let stateTaxes = stateTaxes {
+            if let fact = facts.first(where: { $0.id == scenario.facts }) {
+                let federalTaxes = FederalTaxCalc(scenario, facts: fact)
+                let stateTaxes = NCTaxCalc(scenario, facts: fact)
                 HStack(alignment: .top) {
                     VStack {
                         ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
@@ -69,15 +68,8 @@ struct KeyMetricsView: View {
                     }
                 }
             } else {
-                Text("Error: \(errorMessage ?? "No data found.")")
+                Text("TaxFacts \(scenario.id) not found.")
             }
-        }
-        .onAppear() {
-            guard let fact = facts.first(where: { $0.id == scenario.facts }) else {
-                fatalError("No tax facts found with id: '\(scenario.facts)'")
-            }
-            self.federalTaxes = FederalTaxCalc(scenario, facts: fact)
-            self.stateTaxes = NCTaxCalc(scenario, facts: fact)
         }
         
     }

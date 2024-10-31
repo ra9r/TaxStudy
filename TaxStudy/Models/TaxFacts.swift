@@ -55,7 +55,7 @@ class TaxFacts : Codable, Identifiable {
         niitThresholds: [FilingStatus : Double],
         niitRate: Double,
         standardDeduction: [FilingStatus : Double],
-        startardDeductionBonus: [FilingStatus : Double],
+        standardDeductionBonus: [FilingStatus : Double],
         standardDeductionBonusAge: Int,
         capitalLossLimit: Double,
         amtExemptionReductionRate: Double,
@@ -75,7 +75,7 @@ class TaxFacts : Codable, Identifiable {
         self.niitRate = niitRate
         self.capitalLossLimit = capitalLossLimit
         self.standardDeduction = standardDeduction
-        self.standardDeductionBonus = startardDeductionBonus
+        self.standardDeductionBonus = standardDeductionBonus
         self.standardDeductionBonusAge = standardDeductionBonusAge
         self.amtExemptions = amtExemptions
         self.amtPhaseOutThesholds = amtPhaseOutThesholds
@@ -109,7 +109,7 @@ extension TaxFacts {
             niitThresholds: NIITThresholds,
             niitRate: 0.038,
             standardDeduction: StandardDeductions,
-            startardDeductionBonus: StandardDeductionBonuses,
+            standardDeductionBonus: StandardDeductionBonuses,
             standardDeductionBonusAge: 65,
             capitalLossLimit: 3000,
             amtExemptionReductionRate: 0.25,
@@ -131,7 +131,7 @@ extension TaxFacts {
         niitThresholds: NIITThresholds,
         niitRate: 0.038,
         standardDeduction: StandardDeductions,
-        startardDeductionBonus: StandardDeductionBonuses,
+        standardDeductionBonus: StandardDeductionBonuses,
         standardDeductionBonusAge: 65,
         capitalLossLimit: 3000,
         amtExemptionReductionRate: 0.25,

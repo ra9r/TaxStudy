@@ -9,7 +9,7 @@ import SwiftUI
 import KeyWindow
 
 struct ProjectView : View {
-    
+    @Environment(TaxFactsManager.self) var taxFactsManager
     @Binding var document: TaxProjectDocument
     @State var multiSelection = Set<Int>()
     
@@ -20,13 +20,13 @@ struct ProjectView : View {
     
     var body: some View {
         NavigationSplitView {
-            SideMenu(facts: $document.facts,
-                     scenarios: $document.scenarios,
+            SideMenu(scenarios: $document.scenarios,
+                     embeddedFacts: document.facts,
                      multiSelection: $multiSelection)
             
         } detail: {
             if multiSelection.count == 1, let index = multiSelection.first {
-                ScenarioView(facts: document.facts, scenario: $document.scenarios[index])
+                ScenarioView(scenario: $document.scenarios[index], embeddedFacts: document.facts)
             } else if multiSelection.count >= 1{
                 ContentUnavailableView("Compare Feature Not Available",
                                        systemImage: "wrench.circle",

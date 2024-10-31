@@ -12,12 +12,12 @@ struct ProjectCommands : Commands {
     @Environment(\.openWindow) var openWindow
     @Environment(\.newDocument) var newDocument
     @Environment(\.openDocument) var openDocument
-    @Binding var taxFactsService : TaxFactsService
+    @Binding var taxFactsService : TaxFactsManager
     
     @KeyWindowValueBinding(TaxProjectDocument.self)
     var document: TaxProjectDocument?
     
-    init(_ taxFactsService: Binding<TaxFactsService>) {
+    init(_ taxFactsService: Binding<TaxFactsManager>) {
         self._taxFactsService = taxFactsService
     }
     

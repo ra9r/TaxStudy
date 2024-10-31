@@ -27,7 +27,7 @@
 		2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */; };
 		2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2AF2CBE645D007C3A27 /* CardView.swift */; };
 		2A6BA2B42CBF62E7007C3A27 /* CardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */; };
-		2A79DDAC2CD1DF9C0012DA9B /* TaxFactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */; };
+		2A79DDAC2CD1DF9C0012DA9B /* TaxFactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79DDAB2CD1DF850012DA9B /* TaxFactsManager.swift */; };
 		2A7CB28A2CBC09BD008334E1 /* TaxFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */; };
 		2A7CB28C2CBC288B008334E1 /* MetaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28B2CBC2886008334E1 /* MetaCard.swift */; };
 		2A7CB28E2CBC42AD008334E1 /* EmploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */; };
@@ -107,7 +107,7 @@
 		2A6BA2AF2CBE645D007C3A27 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2A6BA2B32CBF62E7007C3A27 /* CardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardItem.swift; sourceTree = "<group>"; };
 		2A6BA2B52CBFE52C007C3A27 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactsService.swift; sourceTree = "<group>"; };
+		2A79DDAB2CD1DF850012DA9B /* TaxFactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFactsManager.swift; sourceTree = "<group>"; };
 		2A7CB2892CBC09B0008334E1 /* TaxFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxFacts.swift; sourceTree = "<group>"; };
 		2A7CB28B2CBC2886008334E1 /* MetaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaCard.swift; sourceTree = "<group>"; };
 		2A7CB28D2CBC42A3008334E1 /* EmploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentStatus.swift; sourceTree = "<group>"; };
@@ -320,7 +320,7 @@
 		2AA0B5182CC48DFC00546505 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				2A79DDAB2CD1DF850012DA9B /* TaxFactsService.swift */,
+				2A79DDAB2CD1DF850012DA9B /* TaxFactsManager.swift */,
 				2AA0B5332CC5D4BB00546505 /* AppErrors.swift */,
 			);
 			path = Services;
@@ -430,7 +430,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					2AB963EA2CA6E1A300E52EDF = {
 						CreatedOnToolsVersion = 16.0;
@@ -540,7 +540,7 @@
 				2A7CB29F2CBDC264008334E1 /* TaxAdjustments.swift in Sources */,
 				2A7CB2992CBCF407008334E1 /* HorizontalBarChartView.swift in Sources */,
 				2A51CB362CB9A3650075BBA0 /* TaxStudyApp.swift in Sources */,
-				2A79DDAC2CD1DF9C0012DA9B /* TaxFactsService.swift in Sources */,
+				2A79DDAC2CD1DF9C0012DA9B /* TaxFactsManager.swift in Sources */,
 				2AEFB4462CD0BBAA00B975CF /* TaxFactsEditor.swift in Sources */,
 				2AA0B5202CC4AEDA00546505 /* Profiles.swift in Sources */,
 				2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */,
@@ -604,6 +604,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -668,6 +669,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -701,6 +703,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TaxStudy/Preview Content\"";
 				DEVELOPMENT_TEAM = T5Y4JCK337;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -732,6 +735,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TaxStudy/Preview Content\"";
 				DEVELOPMENT_TEAM = T5Y4JCK337;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -758,6 +762,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = T5Y4JCK337;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -775,6 +780,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = T5Y4JCK337;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;

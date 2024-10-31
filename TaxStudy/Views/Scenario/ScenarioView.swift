@@ -7,14 +7,16 @@
 import SwiftUI
 
 struct ScenarioView : View {
-    var facts: [TaxFacts]
+    @Environment(TaxFactsManager.self) var taxFactsManager
     @Binding var scenario: TaxScenario
+    var embeddedFacts: [TaxFacts]
     
     var body: some View {
         ScrollView {
+            let allFacts = taxFactsManager.allFacts(includeEmbedded: embeddedFacts)
             VStack {
-                HeaderView(facts: facts, scenario: $scenario)
-                KeyMetricsView(facts: facts, scenario: $scenario)
+                HeaderView(facts: allFacts, scenario: $scenario)
+                KeyMetricsView(facts: allFacts, scenario: $scenario)
                 ProfileView(scenario: $scenario)
                 IncomeView(scenario: $scenario)
                 DeductionsView(scenario: $scenario)

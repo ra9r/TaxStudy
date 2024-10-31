@@ -11,7 +11,7 @@ import KeyWindow
 @main
 struct TaxStudyApp: App {
     @Environment(\.openWindow) var openWindow
-    @State var taxFactsServices = TaxFactsService()
+    @State var taxFactsServices = TaxFactsManager()
     
     var body: some Scene {
               

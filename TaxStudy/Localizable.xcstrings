@@ -298,9 +298,6 @@
     "Energy Efficiency Improvement" : {
 
     },
-    "Error: %@" : {
-
-    },
     "Export TaxFacts..." : {
 
     },
@@ -765,6 +762,9 @@
 
     },
     "Taxes" : {
+
+    },
+    "TaxFacts %@ not found." : {
 
     },
     "This feature is still a work in progress" : {

@@ -63,6 +63,6 @@ struct TaxFactsEditor : View {
 }
 
 #Preview {
-    @Previewable @State var taxFactService = TaxFactsService()
+    @Previewable @State var taxFactService = TaxFactsManager()
     TaxFactsEditor(facts: $taxFactService.officialFacts[0])
 }

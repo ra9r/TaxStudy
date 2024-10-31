@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SideMenu: View {
-    @Binding var facts: [TaxFacts]
+    @Environment(TaxFactsManager.self) var taxFactsManager
     @Binding var scenarios: [TaxScenario]
+    var embeddedFacts: [TaxFacts]
     @Binding var multiSelection: Set<Int>
     
     var body: some View {
@@ -46,7 +47,7 @@ struct SideMenu: View {
     }
     
     func newScenario() {
-        guard let firstFact = facts.first else {
+        guard let firstFact = taxFactsManager.allFacts(includeEmbedded: embeddedFacts).first else {
             fatalError("Unabled to create new TaxScenario, no TaxFacts found")
         }
         let newScenario = TaxScenario(name: "New Scenario", facts: firstFact.id)
