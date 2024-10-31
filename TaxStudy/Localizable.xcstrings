@@ -764,6 +764,9 @@
     "Taxes" : {
 
     },
+    "TaxFacts" : {
+
+    },
     "TaxFacts %@ not found." : {
 
     },

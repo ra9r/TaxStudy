@@ -30,6 +30,9 @@ struct TaxBracketEditor: View {
                 }
                 ForEach(taxBrackets.brackets, id: \.id) { bracket in
                     HStack {
+                        Image(systemName: "line.3.horizontal")
+                            .font(.system(size: 20)) // Adjust size as needed
+                            .foregroundColor(.gray)
                         RateField(bracket: bracket, taxBrackets: $taxBrackets).frame(width: 80)
                         ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
                         ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
@@ -61,6 +64,8 @@ struct TaxBracketEditor: View {
                 }
                 .buttonStyle(.plain)
             }
+            .scrollContentBackground(.hidden) // Hides the default background color
+            .background(Color.clear)
             Spacer()
         }
         .padding()

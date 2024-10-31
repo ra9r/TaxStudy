@@ -18,6 +18,7 @@ struct SettingsView : View {
             List(taxFactsManager.officialFacts.indices, id: \.self,  selection: $selectedFacts) { index in
                 NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
             }
+        
             .frame(minWidth: 200)
             .navigationTitle("Tax Facts")
         } content: {
@@ -30,18 +31,21 @@ struct SettingsView : View {
                 TaxFactsEditor(facts: $manager.officialFacts[selectedFacts], selectedSetting: selectedSetting)
             }
         }
+        .navigationTitle("TaxFacts")
+        .navigationSplitViewStyle(.prominentDetail)
         .onAppear {
             if selectedFacts == nil && taxFactsManager.officialFacts.isEmpty == false {
                 selectedFacts = 0
             }
         }
+        .frame(minWidth: 1150, minHeight: 400)
     }
 }
 
 
 
 
-#Preview(traits: .sizeThatFitsLayout) { 
+#Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var facts: [TaxFacts] = [
         TaxFacts.createNewTaxFacts(id: "2023"),
         TaxFacts.createNewTaxFacts(id: "2024")
