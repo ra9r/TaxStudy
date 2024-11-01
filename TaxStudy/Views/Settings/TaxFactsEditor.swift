@@ -6,35 +6,22 @@
 //
 import SwiftUI
 
-enum SettingTypes: String, CaseIterable {
-    case standardDeductions = "Standard Deductions"
-    case niiTax = "Net Invetment Income"
-    case ordinaryTaxBrackets = "Ordinary Income"
-    case capitalGainsTaxBrackets = "Capital Gains"
-    case ssTaxThresholds = "Social Security"
-    case medicareTaxThresholds = "Medicare"
-    case provisionalIncomeThresholds = "Provisional Income"
-    case hsaLimits = "HSAs"
-    case iraLimits = "IRA and Roth"
-    case irmaaSurcharges = "IRMAA Surcharges"
-    case charitableDeductions = "Charitable Deductions"
-    case earmingsLimits = "SSA Earning Limits"
-}
+
 
 struct TaxFactsEditor : View {
     @Binding var facts: TaxFacts
-    var selectedSetting: SettingTypes
+    var selectedSetting: TaxFactsEditorTypes
     
     var body: some View {
         switch selectedSetting {
         case .standardDeductions:
             StandardDeductionFactsEditor(facts: $facts)
         case .ordinaryTaxBrackets:
-            TaxBracketEditor(taxBrackets: $facts.ordinaryTaxBrackets)
+            OrdinaryFactsEditor(facts: $facts)
         case .capitalGainsTaxBrackets:
-            TaxBracketEditor(taxBrackets: $facts.capitalGainTaxBrackets)
-        case .ssTaxThresholds:
-            TaxBracketEditor(taxBrackets: $facts.ssTaxThresholds)
+            CapitalGainFactsEditor(facts: $facts)
+        case .ficaTaxThresholds:
+            FICAFactsEditor(facts: $facts)
         case .medicareTaxThresholds:
             TaxBracketEditor(taxBrackets: $facts.medicareTaxThresholds)
         case .provisionalIncomeThresholds:

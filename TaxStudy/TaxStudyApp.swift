@@ -25,7 +25,7 @@ struct TaxStudyApp: App {
             ProjectCommands($taxFactsServices)
         }
         
-        Settings {
+        Window("Tax Facts", id: "txcfg") {
             SettingsView()
                 .environment(taxFactsServices)
         }

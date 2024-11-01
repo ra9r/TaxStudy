@@ -23,6 +23,13 @@ struct ProjectCommands : Commands {
     
     
     var body: some Commands {
+        
+        CommandGroup(after: .appSettings) {
+            Button("Tax Facts...") {
+                openWindow(id: "txcfg")
+            }
+            .keyboardShortcut(",", modifiers: [.command])
+        }
      
         CommandGroup(after: .importExport) {
             Button("Import TaxFacts...") {

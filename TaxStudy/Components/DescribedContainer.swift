@@ -27,7 +27,7 @@ struct DescribedContainer<Content: View> : View {
                     .padding(.bottom, 5)
                 if let description {
                     Text(description)
-                        .frame(maxWidth: 600, alignment: .leading)  // Fills the horizontal space
+                        .frame(maxWidth: .infinity, alignment: .leading)  // Fills the horizontal space
                         .multilineTextAlignment(.leading)                 // Aligns text to the leading edge
                         .lineLimit(20)
                 }

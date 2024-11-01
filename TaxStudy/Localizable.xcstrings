@@ -130,6 +130,9 @@
     "Capital Loss Adjustment (Last Year)" : {
 
     },
+    "Capital Loss Limit" : {
+
+    },
     "Carry forward business losses to offset future taxable income." : {
 
     },
@@ -529,6 +532,9 @@
     "Medicare" : {
 
     },
+    "Medicare Thresholds" : {
+
+    },
     "Mileage" : {
 
     },
@@ -725,6 +731,9 @@
     "Social Security" : {
 
     },
+    "Social Security Thresholds" : {
+
+    },
     "SSI (self)" : {
 
     },
@@ -744,6 +753,9 @@
 
     },
     "Tax Facts" : {
+
+    },
+    "Tax Facts..." : {
 
     },
     "Tax Rates" : {

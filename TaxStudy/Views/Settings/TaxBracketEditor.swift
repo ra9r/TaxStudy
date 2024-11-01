@@ -17,12 +17,12 @@ struct TaxBracketEditor: View {
 
     var body: some View {
         let colums = [
-            GridItem(.fixed(80)),
-            GridItem(.fixed(110)),
-            GridItem(.fixed(110)),
-            GridItem(.fixed(110)),
-            GridItem(.fixed(110)),
-            GridItem(.fixed(110)),
+            GridItem(.fixed(70)),
+            GridItem(.flexible(minimum: 90, maximum: 110)),
+            GridItem(.flexible(minimum: 90, maximum: 110)),
+            GridItem(.flexible(minimum: 90, maximum: 110)),
+            GridItem(.flexible(minimum: 90, maximum: 110)),
+            GridItem(.flexible(minimum: 90, maximum: 110)),
             GridItem(.fixed(20))
         ]
         ScrollView {
@@ -69,11 +69,12 @@ struct TaxBracketEditor: View {
                     }
                     
                 }
+                
             }
+            .padding(5)
             .listStyle(.plain)
             .scrollContentBackground(.hidden) // Hides the default background color
             .background(Color.clear)
-            .padding()
         }
     }
     
