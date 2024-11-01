@@ -15,8 +15,17 @@ struct SettingsView : View {
     var body: some View {
         @Bindable var manager = taxFactsManager
         NavigationSplitView {
-            List(taxFactsManager.officialFacts.indices, id: \.self,  selection: $selectedFacts) { index in
-                NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
+            List(selection: $selectedFacts) {
+                Section("Official") {
+                    ForEach(taxFactsManager.officialFacts.indices, id: \.self) { index in
+                        NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
+                    }
+                }
+                Section("Shared") {
+                    ForEach(taxFactsManager.sharedFacts.indices, id: \.self) { index in
+                        NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
+                    }
+                }
             }
         
             .frame(minWidth: 200)

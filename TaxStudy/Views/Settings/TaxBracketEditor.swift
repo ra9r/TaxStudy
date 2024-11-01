@@ -9,92 +9,78 @@ import SwiftUI
 
 struct TaxBracketEditor: View {
     @Binding var taxBrackets: TaxBrackets
-    @State var multiSelection: Set<TaxBracket> = []
     
     // Initialize the initialTaxBrackets with the current taxBrackets
     init(taxBrackets: Binding<TaxBrackets>) {
         self._taxBrackets = taxBrackets
     }
-    
-    
+
     var body: some View {
-        VStack {
-            List(selection: $multiSelection) {
-                HStack {
-                    Heading("Rate").frame(width: 80)
-                    Heading("Single").frame(width: 110)
-                    Heading("MFJ").frame(width: 110)
-                    Heading("MFS").frame(width: 110)
-                    Heading("HoH").frame(width: 110)
-                    Heading("QW").frame(width: 110)
-                }
-                ForEach(taxBrackets.brackets, id: \.id) { bracket in
-                    HStack {
-                        Image(systemName: "line.3.horizontal")
-                            .font(.system(size: 20)) // Adjust size as needed
-                            .foregroundColor(.gray)
-                        RateField(bracket: bracket, taxBrackets: $taxBrackets).frame(width: 80)
-                        ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
-                        ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
-                        ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
-                        ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
-                        ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets).frame(width: 110)
-                    }
-                    .tag(bracket)
-                    .contextMenu {
-                        Button("Delete") {
-                            delete()
+        let colums = [
+            GridItem(.fixed(80)),
+            GridItem(.fixed(110)),
+            GridItem(.fixed(110)),
+            GridItem(.fixed(110)),
+            GridItem(.fixed(110)),
+            GridItem(.fixed(110)),
+            GridItem(.fixed(20))
+        ]
+        ScrollView {
+            LazyVGrid(columns: colums, spacing: 10) {
+                Heading("Rate")
+                Heading("Single")
+                Heading("MFJ")
+                Heading("MFS")
+                Heading("HoH")
+                Heading("QW")
+                Spacer()
+                
+                ForEach(taxBrackets.brackets.indices, id: \.self) { index in
+                    let bracket = taxBrackets.brackets[index]
+                    
+                    RateField(bracket: bracket, taxBrackets: $taxBrackets)
+                    ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets)
+                    ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets)
+                    ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets)
+                    ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets)
+                    ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets)
+                    if index + 1 == taxBrackets.brackets.count {
+                        Button {
+                            taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
+                                .single: 0.0,
+                                .marriedFilingJointly: 0.0,
+                                .marriedFilingSeparately: 0.0,
+                                .headOfHousehold: 0.0,
+                                .qualifiedWidow: 0.0
+                            ]))
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 12, weight: .bold))
                         }
+                        .buttonStyle(.borderedProminent)
+                    } else {
+                        Button {
+                            delete(bracket)
+                        } label: {
+                            Image(systemName: "minus")
+                                .font(.system(size: 12, weight: .bold))
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
+                    
                 }
-                .onMove(perform: move)
-                Button {
-                    taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
-                        .single: 0.0,
-                        .marriedFilingJointly: 0.0,
-                        .marriedFilingSeparately: 0.0,
-                        .headOfHousehold: 0.0,
-                        .qualifiedWidow: 0.0
-                    ]))
-                } label: {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("Add New Tax Bracket")
-                    }
-                }
-                .buttonStyle(.plain)
             }
+            .listStyle(.plain)
             .scrollContentBackground(.hidden) // Hides the default background color
             .background(Color.clear)
-            Spacer()
+            .padding()
         }
-        .padding()
-        
     }
     
-    func delete() {
+    func delete(_ bracket: TaxBracket) {
         DispatchQueue.main.async {
-            // Remove the selected brackets
-            for bracket in multiSelection {
-                taxBrackets.brackets.removeAll(where: { $0.id == bracket.id })
-            }
-            
-            // Clear the selection after deletion
-            multiSelection.removeAll()
+            taxBrackets.brackets.removeAll(where: { $0.id == bracket.id })
         }
-    }
-    
-    func move(from source: IndexSet, to destination: Int) {
-        // Track the actual selected items before the move
-        let selectedItems = multiSelection.map { $0.id }
-        
-        // Perform the move in the document
-        taxBrackets.brackets.move(fromOffsets: source, toOffset: destination)
-        
-        // Update multiSelection by finding the new indices of the previously selected items
-        multiSelection = Set(selectedItems.compactMap { id in
-            taxBrackets.brackets.first(where: { $0.id == id })
-        })
     }
 }
 
@@ -161,5 +147,6 @@ struct ThresholdField : View {
 #Preview("Content", traits: .sizeThatFitsLayout) {
     @Previewable @State var taxBrackets = TaxFacts.official2024.ordinaryTaxBrackets
     TaxBracketEditor(taxBrackets: $taxBrackets)
-        .frame(width: 1000)
+        
 }
+
