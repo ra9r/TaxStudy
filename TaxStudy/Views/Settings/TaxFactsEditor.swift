@@ -22,22 +22,14 @@ struct TaxFactsEditor : View {
             CapitalGainFactsEditor(facts: $facts)
         case .ficaTaxThresholds:
             FICAFactsEditor(facts: $facts)
-        case .medicareTaxThresholds:
-            TaxBracketEditor(taxBrackets: $facts.medicareTaxThresholds)
         case .provisionalIncomeThresholds:
-            TaxBracketEditor(taxBrackets: $facts.provisionalIncomeThresholds)
-        case .hsaLimits:
-            Text("HSA Limits")
-        case .iraLimits:
-            Text("IRA Limits")
-        case .irmaaSurcharges:
-            Text("IRMAA Surcharges")
+            ProvisionalIncomeFactsEditor(facts: $facts)
+        case .irmaaPartBSurcharges:
+            IRMAAPartBFactsEditor(facts: $facts)
+        case .irmaaPartDSurcharges:
+            IRMAAPartDFactsEditor(facts: $facts)
         case .niiTax:
             NIITFactsEditor(facts: $facts)
-        case .charitableDeductions:
-            Text("Charitable Deductions")
-        case .earmingsLimits:
-            Text("Earning Limits for SSA Income")
         }
     }
 }

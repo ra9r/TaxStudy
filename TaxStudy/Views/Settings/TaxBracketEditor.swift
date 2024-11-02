@@ -9,10 +9,12 @@ import SwiftUI
 
 struct TaxBracketEditor: View {
     @Binding var taxBrackets: TaxBrackets
+    var style: TaxBracketStyle = .rate
     
     // Initialize the initialTaxBrackets with the current taxBrackets
-    init(taxBrackets: Binding<TaxBrackets>) {
+    init(taxBrackets: Binding<TaxBrackets>, style: TaxBracketStyle = .rate) {
         self._taxBrackets = taxBrackets
+        self.style = style
     }
 
     var body: some View {
@@ -27,7 +29,7 @@ struct TaxBracketEditor: View {
         ]
         ScrollView {
             LazyVGrid(columns: colums, spacing: 10) {
-                Heading("Rate")
+                Heading(style.rawValue)
                 Heading("Single")
                 Heading("MFJ")
                 Heading("MFS")
@@ -38,7 +40,12 @@ struct TaxBracketEditor: View {
                 ForEach(taxBrackets.brackets.indices, id: \.self) { index in
                     let bracket = taxBrackets.brackets[index]
                     
-                    RateField(bracket: bracket, taxBrackets: $taxBrackets)
+                    switch style {
+                    case .number:
+                        AmountField(bracket: bracket, taxBrackets: $taxBrackets)
+                    case .rate:
+                        RateField(bracket: bracket, taxBrackets: $taxBrackets)
+                    }
                     ThresholdField(filingStatus: .single, bracket: bracket, taxBrackets: $taxBrackets)
                     ThresholdField(filingStatus: .marriedFilingJointly, bracket: bracket, taxBrackets: $taxBrackets)
                     ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets)
@@ -124,6 +131,27 @@ struct RateField : View {
     }
 }
 
+struct AmountField : View {
+    var bracket: TaxBracket
+    @Binding var taxBrackets: TaxBrackets
+    var body: some View {
+        TextField(
+            "Amount",
+            value: Binding(
+                get: { bracket.rate },
+                set: { newValue in
+                    if let index = taxBrackets.brackets.firstIndex(where: { $0.id == bracket.id }) {
+                        taxBrackets.brackets[index].rate = newValue
+                    }
+                }
+            ),
+            format: .number
+        )
+        .decorated(by: "dollarsign")
+        
+    }
+}
+
 struct ThresholdField : View {
     var filingStatus: FilingStatus
     var bracket: TaxBracket
@@ -151,3 +179,7 @@ struct ThresholdField : View {
         
 }
 
+enum TaxBracketStyle : String {
+    case rate = "Rate"
+    case number = "Amt"
+}

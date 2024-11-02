@@ -12,11 +12,8 @@ enum TaxFactsEditorTypes: String, CaseIterable {
     case ordinaryTaxBrackets = "Ordinary Income"
     case capitalGainsTaxBrackets = "Capital Gains"
     case ficaTaxThresholds = "FICA Taxes"
-    case medicareTaxThresholds = "Medicare"
     case provisionalIncomeThresholds = "Provisional Income"
-    case hsaLimits = "HSAs"
-    case iraLimits = "IRA and Roth"
-    case irmaaSurcharges = "IRMAA Surcharges"
-    case charitableDeductions = "Charitable Deductions"
-    case earmingsLimits = "SSA Earning Limits"
+    case irmaaPartBSurcharges = "IRMAA Part B Surcharges"
+    case irmaaPartDSurcharges = "IRMAA Part D Surcharges"
+    
 }

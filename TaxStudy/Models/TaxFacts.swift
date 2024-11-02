@@ -9,39 +9,46 @@ import Foundation
 
 class TaxFacts : Codable, Identifiable {
     var id: String
-    var ordinaryTaxBrackets: TaxBrackets
-    var capitalGainTaxBrackets: TaxBrackets
     
-    /// The FICA Income thresholds for Social Security Taxes
-    var ssTaxThresholds: TaxBrackets
-    /// The FICA income thresholds for Medicare Taxes
-    var medicareTaxThresholds: TaxBrackets
-    
-    var provisionalIncomeThresholds: TaxBrackets
-    
-    /// IRMAA (Plan B)
-    var irmaaPlanBThresholds: TaxBrackets
-    var irmaaPlanDThresholds: TaxBrackets
-    
-    var niitThresholds: [FilingStatus: Double]
-    var niitRate: Double
-    
-    var capitalLossLimit: Double // 3000
-    
+    // Standard Deduction
     var standardDeduction: [FilingStatus: Double]
     var standardDeductionBonus: [FilingStatus: Double]
     var standardDeductionBonusAge: Int
+    
+    // Net Investment Income
+    var niitThresholds: [FilingStatus: Double]
+    var niitRate: Double
+    
+    // Ordinary Income Tax
+    var ordinaryTaxBrackets: TaxBrackets
+    
+    // Capital Gains Tax
+    var capitalGainTaxBrackets: TaxBrackets
+    var capitalLossLimit: Double // 3000
+    
+    // The FICA Income thresholds for Social Security Taxes and  Medicare Taxes
+    var ssTaxThresholds: TaxBrackets
+    var medicareTaxThresholds: TaxBrackets
+    
+    
+    // Provision Income (used in Social Security Tax calculations)
+    var provisionalIncomeThresholds: TaxBrackets
+    
+    // IRMAA (Plan B)
+    var irmaaPlanBThresholds: TaxBrackets
+    var irmaaPlanDThresholds: TaxBrackets
+    
+    // AMT Facts
+    var amtExemptionReductionRate: Double = 0.25
+    var amtExemptions: [FilingStatus: Double]
+    var amtPhaseOutThesholds: [FilingStatus: Double]
+    var amtBrackets: TaxBrackets
     
     var charitableCashThreadholdRate: Double = 0.6
     var charitableAssetThreadholdRate: Double = 0.3
     var charitableMileageRate: Double = 0.14
     var medicalDeductionThreasholdRate: Double = 0.075
     var medicalDeductionThreasholdRateForAMT: Double = 0.10
-    
-    var amtExemptionReductionRate: Double = 0.25
-    var amtExemptions: [FilingStatus: Double]
-    var amtPhaseOutThesholds: [FilingStatus: Double]
-    var amtBrackets: TaxBrackets
     
     init(
         id: String,
@@ -336,53 +343,89 @@ private let ProvisionalIncomeThresholds2024 = TaxBrackets(
 private let PlanBSurchargethresholds2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
-        .marriedFilingJointly: 0
+        .marriedFilingJointly: 0,
+        .marriedFilingSeparately: 0,
+        .headOfHousehold: 0,
+        .qualifiedWidow: 0
     ]),
     .init(70.0, thresholds: [
         .single: 103000,
-        .marriedFilingJointly: 206000
+        .marriedFilingJointly: 206000,
+        .marriedFilingSeparately: 103000,
+        .headOfHousehold: 103000,
+        .qualifiedWidow: 103000
     ]),
     .init(175.0, thresholds: [
         .single: 123000,
-        .marriedFilingJointly: 246000
+        .marriedFilingJointly: 246000,
+        .marriedFilingSeparately: 123000,
+        .headOfHousehold: 123000,
+        .qualifiedWidow: 123000
     ]),
     .init(280.0, thresholds: [
         .single: 153000,
-        .marriedFilingJointly: 306000
+        .marriedFilingJointly: 306000,
+        .marriedFilingSeparately: 153000,
+        .headOfHousehold: 153000,
+        .qualifiedWidow: 153000
     ]),
     .init(285, thresholds: [
         .single: 183000,
-        .marriedFilingJointly: 366000
+        .marriedFilingJointly: 366000,
+        .marriedFilingSeparately: 183000,
+        .headOfHousehold: 183000,
+        .qualifiedWidow: 183000
     ]),
     .init(280.0, thresholds: [
         .single: 500000,
-        .marriedFilingJointly: 750000
+        .marriedFilingJointly: 750000,
+        .marriedFilingSeparately: 500000,
+        .headOfHousehold: 500000,
+        .qualifiedWidow: 500000
     ])
 )
 
 private let PlanDSurchargethresholds2024 = TaxBrackets(
     .init(0.0, thresholds: [
         .single: 0,
-        .marriedFilingJointly: 0
+        .marriedFilingJointly: 0,
+        .marriedFilingSeparately: 0,
+        .headOfHousehold: 0,
+        .qualifiedWidow: 0
     ]),
     .init(12.0, thresholds: [
         .single: 103000,
-        .marriedFilingJointly: 206000
+        .marriedFilingJointly: 206000,
+        .marriedFilingSeparately: 103000,
+        .headOfHousehold: 103000,
+        .qualifiedWidow: 103000
     ]),
     .init(31.0, thresholds: [
         .single: 123000,
-        .marriedFilingJointly: 246000
+        .marriedFilingJointly: 246000,
+        .marriedFilingSeparately: 123000,
+        .headOfHousehold: 123000,
+        .qualifiedWidow: 123000
     ]),
     .init(50.0, thresholds: [
         .single: 153000,
-        .marriedFilingJointly: 306000
+        .marriedFilingJointly: 306000,
+        .marriedFilingSeparately: 153000,
+        .headOfHousehold: 153000,
+        .qualifiedWidow: 153000
     ]),
     .init(70.0, thresholds: [
         .single: 183000,
-        .marriedFilingJointly: 366000
+        .marriedFilingJointly: 366000,
+        .marriedFilingSeparately: 183000,
+        .headOfHousehold: 183000,
+        .qualifiedWidow: 183000
     ]),
     .init(76.0, thresholds: [
         .single: 500000,
-        .marriedFilingJointly: 750000
+        .marriedFilingJointly: 750000,
+        .marriedFilingSeparately: 500000,
+        .headOfHousehold: 500000,
+        .qualifiedWidow: 500000
     ])
 )

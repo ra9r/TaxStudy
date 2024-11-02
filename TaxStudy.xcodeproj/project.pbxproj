@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3E03BD2CD5BFB0003D189E /* ProvisionalIncomeFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */; };
+		2A3E03BF2CD5C3EF003D189E /* IRMAAFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */; };
 		2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081D82CC59B15007E5CF0 /* Setttings.swift */; };
 		2A4081F52CC6BDDE007E5CF0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */; };
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
@@ -88,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionalIncomeFactsEditor.swift; sourceTree = "<group>"; };
+		2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRMAAFactsEditor.swift; sourceTree = "<group>"; };
 		2A4081D82CC59B15007E5CF0 /* Setttings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setttings.swift; sourceTree = "<group>"; };
 		2A4081EC2CC6A9C8007E5CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -364,6 +368,8 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */,
+				2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
 				2AD415602CD47782005995EF /* OrdinaryFactsEditor.swift */,
 				2AD415642CD47D97005995EF /* CapitalGainFactsEditor.swift */,
@@ -504,6 +510,7 @@
 				2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */,
 				2ACC20272CC267B500D2A907 /* KeyMetricsView.swift in Sources */,
 				2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */,
+				2A3E03BD2CD5BFB0003D189E /* ProvisionalIncomeFactsEditor.swift in Sources */,
 				2A6B0BBC2CCC82E000FEC030 /* SideMenu.swift in Sources */,
 				2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */,
 				2A7CB29B2CBDAC49008334E1 /* TaxCredits.swift in Sources */,
@@ -525,6 +532,7 @@
 				2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */,
 				2A7CB2952CBC7823008334E1 /* MasonryLayout.swift in Sources */,
 				2AEFB4292CD0799800B975CF /* StandardDeductionFactsEditor.swift in Sources */,
+				2A3E03BF2CD5C3EF003D189E /* IRMAAFactsEditor.swift in Sources */,
 				2AEFB41D2CCF5C8B00B975CF /* NIITFactsEditor.swift in Sources */,
 				2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */,
 				2A51CB2D2CB9A3650075BBA0 /* NCStateTaxCalc.swift in Sources */,
