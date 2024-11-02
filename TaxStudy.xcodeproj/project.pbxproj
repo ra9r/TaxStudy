@@ -197,6 +197,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A01F0B42CD686650081351F /* FactsEditors */ = {
+			isa = PBXGroup;
+			children = (
+				2A430C862CD5D46900ED5036 /* AMTFactsEditor.swift */,
+				2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */,
+				2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */,
+				2AD415602CD47782005995EF /* OrdinaryFactsEditor.swift */,
+				2AD415642CD47D97005995EF /* CapitalGainFactsEditor.swift */,
+				2AD415662CD482AC005995EF /* FICAFactsEditor.swift */,
+				2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */,
+				2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */,
+				2A430C882CD5D7DB00ED5036 /* ThresholdEditor.swift */,
+				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
+			);
+			path = FactsEditors;
+			sourceTree = "<group>";
+		};
 		2A51CB022CB9A3650075BBA0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,19 +389,10 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				2A430C862CD5D46900ED5036 /* AMTFactsEditor.swift */,
-				2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */,
-				2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
-				2AD415602CD47782005995EF /* OrdinaryFactsEditor.swift */,
-				2AD415642CD47D97005995EF /* CapitalGainFactsEditor.swift */,
-				2AD415662CD482AC005995EF /* FICAFactsEditor.swift */,
-				2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */,
-				2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */,
-				2A430C882CD5D7DB00ED5036 /* ThresholdEditor.swift */,
-				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 				2AEFB4452CD0BBA300B975CF /* TaxFactsEditor.swift */,
 				2AD415622CD478BE005995EF /* TaxFactsEditorTypes.swift */,
+				2A01F0B42CD686650081351F /* FactsEditors */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
