@@ -94,6 +94,9 @@
     "AMT Reduced Exemption" : {
 
     },
+    "AMT Reduction Rate" : {
+
+    },
     "AMT Tax" : {
 
     },
@@ -290,6 +293,9 @@
 
     },
     "Energy Efficiency Improvement" : {
+
+    },
+    "Exemption Thresholds" : {
 
     },
     "Export TaxFacts..." : {
@@ -603,6 +609,9 @@
 
     },
     "Other/None" : {
+
+    },
+    "Phase Out Thresholds" : {
 
     },
     "Please select a Tax Scenario" : {

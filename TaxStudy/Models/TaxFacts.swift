@@ -157,12 +157,14 @@ private let AMTBrackets = TaxBrackets (
         .marriedFilingJointly: 0,
         .marriedFilingSeparately: 0,
         .headOfHousehold: 0,
+        .qualifiedWidow: 0
     ]),
     .init(0.28, thresholds: [
         .single: 220_700,
         .marriedFilingJointly: 220_700 * 2.0,
         .marriedFilingSeparately: 110_350,
         .headOfHousehold: 227_700,
+        .qualifiedWidow: 220_700
     ])
 )
 
@@ -171,6 +173,7 @@ private let AMTPhaseOutThesholds: [FilingStatus : Double] = [
     .marriedFilingJointly: 1_156_300,
     .marriedFilingSeparately: 578_150,
     .headOfHousehold: 578_150,
+    .qualifiedWidow: 578_150
 ]
 
 private let AMTExemptions: [FilingStatus : Double] = [
@@ -178,6 +181,7 @@ private let AMTExemptions: [FilingStatus : Double] = [
     .marriedFilingJointly: 126_500,
     .marriedFilingSeparately: 63_250,
     .headOfHousehold: 81_300,
+    .qualifiedWidow: 81_300
 ]
 
 private let StandardDeductionBonuses: [FilingStatus : Double] = [

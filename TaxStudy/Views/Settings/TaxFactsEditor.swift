@@ -30,6 +30,8 @@ struct TaxFactsEditor : View {
             IRMAAPartDFactsEditor(facts: $facts)
         case .niiTax:
             NIITFactsEditor(facts: $facts)
+        case .amtfacts:
+            AMTFactsEditor(facts: $facts)
         }
     }
 }

@@ -15,5 +15,5 @@ enum TaxFactsEditorTypes: String, CaseIterable {
     case provisionalIncomeThresholds = "Provisional Income"
     case irmaaPartBSurcharges = "IRMAA Part B Surcharges"
     case irmaaPartDSurcharges = "IRMAA Part D Surcharges"
-    
+    case amtfacts = "Alternate Minimum Tax (AMT)"
 }

@@ -11,6 +11,8 @@
 		2A3E03BF2CD5C3EF003D189E /* IRMAAFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */; };
 		2A4081D92CC59B33007E5CF0 /* Setttings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081D82CC59B15007E5CF0 /* Setttings.swift */; };
 		2A4081F52CC6BDDE007E5CF0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */; };
+		2A430C872CD5D46E00ED5036 /* AMTFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A430C862CD5D46900ED5036 /* AMTFactsEditor.swift */; };
+		2A430C892CD5D7DB00ED5036 /* ThresholdEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A430C882CD5D7DB00ED5036 /* ThresholdEditor.swift */; };
 		2A51CB1F2CB9A3650075BBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB0D2CB9A3650075BBA0 /* Preview Assets.xcassets */; };
 		2A51CB202CB9A3650075BBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A51CB192CB9A3650075BBA0 /* Assets.xcassets */; };
 		2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */; };
@@ -95,6 +97,8 @@
 		2A4081D82CC59B15007E5CF0 /* Setttings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setttings.swift; sourceTree = "<group>"; };
 		2A4081EC2CC6A9C8007E5CF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A4081F42CC6BDD8007E5CF0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		2A430C862CD5D46900ED5036 /* AMTFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTFactsEditor.swift; sourceTree = "<group>"; };
+		2A430C882CD5D7DB00ED5036 /* ThresholdEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdEditor.swift; sourceTree = "<group>"; };
 		2A51CB002CB9A3650075BBA0 /* CardCurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCurrencyField.swift; sourceTree = "<group>"; };
 		2A51CB032CB9A3650075BBA0 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		2A51CB042CB9A3650075BBA0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -368,6 +372,7 @@
 		2ACC200E2CC00A1000D2A907 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				2A430C862CD5D46900ED5036 /* AMTFactsEditor.swift */,
 				2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */,
 				2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */,
 				2A4081D82CC59B15007E5CF0 /* Setttings.swift */,
@@ -376,6 +381,7 @@
 				2AD415662CD482AC005995EF /* FICAFactsEditor.swift */,
 				2AEFB4282CD0797F00B975CF /* StandardDeductionFactsEditor.swift */,
 				2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */,
+				2A430C882CD5D7DB00ED5036 /* ThresholdEditor.swift */,
 				2ACC200F2CC00A3C00D2A907 /* TaxBracketEditor.swift */,
 				2AEFB4452CD0BBA300B975CF /* TaxFactsEditor.swift */,
 				2AD415622CD478BE005995EF /* TaxFactsEditorTypes.swift */,
@@ -507,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A430C892CD5D7DB00ED5036 /* ThresholdEditor.swift in Sources */,
 				2A7CB2A12CBDDC32008334E1 /* Deductions.swift in Sources */,
 				2ACC20272CC267B500D2A907 /* KeyMetricsView.swift in Sources */,
 				2A51CB222CB9A3650075BBA0 /* CardCurrencyField.swift in Sources */,
@@ -518,6 +525,7 @@
 				2A51CB252CB9A3650075BBA0 /* String+Extension.swift in Sources */,
 				2A51CB272CB9A3650075BBA0 /* FilingStatus.swift in Sources */,
 				2A6BA2B02CBE645D007C3A27 /* CardView.swift in Sources */,
+				2A430C872CD5D46E00ED5036 /* AMTFactsEditor.swift in Sources */,
 				2AEFB4272CD072BA00B975CF /* DescribedContainer.swift in Sources */,
 				2ACFDE342CCC56080033B5B8 /* CardTextField.swift in Sources */,
 				2A6BA2AA2CBE54AB007C3A27 /* HeaderView.swift in Sources */,

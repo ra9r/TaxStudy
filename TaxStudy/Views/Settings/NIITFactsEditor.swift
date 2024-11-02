@@ -30,29 +30,22 @@ struct NIITFactsEditor : View {
                         Text("").font(.headline)
                         Divider()
                         
-                        Threashold(.single)
-                        Threashold(.marriedFilingJointly)
-                        Threashold(.marriedFilingSeparately)
-                        Threashold(.headOfHousehold)
-                        Threashold(.qualifiedWidow)
+                        ThresholdEditor(thresholds: $facts.niitThresholds)
                     }
                     .padding()
                     .frame(maxWidth: 400)
                     Spacer()
                 }
+                
+                
+                .padding()
             }
             .padding()
         }
     }
-    
-    func Threashold(_ filingStatus: FilingStatus) -> some View {
-        Group {
-            Text(filingStatus.label).font(.headline)
-            TextField("Value", value: $facts.niitThresholds[filingStatus], format: .number)
-                .decorated(by: "dollarsign")
-        }
-    }
 }
+
+
 
 #Preview {
     @Previewable @State var facts: TaxFacts = TaxFacts.official2024
