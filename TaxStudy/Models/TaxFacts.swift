@@ -50,6 +50,41 @@ class TaxFacts : Codable, Identifiable {
     var medicalDeductionThreasholdRate: Double = 0.075
     var medicalDeductionThreasholdRateForAMT: Double = 0.10
     
+    init(from: TaxFacts, id: String) {
+        self.id = id
+        self.standardDeduction = from.standardDeduction
+        self.standardDeductionBonus = from.standardDeductionBonus
+        self.standardDeductionBonusAge = from.standardDeductionBonusAge
+        
+        self.niitThresholds = from.niitThresholds
+        self.niitRate = from.niitRate
+        
+        self.ordinaryTaxBrackets = from.ordinaryTaxBrackets.deepCopy
+        
+        self.capitalLossLimit = from.capitalLossLimit
+        self.capitalGainTaxBrackets = from.capitalGainTaxBrackets.deepCopy
+        
+        self.ssTaxThresholds = from.ssTaxThresholds.deepCopy
+        self.medicareTaxThresholds = from.medicareTaxThresholds.deepCopy
+        
+        self.provisionalIncomeThresholds = from.provisionalIncomeThresholds.deepCopy
+        
+        self.irmaaPlanBThresholds = from.irmaaPlanBThresholds.deepCopy
+        self.irmaaPlanDThresholds = from.irmaaPlanDThresholds.deepCopy
+        
+        self.amtExemptionReductionRate = from.amtExemptionReductionRate
+        self.amtExemptions = from.amtExemptions
+        self.amtPhaseOutThesholds = from.amtPhaseOutThesholds
+        self.amtBrackets = from.amtBrackets.deepCopy
+        
+        self.charitableCashThreadholdRate = from.charitableCashThreadholdRate
+        self.charitableAssetThreadholdRate = from.charitableAssetThreadholdRate
+        
+        self.charitableMileageRate = from.charitableMileageRate
+        self.medicalDeductionThreasholdRate = from.medicalDeductionThreasholdRate
+        self.medicalDeductionThreasholdRateForAMT = from.medicalDeductionThreasholdRateForAMT
+    }
+    
     init(
         id: String,
         ordinaryTaxBrackets: TaxBrackets,
@@ -147,6 +182,13 @@ extension TaxFacts {
         amtBrackets: AMTBrackets
     )
 }
+
+extension TaxFacts : DeepCopyable {
+    var deepCopy: TaxFacts {
+        return TaxFacts(from: self, id: "\(self.id) Copy")
+    }
+}
+    
 
 
 // MARK: - Default Brackets & Thresholds

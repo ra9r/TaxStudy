@@ -10,6 +10,7 @@ struct SettingsView : View {
     @Environment(TaxFactsManager.self) var taxFactsManager
     @State var selectedFacts: Int?
     @State var selectedSetting: TaxFactsEditorTypes = .ordinaryTaxBrackets
+    @State var isEditable: Int?
     
     
     var body: some View {
@@ -19,15 +20,30 @@ struct SettingsView : View {
                 Section("Official") {
                     ForEach(taxFactsManager.officialFacts.indices, id: \.self) { index in
                         NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
+                            .contextMenu {
+                                Button("Duplicate") {
+                                    newShared(from: taxFactsManager.officialFacts[index])
+                                }
+                            }
                     }
                 }
                 Section("Shared") {
+                    @Bindable var manager = taxFactsManager
                     ForEach(taxFactsManager.sharedFacts.indices, id: \.self) { index in
-                        NavigationLink("Facts: \(taxFactsManager.officialFacts[index].id)", value: index)
+                        if let isEditable = isEditable, isEditable == index {
+                            TextField("Foo", text: $manager.sharedFacts[index].id)
+                        } else {
+                            NavigationLink("Facts: \(taxFactsManager.sharedFacts[index].id)", value: index)
+                                .contextMenu {
+                                    Button("Rename") {
+                                        isEditable = index
+                                    }
+                                }
+                        }
                     }
                 }
             }
-        
+            
             .frame(minWidth: 200)
             .navigationTitle("Tax Facts")
         } content: {
@@ -47,7 +63,12 @@ struct SettingsView : View {
                 selectedFacts = 0
             }
         }
-//        .frame(minWidth: 1150, minHeight: 400)
+    }
+    
+    func newShared(from source: TaxFacts) {
+        let newFacts = source.deepCopy
+        print("Duplication: \(newFacts.id)")
+        taxFactsManager.sharedFacts.append(newFacts)
     }
 }
 
