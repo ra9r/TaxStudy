@@ -7,14 +7,19 @@
 import Observation
 import Foundation
 
+@MainActor
 @Observable
 class TaxFactsManager {
     
     var officialFacts: [TaxFacts]
     var sharedFacts: [TaxFacts] = []
     
+    var selectedFacts: TaxFacts
+    
     init() {
         self.officialFacts = [TaxFacts.official2024]
+        self.selectedFacts = TaxFacts.official2024
+        self.selectedFacts = self.officialFacts.first!
     }
 
     func importFile(from url: URL) throws {
@@ -52,6 +57,15 @@ class TaxFactsManager {
         }
         
         return Array(allFacts)
+    }
+    
+    func deleteSharedFact(id: String?) {
+        guard let id else {
+            print("Error: Unable to delete \(id ?? "NONE")")
+            return
+        }
+        
+        self.sharedFacts.removeAll { $0.id == id }
     }
 }
 

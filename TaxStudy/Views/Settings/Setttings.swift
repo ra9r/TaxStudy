@@ -8,46 +8,34 @@ import SwiftUI
 
 struct SettingsView : View {
     @Environment(TaxFactsManager.self) var taxFactsManager
-    @State var selectedFacts: String?
     @State var selectedSetting: TaxFactsEditorTypes = .ordinaryTaxBrackets
-    @State var isEditable: Int?
     
     
     var body: some View {
-        @Bindable var manager = taxFactsManager
+        @Bindable var tfm = taxFactsManager
         NavigationSplitView {
-            List(selection: $selectedFacts) {
+            List(selection: $tfm.selectedFacts) {
                 Section("Official") {
-                    ForEach(taxFactsManager.officialFacts.indices, id: \.self) { index in
-                        let id = taxFactsManager.officialFacts[index].id
-                        NavigationLink("Facts: \(id)", value: id)
+                    ForEach(tfm.officialFacts, id: \.id) { facts in
+                        NavigationLink("Facts: \(facts.id)", value: facts)
                             .contextMenu {
                                 Button("Duplicate") {
-                                    newShared(from: taxFactsManager.officialFacts[index])
+                                    newShared(from: facts)
                                 }
                             }
                     }
                 }
                 Section("Shared") {
-                    @Bindable var manager = taxFactsManager
-                    ForEach(taxFactsManager.sharedFacts.indices, id: \.self) { index in
-                        let id = taxFactsManager.sharedFacts[index].id
-                        if let isEditable = isEditable, isEditable == index {
-                            TextField("Foo", text: $manager.sharedFacts[index].id)
-                        } else {
-                            NavigationLink("Facts: \(id)", value: id)
-                                .contextMenu {
-                                    Button("Rename") {  
-                                        isEditable = index
-                                    }
-                                    Button("Duplicate") {
-                                        newShared(from: taxFactsManager.sharedFacts[index])
-                                    }
-                                    Button("Delete") {
-                                        taxFactsManager.sharedFacts.remove(
-                                    }
+                    ForEach(taxFactsManager.sharedFacts, id: \.id) { facts in
+                        NavigationLink("Facts: \(facts.id)", value: facts)
+                            .contextMenu {
+                                Button("Duplicate") {
+                                    newShared(from: facts)
                                 }
-                        }
+                                Button("Delete") {
+                                    taxFactsManager.deleteSharedFact(id: facts.id)
+                                }
+                            }
                     }
                 }
             }
@@ -60,21 +48,10 @@ struct SettingsView : View {
             }
             .frame(minWidth: 180)
         } detail: {
-            if let selectedFacts {
-                if manager.officialFacts.first(where: { $0.id == selectedFacts}) != nil {
-                    TaxFactsEditor(facts: $manager.officialFacts.first(where: { $0.id == selectedFacts})!, selectedSetting: selectedSetting)
-                } else {
-                    TaxFactsEditor(facts: $manager.sharedFacts.first(where: { $0.id == selectedFacts})!, selectedSetting: selectedSetting)
-                }
-            }
+            TaxFactsEditor(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
         }
         .navigationTitle("TaxFacts")
         .navigationSplitViewStyle(.prominentDetail)
-        .onAppear {
-            if selectedFacts == nil && taxFactsManager.officialFacts.isEmpty == false {
-                selectedFacts = nil
-            }
-        }
     }
     
     func newShared(from source: TaxFacts) {
