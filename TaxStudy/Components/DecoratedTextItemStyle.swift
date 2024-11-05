@@ -43,6 +43,30 @@ struct DecoratedTextItemStyle : ViewModifier {
     }
 }
 
+struct DecoratedTextEditorStyle : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .textEditorStyle(.plain)
+            .scrollDisabled(true)
+            .frame(maxWidth: .infinity, minHeight: 100)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(.black)
+            .padding(5)    // Add vertical padding around the text field content.
+            .background(.white)  // Set the background color for the entire component.
+            .clipShape(RoundedRectangle(cornerRadius: 5))  // Clip to a rounded rectangle.
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.black, lineWidth: 2)  // Add a black stroke around the rounded rectangle.
+            )
+    }
+}
+
+extension TextEditor {
+    func decorated() -> some View {
+        self.modifier(DecoratedTextEditorStyle())
+    }
+}
+
 /// Extension on `Text` to easily apply the `DecoratedTextItemStyle` with a specific symbol.
 extension Text {
     
@@ -59,6 +83,8 @@ extension Text {
     VStack {
         Text("Tax Payer 1")
             .decorated(by: "person")
+        TextEditor(text: .constant(""))
+            .decorated()
         Spacer()
     }
     .padding()

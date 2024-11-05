@@ -7,6 +7,7 @@
 
 
 enum TaxFactsEditorTypes: String, CaseIterable {
+    case generalInformation = "General Information"
     case standardDeductions = "Standard Deductions"
     case niiTax = "Net Invetment Income"
     case ordinaryTaxBrackets = "Ordinary Income"

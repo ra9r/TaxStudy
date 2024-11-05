@@ -14,6 +14,8 @@ struct TaxFactsEditor : View {
     
     var body: some View {
         switch selectedSetting {
+        case .generalInformation:
+            GeneralEditor(facts: $facts)
         case .standardDeductions:
             StandardDeductionFactsEditor(facts: $facts)
         case .ordinaryTaxBrackets:

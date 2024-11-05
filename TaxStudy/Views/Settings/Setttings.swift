@@ -58,7 +58,7 @@ struct SettingsView : View {
         let newFacts = source.deepCopy
         newFacts.id = generateUniqueID(baseID: source.id)
         print("Duplication: \(newFacts.id)")
-        taxFactsManager.sharedFacts.append(newFacts)
+        taxFactsManager.newShared(from: newFacts)
     }
     
     func generateUniqueID(baseID: String) -> String {

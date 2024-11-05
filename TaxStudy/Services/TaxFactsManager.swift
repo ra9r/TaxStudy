@@ -5,7 +5,7 @@
 //  Created by Rodney Aiglstorfer on 10/29/24.
 //
 import Observation
-import Foundation
+import SwiftUI
 
 @MainActor
 @Observable
@@ -20,8 +20,10 @@ class TaxFactsManager {
         self.officialFacts = [TaxFacts.official2024]
         self.selectedFacts = TaxFacts.official2024
         self.selectedFacts = self.officialFacts.first!
+        
+        loadSharedFacts()
     }
-
+    
     func importFile(from url: URL) throws {
         let decoder = JSONDecoder()
         let data = try Data(contentsOf: url)
@@ -36,7 +38,7 @@ class TaxFactsManager {
     }
     
     func lookupFacts(id: String, embedded: [TaxFacts] = []) -> TaxFacts? {
-
+        
         
         return allFacts(includeEmbedded: embedded).first { $0.id == id }
     }
@@ -59,6 +61,12 @@ class TaxFactsManager {
         return Array(allFacts)
     }
     
+    func newShared(from newFacts: TaxFacts) {
+        sharedFacts.append(newFacts)
+        
+//        saveSharedFacts()
+    }
+    
     func deleteSharedFact(id: String?) {
         guard let id else {
             print("Error: Unable to delete \(id ?? "NONE")")
@@ -66,6 +74,23 @@ class TaxFactsManager {
         }
         
         self.sharedFacts.removeAll { $0.id == id }
+//        saveSharedFacts()
+    }
+    
+    func saveSharedFacts() {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(sharedFacts) {
+            UserDefaults.standard.set(encodedData, forKey: "sharedFacts")
+        }
+    }
+    
+    func loadSharedFacts() {
+        if let savedData = UserDefaults.standard.data(forKey: "sharedFacts") {
+            let decoder = JSONDecoder()
+            if let loadedFacts = try? decoder.decode([TaxFacts].self, from: savedData) {
+                sharedFacts = loadedFacts
+            }
+        }
     }
 }
 

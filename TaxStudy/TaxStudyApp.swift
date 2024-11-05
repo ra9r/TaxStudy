@@ -18,6 +18,10 @@ struct TaxStudyApp: App {
             ProjectView(file.$document)
                 .environment(taxFactsServices)
                 .observeWindow()
+                .onChange(of: taxFactsServices.sharedFacts) { oldValue, newValue in
+                    print("Saving shared facts")
+                    taxFactsServices.saveSharedFacts()
+                }
         }
         .defaultSize(width: 1280, height: 1024)
         .keyboardShortcut("N", modifiers: [.command])
@@ -28,6 +32,13 @@ struct TaxStudyApp: App {
         Window("Tax Facts", id: "txcfg") {
             SettingsView()
                 .environment(taxFactsServices)
+                .onChange(of: taxFactsServices.sharedFacts) { oldValue, newValue in
+                    print("Saving shared facts")
+                    taxFactsServices.saveSharedFacts()
+                }
+        }
+        .commands {
+            SettingsCommands($taxFactsServices)
         }
     }
 

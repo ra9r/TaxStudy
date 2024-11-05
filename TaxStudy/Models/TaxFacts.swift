@@ -9,6 +9,7 @@ import Foundation
 
 class TaxFacts : Codable, Identifiable {
     var id: String
+    var notes: String = ""
     
     // Standard Deduction
     var standardDeduction: [FilingStatus: Double]
@@ -52,6 +53,7 @@ class TaxFacts : Codable, Identifiable {
     
     init(from: TaxFacts, id: String) {
         self.id = id
+        self.notes = from.notes
         self.standardDeduction = from.standardDeduction
         self.standardDeductionBonus = from.standardDeductionBonus
         self.standardDeductionBonusAge = from.standardDeductionBonusAge
@@ -87,6 +89,7 @@ class TaxFacts : Codable, Identifiable {
     
     init(
         id: String,
+        notes: String,
         ordinaryTaxBrackets: TaxBrackets,
         capitalGainTaxBrackets: TaxBrackets,
         ssTaxThresholds: TaxBrackets,
@@ -106,6 +109,7 @@ class TaxFacts : Codable, Identifiable {
         amtBrackets: TaxBrackets
     ) {
         self.id = id
+        self.notes = notes
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
         self.ssTaxThresholds = ssTaxThresholds
@@ -141,6 +145,7 @@ extension TaxFacts {
     static func createNewTaxFacts(id: String) -> TaxFacts {
         return TaxFacts(
             id: id,
+            notes: "",
             ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
             capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
             ssTaxThresholds: SSTaxThresholds2024,
@@ -163,6 +168,7 @@ extension TaxFacts {
     
     static let official2024 = TaxFacts(
         id: "2024",
+        notes: "Officially supported Tax Facts for 2024",
         ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
         capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
         ssTaxThresholds: SSTaxThresholds2024,
