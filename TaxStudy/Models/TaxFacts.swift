@@ -185,7 +185,7 @@ extension TaxFacts {
 
 extension TaxFacts : DeepCopyable {
     var deepCopy: TaxFacts {
-        return TaxFacts(from: self, id: "\(self.id) Copy")
+        return TaxFacts(from: self, id: self.id)
     }
 }
     
