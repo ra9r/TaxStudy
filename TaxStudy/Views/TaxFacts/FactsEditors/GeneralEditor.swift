@@ -33,6 +33,9 @@ struct GeneralEditor : View {
             .frame(maxWidth: .infinity)
         }
         .padding()
+        .onChange(of: facts) {
+            print("Change to facts")
+        }
     }
 }
 

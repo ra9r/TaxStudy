@@ -48,10 +48,25 @@ struct TaxFactsEditor : View {
             }
             .frame(minWidth: 180)
         } detail: {
-            TaxFactsListView(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
+            VStack {
+                TaxFactsListView(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
+                HStack {
+                    Spacer()
+                    Button("Save") {
+                        taxFactsManager.saveSharedFacts()
+                        print("Shared TaxFacts Saved")
+                    }
+                }
+            }
         }
         .navigationTitle("TaxFacts")
         .navigationSplitViewStyle(.prominentDetail)
+        .toolbar {
+            Button("Save") {
+                taxFactsManager.saveSharedFacts()
+                print("Shared TaxFacts Saved")
+            }
+        }
     }
     
     func newShared(from source: TaxFacts) {
