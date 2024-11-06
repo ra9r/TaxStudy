@@ -8,9 +8,9 @@ import SwiftUI
 
 
 
-struct TaxFactsEditor : View {
+struct TaxFactsListView : View {
     @Binding var facts: TaxFacts
-    var selectedSetting: TaxFactsEditorTypes
+    var selectedSetting: TaxFactsListTypes
     
     var body: some View {
         switch selectedSetting {
@@ -40,5 +40,5 @@ struct TaxFactsEditor : View {
 
 #Preview {
     @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsEditor(facts: $taxFactService.officialFacts[0], selectedSetting: .capitalGainsTaxBrackets)
+    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .capitalGainsTaxBrackets)
 }

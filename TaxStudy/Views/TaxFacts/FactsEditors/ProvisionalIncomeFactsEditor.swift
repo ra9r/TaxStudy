@@ -26,5 +26,5 @@ struct ProvisionalIncomeFactsEditor : View {
 
 #Preview {
     @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsEditor(facts: $taxFactService.officialFacts[0], selectedSetting: .provisionalIncomeThresholds)
+    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .provisionalIncomeThresholds)
 }

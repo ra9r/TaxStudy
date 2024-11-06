@@ -6,9 +6,9 @@
 //
 import SwiftUI
 
-struct SettingsView : View {
+struct TaxFactsEditor : View {
     @Environment(TaxFactsManager.self) var taxFactsManager
-    @State var selectedSetting: TaxFactsEditorTypes = .ordinaryTaxBrackets
+    @State var selectedSetting: TaxFactsListTypes = .ordinaryTaxBrackets
     
     
     var body: some View {
@@ -43,12 +43,12 @@ struct SettingsView : View {
             .frame(minWidth: 200)
             .navigationTitle("Tax Facts")
         } content: {
-            List(TaxFactsEditorTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
+            List(TaxFactsListTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
                 NavigationLink(settingType.rawValue, value: settingType)
             }
             .frame(minWidth: 180)
         } detail: {
-            TaxFactsEditor(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
+            TaxFactsListView(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
         }
         .navigationTitle("TaxFacts")
         .navigationSplitViewStyle(.prominentDetail)
@@ -84,6 +84,6 @@ struct SettingsView : View {
         TaxFacts.createNewTaxFacts(id: "2023"),
         TaxFacts.createNewTaxFacts(id: "2024")
     ]
-    SettingsView()
+    TaxFactsEditor()
         .environment(TaxFactsManager())
 }

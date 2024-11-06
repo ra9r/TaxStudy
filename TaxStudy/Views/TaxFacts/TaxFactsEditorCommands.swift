@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsCommands : Commands {
+struct TaxFactsEditorCommands : Commands {
     @Binding var taxFactsService : TaxFactsManager
     
     init(_ taxFactsService: Binding<TaxFactsManager>) {

@@ -30,7 +30,7 @@ struct TaxStudyApp: App {
         }
         
         Window("Tax Facts", id: "txcfg") {
-            SettingsView()
+            TaxFactsEditor()
                 .environment(taxFactsServices)
                 .onChange(of: taxFactsServices.sharedFacts) { oldValue, newValue in
                     print("Saving shared facts")
@@ -38,7 +38,7 @@ struct TaxStudyApp: App {
                 }
         }
         .commands {
-            SettingsCommands($taxFactsServices)
+            TaxFactsEditorCommands($taxFactsServices)
         }
     }
 

@@ -39,10 +39,10 @@ struct IRMAAPartDFactsEditor : View {
 
 #Preview {
     @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsEditor(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartBSurcharges)
+    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartBSurcharges)
 }
 
 #Preview {
     @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsEditor(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartDSurcharges)
+    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartDSurcharges)
 }
