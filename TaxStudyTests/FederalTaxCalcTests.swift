@@ -19,7 +19,7 @@ final class FederalTaxCalcTests {
     }
     
     func loadTaxScenario(filename: String) throws -> TaxScenario? {
-        let fileURL = samplePath.appendingPathComponent(filename, conformingTo: .txscn)
+        let fileURL = samplePath.appendingPathComponent(filename)
         guard FileManager.default.fileExists(atPath: fileURL.path) else {
 //            throw AppErrors.fileNotFound(fileURL.path)
             print("Error: File not found: \(fileURL.path)")
@@ -41,7 +41,7 @@ final class FederalTaxCalcTests {
             #expect(Bool(false))
             return
         }
-        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
         
         #expect(fedTax.grossIncome == 194_714.28)
         #expect(fedTax.totalIncome == 194_714.28)
@@ -75,7 +75,7 @@ final class FederalTaxCalcTests {
         scenario.profileSelf.socialSecurity = 0
 
         
-        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
         
         #expect(fedTax.amtIncome == 700_000)
         #expect(fedTax.amtExemption == 81_300)
@@ -114,7 +114,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.wages = 50000
         scenario.profileSpouse.socialSecurity = 0
         
-        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
         
         #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.totalIncome == 100_000)
@@ -161,7 +161,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.socialSecurity = 0
         
         
-        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
         
         #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.totalIncome == 100_000)
@@ -205,7 +205,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.employmentStatus = .retired
         scenario.profileSpouse.socialSecurity = 2000*12
         
-        let fedTax = FederalTaxCalc(scenario, facts: DefaultTaxFacts2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
         
         // MARK: Social Security Only
         
@@ -266,8 +266,15 @@ final class FederalTaxCalcTests {
         scenario.income.add(.init(.longTermCapitalGains, amount: 8_000))
         scenario.income.add(.init(.otherTaxExemptIncome, amount: 8_000)) // return of capital (cost basis)
         
-        #expect(fedTax.grossIncome == 100_000)
+//        return totalIncome +
+//        scenario.longTermCapitalGains +
+//        scenario.shortTermCapitalGains +
+//        totalTaxExemptIncome
         #expect(fedTax.totalIncome == 92_000)
+        #expect(fedTax.scenario.longTermCapitalGains == 8_000)
+        #expect(fedTax.scenario.shortTermCapitalGains == 0)
+        #expect(fedTax.scenario.otherTaxExemptIncome == 8_000)
+        #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.agi == 49_880)
         #expect(fedTax.netLTCG == 8000)
         #expect(fedTax.netSTCG == 0)
@@ -282,7 +289,6 @@ final class FederalTaxCalcTests {
         
         
         #expect(fedTax.deduction == 32_300)
-        #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.totalIncome == 92_000)
         #expect(fedTax.netLTCG == 8_000)
         #expect(fedTax.netSTCG == 0)
