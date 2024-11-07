@@ -20,11 +20,11 @@ struct TaxBracketEditor: View {
     var body: some View {
         let colums = [
             GridItem(.fixed(70)),
-            GridItem(.flexible(minimum: 90, maximum: 110)),
-            GridItem(.flexible(minimum: 90, maximum: 110)),
-            GridItem(.flexible(minimum: 90, maximum: 110)),
-            GridItem(.flexible(minimum: 90, maximum: 110)),
-            GridItem(.flexible(minimum: 90, maximum: 110)),
+            GridItem(.fixed(90)),
+            GridItem(.fixed(90)),
+            GridItem(.fixed(90)),
+            GridItem(.fixed(90)),
+            GridItem(.fixed(90)),
             GridItem(.fixed(20))
         ]
         ScrollView {
@@ -51,37 +51,40 @@ struct TaxBracketEditor: View {
                     ThresholdField(filingStatus: .marriedFilingSeparately, bracket: bracket, taxBrackets: $taxBrackets)
                     ThresholdField(filingStatus: .headOfHousehold, bracket: bracket, taxBrackets: $taxBrackets)
                     ThresholdField(filingStatus: .qualifiedWidow, bracket: bracket, taxBrackets: $taxBrackets)
-                    if index + 1 == taxBrackets.brackets.count {
-                        Button {
-                            taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
-                                .single: 0.0,
-                                .marriedFilingJointly: 0.0,
-                                .marriedFilingSeparately: 0.0,
-                                .headOfHousehold: 0.0,
-                                .qualifiedWidow: 0.0
-                            ]))
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 12, weight: .bold))
-                        }
-                        .buttonStyle(.borderedProminent)
-                    } else {
-                        Button {
-                            delete(bracket)
-                        } label: {
-                            Image(systemName: "minus")
-                                .font(.system(size: 12, weight: .bold))
-                        }
-                        .buttonStyle(.borderedProminent)
+                    Button {
+                        delete(bracket)
+                    } label: {
+                        Image(systemName: "trash")
+                            .font(.system(size: 12, weight: .bold))
                     }
-                    
+                    .buttonStyle(.plain)
                 }
+                
                 
             }
             .padding(5)
             .listStyle(.plain)
             .scrollContentBackground(.hidden) // Hides the default background color
             .background(Color.clear)
+            Button {
+                taxBrackets.brackets.append(TaxBracket(0.0, thresholds: [
+                    .single: 0.0,
+                    .marriedFilingJointly: 0.0,
+                    .marriedFilingSeparately: 0.0,
+                    .headOfHousehold: 0.0,
+                    .qualifiedWidow: 0.0
+                ]))
+            } label: {
+                HStack(alignment: .center) {
+                    Image(systemName: "plus")
+                    Text("Add Bracket")
+                    Spacer()
+                }
+                .font(.system(size: 12, weight: .bold))
+                .frame(maxWidth: .infinity) // Ensures it stretches across the columns
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, 5)
         }
     }
     
