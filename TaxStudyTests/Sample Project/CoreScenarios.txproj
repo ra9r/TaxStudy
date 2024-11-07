@@ -1,0 +1,427 @@
+{
+  "name" : "New Project",
+  "facts" : [
+
+  ],
+  "scenarios" : [
+    {
+      "income" : [
+
+      ],
+      "deductions" : [
+
+      ],
+      "description" : "",
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "socialSecurity" : 0,
+        "wages" : 50000,
+        "medicalCoverage" : "otherOrNone",
+        "name" : "Taxpayer 2",
+        "age" : 50
+      },
+      "profileSelf" : {
+        "age" : 50,
+        "employmentStatus" : "retired",
+        "wages" : 50000,
+        "medicalCoverage" : "otherOrNone",
+        "socialSecurity" : 0,
+        "name" : "Taxpayer 1"
+      },
+      "filingStatus" : "marriedFilingJointly",
+      "adjustments" : [
+
+      ],
+      "facts" : "2024",
+      "id" : "9CB4E820-9B19-432D-B3A0-0764BED16079",
+      "name" : "$100k Wage Only",
+      "credits" : [
+
+      ]
+    },
+    {
+      "name" : "$0 Tax on $100,000",
+      "profileSpouse" : {
+        "wages" : 0,
+        "age" : 65,
+        "socialSecurity" : 24000,
+        "medicalCoverage" : "medicare",
+        "name" : "Angie",
+        "employmentStatus" : "retired"
+      },
+      "id" : "B095BD06-B0FC-41BC-992A-07A3BBE92D76",
+      "profileSelf" : {
+        "name" : "Bob",
+        "wages" : 0,
+        "age" : 65,
+        "medicalCoverage" : "medicare",
+        "employmentStatus" : "retired",
+        "socialSecurity" : 38400
+      },
+      "adjustments" : [
+
+      ],
+      "filingStatus" : "marriedFilingJointly",
+      "income" : [
+        {
+          "amount" : 11600,
+          "type" : "iraWithdrawal",
+          "id" : "2BF3BF71-CED9-48B1-A53D-B1A23CC103D1"
+        },
+        {
+          "id" : "06B8BB69-1FC7-4E32-AFE3-C747E037757D",
+          "type" : "qualifiedDividends",
+          "amount" : 10000
+        },
+        {
+          "amount" : 8000,
+          "id" : "076DAFAE-D478-4E0A-879C-5F083C372ABF",
+          "type" : "longTermCapitalGains"
+        }
+      ],
+      "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
+      "deductions" : [
+
+      ],
+      "credits" : [
+
+      ],
+      "facts" : "2024"
+    },
+    {
+      "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
+      "id" : "4F4C1F1D-55D0-48EE-B6F6-0ED527FFFD0B",
+      "filingStatus" : "marriedFilingJointly",
+      "income" : [
+        {
+          "type" : "otherTaxExemptIncome",
+          "amount" : 22500,
+          "id" : "F7004EAB-E978-4EB2-A2E0-A73CC1E4965F"
+        },
+        {
+          "type" : "iraWithdrawal",
+          "id" : "57131CCB-76E8-42E3-9C6C-8620DAE73FAB",
+          "amount" : 30000
+        },
+        {
+          "type" : "longTermCapitalGains",
+          "amount" : 67500,
+          "id" : "B03FF32F-A5E9-4236-A7C2-DEA48FC327F5"
+        }
+      ],
+      "facts" : "2024",
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "name" : "Taxpayer 2",
+        "socialSecurity" : 0,
+        "age" : 50,
+        "wages" : 0,
+        "medicalCoverage" : "otherOrNone"
+      },
+      "deductions" : [
+
+      ],
+      "profileSelf" : {
+        "name" : "Taxpayer 1",
+        "wages" : 0,
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "socialSecurity" : 0,
+        "medicalCoverage" : "otherOrNone"
+      },
+      "adjustments" : [
+
+      ],
+      "name" : "$0 Tax on $120,000",
+      "credits" : [
+
+      ]
+    },
+    {
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "socialSecurity" : 42000,
+        "wages" : 0,
+        "medicalCoverage" : "offMarketACAPlan",
+        "name" : "Rodney"
+      },
+      "deductions" : [
+
+      ],
+      "profileSelf" : {
+        "name" : "Nobuko",
+        "age" : 52,
+        "employmentStatus" : "retired",
+        "socialSecurity" : 0,
+        "wages" : 0,
+        "medicalCoverage" : "offMarketACAPlan"
+      },
+      "id" : "E1D7DD09-AA87-41AF-8961-604873031B8C",
+      "name" : "100% VTI w\/Rodney",
+      "filingStatus" : "marriedFilingJointly",
+      "income" : [
+        {
+          "type" : "interest",
+          "id" : "E1A89CB9-D8D7-4750-A76B-9F7B27C9B615",
+          "amount" : 12250
+        },
+        {
+          "type" : "qualifiedDividends",
+          "id" : "DBE397FD-D886-4069-BA9C-5F48CC531FE0",
+          "amount" : 68640
+        }
+      ],
+      "facts" : "2024",
+      "credits" : [
+
+      ],
+      "description" : "",
+      "adjustments" : [
+
+      ]
+    },
+    {
+      "adjustments" : [
+
+      ],
+      "description" : "",
+      "credits" : [
+
+      ],
+      "id" : "6D8F7E1D-993D-4544-982D-994CFB5F4069",
+      "income" : [
+        {
+          "amount" : 12250,
+          "id" : "55C9A213-D17D-49BB-BCE1-45278A7EE6B3",
+          "type" : "interest"
+        },
+        {
+          "amount" : 68640,
+          "id" : "8A56DBA4-4D06-4BF1-875A-984BF57A8F7B",
+          "type" : "qualifiedDividends"
+        }
+      ],
+      "name" : "100% VTI w\/out Rodney Copy",
+      "profileSelf" : {
+        "name" : "Taxpayer 1",
+        "socialSecurity" : 0,
+        "medicalCoverage" : "otherOrNone",
+        "employmentStatus" : "retired",
+        "wages" : 0,
+        "age" : 50
+      },
+      "filingStatus" : "single",
+      "facts" : "2025 post TCJA",
+      "profileSpouse" : {
+        "wages" : 0,
+        "age" : 50,
+        "socialSecurity" : 0,
+        "name" : "Taxpayer 2",
+        "medicalCoverage" : "otherOrNone",
+        "employmentStatus" : "retired"
+      },
+      "deductions" : [
+        {
+          "id" : "36392155-FE1E-40B4-A7F6-CD5D2FAF318A",
+          "type" : "stateAndLocalTaxDeduction",
+          "amount" : 3123
+        }
+      ]
+    },
+    {
+      "description" : "This is scenario we will likely find ourselves in during tax year 2025 while Rodney is still alive and receiving SSDI.  Income is very high but the filing status of MFJ keeps our taxes low.  This may be the best apportunity to finish converting over Rodney’s Roth IRA.",
+      "adjustments" : [
+        {
+          "id" : "6F8906B6-5EAB-4602-A7EB-24E317A865D0",
+          "type" : "hsaContribution",
+          "amount" : 8300
+        }
+      ],
+      "profileSelf" : {
+        "wages" : 0,
+        "medicalCoverage" : "offMarketACAPlan",
+        "age" : 50,
+        "name" : "Nobuko",
+        "socialSecurity" : 0,
+        "employmentStatus" : "retired"
+      },
+      "filingStatus" : "marriedFilingJointly",
+      "name" : "CoreFolio w\/Rodney",
+      "deductions" : [
+
+      ],
+      "facts" : "2024",
+      "income" : [
+        {
+          "type" : "qualifiedDividends",
+          "amount" : 53419,
+          "id" : "0EF5EE48-1335-4F2E-ACA8-BF7523B3E5DE"
+        },
+        {
+          "type" : "qualifiedDividends",
+          "amount" : 27146,
+          "id" : "419773D6-5D39-4011-9FF6-80A2C8FF8B2D"
+        },
+        {
+          "id" : "38FF8742-F760-4FE7-96A2-C751A8E6D673",
+          "type" : "ordinaryDividends",
+          "amount" : 57824
+        },
+        {
+          "type" : "interest",
+          "amount" : 12500,
+          "id" : "87B10989-A411-42ED-9240-24DBBB578969"
+        }
+      ],
+      "profileSpouse" : {
+        "socialSecurity" : 43826,
+        "age" : 52,
+        "employmentStatus" : "retired",
+        "name" : "Rodney",
+        "wages" : 50000,
+        "medicalCoverage" : "offMarketACAPlan"
+      },
+      "credits" : [
+
+      ],
+      "id" : "190F599B-1EBC-417D-8C58-94973FB3A24B"
+    },
+    {
+      "profileSpouse" : {
+        "socialSecurity" : 43826,
+        "name" : "Rodney",
+        "medicalCoverage" : "offMarketACAPlan",
+        "age" : 52,
+        "employmentStatus" : "retired",
+        "wages" : 50000
+      },
+      "facts" : "2024",
+      "credits" : [
+
+      ],
+      "profileSelf" : {
+        "wages" : 0,
+        "name" : "Nobuko",
+        "socialSecurity" : 0,
+        "medicalCoverage" : "offMarketACAPlan",
+        "age" : 50,
+        "employmentStatus" : "retired"
+      },
+      "deductions" : [
+
+      ],
+      "id" : "09C0C9E2-DAD5-429B-A2EC-F03471AFC452",
+      "name" : "CoreFolio w\/out Rodney",
+      "income" : [
+        {
+          "amount" : 53419,
+          "type" : "qualifiedDividends",
+          "id" : "FFCC7206-F47C-4538-9D9B-610EB257AC56"
+        },
+        {
+          "amount" : 27146,
+          "type" : "qualifiedDividends",
+          "id" : "7FF07C0B-8926-42A7-B3DC-E77D6CFDF30A"
+        },
+        {
+          "amount" : 57824,
+          "id" : "72A3ED61-0D7D-440B-A15C-999FD8EBD7BB",
+          "type" : "ordinaryDividends"
+        },
+        {
+          "type" : "interest",
+          "amount" : 12500,
+          "id" : "94E97E65-D8BE-4C7C-A7EB-F8E3E1674AB2"
+        }
+      ],
+      "adjustments" : [
+        {
+          "id" : "87FF341B-F8A3-4CBB-9D7A-41F3CBF662F6",
+          "amount" : 8300,
+          "type" : "hsaContribution"
+        }
+      ],
+      "filingStatus" : "single",
+      "description" : "This is a scenario what the current CoreFolio investment approach would look like after Rodney dies.  Total income is reduced (no more SSDI) but filing status changes to Single which results is much more taxes being owed."
+    },
+    {
+      "name" : "Current Year Estimates",
+      "description" : "",
+      "facts" : "2024",
+      "id" : "39305EB3-E084-4436-B706-409B9BBADA39",
+      "credits" : [
+
+      ],
+      "profileSelf" : {
+        "age" : 50,
+        "employmentStatus" : "retired",
+        "socialSecurity" : 39248,
+        "medicalCoverage" : "offMarketACAPlan",
+        "name" : "Rodney",
+        "wages" : 0
+      },
+      "deductions" : [
+        {
+          "id" : "540B20F8-07BA-44E2-BE40-8DE7C753DFE5",
+          "amount" : 40012,
+          "type" : "marginInterestDeduction"
+        },
+        {
+          "id" : "8352A479-D54E-48DB-9340-00B645AB6B22",
+          "type" : "stateAndLocalTaxDeduction",
+          "amount" : 11175
+        }
+      ],
+      "filingStatus" : "marriedFilingJointly",
+      "profileSpouse" : {
+        "name" : "Nobuko",
+        "age" : 50,
+        "wages" : 0,
+        "socialSecurity" : 0,
+        "medicalCoverage" : "offMarketACAPlan",
+        "employmentStatus" : "retired"
+      },
+      "income" : [
+        {
+          "id" : "90A7D352-FA26-49B5-A4EB-2480C64259FB",
+          "amount" : 253905,
+          "type" : "longTermCapitalGains"
+        },
+        {
+          "type" : "shortTermCapitalGains",
+          "id" : "662CF7E8-7B08-44A9-8BDC-A22156EC9CDA",
+          "amount" : 182204
+        },
+        {
+          "type" : "qualifiedDividends",
+          "amount" : 104993,
+          "id" : "30A48ACF-E351-42EC-9B74-9F0E185E6E5E"
+        },
+        {
+          "type" : "ordinaryDividends",
+          "id" : "D4180EC1-A8C6-455D-BB57-E84670572825",
+          "amount" : 107152
+        },
+        {
+          "id" : "67A17DCE-6907-4927-BED0-CF062275DBEC",
+          "type" : "interest",
+          "amount" : 13358
+        },
+        {
+          "type" : "carryforwardLoss",
+          "amount" : 2279214,
+          "id" : "9D082BCD-350B-4687-A73E-C73B468870FC"
+        },
+        {
+          "type" : "taxExemptInterest",
+          "id" : "5F5647F4-F819-4231-B833-BB2FB27ADE40",
+          "amount" : 44619
+        }
+      ],
+      "adjustments" : [
+
+      ]
+    }
+  ]
+}
