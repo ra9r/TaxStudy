@@ -301,4 +301,77 @@ final class FederalTaxCalcTests {
         
     }
     
+    @Test func testZeroTaxOn120k() async throws {
+        let scenario = TaxScenario(
+            name: "$0 Tax on $120,000",
+            filingStatus: .marriedFilingJointly,
+            facts: "2024"
+        )
+        
+        scenario.profileSelf.age = 65
+        scenario.profileSelf.employmentStatus = .retired
+        scenario.profileSelf.socialSecurity = 0
+        scenario.profileSpouse.age = 65
+        scenario.profileSpouse.employmentStatus = .retired
+        scenario.profileSpouse.socialSecurity = 0
+        
+        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        // MARK: Tax Exempt Income
+        scenario.income.add(.init(.taxExemptInterest, amount: 22_500))
+        #expect(fedTax.grossIncome == 22_500)
+        #expect(fedTax.totalIncome == 0)
+        #expect(fedTax.agi == 0)
+        #expect(fedTax.netLTCG == 0)
+        #expect(fedTax.netSTCG == 0)
+        #expect(fedTax.taxableIncome == 0)
+        #expect(fedTax.ordinaryIncome == 0)
+        #expect(fedTax.ordinaryIncomeTax == 0)
+        #expect(fedTax.preferentialIncome == 0)
+        #expect(fedTax.qualifiedDividendTax == 0)
+        #expect(fedTax.capitalGainsTax == 0)
+        #expect(fedTax.netInvestmentIncomeTax == 0)
+        #expect(fedTax.federalTax == 0)
+        #expect(fedTax.taxableSSI == 0)
+        #expect(fedTax.provisionalIncome == 22_500)
+        
+        // MARK: Add LTCG
+        scenario.income.add(.init(.qualifiedDividends, amount: 10_000))
+        
+        #expect(fedTax.grossIncome == 32_500)
+        #expect(fedTax.totalIncome == 10_000)
+        #expect(fedTax.agi == 10_000)
+        #expect(fedTax.netLTCG == 0)
+        #expect(fedTax.netSTCG == 0)
+        #expect(fedTax.taxableIncome == 0)
+        #expect(fedTax.ordinaryIncome == 0)
+        #expect(fedTax.ordinaryIncomeTax == 0)
+        #expect(fedTax.preferentialIncome == 10_000)
+        #expect(fedTax.qualifiedDividendTax == 0)
+        #expect(fedTax.capitalGainsTax == 0)
+        #expect(fedTax.netInvestmentIncomeTax == 0)
+        #expect(fedTax.federalTax == 0)
+        #expect(fedTax.taxableSSI == 0)
+        #expect(fedTax.provisionalIncome == 32_500)
+        #expect(fedTax.provisionalTaxRate == 0.5)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.1)
+        #expect(fedTax.averageTaxRate.roundedPercentage(1) == 0)
+        
+        // MARK: Add IRA Withdrawal
+        scenario.income.add(.init(.iraWithdrawal, amount: 30_000))
+        
+        #expect(fedTax.grossIncome == 62_500)
+        #expect(fedTax.totalIncome == 40_000)
+        #expect(fedTax.agi == 40_000)
+        #expect(fedTax.netLTCG == 0)
+        #expect(fedTax.netSTCG == 0)
+        #expect(fedTax.taxableIncome == 7_700)
+        #expect(fedTax.federalTax == 0)
+        #expect(fedTax.taxableSSI == 0)
+        #expect(fedTax.provisionalIncome == 62_500)
+        #expect(fedTax.provisionalTaxRate == 0.85)
+        #expect(fedTax.marginalOrdinaryTaxRate == 0.10)
+        #expect(fedTax.averageTaxRate.roundedPercentage(1) == 0)
+        
+    }
+    
 }
