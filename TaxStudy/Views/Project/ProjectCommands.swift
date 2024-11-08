@@ -9,9 +9,9 @@ import SwiftUI
 import KeyWindow
 
 struct ProjectCommands : Commands {
-    @Environment(\.openWindow) var openWindow
-    @Environment(\.newDocument) var newDocument
-    @Environment(\.openDocument) var openDocument
+//    @Environment(\.openWindow) var openWindow
+//    @Environment(\.newDocument) var newDocument
+//    @Environment(\.openDocument) var openDocument
     @Binding var taxFactsService : TaxFactsManager
     
     @KeyWindowValueBinding(TaxProjectDocument.self)
@@ -23,22 +23,6 @@ struct ProjectCommands : Commands {
     
     
     var body: some Commands {
-        
-        CommandGroup(after: .appSettings) {
-            Button("Tax Facts...") {
-                openWindow(id: "txcfg")
-            }
-            .keyboardShortcut(",", modifiers: [.command])
-        }
-     
-//        CommandGroup(after: .importExport) {
-//            Button("Import TaxFacts...") {
-//                importTaxFacts()
-//            }
-//            Button("Export TaxFacts...") {
-//                exportTaxFacts()
-//            }
-//        }
         CommandGroup(after: .newItem) {
             Button("New Scenario") {
                 newScenario()

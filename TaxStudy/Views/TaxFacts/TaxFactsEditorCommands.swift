@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TaxFactsEditorCommands : Commands {
+    @Environment(\.openWindow) var openWindow
     @Binding var taxFactsService : TaxFactsManager
     
     init(_ taxFactsService: Binding<TaxFactsManager>) {
@@ -15,11 +16,16 @@ struct TaxFactsEditorCommands : Commands {
     }
     
     var body: some Commands {
+        CommandGroup(after: .appSettings) {
+            Button("Tax Facts...") {
+                openWindow(id: "txcfg")
+            }
+            .keyboardShortcut("t", modifiers: [.command, .shift])
+        }
         CommandGroup(after: .saveItem) {
             Button("Save Shared Tax Facts...") {
                 taxFactsService.saveSharedFacts()
             }
-            .keyboardShortcut("s", modifiers: [.command])
         }
         CommandGroup(after: .importExport) {
             Button("Import TaxFacts...") {
