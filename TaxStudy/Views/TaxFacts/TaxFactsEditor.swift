@@ -50,22 +50,24 @@ struct TaxFactsEditor : View {
         } detail: {
             VStack {
                 TaxFactsListView(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
-                HStack {
-                    Spacer()
-                    Button("Save") {
-                        taxFactsManager.saveSharedFacts()
-                        print("Shared TaxFacts Saved")
-                    }
-                }
             }
         }
         .navigationTitle("TaxFacts")
         .navigationSplitViewStyle(.prominentDetail)
         .toolbar {
-            Button("Save") {
-                taxFactsManager.saveSharedFacts()
-                print("Shared TaxFacts Saved")
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    taxFactsManager.saveSharedFacts()
+                    print("Shared TaxFacts Saved")
+                } label: {
+                    Label {
+                        Text("Save")
+                    } icon: {
+                        Image(systemName:"square.and.arrow.down")
+                    }
+                }
             }
+            
         }
     }
     
