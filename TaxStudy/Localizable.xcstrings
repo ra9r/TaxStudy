@@ -4,13 +4,29 @@
     "" : {
 
     },
+    "--" : {
+
+    },
+    "-- Select --" : {
+
+    },
+    "???" : {
+
+    },
     "%@" : {
 
     },
-    "%lld kWh" : {
-
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
     },
-    "$" : {
+    "%lld kWh" : {
 
     },
     "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
@@ -52,7 +68,7 @@
     "ACA Off-Market Plan" : {
 
     },
-    "Add New Tax Bracket" : {
+    "Add Bracket" : {
 
     },
     "Adoption Credit" : {
@@ -100,7 +116,13 @@
     "AMT Reduced Exemption" : {
 
     },
+    "AMT Reduction Rate" : {
+
+    },
     "AMT Tax" : {
+
+    },
+    "AMT Tax Brackets" : {
 
     },
     "AMT Taxable Income" : {
@@ -118,6 +140,9 @@
     "Average Tax Rate" : {
 
     },
+    "Bonus Age" : {
+
+    },
     "Business Expenses" : {
 
     },
@@ -131,6 +156,9 @@
 
     },
     "Capital Loss Adjustment (Last Year)" : {
+
+    },
+    "Capital Loss Limit" : {
 
     },
     "Carry forward business losses to offset future taxable income." : {
@@ -154,9 +182,6 @@
     "Charitable Contribution of Mileage" : {
 
     },
-    "Charitable Deductions" : {
-
-    },
     "Charitable Stock or Asset Contribution" : {
 
     },
@@ -169,13 +194,7 @@
     "Child Tax Credit" : {
 
     },
-    "Compare Feature Not Available" : {
-
-    },
     "Computed Flags" : {
-
-    },
-    "Copy to Clipboard" : {
 
     },
     "Deduct 50% of your self-employment taxes (SECA)." : {
@@ -244,6 +263,12 @@
     "Deductible Medical Expenses (AMT)" : {
 
     },
+    "Deduction Amt" : {
+
+    },
+    "Deduction Bonus" : {
+
+    },
     "Deduction Method" : {
 
     },
@@ -274,9 +299,6 @@
     "Earned Income Tax Credit" : {
 
     },
-    "Earning Limits for SSA Income" : {
-
-    },
     "Effective Tax Rate" : {
 
     },
@@ -295,10 +317,10 @@
     "Energy Efficiency Improvement" : {
 
     },
-    "Error: %@" : {
+    "Exemption Thresholds" : {
 
     },
-    "Facts: %@" : {
+    "Export TaxScheme..." : {
 
     },
     "Federal Tax" : {
@@ -352,9 +374,6 @@
     "Head of Household" : {
 
     },
-    "Head of Houshold" : {
-
-    },
     "Health Coverage Tax Credit" : {
 
     },
@@ -364,10 +383,10 @@
     "Home Office" : {
 
     },
-    "HSA Limits" : {
+    "HSA or MSA Contribution" : {
 
     },
-    "HSA or MSA Contribution" : {
+    "Import TaxScheme..." : {
 
     },
     "Income" : {
@@ -421,9 +440,6 @@
     "Investments" : {
 
     },
-    "IRA Limits" : {
-
-    },
     "IRA or 401(k) Contribution" : {
 
     },
@@ -437,9 +453,6 @@
 
     },
     "IRMAA Surcharge (Plan D)" : {
-
-    },
-    "IRMAA Surcharges" : {
 
     },
     "IRMAA Surcharges Plan B / Plan D" : {
@@ -511,9 +524,6 @@
     "Married Filing Jointly" : {
 
     },
-    "Married Filing Separate" : {
-
-    },
     "Married Filing Separately" : {
 
     },
@@ -532,6 +542,9 @@
     "Medicare" : {
 
     },
+    "Medicare Thresholds" : {
+
+    },
     "Mileage" : {
 
     },
@@ -539,6 +552,9 @@
 
     },
     "name" : {
+
+    },
+    "Name" : {
 
     },
     "Name (self)" : {
@@ -553,9 +569,6 @@
     "Net Investment Income Tax (NIIT)" : {
 
     },
-    "Net Invetment Income Tax (NIIT)" : {
-
-    },
     "Net LTCG" : {
 
     },
@@ -563,6 +576,9 @@
 
     },
     "Net STCG" : {
+
+    },
+    "New Scenario" : {
 
     },
     "No applicable tax bracket found for %@ and '%@'" : {
@@ -575,13 +591,22 @@
         }
       }
     },
-    "Nothing to see here!" : {
+    "No Scenario Selected" : {
+
+    },
+    "No Tax Scheme with ID: '%@' Found" : {
+
+    },
+    "Notes" : {
 
     },
     "Offers a credit for a portion of childcare or dependent care expenses, enabling taxpayers to work or look for work." : {
 
     },
     "Offers up to $2,000 per return for post-secondary education or job skills improvement, with no limit on the number of years claimed." : {
+
+    },
+    "Official" : {
 
     },
     "Ordinary Dividends" : {
@@ -617,7 +642,7 @@
     "Other/None" : {
 
     },
-    "Please select a Tax Scenario" : {
+    "Phase Out Thresholds" : {
 
     },
     "Preferential Income" : {
@@ -668,6 +693,9 @@
     "Qualified Widow(er)" : {
 
     },
+    "Rate" : {
+
+    },
     "Rental Income" : {
 
     },
@@ -689,6 +717,12 @@
     "Safe Harbor Tax Quarter/Yearly" : {
 
     },
+    "Save" : {
+
+    },
+    "Save Shared Tax Facts..." : {
+
+    },
     "Saver’s Credit" : {
 
     },
@@ -707,6 +741,9 @@
     "Self-Employment Tax" : {
 
     },
+    "Shared" : {
+
+    },
     "Short-Term Capital Gains" : {
 
     },
@@ -722,6 +759,9 @@
     "Social Security" : {
 
     },
+    "Social Security Thresholds" : {
+
+    },
     "SSI (self)" : {
 
     },
@@ -734,22 +774,22 @@
     "Standard Deduction" : {
 
     },
-    "Standard Deductions" : {
-
-    },
     "State and Local Tax" : {
 
     },
     "Student Loan Interest" : {
 
     },
-    "Tax Rate" : {
+    "Tax Facts..." : {
 
     },
     "Tax Rates" : {
 
     },
     "Tax Rules" : {
+
+    },
+    "Tax Scheme Editor" : {
 
     },
     "Tax-Exempt Interest" : {
@@ -765,9 +805,6 @@
 
     },
     "Taxes" : {
-
-    },
-    "This feature is still a work in progress" : {
 
     },
     "Threshold not defined for %@ and '%@'" : {
@@ -834,6 +871,9 @@
     "Tuition and Fees" : {
 
     },
+    "Value" : {
+
+    },
     "Virtually any expense related to the operation of a sole proprietorship is deductible on Schedule C. This includes rent, utilities, the cost of equipment and supplies, insurance, legal fees, employee salaries, and contract labor." : {
 
     },
@@ -855,7 +895,7 @@
     "Work Opportunity Tax Credit" : {
 
     },
-    "You'll need to select a tax scenario to beign editing." : {
+    "Year" : {
 
     }
   },

@@ -15,7 +15,7 @@ class TaxScenario: Codable, Identifiable {
     var name: String
     var description: String = ""
     var filingStatus: FilingStatus = FilingStatus.single
-    var facts: String
+    var taxSchemeId: String
     var profileSelf: Profile
     var profileSpouse: Profile
     var income: IncomeSources = IncomeSources()
@@ -23,10 +23,10 @@ class TaxScenario: Codable, Identifiable {
     var credits: Deductions<TaxCreditType> = Deductions()
     var adjustments: Deductions<TaxAdjustmentType> = Deductions()
     
-    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, facts: String) {
+    init(name: String, filingStatus: FilingStatus = .single, profleSelf: Profile? = nil, profileSpouse: Profile? = nil, taxSchemeId: String) {
         self.name = name
         self.filingStatus = filingStatus
-        self.facts = facts 
+        self.taxSchemeId = taxSchemeId
         self.profileSelf = profleSelf ?? Profile("Taxpayer 1")
         self.profileSpouse = profileSpouse ?? Profile("Taxpayer 2")
     }
@@ -180,7 +180,7 @@ class TaxScenario: Codable, Identifiable {
         case credits
         case adjustments
         
-        case facts
+        case taxSchemeId
     }
     
     required init(from decoder: Decoder) throws {
@@ -191,7 +191,7 @@ class TaxScenario: Codable, Identifiable {
         filingStatus = try container.decode(FilingStatus.self, forKey: .filingStatus)
         profileSelf = try container.decode(Profile.self, forKey: .profileSelf)
         profileSpouse = try container.decode(Profile.self, forKey: .profileSpouse)
-        facts = try container.decode(String.self, forKey: .facts)
+        taxSchemeId = try container.decode(String.self, forKey: .taxSchemeId)
         income = try container.decodeIfPresent(IncomeSources.self, forKey: .income) ?? IncomeSources()
         credits = try container.decodeIfPresent(Deductions<TaxCreditType>.self, forKey: .credits) ?? Deductions()
         deductions = try container.decodeIfPresent(Deductions<TaxDeductionType>.self, forKey: .deductions) ?? Deductions()
@@ -206,7 +206,7 @@ class TaxScenario: Codable, Identifiable {
         try container.encode(filingStatus, forKey: .filingStatus)
         try container.encode(profileSelf, forKey: .profileSelf)
         try container.encode(profileSpouse, forKey: .profileSpouse)
-        try container.encode(facts, forKey: .facts)
+        try container.encode(taxSchemeId, forKey: .taxSchemeId)
 
         try container.encode(income, forKey: .income)
         try container.encode(credits, forKey: .credits)
@@ -234,7 +234,7 @@ extension TaxScenario : DeepCopyable {
             filingStatus: filingStatus,
             profleSelf: profileSelf.deepCopy,
             profileSpouse: profileSpouse.deepCopy,
-            facts: facts)
+            taxSchemeId: taxSchemeId)
         
         copy.income = income.deepCopy
         copy.deductions = deductions.deepCopy

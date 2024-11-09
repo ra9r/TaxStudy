@@ -14,11 +14,11 @@ struct NetCapitalGains: Codable {
 class FederalTaxCalc {
     
     var scenario: TaxScenario
-    var facts: TaxFacts
+    var taxScheme: TaxScheme
     
-    init(_ scenario: TaxScenario, facts: TaxFacts) {
+    init(_ scenario: TaxScenario, taxScheme: TaxScheme) {
         self.scenario = scenario
-        self.facts = facts
+        self.taxScheme = taxScheme
     }
     
     // MARK: - Income
@@ -26,8 +26,6 @@ class FederalTaxCalc {
     /// **Gross Income** is a complete total of all income generated regarless of any exemptions, adjustements, deductions and credits
     var grossIncome: Double {
         return totalIncome +
-        scenario.longTermCapitalGains +
-        scenario.shortTermCapitalGains +
         totalTaxExemptIncome
     }
     
@@ -169,7 +167,7 @@ class FederalTaxCalc {
     /// Computes how must of the remaining capital losses can be deducted from ordinary income up to a max of $3000
     /// which is a limit defined by the ``TaxFacts``
     var capitalLossAdjustment: Double {
-        let capitalLossLimit = facts.capitalLossLimit
+        let capitalLossLimit = taxScheme.capitalLossLimit
         let futureCarryOverLoss = netCapitalGains.futureCarryForwardLoss
         return (futureCarryOverLoss > 0 ? min(capitalLossLimit, futureCarryOverLoss) : 0)
     }
@@ -182,7 +180,7 @@ class FederalTaxCalc {
     
     var provisionalTaxRate: Double {
         do {
-            let highestBracket = try facts.provisionalIncomeThresholds.highestBracket(for: provisionalIncome, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.provisionalIncomeThresholds.highestBracket(for: provisionalIncome, filingStatus: scenario.filingStatus)
             return highestBracket.rate
         } catch {
             print(error)
@@ -194,9 +192,9 @@ class FederalTaxCalc {
     var taxableSSI: Double {
         if scenario.totalSocialSecurityIncome == 0 { return 0 } // You can't have taxes on SSI if there is no SSI.
         do {
-            let highestBracket = try facts.provisionalIncomeThresholds.highestBracket(for: provisionalIncome, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.provisionalIncomeThresholds.highestBracket(for: provisionalIncome, filingStatus: scenario.filingStatus)
             let maxTaxableSocialSecurityIncome = scenario.totalSocialSecurityIncome * highestBracket.rate
-            let progressiveTax = try facts.provisionalIncomeThresholds.progressiveTax(for: provisionalIncome, filingStatus: scenario.filingStatus)
+            let progressiveTax = try taxScheme.provisionalIncomeThresholds.progressiveTax(for: provisionalIncome, filingStatus: scenario.filingStatus)
             
             return min(maxTaxableSocialSecurityIncome, progressiveTax)
         } catch {
@@ -208,18 +206,18 @@ class FederalTaxCalc {
     
     // MARK: - Deductions
     var standardDeduction: Double {
-        guard let standardDeduction = facts.standardDeduction[scenario.filingStatus] else {
+        guard let standardDeduction = taxScheme.standardDeduction[scenario.filingStatus] else {
             print("Error: No standard deduction for \(scenario.filingStatus), defaulting to 0.")
             return 0
         }
         
-        guard let standardDeductionBonus = facts.standardDeductionBonus[scenario.filingStatus] else {
+        guard let standardDeductionBonus = taxScheme.standardDeductionBonus[scenario.filingStatus] else {
             print("Error: No standard deduction bonus for \(scenario.filingStatus), defaulting to 0.")
             return 0
         }
         
-        let selfBonus = scenario.profileSelf.age >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
-        let spouceBonus = scenario.profileSpouse.age >= facts.standardDeductionBonusAge ? standardDeductionBonus : 0
+        let selfBonus = scenario.profileSelf.age >= taxScheme.standardDeductionBonusAge ? standardDeductionBonus : 0
+        let spouceBonus = scenario.profileSpouse.age >= taxScheme.standardDeductionBonusAge ? standardDeductionBonus : 0
         
         switch scenario.filingStatus {
         case .marriedFilingJointly:
@@ -231,25 +229,25 @@ class FederalTaxCalc {
     
     var deductibleMedicalExpenses: Double {
         let medicalExpenses = scenario.deductions.total(for: .medicalAndDentalDeduction)
-        let threshold = facts.medicalDeductionThreasholdRate * agi
+        let threshold = taxScheme.medicalDeductionThreasholdRate * agi
         return max(0, medicalExpenses - threshold)
     }
     
     var deductibleMedicalExpensesForAMT: Double {
         let medicalExpenses = scenario.deductions.total(for: .medicalAndDentalDeduction)
-        let threshold = facts.medicalDeductionThreasholdRateForAMT * agi
+        let threshold = taxScheme.medicalDeductionThreasholdRateForAMT * agi
         return max(0, medicalExpenses - threshold)
     }
     
     var deductibleCharitableCashContributions: Double {
         let charitableContributions = scenario.deductions.total(for: .charitableCashContributionDeduction)
-        let threshold = facts.charitableCashThreadholdRate * agi
+        let threshold = taxScheme.charitableCashThreadholdRate * agi
         return max(0, charitableContributions - threshold)
     }
     
     var deductibleCharitableAssetContributions: Double {
         let charitableContributions = scenario.deductions.total(for: .charitableAssetContributionDeduction)
-        let threshold = facts.charitableAssetThreadholdRate * agi
+        let threshold = taxScheme.charitableAssetThreadholdRate * agi
         return max(0, charitableContributions - threshold)
     }
     
@@ -304,7 +302,7 @@ class FederalTaxCalc {
     
     var ordinaryIncomeTax: Double {
         do {
-            let progressiveTax = try facts.ordinaryTaxBrackets.progressiveTax(for: ordinaryIncome, filingStatus: scenario.filingStatus)
+            let progressiveTax = try taxScheme.ordinaryTaxBrackets.progressiveTax(for: ordinaryIncome, filingStatus: scenario.filingStatus)
             return progressiveTax
         } catch {
             print(error)
@@ -314,7 +312,7 @@ class FederalTaxCalc {
     
     var qualifiedDividendTax: Double {
         do {
-            let highestBracket = try facts.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
             return scenario.qualifiedDividends * highestBracket.rate
         } catch {
             print(error)
@@ -327,7 +325,7 @@ class FederalTaxCalc {
     
     var capitalGainsTax: Double {
         do {
-            let highestBracket = try facts.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.capitalGainTaxBrackets.highestBracket(for: preferentialIncome, filingStatus: scenario.filingStatus)
             return netLTCG * highestBracket.rate
         } catch {
             print(error)
@@ -338,7 +336,7 @@ class FederalTaxCalc {
     }
     
     var netInvestmentIncomeTax: Double {
-        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
+        guard let threshold = taxScheme.niitThresholds[scenario.filingStatus] else {
             print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus), defaulting to 0")
             return 0
         }
@@ -350,7 +348,7 @@ class FederalTaxCalc {
         let niitIncome = min(netInvestmentIncome, excessIncome)
         
         // Calculate the NIIT (3.8% of the applicable income)
-        let niit = niitIncome * facts.niitRate
+        let niit = niitIncome * taxScheme.niitRate
         
         return niit
     }
@@ -374,10 +372,10 @@ class FederalTaxCalc {
     
     /// Return the portion of FICA taxes for Sociai Security
     var totalFICATaxSocialSecurity: Double {
-        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
+        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: taxScheme.ssTaxThresholds)
         
         if scenario.filingStatus == .marriedFilingJointly {
-            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: facts.ssTaxThresholds)
+            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: taxScheme.ssTaxThresholds)
             return forSelf + forSpouse
         } else {
             return forSelf
@@ -386,10 +384,10 @@ class FederalTaxCalc {
     
     /// Returns the portion of FICA taxes for Medicare
     var totalFICATaxMedicare: Double {
-        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
+        let forSelf = totalFICATax(forWages: scenario.wagesSelf, employmentStatus: scenario.profileSelf.employmentStatus, ficaThresholds: taxScheme.medicareTaxThresholds)
         
         if scenario.filingStatus == .marriedFilingJointly {
-            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: facts.medicareTaxThresholds)
+            let forSpouse = totalFICATax(forWages: scenario.wagesSpouse, employmentStatus: scenario.profileSpouse.employmentStatus, ficaThresholds: taxScheme.medicareTaxThresholds)
             return forSelf + forSpouse
         } else {
             return forSelf
@@ -413,7 +411,7 @@ class FederalTaxCalc {
     var maginalCapitalGainsTaxRate: Double {
         let income = max(0, taxableIncome)
         do {
-            let highestBracket = try facts.capitalGainTaxBrackets.highestBracket(for: income, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.capitalGainTaxBrackets.highestBracket(for: income, filingStatus: scenario.filingStatus)
             return highestBracket.rate
         } catch {
             print("Error: Failed to find highest bracket for \(income), default to 0")
@@ -425,7 +423,7 @@ class FederalTaxCalc {
         let income = max(0, taxableIncome)
         
         do {
-            let highestBracket = try facts.ordinaryTaxBrackets.highestBracket(for: income, filingStatus: scenario.filingStatus)
+            let highestBracket = try taxScheme.ordinaryTaxBrackets.highestBracket(for: income, filingStatus: scenario.filingStatus)
             return highestBracket.rate
         } catch {
             print("Error: Failed to find highest bracket for \(income), default to 0")
@@ -443,7 +441,7 @@ class FederalTaxCalc {
     // MARK: - Computed Flags
     
     var isSubjectToNIIT: Bool {
-        guard let threshold = facts.niitThresholds[scenario.filingStatus] else {
+        guard let threshold = taxScheme.niitThresholds[scenario.filingStatus] else {
             print("Error: Failed to find NIIT threadholds for \(scenario.filingStatus)")
             return false
         }
@@ -458,7 +456,7 @@ class FederalTaxCalc {
     
     var irmaaPlanBSurcharge: Double {
         do {
-            let bracket = try facts.irmaaPlanBThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
+            let bracket = try taxScheme.irmaaPlanBThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
             return bracket.rate
         } catch {
             print("Error: Failed to find IRMAA Plan B surcharge for \(scenario.filingStatus), default to 0")
@@ -468,7 +466,7 @@ class FederalTaxCalc {
     
     var irmaaPlanDSurcharge: Double {
         do {
-            let bracket = try facts.irmaaPlanDThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
+            let bracket = try taxScheme.irmaaPlanDThresholds.highestBracket(for: magiForIRMAA, filingStatus: scenario.filingStatus)
             return bracket.rate
         } catch {
             print("Error: Failed to find IRMAA Plan B surcharge for \(scenario.filingStatus), default to 0")
@@ -502,7 +500,7 @@ class FederalTaxCalc {
     }
     
     var amtExemption: Double {
-        guard let exemption = facts.amtExemptions[scenario.filingStatus] else {
+        guard let exemption = taxScheme.amtExemptions[scenario.filingStatus] else {
             print("Error: failed to compute amtReducedExemption, defaulting to 0")
             return 0
         }
@@ -510,7 +508,7 @@ class FederalTaxCalc {
     }
     
     var amtPhaseOutTheshold: Double {
-        guard let phaseOutTheshold = facts.amtPhaseOutThesholds[scenario.filingStatus] else {
+        guard let phaseOutTheshold = taxScheme.amtPhaseOutThesholds[scenario.filingStatus] else {
             print("Error: failed to compute amtReducedExemption, defaulting to 0")
             return 0
         }
@@ -536,7 +534,7 @@ class FederalTaxCalc {
     
     var amtTax: Double {
         do {
-            return try facts.amtBrackets.progressiveTax(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
+            return try taxScheme.amtBrackets.progressiveTax(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
         } catch {
             print("Error: failed to compute amt before phase out, defaulting to 0")
             return 0
@@ -545,7 +543,7 @@ class FederalTaxCalc {
     
     var amtTaxParts: [ProgressiveTaxPart] {
         do {
-            return try facts.amtBrackets.progressiveTaxParts(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
+            return try taxScheme.amtBrackets.progressiveTaxParts(for: amtTaxableIncome, filingStatus: scenario.filingStatus)
         } catch {
             print("Error: failed to compute amt tax parts, defaulting to 0")
             return []

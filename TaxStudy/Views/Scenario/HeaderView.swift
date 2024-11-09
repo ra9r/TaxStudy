@@ -8,50 +8,46 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var facts: [TaxFacts]
+    @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
     
     var body: some View {
-        HStack(alignment: .top, spacing: 25) {
-            blueBox
-            nameAndDescription
-            Picker("Filing Status", selection: $scenario.filingStatus) {
-                ForEach(FilingStatus.allCases, id: \.label) { status in
-                    Text(status.label).tag(status)
-                }
-            }
-            Spacer()
+        let gridItems = [
+            GridItem(.fixed(150), alignment: .leading),
+            GridItem(.flexible(), alignment: .leading),
+            GridItem(.fixed(200), alignment: .trailing),
+        ]
+        LazyVGrid(columns: gridItems) {
+            PillBox
+            NameAndDescription
+            ConfigBox
         }
         .padding(.bottom, 20)
     }
-    
-    var grossIncome: Double {
-        guard let fact = facts.first(where: { $0.id == scenario.facts }) else {
-            fatalError("No tax facts found with id: '\(scenario.facts)'")
-        }
-        return FederalTaxCalc(scenario, facts: fact).grossIncome
-    }
-    
-    var blueBox: some View {
-        HStack {
-            Text(scenario.facts)
-                .font(.largeTitle)
-            Divider()
-            VStack(alignment: .trailing) {
-                Text("\(grossIncome.asCurrency)")
-                    .font(.headline)
-                Text("Gross Income")
-                    .font(.subheadline)
+
+    var PillBox: some View {
+        VStack(alignment: .center, spacing: 0) {
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.taxSchemeId}) {
+                Text("\(selectedTaxScheme.year.noFormat)")
+                    .font(.largeTitle)
+                Text("\(selectedTaxScheme.name)")
+                    .font(.caption)
+            } else {
+                Text("???")
+                    .font(.largeTitle)
+                Text("--")
+                    .font(.caption)
             }
         }
-        .frame(minWidth: 200)
-        .padding()
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
         .foregroundStyle(.white)
         .background(.accent)
         .cornerRadius(5)
+        
     }
     
-    var nameAndDescription: some View {
+    var NameAndDescription: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .firstTextBaseline) {
                 Text("Scenario:")
@@ -69,5 +65,45 @@ struct HeaderView: View {
                 .multilineTextAlignment(.leading)
         }
     }
+    
+    var ConfigBox: some View {
+        VStack {
+            Menu {
+                ForEach(FilingStatus.allCases, id: \.self) { option in
+                    Button("\(option.label)"){
+                        scenario.filingStatus = option
+                    }
+                }
+            } label: {
+                Spacer()
+                Text("\(scenario.filingStatus.label)")
+                    .decorated(by: "chevron.down")
+            }
+            .buttonStyle(PlainButtonStyle())
+            Menu {
+                ForEach(taxSchemeManager.officialSchemes, id: \.id) { taxFacts in
+                    Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
+                        scenario.taxSchemeId = taxFacts.id
+                    }
+                }
+                Divider()
+                ForEach(taxSchemeManager.sharedSchemes, id: \.id) { taxFacts in
+                    Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
+                        scenario.taxSchemeId = taxFacts.id
+                    }
+                }
+            } label: {
+                Spacer()
+                if let selectedFacts = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.taxSchemeId}) {
+                    Text("\(selectedFacts.year.noFormat) - \(selectedFacts.name)")
+                        .decorated(by: "chevron.down")
+                } else {
+                    Text("-- Select --")
+                        .decorated(by: "chevron.down")
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .frame(maxWidth: .infinity)
+    }
 }
-

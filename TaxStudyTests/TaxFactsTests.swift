@@ -15,7 +15,7 @@ final class TaxFactsTests {
     // Define the path relative to the test file
     var sample2024TaxFactsPath: URL {
         let currentDirectory = URL(fileURLWithPath: #file).deletingLastPathComponent()
-        return currentDirectory.appendingPathComponent("Samples/2024TaxFacts.txcfg")
+        return currentDirectory.appendingPathComponent("Sample Project/SharedTaxFacts.txcfg")
     }
     
     @Test func testSimpleWageSelfEmployed() async throws {
@@ -31,9 +31,9 @@ final class TaxFactsTests {
         
         // Decode the data into your model
         let decoder = JSONDecoder()
-        let facts = try decoder.decode([TaxFacts].self, from: data)
+        let facts = try decoder.decode([TaxScheme].self, from: data)
         
-        #expect(facts.count == 1)
+        #expect(facts.count == 3)
     }
 }
 

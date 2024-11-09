@@ -33,3 +33,26 @@ struct WindowAccessor: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSView, context: Context) { }
 }
+
+
+struct UnderlinedTextFieldModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 12, weight: .medium))
+            .foregroundColor(.gray)
+            .multilineTextAlignment(.trailing)
+            .frame(maxWidth: 80)
+            .textFieldStyle(.plain)
+            .overlay(Rectangle()
+                .frame(height: 1)
+                .foregroundColor(.gray.opacity(0.5)),
+                     alignment: .bottom
+            )
+    }
+}
+
+extension View {
+    func underlinedTextField() -> some View {
+        self.modifier(UnderlinedTextFieldModifier())
+    }
+}

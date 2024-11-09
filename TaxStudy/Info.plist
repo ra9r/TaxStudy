@@ -20,6 +20,20 @@
 				<string>me.a9r.taxstudy.project</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string>AppIcon</string>
+			<key>CFBundleTypeName</key>
+			<string>TaxFacts</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>me.a9r.taxstudy.facts</string>
+			</array>
+		</dict>
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
@@ -50,6 +64,36 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/vnd/txproject+json</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>TaxFacts</string>
+			<key>UTTypeIconFile</key>
+			<string>AppIcon</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>AppIcon</string>
+				<key>UTTypeIconText</key>
+				<string>TXCFG</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>me.a9r.taxstudy.facts</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>txcfg</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd/txfacts+json</string>
 				</array>
 			</dict>
 		</dict>

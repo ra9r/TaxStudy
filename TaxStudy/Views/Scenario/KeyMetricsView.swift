@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    var facts: [TaxFacts]
+    @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
@@ -41,14 +41,13 @@ struct KeyMetricsView: View {
             .totalSSAIncome,
         ])
     ]
-    @State var federalTaxes: FederalTaxCalc?
-    @State var stateTaxes: NCTaxCalc?
-    @State var errorMessage: String?
         
     
     var body: some View {
         CardView("Key Metrics") {
-            if let federalTaxes = federalTaxes, let stateTaxes = stateTaxes {
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.taxSchemeId}) {
+                let federalTaxes = FederalTaxCalc(scenario, taxScheme: selectedTaxScheme)
+                let stateTaxes = NCTaxCalc(scenario, taxScheme: selectedTaxScheme)
                 HStack(alignment: .top) {
                     VStack {
                         ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
@@ -69,15 +68,8 @@ struct KeyMetricsView: View {
                     }
                 }
             } else {
-                Text("Error: \(errorMessage ?? "No data found.")")
+                Text("No Tax Scheme with ID: '\(scenario.taxSchemeId)' Found")
             }
-        }
-        .onAppear() {
-            guard let fact = facts.first(where: { $0.id == scenario.facts }) else {
-                fatalError("No tax facts found with id: '\(scenario.facts)'")
-            }
-            self.federalTaxes = FederalTaxCalc(scenario, facts: fact)
-            self.stateTaxes = NCTaxCalc(scenario, facts: fact)
         }
         
     }
