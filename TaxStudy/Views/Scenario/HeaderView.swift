@@ -12,66 +12,39 @@ struct HeaderView: View {
     @Binding var scenario: TaxScenario
     
     var body: some View {
-        HStack(alignment: .top, spacing: 25) {
-            BlueBox
+        let gridItems = [
+            GridItem(.fixed(150), alignment: .leading),
+            GridItem(.flexible(), alignment: .leading),
+            GridItem(.fixed(200), alignment: .trailing),
+        ]
+        LazyVGrid(columns: gridItems) {
+            PillBox
             NameAndDescription
             ConfigBox
         }
         .padding(.bottom, 20)
     }
-    
-//    var grossIncome: Double {
-//        return FederalTaxCalc(scenario, facts: facts).grossIncome
-//    }
-    
-    var ConfigBox: some View {
-        VStack {
-            Menu {
-                ForEach(FilingStatus.allCases, id: \.self) { option in
-                    Button("\(option.label)"){
-                        scenario.filingStatus = option
-                    }
-                }
-            } label: {
-                Spacer()
-                Text("\(scenario.filingStatus.label)")
-                    .decorated(by: "chevron.down")
+
+    var PillBox: some View {
+        VStack(alignment: .center, spacing: 0) {
+            if let selectedFacts = allFacts.first(where: {$0.id == scenario.facts}) {
+                Text("\(selectedFacts.year.noFormat)")
+                    .font(.largeTitle)
+                Text("\(selectedFacts.name)")
+                    .font(.caption)
+            } else {
+                Text("???")
+                    .font(.largeTitle)
+                Text("--")
+                    .font(.caption)
             }
-            .buttonStyle(PlainButtonStyle())
-            
-            Menu {
-                ForEach(allFacts, id: \.id) { taxFacts in
-                    Button("\(taxFacts.id)"){
-                        scenario.facts = taxFacts.id
-                    }
-                }
-            } label: {
-                Spacer()
-                Text("\(scenario.facts)")
-                    .decorated(by: "chevron.down")
-            }
-            .buttonStyle(PlainButtonStyle())
         }
-        .frame(maxWidth: 200)
-    }
-    
-    var BlueBox: some View {
-        HStack {
-            Text(scenario.facts)
-                .font(.largeTitle)
-//            Divider()
-//            VStack(alignment: .trailing) {
-//                Text("\(grossIncome.asCurrency)")
-//                    .font(.headline)
-//                Text("Gross Income")
-//                    .font(.subheadline)
-//            }
-        }
-        .frame(minWidth: 200)
-        .padding()
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
         .foregroundStyle(.white)
         .background(.accent)
         .cornerRadius(5)
+        
     }
     
     var NameAndDescription: some View {
@@ -91,5 +64,41 @@ struct HeaderView: View {
                 .padding(.leading, -5) // <-- This seems like a hack :(
                 .multilineTextAlignment(.leading)
         }
+    }
+    
+    var ConfigBox: some View {
+        VStack {
+            Menu {
+                ForEach(FilingStatus.allCases, id: \.self) { option in
+                    Button("\(option.label)"){
+                        scenario.filingStatus = option
+                    }
+                }
+            } label: {
+                Spacer()
+                Text("\(scenario.filingStatus.label)")
+                    .decorated(by: "chevron.down")
+            }
+            .buttonStyle(PlainButtonStyle())
+            
+            Menu {
+                ForEach(allFacts, id: \.id) { taxFacts in
+                    Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
+                        scenario.facts = taxFacts.id
+                    }
+                }
+            } label: {
+                Spacer()
+                if let selectedFacts = allFacts.first(where: {$0.id == scenario.facts}) {
+                    Text("\(selectedFacts.year.noFormat) - \(selectedFacts.name)")
+                        .decorated(by: "chevron.down")
+                } else {
+                    Text("-- Select --")
+                        .decorated(by: "chevron.down")
+                }
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .frame(maxWidth: .infinity)
     }
 }

@@ -21,8 +21,12 @@ struct GeneralEditor : View {
             ]
             
             LazyVGrid(columns: gridItems, spacing: 10) {
+                Text("Year").font(.headline)
+                TextField("Year", value: $facts.year, formatter: YearFormatter())
+                    .decorated(by: "calendar")
+                    .frame(maxWidth: 200)
                 Text("Name").font(.headline)
-                TextField("Name", text: $facts.id)
+                TextField("Name", text: $facts.name)
                     .decorated(by: "info.circle")
                     .frame(maxWidth: 200)
                 Text("Notes").font(.headline)
@@ -42,4 +46,19 @@ struct GeneralEditor : View {
 #Preview {
     @Previewable @State var facts: TaxFacts = TaxFacts.official2024
     GeneralEditor(facts: $facts)
+}
+
+class YearFormatter: NumberFormatter, @unchecked Sendable {
+    override init() {
+        super.init()
+        self.numberStyle = .none // Use plain number style
+        self.minimumIntegerDigits = 4 // Ensure at least 4 digits
+        self.maximumIntegerDigits = 4 // Limit to exactly 4 digits
+        self.usesGroupingSeparator = false // Disable commas
+        self.allowsFloats = false // Disallow decimals
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 }

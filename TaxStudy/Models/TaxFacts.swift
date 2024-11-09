@@ -8,8 +8,10 @@
 import Foundation
 
 class TaxFacts : Codable, Identifiable {
-    var id: String
+    var id: String = UUID().uuidString
+    var name: String
     var notes: String = ""
+    var year: Int = 2024
     
     // Standard Deduction
     var standardDeduction: [FilingStatus: Double]
@@ -51,9 +53,10 @@ class TaxFacts : Codable, Identifiable {
     var medicalDeductionThreasholdRate: Double = 0.075
     var medicalDeductionThreasholdRateForAMT: Double = 0.10
     
-    init(from: TaxFacts, id: String) {
-        self.id = id
+    init(from: TaxFacts, name: String) {
+        self.name = name
         self.notes = from.notes
+        self.year = from.year
         self.standardDeduction = from.standardDeduction
         self.standardDeductionBonus = from.standardDeductionBonus
         self.standardDeductionBonusAge = from.standardDeductionBonusAge
@@ -88,8 +91,10 @@ class TaxFacts : Codable, Identifiable {
     }
     
     init(
-        id: String,
+        id: String? = nil,
+        name: String,
         notes: String,
+        year: Int,
         ordinaryTaxBrackets: TaxBrackets,
         capitalGainTaxBrackets: TaxBrackets,
         ssTaxThresholds: TaxBrackets,
@@ -108,7 +113,9 @@ class TaxFacts : Codable, Identifiable {
         amtPhaseOutThesholds: [FilingStatus: Double],
         amtBrackets: TaxBrackets
     ) {
-        self.id = id
+        self.id = id ?? UUID().uuidString
+        self.year = year
+        self.name = name
         self.notes = notes
         self.ordinaryTaxBrackets = ordinaryTaxBrackets
         self.capitalGainTaxBrackets = capitalGainTaxBrackets
@@ -142,10 +149,11 @@ extension TaxFacts : Hashable, Equatable {
 
 // MARK: - Static Definitions
 extension TaxFacts {
-    static func createNewTaxFacts(id: String) -> TaxFacts {
+    static func createNewTaxFacts(name: String, year: Int) -> TaxFacts {
         return TaxFacts(
-            id: id,
+            name: name,
             notes: "",
+            year: year,
             ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
             capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
             ssTaxThresholds: SSTaxThresholds2024,
@@ -167,8 +175,9 @@ extension TaxFacts {
     }
     
     static let official2024 = TaxFacts(
-        id: "2024",
+        name: "Official",
         notes: "Officially supported Tax Facts for 2024",
+        year: 2024,
         ordinaryTaxBrackets: OrdinaryTaxBrackets2024,
         capitalGainTaxBrackets: CapitalGainTaxBrackets2024,
         ssTaxThresholds: SSTaxThresholds2024,
@@ -191,7 +200,7 @@ extension TaxFacts {
 
 extension TaxFacts : DeepCopyable {
     var deepCopy: TaxFacts {
-        return TaxFacts(from: self, id: self.id)
+        return TaxFacts(from: self, name: self.name)
     }
 }
     

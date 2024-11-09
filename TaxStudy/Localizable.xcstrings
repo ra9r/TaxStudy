@@ -4,8 +4,27 @@
     "" : {
 
     },
+    "--" : {
+
+    },
+    "-- Select --" : {
+
+    },
+    "???" : {
+
+    },
     "%@" : {
 
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
     },
     "%lld kWh" : {
 
@@ -305,9 +324,6 @@
 
     },
     "Export TaxFacts..." : {
-
-    },
-    "Facts: %@" : {
 
     },
     "Federal Tax" : {
@@ -886,6 +902,9 @@
 
     },
     "Work Opportunity Tax Credit" : {
+
+    },
+    "Year" : {
 
     },
     "You'll need to select a tax scenario to beign editing." : {

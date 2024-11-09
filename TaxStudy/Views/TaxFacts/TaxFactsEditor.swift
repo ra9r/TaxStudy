@@ -8,7 +8,7 @@ import SwiftUI
 
 struct TaxFactsEditor : View {
     @Environment(TaxFactsManager.self) var taxFactsManager
-    @State var selectedSetting: TaxFactsListTypes = .ordinaryTaxBrackets
+    @State var selectedSetting: TaxFactsListTypes = .generalInformation
     
     
     var body: some View {
@@ -17,7 +17,7 @@ struct TaxFactsEditor : View {
             List(selection: $tfm.selectedFacts) {
                 Section("Official") {
                     ForEach(tfm.officialFacts, id: \.id) { facts in
-                        NavigationLink("Facts: \(facts.id)", value: facts)
+                        NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
                             .contextMenu {
                                 Button("Duplicate") {
                                     newShared(from: facts)
@@ -27,7 +27,7 @@ struct TaxFactsEditor : View {
                 }
                 Section("Shared") {
                     ForEach(taxFactsManager.sharedFacts, id: \.id) { facts in
-                        NavigationLink("Facts: \(facts.id)", value: facts)
+                        NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
                             .contextMenu {
                                 Button("Duplicate") {
                                     newShared(from: facts)
@@ -73,7 +73,7 @@ struct TaxFactsEditor : View {
     
     func newShared(from source: TaxFacts) {
         let newFacts = source.deepCopy
-        newFacts.id = generateUniqueID(baseID: source.id)
+        newFacts.name = generateUniqueID(baseID: source.name)
         print("Duplication: \(newFacts.id)")
         taxFactsManager.newShared(from: newFacts)
     }
@@ -98,8 +98,8 @@ struct TaxFactsEditor : View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var facts: [TaxFacts] = [
-        TaxFacts.createNewTaxFacts(id: "2023"),
-        TaxFacts.createNewTaxFacts(id: "2024")
+        TaxFacts.createNewTaxFacts(name: "Official", year: 2023),
+        TaxFacts.createNewTaxFacts(name: "Official", year: 2024),
     ]
     TaxFactsEditor()
         .environment(TaxFactsManager())
