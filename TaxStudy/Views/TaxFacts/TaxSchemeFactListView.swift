@@ -29,7 +29,7 @@ struct TaxSchemeFactListView : View {
         case .irmaaPartBSurcharges:
             IRMAAPartBFactsEditor(taxScheme: $taxScheme)
         case .irmaaPartDSurcharges:
-            IRMAAPartDFactsEditor(facts: $taxScheme)
+            IRMAAPartDFactsEditor(taxScheme: $taxScheme)
         case .niiTax:
             NIITFactsEditor(taxScheme: $taxScheme)
         case .amtfacts:

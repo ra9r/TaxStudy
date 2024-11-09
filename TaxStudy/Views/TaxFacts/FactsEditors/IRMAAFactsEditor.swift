@@ -23,14 +23,14 @@ struct IRMAAPartBFactsEditor : View {
 }
 
 struct IRMAAPartDFactsEditor : View {
-    @Binding var facts: TaxScheme
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         DescribedContainer(
             "IRMAA Part D Surcharge Thresholds",
             description: "IRMAA (Income-Related Monthly Adjustment Amount) thresholds determine whether Medicare beneficiaries with higher incomes must pay an additional premium for Medicare Parts D.")
         {
-            TaxBracketEditor(taxBrackets: $facts.irmaaPlanDThresholds, style: .number)
+            TaxBracketEditor(taxBrackets: $taxScheme.irmaaPlanDThresholds, style: .number)
         }
         .padding()
     }
