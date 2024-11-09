@@ -578,6 +578,9 @@
         }
       }
     },
+    "No facts found for this scenario." : {
+
+    },
     "Notes" : {
 
     },
@@ -792,9 +795,6 @@
 
     },
     "TaxFacts" : {
-
-    },
-    "TaxFacts %@ not found." : {
 
     },
     "This feature is still a work in progress" : {

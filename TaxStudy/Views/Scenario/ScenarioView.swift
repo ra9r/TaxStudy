@@ -14,12 +14,17 @@ struct ScenarioView : View {
     var body: some View {
         ScrollView {
             let allFacts = taxFactsManager.allFacts(includeEmbedded: embeddedFacts)
+            let selectedFacts = allFacts.first(where: { $0.id == scenario.facts })
             VStack {
-                HeaderView(facts: allFacts, scenario: $scenario)
-                KeyMetricsView(facts: allFacts, scenario: $scenario)
-                ProfileView(scenario: $scenario)
-                IncomeView(scenario: $scenario)
-                DeductionsView(scenario: $scenario)
+                HeaderView(allFacts: allFacts, scenario: $scenario)
+                if let selectedFacts {
+                    KeyMetricsView(facts: selectedFacts, scenario: $scenario)
+                    ProfileView(scenario: $scenario)
+                    IncomeView(scenario: $scenario)
+                    DeductionsView(scenario: $scenario)
+                } else {
+                    Text("No facts found for this scenario.")
+                }
             }
             .padding()
         }

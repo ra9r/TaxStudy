@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var facts: [TaxFacts]
+    var allFacts: [TaxFacts]
     @Binding var scenario: TaxScenario
     
     var body: some View {
@@ -20,12 +20,9 @@ struct HeaderView: View {
         .padding(.bottom, 20)
     }
     
-    var grossIncome: Double {
-        guard let fact = facts.first(where: { $0.id == scenario.facts }) else {
-            fatalError("No tax facts found with id: '\(scenario.facts)'")
-        }
-        return FederalTaxCalc(scenario, facts: fact).grossIncome
-    }
+//    var grossIncome: Double {
+//        return FederalTaxCalc(scenario, facts: facts).grossIncome
+//    }
     
     var ConfigBox: some View {
         VStack {
@@ -43,7 +40,7 @@ struct HeaderView: View {
             .buttonStyle(PlainButtonStyle())
             
             Menu {
-                ForEach(facts, id: \.id) { taxFacts in
+                ForEach(allFacts, id: \.id) { taxFacts in
                     Button("\(taxFacts.id)"){
                         scenario.facts = taxFacts.id
                     }
@@ -62,13 +59,13 @@ struct HeaderView: View {
         HStack {
             Text(scenario.facts)
                 .font(.largeTitle)
-            Divider()
-            VStack(alignment: .trailing) {
-                Text("\(grossIncome.asCurrency)")
-                    .font(.headline)
-                Text("Gross Income")
-                    .font(.subheadline)
-            }
+//            Divider()
+//            VStack(alignment: .trailing) {
+//                Text("\(grossIncome.asCurrency)")
+//                    .font(.headline)
+//                Text("Gross Income")
+//                    .font(.subheadline)
+//            }
         }
         .frame(minWidth: 200)
         .padding()
@@ -95,12 +92,4 @@ struct HeaderView: View {
                 .multilineTextAlignment(.leading)
         }
     }
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var facts: [TaxFacts] = [TaxFacts.official2024]
-    @Previewable @State var scenario: TaxScenario = TaxScenario(name: "New Scenario", facts: "2024")
-    HeaderView(facts: facts, scenario: $scenario)
-        .frame(width: 800, height: 100)
-        .padding()
 }
