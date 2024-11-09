@@ -26,8 +26,6 @@ class FederalTaxCalc {
     /// **Gross Income** is a complete total of all income generated regarless of any exemptions, adjustements, deductions and credits
     var grossIncome: Double {
         return totalIncome +
-//        scenario.longTermCapitalGains +
-//        scenario.shortTermCapitalGains +
         totalTaxExemptIncome
     }
     
