@@ -75,6 +75,22 @@ struct ProjectView : View {
     }
     
     func duplicate(_ scenario: TaxScenario) {
-        document.scenarios.append(scenario.deepCopy)
+        let duplicateScenario = scenario.deepCopy
+        duplicateScenario.name = generateUniqueName(name: scenario.name)
+        document.scenarios.append(duplicateScenario)
+    }
+    
+    func generateUniqueName(name: String) -> String {
+        let existingNames = document.scenarios.map { $0.name }
+        var newName = "\(name) Copy"
+        var copyNumber = 1
+
+        // Check if the newID or its numbered versions already exist in the array
+        while existingNames.contains(newName) {
+            newName = "\(name) Copy \(copyNumber)"
+            copyNumber += 1
+        }
+
+        return newName
     }
 }
