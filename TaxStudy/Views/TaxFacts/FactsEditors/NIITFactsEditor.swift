@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NIITFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -23,14 +23,14 @@ struct NIITFactsEditor : View {
                 HStack {
                     LazyVGrid(columns: gridItems, spacing: 10) {
                         Text("Rate").font(.headline)
-                        TextField("Value", value: $facts.niitRate, format: .percent)
+                        TextField("Value", value: $taxScheme.niitRate, format: .percent)
                             .decorated(by: "percent")
                             .frame(maxWidth: 80)
                         
                         Text("").font(.headline)
                         Divider()
                         
-                        ThresholdEditor(thresholds: $facts.niitThresholds)
+                        ThresholdEditor(thresholds: $taxScheme.niitThresholds)
                     }
                     .padding()
                     .frame(maxWidth: 400)
@@ -48,6 +48,6 @@ struct NIITFactsEditor : View {
 
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    NIITFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    NIITFactsEditor(taxScheme: $facts)
 }

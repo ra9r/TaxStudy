@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AMTFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -24,7 +24,7 @@ struct AMTFactsEditor : View {
                 
                 LazyVGrid(columns: gridItems, spacing: 10) {
                     Text("AMT Reduction Rate").font(.headline)
-                    TextField("Value", value: $facts.amtExemptionReductionRate, format: .number)
+                    TextField("Value", value: $taxScheme.amtExemptionReductionRate, format: .number)
                         .decorated(by: "person.crop.circle")
                         .frame(maxWidth: 80)
                     Text("")
@@ -51,7 +51,7 @@ struct AMTFactsEditor : View {
                 Divider()
                 
                 Text("AMT Tax Brackets").font(.title).fontWeight(.bold)
-                TaxBracketEditor(taxBrackets: $facts.amtBrackets)
+                TaxBracketEditor(taxBrackets: $taxScheme.amtBrackets)
             }
             .padding()
         }
@@ -60,15 +60,15 @@ struct AMTFactsEditor : View {
     func DeductionRow(_ filingStatus: FilingStatus) -> some View {
         Group {
             Text(filingStatus.label).font(.headline)
-            TextField("Value", value: $facts.amtExemptions[filingStatus], format: .number)
+            TextField("Value", value: $taxScheme.amtExemptions[filingStatus], format: .number)
                 .decorated(by: "dollarsign")
-            TextField("Value", value: $facts.amtPhaseOutThesholds[filingStatus], format: .number)
+            TextField("Value", value: $taxScheme.amtPhaseOutThesholds[filingStatus], format: .number)
                 .decorated(by: "dollarsign")
         }
     }
 }
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    AMTFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    AMTFactsEditor(taxScheme: $facts)
 }

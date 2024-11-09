@@ -323,7 +323,7 @@
     "Exemption Thresholds" : {
 
     },
-    "Export TaxFacts..." : {
+    "Export TaxScheme..." : {
 
     },
     "Federal Tax" : {
@@ -389,7 +389,7 @@
     "HSA or MSA Contribution" : {
 
     },
-    "Import TaxFacts..." : {
+    "Import TaxScheme..." : {
 
     },
     "Income" : {
@@ -783,9 +783,6 @@
     "Student Loan Interest" : {
 
     },
-    "Tax Facts" : {
-
-    },
     "Tax Facts..." : {
 
     },
@@ -793,6 +790,9 @@
 
     },
     "Tax Rules" : {
+
+    },
+    "Tax Scheme Editor" : {
 
     },
     "Tax-Exempt Interest" : {
@@ -808,9 +808,6 @@
 
     },
     "Taxes" : {
-
-    },
-    "TaxFacts" : {
 
     },
     "This feature is still a work in progress" : {

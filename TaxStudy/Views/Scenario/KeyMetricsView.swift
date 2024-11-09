@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    var facts: TaxFacts
+    var taxScheme: TaxScheme
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
@@ -45,8 +45,8 @@ struct KeyMetricsView: View {
     
     var body: some View {
         CardView("Key Metrics") {
-            let federalTaxes = FederalTaxCalc(scenario, facts: facts)
-            let stateTaxes = NCTaxCalc(scenario, facts: facts)
+            let federalTaxes = FederalTaxCalc(scenario, taxScheme: taxScheme)
+            let stateTaxes = NCTaxCalc(scenario, taxScheme: taxScheme)
             HStack(alignment: .top) {
                 VStack {
                     ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in

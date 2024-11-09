@@ -8,8 +8,8 @@
 class NCTaxCalc : StateTaxCalc {
     var federalTaxCalc: FederalTaxCalc
     
-    init(_ scenario: TaxScenario, facts: TaxFacts) {
-        self.federalTaxCalc = FederalTaxCalc(scenario, facts: facts)
+    init(_ scenario: TaxScenario, taxScheme: TaxScheme) {
+        self.federalTaxCalc = FederalTaxCalc(scenario, taxScheme: taxScheme)
     }
     
     var taxesOwed: Double {

@@ -6,17 +6,17 @@
 //
 import SwiftUI
 
-struct TaxFactsEditor : View {
-    @Environment(TaxFactsManager.self) var taxFactsManager
-    @State var selectedSetting: TaxFactsListTypes = .generalInformation
+struct TaxSchemeEditor : View {
+    @Environment(TaxSchemeManager.self) var taxSchemeManager
+    @State var selectedSetting: TaxSchemeFactTypes = .generalInformation
     
     
     var body: some View {
-        @Bindable var tfm = taxFactsManager
+        @Bindable var tfm = taxSchemeManager
         NavigationSplitView {
-            List(selection: $tfm.selectedFacts) {
+            List(selection: $tfm.selectedScheme) {
                 Section("Official") {
-                    ForEach(tfm.officialFacts, id: \.id) { facts in
+                    ForEach(tfm.officialSchemes, id: \.id) { facts in
                         NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
                             .contextMenu {
                                 Button("Duplicate") {
@@ -26,14 +26,14 @@ struct TaxFactsEditor : View {
                     }
                 }
                 Section("Shared") {
-                    ForEach(taxFactsManager.sharedFacts, id: \.id) { facts in
+                    ForEach(taxSchemeManager.sharedSchemes, id: \.id) { facts in
                         NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
                             .contextMenu {
                                 Button("Duplicate") {
                                     newShared(from: facts)
                                 }
                                 Button("Delete") {
-                                    taxFactsManager.deleteSharedFact(id: facts.id)
+                                    taxSchemeManager.deleteSharedFact(id: facts.id)
                                 }
                             }
                     }
@@ -41,23 +41,22 @@ struct TaxFactsEditor : View {
             }
             
             .frame(minWidth: 200)
-            .navigationTitle("Tax Facts")
         } content: {
-            List(TaxFactsListTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
+            List(TaxSchemeFactTypes.allCases, id: \.self, selection: $selectedSetting) { settingType in
                 NavigationLink(settingType.rawValue, value: settingType)
             }
             .frame(minWidth: 180)
         } detail: {
             VStack {
-                TaxFactsListView(facts: $tfm.selectedFacts, selectedSetting: selectedSetting)
+                TaxSchemeFactListView(taxScheme: $tfm.selectedScheme, selectedSetting: selectedSetting)
             }
         }
-        .navigationTitle("TaxFacts")
+        .navigationTitle("Tax Scheme Editor")
         .navigationSplitViewStyle(.prominentDetail)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    taxFactsManager.saveSharedFacts()
+                    taxSchemeManager.saveSharedFacts()
                     print("Shared TaxFacts Saved")
                 } label: {
                     Label {
@@ -71,15 +70,15 @@ struct TaxFactsEditor : View {
         }
     }
     
-    func newShared(from source: TaxFacts) {
+    func newShared(from source: TaxScheme) {
         let newFacts = source.deepCopy
         newFacts.name = generateUniqueID(baseID: source.name)
         print("Duplication: \(newFacts.id)")
-        taxFactsManager.newShared(from: newFacts)
+        taxSchemeManager.newShared(from: newFacts)
     }
     
     func generateUniqueID(baseID: String) -> String {
-        let existingIDs = taxFactsManager.allFacts().map { $0.id }
+        let existingIDs = taxSchemeManager.allFacts().map { $0.id }
         var newID = "\(baseID) Copy"
         var copyNumber = 1
 
@@ -97,10 +96,10 @@ struct TaxFactsEditor : View {
 
 
 #Preview(traits: .sizeThatFitsLayout) {
-    @Previewable @State var facts: [TaxFacts] = [
-        TaxFacts.createNewTaxFacts(name: "Official", year: 2023),
-        TaxFacts.createNewTaxFacts(name: "Official", year: 2024),
+    @Previewable @State var facts: [TaxScheme] = [
+        TaxScheme.createNewTaxScheme(name: "Official", year: 2023),
+        TaxScheme.createNewTaxScheme(name: "Official", year: 2024),
     ]
-    TaxFactsEditor()
-        .environment(TaxFactsManager())
+    TaxSchemeEditor()
+        .environment(TaxSchemeManager())
 }

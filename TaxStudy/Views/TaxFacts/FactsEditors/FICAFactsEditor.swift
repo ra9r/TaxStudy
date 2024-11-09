@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct FICAFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -19,13 +19,13 @@ struct FICAFactsEditor : View {
                     .font(.title2)
                     .padding(.vertical)
                 
-                TaxBracketEditor(taxBrackets: $facts.ssTaxThresholds)
+                TaxBracketEditor(taxBrackets: $taxScheme.ssTaxThresholds)
                 
                 Text("Medicare Thresholds")
                     .font(.title2)
                     .padding(.vertical)
                 
-                TaxBracketEditor(taxBrackets: $facts.medicareTaxThresholds)
+                TaxBracketEditor(taxBrackets: $taxScheme.medicareTaxThresholds)
                     
             }
         }
@@ -35,6 +35,6 @@ struct FICAFactsEditor : View {
 
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    FICAFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    FICAFactsEditor(taxScheme: $facts)
 }

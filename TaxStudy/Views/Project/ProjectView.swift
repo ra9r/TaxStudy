@@ -9,7 +9,7 @@ import SwiftUI
 import KeyWindow
 
 struct ProjectView : View {
-    @Environment(TaxFactsManager.self) var taxFactsManager
+    @Environment(TaxSchemeManager.self) var taxFactsManager
     @Binding var document: TaxProjectDocument
     @State var multiSelection = Set<Int>()
     

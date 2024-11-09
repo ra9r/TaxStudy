@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct SideMenu: View {
-    @Environment(TaxFactsManager.self) var taxFactsManager
+    @Environment(TaxSchemeManager.self) var taxFactsManager
     @Binding var scenarios: [TaxScenario]
-    var embeddedFacts: [TaxFacts]
+    var embeddedFacts: [TaxScheme]
     @Binding var multiSelection: Set<Int>
     
     var body: some View {

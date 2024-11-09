@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct OrdinaryFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -15,7 +15,7 @@ struct OrdinaryFactsEditor : View {
                 "Ordinary Tax Brackets",
                 description: "Ordinary income tax brackets are used to calculate the amount of tax owed based on income level. Each bracket applies a different tax rate to portions of your income, ensuring that those with higher earnings pay a higher tax rate on their additional income. This system helps create a fair tax structure by progressively increasing the tax rate as income rises.")
             {
-                TaxBracketEditor(taxBrackets: $facts.ordinaryTaxBrackets)
+                TaxBracketEditor(taxBrackets: $taxScheme.ordinaryTaxBrackets)
                     
             }
         }
@@ -25,6 +25,6 @@ struct OrdinaryFactsEditor : View {
 
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    OrdinaryFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    OrdinaryFactsEditor(taxScheme: $facts)
 }

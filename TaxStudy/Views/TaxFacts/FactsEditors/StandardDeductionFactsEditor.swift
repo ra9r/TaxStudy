@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StandardDeductionFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -24,7 +24,7 @@ struct StandardDeductionFactsEditor : View {
                 
                 LazyVGrid(columns: gridItems, spacing: 10) {
                     Text("Bonus Age").font(.headline)
-                    TextField("Value", value: $facts.standardDeductionBonusAge, format: .number)
+                    TextField("Value", value: $taxScheme.standardDeductionBonusAge, format: .number)
                         .decorated(by: "person.crop.circle")
                         .frame(maxWidth: 80)
                     Text("")
@@ -55,15 +55,15 @@ struct StandardDeductionFactsEditor : View {
     func DeductionRow(_ filingStatus: FilingStatus) -> some View {
         Group {
             Text(filingStatus.label).font(.headline)
-            TextField("Value", value: $facts.standardDeduction[filingStatus], format: .number)
+            TextField("Value", value: $taxScheme.standardDeduction[filingStatus], format: .number)
                 .decorated(by: "dollarsign")
-            TextField("Value", value: $facts.standardDeductionBonus[filingStatus], format: .number)
+            TextField("Value", value: $taxScheme.standardDeductionBonus[filingStatus], format: .number)
                 .decorated(by: "dollarsign")
         }
     }
 }
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    StandardDeductionFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    StandardDeductionFactsEditor(taxScheme: $facts)
 }

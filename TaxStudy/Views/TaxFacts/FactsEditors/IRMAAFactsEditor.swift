@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct IRMAAPartBFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         DescribedContainer(
             "IRMAA Part B Surcharge Thresholds",
             description: "IRMAA (Income-Related Monthly Adjustment Amount) thresholds determine whether Medicare beneficiaries with higher incomes must pay an additional premium for Medicare Parts B.")
         {
-            TaxBracketEditor(taxBrackets: $facts.irmaaPlanBThresholds, style: .number)
+            TaxBracketEditor(taxBrackets: $taxScheme.irmaaPlanBThresholds, style: .number)
         }
         .padding()
     }
@@ -23,7 +23,7 @@ struct IRMAAPartBFactsEditor : View {
 }
 
 struct IRMAAPartDFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var facts: TaxScheme
     
     var body: some View {
         DescribedContainer(
@@ -38,11 +38,11 @@ struct IRMAAPartDFactsEditor : View {
 }
 
 #Preview {
-    @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartBSurcharges)
+    @Previewable @State var taxFactService = TaxSchemeManager()
+    TaxSchemeFactListView(taxScheme: $taxFactService.officialSchemes[0], selectedSetting: .irmaaPartBSurcharges)
 }
 
 #Preview {
-    @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .irmaaPartDSurcharges)
+    @Previewable @State var taxFactService = TaxSchemeManager()
+    TaxSchemeFactListView(taxScheme: $taxFactService.officialSchemes[0], selectedSetting: .irmaaPartDSurcharges)
 }

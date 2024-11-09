@@ -10,7 +10,7 @@ import KeyWindow
 
 @main
 struct TaxStudyApp: App {
-    @State var taxFactsServices = TaxFactsManager()
+    @State var taxFactsServices = TaxSchemeManager()
     
     var body: some Scene {
               
@@ -18,7 +18,7 @@ struct TaxStudyApp: App {
             ProjectView(file.$document)
                 .environment(taxFactsServices)
                 .observeWindow()
-                .onChange(of: taxFactsServices.sharedFacts) { oldValue, newValue in
+                .onChange(of: taxFactsServices.sharedSchemes) { oldValue, newValue in
                     print("Saving shared facts")
                     taxFactsServices.saveSharedFacts()
                 }
@@ -29,16 +29,16 @@ struct TaxStudyApp: App {
             ProjectCommands($taxFactsServices)
         }
         
-        Window("Tax Facts", id: "txcfg") {
-            TaxFactsEditor()
+        Window("Tax Scheme Editor", id: "txcfg") {
+            TaxSchemeEditor()
                 .environment(taxFactsServices)
-                .onChange(of: taxFactsServices.sharedFacts) { oldValue, newValue in
+                .onChange(of: taxFactsServices.sharedSchemes) { oldValue, newValue in
                     print("Saving shared facts")
                     taxFactsServices.saveSharedFacts()
                 }
         }
         .commands {
-            TaxFactsEditorCommands($taxFactsServices)
+            TaxSchemeEditorCommands($taxFactsServices)
         }
     }
 

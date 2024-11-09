@@ -12,12 +12,12 @@ struct ProjectCommands : Commands {
 //    @Environment(\.openWindow) var openWindow
 //    @Environment(\.newDocument) var newDocument
 //    @Environment(\.openDocument) var openDocument
-    @Binding var taxFactsService : TaxFactsManager
+    @Binding var taxFactsService : TaxSchemeManager
     
     @KeyWindowValueBinding(TaxProjectDocument.self)
     var document: TaxProjectDocument?
     
-    init(_ taxFactsService: Binding<TaxFactsManager>) {
+    init(_ taxFactsService: Binding<TaxSchemeManager>) {
         self._taxFactsService = taxFactsService
     }
     
@@ -44,7 +44,7 @@ struct ProjectCommands : Commands {
         document.scenarios.append(newScenario)
     }
     
-    func importTaxFacts() {
+    func importTaxSchemes() {
         let openPanel = NSOpenPanel()
         openPanel.canChooseFiles = true
         openPanel.canChooseDirectories = false
@@ -61,7 +61,7 @@ struct ProjectCommands : Commands {
         }
     }
     
-    func exportTaxFacts() {
+    func exportTaxSchemes() {
         let savePanel = NSSavePanel()
         savePanel.canCreateDirectories = true
         savePanel.nameFieldStringValue = "Untitled" // Default file name

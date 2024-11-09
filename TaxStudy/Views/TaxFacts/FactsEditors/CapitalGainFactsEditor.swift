@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct CapitalGainFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -17,14 +17,14 @@ struct CapitalGainFactsEditor : View {
             {
                 HStack {
                     Text("Capital Loss Limit").font(.headline)
-                    TextField("Value", value: $facts.capitalLossLimit, format: .number)
+                    TextField("Value", value: $taxScheme.capitalLossLimit, format: .number)
                         .decorated(by: "dollarsign")
                         .frame(maxWidth: 110)
                 }
                 
                 Divider()
                 
-                TaxBracketEditor(taxBrackets: $facts.capitalGainTaxBrackets)
+                TaxBracketEditor(taxBrackets: $taxScheme.capitalGainTaxBrackets)
                     
             }
         }
@@ -34,6 +34,6 @@ struct CapitalGainFactsEditor : View {
 
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    CapitalGainFactsEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    CapitalGainFactsEditor(taxScheme: $facts)
 }

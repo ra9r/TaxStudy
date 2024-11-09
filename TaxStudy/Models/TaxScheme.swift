@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TaxFacts : Codable, Identifiable {
+class TaxScheme : Codable, Identifiable {
     var id: String = UUID().uuidString
     var name: String
     var notes: String = ""
@@ -53,7 +53,7 @@ class TaxFacts : Codable, Identifiable {
     var medicalDeductionThreasholdRate: Double = 0.075
     var medicalDeductionThreasholdRateForAMT: Double = 0.10
     
-    init(from: TaxFacts, name: String) {
+    init(from: TaxScheme, name: String) {
         self.name = name
         self.notes = from.notes
         self.year = from.year
@@ -137,8 +137,8 @@ class TaxFacts : Codable, Identifiable {
     }
 }
 
-extension TaxFacts : Hashable, Equatable {
-    static func == (lhs: TaxFacts, rhs: TaxFacts) -> Bool {
+extension TaxScheme : Hashable, Equatable {
+    static func == (lhs: TaxScheme, rhs: TaxScheme) -> Bool {
         lhs.id == rhs.id
     }
     
@@ -148,9 +148,9 @@ extension TaxFacts : Hashable, Equatable {
 }
 
 // MARK: - Static Definitions
-extension TaxFacts {
-    static func createNewTaxFacts(name: String, year: Int) -> TaxFacts {
-        return TaxFacts(
+extension TaxScheme {
+    static func createNewTaxScheme(name: String, year: Int) -> TaxScheme {
+        return TaxScheme(
             name: name,
             notes: "",
             year: year,
@@ -174,7 +174,7 @@ extension TaxFacts {
         )
     }
     
-    static let official2024 = TaxFacts(
+    static let official2024 = TaxScheme(
         name: "Official",
         notes: "Officially supported Tax Facts for 2024",
         year: 2024,
@@ -198,9 +198,9 @@ extension TaxFacts {
     )
 }
 
-extension TaxFacts : DeepCopyable {
-    var deepCopy: TaxFacts {
-        return TaxFacts(from: self, name: self.name)
+extension TaxScheme : DeepCopyable {
+    var deepCopy: TaxScheme {
+        return TaxScheme(from: self, name: self.name)
     }
 }
     

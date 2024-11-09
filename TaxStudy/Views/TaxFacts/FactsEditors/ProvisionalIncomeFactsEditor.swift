@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProvisionalIncomeFactsEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         ScrollView {
@@ -16,7 +16,7 @@ struct ProvisionalIncomeFactsEditor : View {
                 "Social Security Tax",
                 description: "Provisional income thresholds are income limits set by the IRS that determine whether and how much of your Social Security benefits may be taxable. Provisional income includes adjusted gross income (AGI), tax-exempt interest, and 50% of Social Security benefits.")
             {
-                TaxBracketEditor(taxBrackets: $facts.provisionalIncomeThresholds)
+                TaxBracketEditor(taxBrackets: $taxScheme.provisionalIncomeThresholds)
                     
             }
         }
@@ -25,6 +25,6 @@ struct ProvisionalIncomeFactsEditor : View {
 }
 
 #Preview {
-    @Previewable @State var taxFactService = TaxFactsManager()
-    TaxFactsListView(facts: $taxFactService.officialFacts[0], selectedSetting: .provisionalIncomeThresholds)
+    @Previewable @State var taxFactService = TaxSchemeManager()
+    TaxSchemeFactListView(taxScheme: $taxFactService.officialSchemes[0], selectedSetting: .provisionalIncomeThresholds)
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GeneralEditor : View {
-    @Binding var facts: TaxFacts
+    @Binding var taxScheme: TaxScheme
     
     var body: some View {
         DescribedContainer(
@@ -22,30 +22,30 @@ struct GeneralEditor : View {
             
             LazyVGrid(columns: gridItems, spacing: 10) {
                 Text("Year").font(.headline)
-                TextField("Year", value: $facts.year, formatter: YearFormatter())
+                TextField("Year", value: $taxScheme.year, formatter: YearFormatter())
                     .decorated(by: "calendar")
                     .frame(maxWidth: 200)
                 Text("Name").font(.headline)
-                TextField("Name", text: $facts.name)
+                TextField("Name", text: $taxScheme.name)
                     .decorated(by: "info.circle")
                     .frame(maxWidth: 200)
                 Text("Notes").font(.headline)
-                TextEditor(text: $facts.notes)
+                TextEditor(text: $taxScheme.notes)
                     .decorated()
             }
             .padding()
             .frame(maxWidth: .infinity)
         }
         .padding()
-        .onChange(of: facts) {
+        .onChange(of: taxScheme) {
             print("Change to facts")
         }
     }
 }
 
 #Preview {
-    @Previewable @State var facts: TaxFacts = TaxFacts.official2024
-    GeneralEditor(facts: $facts)
+    @Previewable @State var facts: TaxScheme = TaxScheme.official2024
+    GeneralEditor(taxScheme: $facts)
 }
 
 class YearFormatter: NumberFormatter, @unchecked Sendable {

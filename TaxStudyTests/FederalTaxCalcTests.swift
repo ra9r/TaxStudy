@@ -41,7 +41,7 @@ final class FederalTaxCalcTests {
             #expect(Bool(false))
             return
         }
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         
         #expect(fedTax.grossIncome == 194_714.28)
         #expect(fedTax.totalIncome == 194_714.28)
@@ -75,7 +75,7 @@ final class FederalTaxCalcTests {
         scenario.profileSelf.socialSecurity = 0
 
         
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         
         #expect(fedTax.amtIncome == 700_000)
         #expect(fedTax.amtExemption == 81_300)
@@ -114,7 +114,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.wages = 50000
         scenario.profileSpouse.socialSecurity = 0
         
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         
         #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.totalIncome == 100_000)
@@ -161,7 +161,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.socialSecurity = 0
         
         
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         
         #expect(fedTax.grossIncome == 100_000)
         #expect(fedTax.totalIncome == 100_000)
@@ -205,7 +205,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.employmentStatus = .retired
         scenario.profileSpouse.socialSecurity = 2000*12
         
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         
         // MARK: Social Security Only
         
@@ -315,7 +315,7 @@ final class FederalTaxCalcTests {
         scenario.profileSpouse.employmentStatus = .retired
         scenario.profileSpouse.socialSecurity = 0
         
-        let fedTax = FederalTaxCalc(scenario, facts: TaxFacts.official2024)
+        let fedTax = FederalTaxCalc(scenario, facts: TaxScheme.official2024)
         // MARK: Tax Exempt Income
         scenario.income.add(.init(.taxExemptInterest, amount: 22_500))
         #expect(fedTax.grossIncome == 22_500)

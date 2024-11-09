@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var allFacts: [TaxFacts]
+    var allSchemes: [TaxScheme]
     @Binding var scenario: TaxScenario
     
     var body: some View {
@@ -27,7 +27,7 @@ struct HeaderView: View {
 
     var PillBox: some View {
         VStack(alignment: .center, spacing: 0) {
-            if let selectedFacts = allFacts.first(where: {$0.id == scenario.facts}) {
+            if let selectedFacts = allSchemes.first(where: {$0.id == scenario.facts}) {
                 Text("\(selectedFacts.year.noFormat)")
                     .font(.largeTitle)
                 Text("\(selectedFacts.name)")
@@ -81,14 +81,14 @@ struct HeaderView: View {
             }
             .buttonStyle(PlainButtonStyle())
             Menu {
-                ForEach(allFacts, id: \.id) { taxFacts in
+                ForEach(allSchemes, id: \.id) { taxFacts in
                     Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
                         scenario.facts = taxFacts.id
                     }
                 }
             } label: {
                 Spacer()
-                if let selectedFacts = allFacts.first(where: {$0.id == scenario.facts}) {
+                if let selectedFacts = allSchemes.first(where: {$0.id == scenario.facts}) {
                     Text("\(selectedFacts.year.noFormat) - \(selectedFacts.name)")
                         .decorated(by: "chevron.down")
                 } else {

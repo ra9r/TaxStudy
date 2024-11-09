@@ -31,7 +31,7 @@ final class TaxFactsTests {
         
         // Decode the data into your model
         let decoder = JSONDecoder()
-        let facts = try decoder.decode([TaxFacts].self, from: data)
+        let facts = try decoder.decode([TaxScheme].self, from: data)
         
         #expect(facts.count == 3)
     }

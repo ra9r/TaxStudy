@@ -9,17 +9,17 @@ import SwiftUI
 
 @MainActor
 @Observable
-class TaxFactsManager {
+class TaxSchemeManager {
     
-    var officialFacts: [TaxFacts]
-    var sharedFacts: [TaxFacts] = []
+    var officialSchemes: [TaxScheme]
+    var sharedSchemes: [TaxScheme] = []
     
-    var selectedFacts: TaxFacts
+    var selectedScheme: TaxScheme
     
     init() {
-        self.officialFacts = [TaxFacts.official2024]
-        self.selectedFacts = TaxFacts.official2024
-        self.selectedFacts = self.officialFacts.first!
+        self.officialSchemes = [TaxScheme.official2024]
+        self.selectedScheme = TaxScheme.official2024
+        self.selectedScheme = self.officialSchemes.first!
         
         loadSharedFacts()
     }
@@ -27,30 +27,30 @@ class TaxFactsManager {
     func importFile(from url: URL) throws {
         let decoder = JSONDecoder()
         let data = try Data(contentsOf: url)
-        self.sharedFacts = try decoder.decode([TaxFacts].self, from: data)
+        self.sharedSchemes = try decoder.decode([TaxScheme].self, from: data)
     }
     
     func exportFile(to url: URL) throws {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let data = try encoder.encode(self.sharedFacts)
+        let data = try encoder.encode(self.sharedSchemes)
         try data.write(to: url)
     }
     
-    func lookupFacts(id: String, embedded: [TaxFacts] = []) -> TaxFacts? {
+    func lookupFacts(id: String, embedded: [TaxScheme] = []) -> TaxScheme? {
         
         
         return allFacts(includeEmbedded: embedded).first { $0.id == id }
     }
     
-    func allFacts(includeEmbedded: [TaxFacts] = []) -> [TaxFacts] {
-        var allFacts: Set<TaxFacts> = []
+    func allFacts(includeEmbedded: [TaxScheme] = []) -> [TaxScheme] {
+        var allFacts: Set<TaxScheme> = []
         
-        for facts in officialFacts {
+        for facts in officialSchemes {
             allFacts.insert(facts)
         }
         
-        for facts in sharedFacts {
+        for facts in sharedSchemes {
             allFacts.insert(facts)
         }
         
@@ -61,8 +61,8 @@ class TaxFactsManager {
         return Array(allFacts)
     }
     
-    func newShared(from newFacts: TaxFacts) {
-        sharedFacts.append(newFacts)
+    func newShared(from newFacts: TaxScheme) {
+        sharedSchemes.append(newFacts)
         
 //        saveSharedFacts()
     }
@@ -73,13 +73,13 @@ class TaxFactsManager {
             return
         }
         
-        self.sharedFacts.removeAll { $0.id == id }
+        self.sharedSchemes.removeAll { $0.id == id }
 //        saveSharedFacts()
     }
     
     func saveSharedFacts() {
         let encoder = JSONEncoder()
-        if let encodedData = try? encoder.encode(sharedFacts) {
+        if let encodedData = try? encoder.encode(sharedSchemes) {
             UserDefaults.standard.set(encodedData, forKey: "sharedFacts")
         }
     }
@@ -87,8 +87,8 @@ class TaxFactsManager {
     func loadSharedFacts() {
         if let savedData = UserDefaults.standard.data(forKey: "sharedFacts") {
             let decoder = JSONDecoder()
-            if let loadedFacts = try? decoder.decode([TaxFacts].self, from: savedData) {
-                sharedFacts = loadedFacts
+            if let loadedFacts = try? decoder.decode([TaxScheme].self, from: savedData) {
+                sharedSchemes = loadedFacts
             }
         }
     }

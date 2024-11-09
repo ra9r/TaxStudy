@@ -6,7 +6,7 @@
 //
 
 
-enum TaxFactsListTypes: String, CaseIterable {
+enum TaxSchemeFactTypes: String, CaseIterable {
     case generalInformation = "General Information"
     case standardDeductions = "Standard Deductions"
     case niiTax = "Net Invetment Income"

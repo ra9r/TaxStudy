@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TaxFactsEditorCommands : Commands {
+struct TaxSchemeEditorCommands : Commands {
     @Environment(\.openWindow) var openWindow
-    @Binding var taxFactsService : TaxFactsManager
+    @Binding var taxSchemeManager : TaxSchemeManager
     
-    init(_ taxFactsService: Binding<TaxFactsManager>) {
-        self._taxFactsService = taxFactsService
+    init(_ taxFactsService: Binding<TaxSchemeManager>) {
+        self._taxSchemeManager = taxFactsService
     }
     
     var body: some Commands {
@@ -24,21 +24,21 @@ struct TaxFactsEditorCommands : Commands {
         }
         CommandGroup(after: .saveItem) {
             Button("Save Shared Tax Facts...") {
-                taxFactsService.saveSharedFacts()
+                taxSchemeManager.saveSharedFacts()
             }
         }
         CommandGroup(after: .importExport) {
-            Button("Import TaxFacts...") {
-                importTaxFacts()
+            Button("Import TaxScheme...") {
+                importTaxSchemes()
             }
-            Button("Export TaxFacts...") {
-                exportTaxFacts()
+            Button("Export TaxScheme...") {
+                exportTaxSchemes()
             }
         }
         
     }
     
-    func importTaxFacts() {
+    func importTaxSchemes() {
         let openPanel = NSOpenPanel()
         openPanel.canChooseFiles = true
         openPanel.canChooseDirectories = false
@@ -47,7 +47,7 @@ struct TaxFactsEditorCommands : Commands {
         if openPanel.runModal() == .OK {
             if let url = openPanel.url {
                 do {
-                    try taxFactsService.importFile(from: url)
+                    try taxSchemeManager.importFile(from: url)
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }
@@ -55,7 +55,7 @@ struct TaxFactsEditorCommands : Commands {
         }
     }
     
-    func exportTaxFacts() {
+    func exportTaxSchemes() {
         let savePanel = NSSavePanel()
         savePanel.canCreateDirectories = true
         savePanel.nameFieldStringValue = "Untitled" // Default file name
@@ -64,7 +64,7 @@ struct TaxFactsEditorCommands : Commands {
         if savePanel.runModal() == .OK {
             if let url = savePanel.url {
                 do {
-                    try taxFactsService.exportFile(to: url)
+                    try taxSchemeManager.exportFile(to: url)
                 } catch {
                     print("Error encoding defaultFacts: \(error)")
                 }
