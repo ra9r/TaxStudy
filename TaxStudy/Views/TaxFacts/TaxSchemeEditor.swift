@@ -12,31 +12,32 @@ struct TaxSchemeEditor : View {
     
     
     var body: some View {
-        @Bindable var tfm = taxSchemeManager
+        @Bindable var tsm = taxSchemeManager
         NavigationSplitView {
-            List(selection: $tfm.selectedScheme) {
+            List(selection: $tsm.selectedScheme) {
                 Section("Official") {
-                    ForEach(tfm.officialSchemes, id: \.id) { facts in
-                        NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
+                    ForEach(tsm.officialSchemes, id: \.id) { taxScheme in
+                        NavigationLink("\(taxScheme.year.noFormat) - \(taxScheme.name)", value: taxScheme)
                             .contextMenu {
                                 Button("Duplicate") {
-                                    newShared(from: facts)
+                                    newSharedTaxScheme(from: taxScheme)
                                 }
                             }
                     }
                 }
                 Section("Shared") {
-                    ForEach(taxSchemeManager.sharedSchemes, id: \.id) { facts in
-                        NavigationLink("\(facts.year.noFormat) - \(facts.name)", value: facts)
+                    ForEach(taxSchemeManager.sharedSchemes, id: \.id) { taxScheme in
+                        NavigationLink("\(taxScheme.year.noFormat) - \(taxScheme.name)", value: taxScheme)
                             .contextMenu {
                                 Button("Duplicate") {
-                                    newShared(from: facts)
+                                    newSharedTaxScheme(from: taxScheme)
                                 }
                                 Button("Delete") {
-                                    taxSchemeManager.deleteSharedFact(id: facts.id)
+                                    taxSchemeManager.deleteSharedTaxScheme(id: taxScheme.id)
                                 }
                             }
                     }
+                    .onMove(perform: taxSchemeManager.moveSharedTaxSchemes)
                 }
             }
             
@@ -48,7 +49,7 @@ struct TaxSchemeEditor : View {
             .frame(minWidth: 180)
         } detail: {
             VStack {
-                TaxSchemeFactListView(taxScheme: $tfm.selectedScheme, selectedSetting: selectedSetting)
+                TaxSchemeFactListView(taxScheme: $tsm.selectedScheme, selectedSetting: selectedSetting)
             }
         }
         .navigationTitle("Tax Scheme Editor")
@@ -56,7 +57,7 @@ struct TaxSchemeEditor : View {
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    taxSchemeManager.saveSharedFacts()
+                    taxSchemeManager.saveSharedTaxSchemes()
                     print("Shared TaxFacts Saved")
                 } label: {
                     Label {
@@ -70,30 +71,24 @@ struct TaxSchemeEditor : View {
         }
     }
     
-    func newShared(from source: TaxScheme) {
-        let newFacts = source.deepCopy
-        newFacts.name = generateUniqueID(baseID: source.name)
-        print("Duplication: \(newFacts.id)")
-        taxSchemeManager.newShared(from: newFacts)
+    func newSharedTaxScheme(from source: TaxScheme) {
+        taxSchemeManager.newSharedTaxScheme(from: source, name: generateUniqueName(name: source.name))
     }
     
-    func generateUniqueID(baseID: String) -> String {
-        let existingIDs = taxSchemeManager.allFacts().map { $0.id }
-        var newID = "\(baseID) Copy"
+    func generateUniqueName(name: String) -> String {
+        let existingNames = taxSchemeManager.allTaxSchemes().map { $0.id }
+        var newName = "\(name) Copy"
         var copyNumber = 1
 
         // Check if the newID or its numbered versions already exist in the array
-        while existingIDs.contains(newID) {
-            newID = "\(baseID) Copy \(copyNumber)"
+        while existingNames.contains(newName) {
+            newName = "\(name) Copy \(copyNumber)"
             copyNumber += 1
         }
 
-        return newID
+        return newName
     }
 }
-
-
-
 
 #Preview(traits: .sizeThatFitsLayout) {
     @Previewable @State var facts: [TaxScheme] = [

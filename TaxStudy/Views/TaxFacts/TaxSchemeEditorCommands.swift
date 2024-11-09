@@ -24,7 +24,7 @@ struct TaxSchemeEditorCommands : Commands {
         }
         CommandGroup(after: .saveItem) {
             Button("Save Shared Tax Facts...") {
-                taxSchemeManager.saveSharedFacts()
+                taxSchemeManager.saveSharedTaxSchemes()
             }
         }
         CommandGroup(after: .importExport) {
@@ -47,7 +47,7 @@ struct TaxSchemeEditorCommands : Commands {
         if openPanel.runModal() == .OK {
             if let url = openPanel.url {
                 do {
-                    try taxSchemeManager.importFile(from: url)
+                    try taxSchemeManager.importSharedTaxSchemes(from: url)
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }
@@ -64,7 +64,7 @@ struct TaxSchemeEditorCommands : Commands {
         if savePanel.runModal() == .OK {
             if let url = savePanel.url {
                 do {
-                    try taxSchemeManager.exportFile(to: url)
+                    try taxSchemeManager.exportSharedTaxSchemes(to: url)
                 } catch {
                     print("Error encoding defaultFacts: \(error)")
                 }

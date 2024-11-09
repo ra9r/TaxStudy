@@ -53,7 +53,7 @@ struct ProjectCommands : Commands {
         if openPanel.runModal() == .OK {
             if let url = openPanel.url {
                 do {
-                    try taxFactsService.importFile(from: url)
+                    try taxFactsService.importSharedTaxSchemes(from: url)
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }
@@ -70,7 +70,7 @@ struct ProjectCommands : Commands {
         if savePanel.runModal() == .OK {
             if let url = savePanel.url {
                 do {
-                    try taxFactsService.exportFile(to: url)
+                    try taxFactsService.exportSharedTaxSchemes(to: url)
                 } catch {
                     print("Error encoding defaultFacts: \(error)")
                 }

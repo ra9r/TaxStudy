@@ -20,7 +20,7 @@ struct TaxStudyApp: App {
                 .observeWindow()
                 .onChange(of: taxFactsServices.sharedSchemes) { oldValue, newValue in
                     print("Saving shared facts")
-                    taxFactsServices.saveSharedFacts()
+                    taxFactsServices.saveSharedTaxSchemes()
                 }
         }
         .defaultSize(width: 1280, height: 1024)
@@ -34,7 +34,7 @@ struct TaxStudyApp: App {
                 .environment(taxFactsServices)
                 .onChange(of: taxFactsServices.sharedSchemes) { oldValue, newValue in
                     print("Saving shared facts")
-                    taxFactsServices.saveSharedFacts()
+                    taxFactsServices.saveSharedTaxSchemes()
                 }
         }
         .commands {

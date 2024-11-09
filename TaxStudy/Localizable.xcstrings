@@ -194,9 +194,6 @@
     "Child Tax Credit" : {
 
     },
-    "Compare Feature Not Available" : {
-
-    },
     "Computed Flags" : {
 
     },
@@ -594,7 +591,10 @@
         }
       }
     },
-    "No facts found for this scenario." : {
+    "No Scenario Selected" : {
+
+    },
+    "No Tax Scheme with ID: '%@' Found" : {
 
     },
     "Notes" : {
@@ -643,9 +643,6 @@
 
     },
     "Phase Out Thresholds" : {
-
-    },
-    "Please select a Tax Scenario" : {
 
     },
     "Preferential Income" : {
@@ -810,9 +807,6 @@
     "Taxes" : {
 
     },
-    "This feature is still a work in progress" : {
-
-    },
     "Threshold not defined for %@ and '%@'" : {
       "localizations" : {
         "en" : {
@@ -902,9 +896,6 @@
 
     },
     "Year" : {
-
-    },
-    "You'll need to select a tax scenario to beign editing." : {
 
     }
   },

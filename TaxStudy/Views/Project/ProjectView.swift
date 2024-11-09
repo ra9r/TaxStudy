@@ -11,7 +11,7 @@ import KeyWindow
 struct ProjectView : View {
     @Environment(TaxSchemeManager.self) var taxFactsManager
     @Binding var document: TaxProjectDocument
-    @State var multiSelection = Set<Int>()
+    @State var selectedScenario: TaxScenario?
     
     
     init(_ document: Binding<TaxProjectDocument>) {
@@ -20,24 +20,61 @@ struct ProjectView : View {
     
     var body: some View {
         NavigationSplitView {
-            SideMenu(scenarios: $document.scenarios,
-                     embeddedFacts: document.facts,
-                     multiSelection: $multiSelection)
-            
+            List(selection: $selectedScenario) {
+                ForEach(document.scenarios, id:\.id) { scenario in
+                    let name = scenario.name
+                    NavigationLink(name, value: scenario)
+                        .contextMenu {
+                            Button("Duplicate") {
+                                duplicate(scenario)
+                            }
+                            Button("Delete", role: .destructive) {
+                                delete(scenario)
+                            }
+                        }
+                }
+                .onMove(perform: move)
+            }
         } detail: {
-            if multiSelection.count == 1, let index = multiSelection.first {
-                ScenarioView(scenario: $document.scenarios[index], embeddedFacts: document.facts)
-            } else if multiSelection.count >= 1{
-                ContentUnavailableView("Compare Feature Not Available",
-                                       systemImage: "wrench.and.screwdriver.fill",
-                                       description: Text("This feature is still a work in progress"))
+            if let selectedScenario {
+                ScenarioView(scenario: Binding(
+                    get: { selectedScenario },
+                    set: { newValue in
+                        self.selectedScenario = newValue
+                    }
+                ), embeddedFacts: document.facts)
             } else {
-                ContentUnavailableView("Please select a Tax Scenario",
-                                       systemImage: "wrench.and.screwdriver.fill",
-                                       description: Text("You'll need to select a tax scenario to beign editing."))
+                ContentUnavailableView("No Scenario Selected", image: "wrench")
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    newScenario()
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .buttonStyle(.plain)
             }
         }
         .frame(minWidth: 1100)
         .keyWindow(TaxProjectDocument.self, $document)        
+    }
+    
+    func newScenario() {
+        let newScenario = TaxScenario(name: "New Scenario", facts: TaxScheme.official2024.id)
+        document.scenarios.append(newScenario)
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        document.scenarios.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    func delete(_ scenario: TaxScenario) {
+        document.scenarios.removeAll(where: { $0.id == scenario.id })
+    }
+    
+    func duplicate(_ scenario: TaxScenario) {
+        document.scenarios.append(scenario.deepCopy)
     }
 }

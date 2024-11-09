@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var allSchemes: [TaxScheme]
+    @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
     
     var body: some View {
@@ -27,10 +27,10 @@ struct HeaderView: View {
 
     var PillBox: some View {
         VStack(alignment: .center, spacing: 0) {
-            if let selectedFacts = allSchemes.first(where: {$0.id == scenario.facts}) {
-                Text("\(selectedFacts.year.noFormat)")
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.facts}) {
+                Text("\(selectedTaxScheme.year.noFormat)")
                     .font(.largeTitle)
-                Text("\(selectedFacts.name)")
+                Text("\(selectedTaxScheme.name)")
                     .font(.caption)
             } else {
                 Text("???")
@@ -81,14 +81,20 @@ struct HeaderView: View {
             }
             .buttonStyle(PlainButtonStyle())
             Menu {
-                ForEach(allSchemes, id: \.id) { taxFacts in
+                ForEach(taxSchemeManager.officialSchemes, id: \.id) { taxFacts in
+                    Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
+                        scenario.facts = taxFacts.id
+                    }
+                }
+                Divider()
+                ForEach(taxSchemeManager.sharedSchemes, id: \.id) { taxFacts in
                     Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
                         scenario.facts = taxFacts.id
                     }
                 }
             } label: {
                 Spacer()
-                if let selectedFacts = allSchemes.first(where: {$0.id == scenario.facts}) {
+                if let selectedFacts = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.facts}) {
                     Text("\(selectedFacts.year.noFormat) - \(selectedFacts.name)")
                         .decorated(by: "chevron.down")
                 } else {

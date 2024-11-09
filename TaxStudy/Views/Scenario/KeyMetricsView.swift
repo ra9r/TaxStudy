@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsView: View {
-    var taxScheme: TaxScheme
+    @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [
         .init(title: "Column Left", keyMetrics: [
@@ -45,26 +45,30 @@ struct KeyMetricsView: View {
     
     var body: some View {
         CardView("Key Metrics") {
-            let federalTaxes = FederalTaxCalc(scenario, taxScheme: taxScheme)
-            let stateTaxes = NCTaxCalc(scenario, taxScheme: taxScheme)
-            HStack(alignment: .top) {
-                VStack {
-                    ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
-                        CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.facts}) {
+                let federalTaxes = FederalTaxCalc(scenario, taxScheme: selectedTaxScheme)
+                let stateTaxes = NCTaxCalc(scenario, taxScheme: selectedTaxScheme)
+                HStack(alignment: .top) {
+                    VStack {
+                        ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
+                    }
+                    Divider()
+                    VStack {
+                        ForEach(keyMetricGroups[1].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
+                    }
+                    Divider()
+                    VStack {
+                        ForEach(keyMetricGroups[2].keyMetrics, id: \.label) { keyMetric in
+                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        }
                     }
                 }
-                Divider()
-                VStack {
-                    ForEach(keyMetricGroups[1].keyMetrics, id: \.label) { keyMetric in
-                        CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
-                    }
-                }
-                Divider()
-                VStack {
-                    ForEach(keyMetricGroups[2].keyMetrics, id: \.label) { keyMetric in
-                        CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
-                    }
-                }
+            } else {
+                Text("No Tax Scheme with ID: '\(scenario.facts)' Found")
             }
         }
         
