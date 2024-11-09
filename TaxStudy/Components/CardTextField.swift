@@ -28,16 +28,6 @@ struct CardTextField: View {
                 
                 TextField("", text: $value)
                     .decorated(by: symbol)
-//                    .font(.system(size: 12, weight: .medium))
-//                    .foregroundColor(.gray)
-//                    .multilineTextAlignment(.trailing)
-//                    .frame(maxWidth: .infinity)
-//                    .textFieldStyle(.plain)
-//                    .overlay(Rectangle()
-//                        .frame(height: 1) // Thin underline
-//                        .foregroundColor(.gray.opacity(0.5)), // Line color
-//                             alignment: .bottom
-//                    )
             }
             .padding(2.5)
         }

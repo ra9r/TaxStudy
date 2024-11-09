@@ -80,7 +80,6 @@ struct HeaderView: View {
                     .decorated(by: "chevron.down")
             }
             .buttonStyle(PlainButtonStyle())
-            
             Menu {
                 ForEach(allFacts, id: \.id) { taxFacts in
                     Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
