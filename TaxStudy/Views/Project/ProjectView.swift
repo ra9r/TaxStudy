@@ -29,11 +29,11 @@ struct ProjectView : View {
                 ScenarioView(scenario: $document.scenarios[index], embeddedFacts: document.facts)
             } else if multiSelection.count >= 1{
                 ContentUnavailableView("Compare Feature Not Available",
-                                       systemImage: "wrench.circle",
+                                       systemImage: "wrench.and.screwdriver.fill",
                                        description: Text("This feature is still a work in progress"))
             } else {
                 ContentUnavailableView("Please select a Tax Scenario",
-                                       systemImage: "square.dashed",
+                                       systemImage: "wrench.and.screwdriver.fill",
                                        description: Text("You'll need to select a tax scenario to beign editing."))
             }
         }
