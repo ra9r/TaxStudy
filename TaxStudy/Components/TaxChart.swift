@@ -35,7 +35,7 @@ struct TaxChart: View {
     }
     
     func segments() -> [BarSegment] {
-        if let facts = facts.first(where: {$0.id == scenario.facts }) {
+        if let facts = facts.first(where: {$0.id == scenario.taxSchemeId }) {
             let federalTaxes = FederalTaxCalc(scenario, taxScheme: facts)
             var data: [BarSegment] = []
             data.append(.init(name: "Capital Gains", value: federalTaxes.capitalGainsTax, color: .accent.opacity(0.8)))

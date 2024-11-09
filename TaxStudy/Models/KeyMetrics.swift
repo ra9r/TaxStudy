@@ -355,7 +355,7 @@ extension KeyMetricTypes {
         case .filingStatus:
             return fedTax.scenario.filingStatus.label
         case .taxRules:
-            return fedTax.scenario.facts
+            return fedTax.scenario.taxSchemeId
         case .grossIncome:
             return fedTax.grossIncome.asCurrency(0)
         case .totalIncome:

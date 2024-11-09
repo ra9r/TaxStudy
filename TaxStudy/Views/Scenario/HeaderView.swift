@@ -27,7 +27,7 @@ struct HeaderView: View {
 
     var PillBox: some View {
         VStack(alignment: .center, spacing: 0) {
-            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.facts}) {
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.taxSchemeId}) {
                 Text("\(selectedTaxScheme.year.noFormat)")
                     .font(.largeTitle)
                 Text("\(selectedTaxScheme.name)")
@@ -83,18 +83,18 @@ struct HeaderView: View {
             Menu {
                 ForEach(taxSchemeManager.officialSchemes, id: \.id) { taxFacts in
                     Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
-                        scenario.facts = taxFacts.id
+                        scenario.taxSchemeId = taxFacts.id
                     }
                 }
                 Divider()
                 ForEach(taxSchemeManager.sharedSchemes, id: \.id) { taxFacts in
                     Button("\(taxFacts.year.noFormat) - \(taxFacts.name)"){
-                        scenario.facts = taxFacts.id
+                        scenario.taxSchemeId = taxFacts.id
                     }
                 }
             } label: {
                 Spacer()
-                if let selectedFacts = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.facts}) {
+                if let selectedFacts = taxSchemeManager.allTaxSchemes().first(where: {$0.id == scenario.taxSchemeId}) {
                     Text("\(selectedFacts.year.noFormat) - \(selectedFacts.name)")
                         .decorated(by: "chevron.down")
                 } else {

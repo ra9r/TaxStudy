@@ -42,7 +42,7 @@ struct ProjectView : View {
                     set: { newValue in
                         self.selectedScenario = newValue
                     }
-                ), embeddedFacts: document.facts)
+                ), embeddedFacts: document.taxSchemes)
             } else {
                 ContentUnavailableView("No Scenario Selected", image: "wrench")
             }
@@ -62,7 +62,7 @@ struct ProjectView : View {
     }
     
     func newScenario() {
-        let newScenario = TaxScenario(name: "New Scenario", facts: TaxScheme.official2024.id)
+        let newScenario = TaxScenario(name: "New Scenario", taxSchemeId: TaxScheme.official2024.id)
         document.scenarios.append(newScenario)
     }
     

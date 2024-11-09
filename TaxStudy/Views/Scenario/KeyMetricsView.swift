@@ -45,7 +45,7 @@ struct KeyMetricsView: View {
     
     var body: some View {
         CardView("Key Metrics") {
-            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.facts}) {
+            if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.taxSchemeId}) {
                 let federalTaxes = FederalTaxCalc(scenario, taxScheme: selectedTaxScheme)
                 let stateTaxes = NCTaxCalc(scenario, taxScheme: selectedTaxScheme)
                 HStack(alignment: .top) {
@@ -68,7 +68,7 @@ struct KeyMetricsView: View {
                     }
                 }
             } else {
-                Text("No Tax Scheme with ID: '\(scenario.facts)' Found")
+                Text("No Tax Scheme with ID: '\(scenario.taxSchemeId)' Found")
             }
         }
         

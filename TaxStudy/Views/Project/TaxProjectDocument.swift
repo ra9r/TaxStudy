@@ -18,13 +18,13 @@ class TaxProjectDocument: FileDocument, Identifiable {
     // The data model that will hold the decoded JSON content
     var id = UUID()
     var name: String
-    var facts: [TaxScheme]
+    var taxSchemes: [TaxScheme]
     var scenarios: [TaxScenario]
     
     // Default initializer
-    init(name: String? = nil, facts: [TaxScheme] = [], scenarios: [TaxScenario] = []) {
+    init(name: String? = nil, taxSchemes: [TaxScheme] = [], scenarios: [TaxScenario] = []) {
         self.name = name ?? "New Project"
-        self.facts = facts
+        self.taxSchemes = taxSchemes
         self.scenarios = scenarios
     }
     
@@ -36,10 +36,15 @@ class TaxProjectDocument: FileDocument, Identifiable {
         
         // Decode the JSON data from the file
         let decoder = JSONDecoder()
-        let content = try decoder.decode(TaxProjectDocumentData.self, from: data)
-        self.name = content.name
-        self.facts = content.facts
-        self.scenarios = content.scenarios
+        do {
+            let content = try decoder.decode(TaxProjectDocumentData.self, from: data)
+            self.name = content.name
+            self.taxSchemes = content.taxSchemes
+            self.scenarios = content.scenarios
+        } catch {
+            print("Error decoding JSON: \(error)")
+            throw error
+        }
     }
     
     // Required function to save/write the document to disk
@@ -48,14 +53,14 @@ class TaxProjectDocument: FileDocument, Identifiable {
         encoder.outputFormatting = .prettyPrinted
         let jsonData = try encoder.encode(TaxProjectDocumentData(
             name: self.name,
-            facts: self.facts,
+            taxSchemes: self.taxSchemes,
             scenarios: self.scenarios
         ))
         return FileWrapper(regularFileWithContents: jsonData)
     }
     
     func newScenario() {
-        self.scenarios.append(TaxScenario(name: "New Scenario", facts: self.facts[0].id))
+        self.scenarios.append(TaxScenario(name: "New Scenario", taxSchemeId: self.taxSchemes[0].id))
     }
 }
 
@@ -65,13 +70,13 @@ private class TaxProjectDocumentData : Codable, Equatable {
     }
     
     var name: String
-    var facts: [TaxScheme]
+    var taxSchemes: [TaxScheme]
     var scenarios: [TaxScenario]
     
-    init(name: String? = nil, facts: [TaxScheme]? = nil, scenarios: [TaxScenario]? = nil) {
+    init(name: String? = nil, taxSchemes: [TaxScheme]? = nil, scenarios: [TaxScenario]? = nil) {
         self.name = name ?? "New Project"
-        self.facts = facts ?? []
-        self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", facts: self.facts[0].id)]
+        self.taxSchemes = taxSchemes ?? []
+        self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", taxSchemeId: TaxScheme.official2024.id)]
     }
 }
 

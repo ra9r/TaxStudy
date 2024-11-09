@@ -91,7 +91,7 @@ class TaxScheme : Codable, Identifiable {
     }
     
     init(
-        id: String? = nil,
+        id: String,
         name: String,
         notes: String,
         year: Int,
@@ -113,7 +113,7 @@ class TaxScheme : Codable, Identifiable {
         amtPhaseOutThesholds: [FilingStatus: Double],
         amtBrackets: TaxBrackets
     ) {
-        self.id = id ?? UUID().uuidString
+        self.id = id
         self.year = year
         self.name = name
         self.notes = notes
@@ -151,6 +151,7 @@ extension TaxScheme : Hashable, Equatable {
 extension TaxScheme {
     static func createNewTaxScheme(name: String, year: Int) -> TaxScheme {
         return TaxScheme(
+            id: UUID().uuidString,
             name: name,
             notes: "",
             year: year,
@@ -175,6 +176,7 @@ extension TaxScheme {
     }
     
     static let official2024 = TaxScheme(
+        id: "official_20240",
         name: "Official",
         notes: "Officially supported Tax Facts for 2024",
         year: 2024,
