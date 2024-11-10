@@ -290,6 +290,9 @@
     "Dividends Qualfied/Ordinary" : {
 
     },
+    "Divider" : {
+
+    },
     "Duplicate" : {
 
     },
@@ -591,7 +594,7 @@
         }
       }
     },
-    "No Scenario Selected" : {
+    "No Tax Scheme Assigned" : {
 
     },
     "No Tax Scheme with ID: '%@' Found" : {
@@ -730,6 +733,9 @@
 
     },
     "Search key metrics" : {
+
+    },
+    "Select a scenario to view details" : {
 
     },
     "Self-Employed Business Expense" : {

@@ -11,7 +11,7 @@ import KeyWindow
 struct ProjectView : View {
     @Environment(TaxSchemeManager.self) var taxFactsManager
     @Binding var document: TaxProjectDocument
-    @State var selectedScenario: TaxScenario?
+    @State private var selectedScenarios: Set<TaxScenario> = []
     
     
     init(_ document: Binding<TaxProjectDocument>) {
@@ -20,7 +20,7 @@ struct ProjectView : View {
     
     var body: some View {
         NavigationSplitView {
-            List(selection: $selectedScenario) {
+            List(selection: $selectedScenarios) {
                 ForEach(document.scenarios, id:\.id) { scenario in
                     let name = scenario.name
                     NavigationLink(name, value: scenario)
@@ -36,15 +36,18 @@ struct ProjectView : View {
                 .onMove(perform: move)
             }
         } detail: {
-            if let selectedScenario {
+            if selectedScenarios.count == 1, let singleScenario = selectedScenarios.first,
+               let scenarioIndex = document.scenarios.firstIndex(where: { $0.id == singleScenario.id }) {
                 ScenarioView(scenario: Binding(
-                    get: { selectedScenario },
+                    get: { document.scenarios[scenarioIndex] },
                     set: { newValue in
-                        self.selectedScenario = newValue
+                        document.scenarios[scenarioIndex] = newValue
                     }
                 ), embeddedFacts: document.taxSchemes)
+            } else if selectedScenarios.count > 1 {
+                CompareScenariosView(scenarios: $selectedScenarios)
             } else {
-                ContentUnavailableView("No Scenario Selected", image: "wrench")
+                Text("Select a scenario to view details")
             }
         }
         .toolbar {
