@@ -51,6 +51,7 @@ struct ProjectView : View {
                 Text("Select a scenario to view details")
             }
         }
+        .toolbarVisibility(.hidden)
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Button {

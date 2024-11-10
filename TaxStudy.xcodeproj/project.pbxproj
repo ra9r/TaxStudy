@@ -302,9 +302,9 @@
 		2A51CB182CB9A3650075BBA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2ACA564F2CE0E6C6005F26DF /* KeyMetrics */,
 				2ACFDE2A2CCA45AC0033B5B8 /* Project */,
-				2A7CB28F2CBC71A9008334E1 /* Scenario */,
+				2A7CB28F2CBC71A9008334E1 /* ScenarioDetails */,
+				2ACA564F2CE0E6C6005F26DF /* ScenarioCompare */,
 				2ACC200E2CC00A1000D2A907 /* TaxFacts */,
 			);
 			path = Views;
@@ -337,10 +337,9 @@
 			path = Income;
 			sourceTree = "<group>";
 		};
-		2A7CB28F2CBC71A9008334E1 /* Scenario */ = {
+		2A7CB28F2CBC71A9008334E1 /* ScenarioDetails */ = {
 			isa = PBXGroup;
 			children = (
-				2A805F962CE0546700661FC3 /* CompareScenariosView.swift */,
 				2ACFDE312CCA6D720033B5B8 /* ScenarioView.swift */,
 				2A6BA2A92CBE54AB007C3A27 /* HeaderView.swift */,
 				2ACC20262CC267B500D2A907 /* SummaryMetricsView.swift */,
@@ -348,7 +347,7 @@
 				2A7CB2A42CBE0A66008334E1 /* Deductions */,
 				2A6BA2AE2CBE6026007C3A27 /* Income */,
 			);
-			path = Scenario;
+			path = ScenarioDetails;
 			sourceTree = "<group>";
 		};
 		2A7CB2A42CBE0A66008334E1 /* Deductions */ = {
@@ -389,14 +388,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2ACA564F2CE0E6C6005F26DF /* KeyMetrics */ = {
+		2ACA564F2CE0E6C6005F26DF /* ScenarioCompare */ = {
 			isa = PBXGroup;
 			children = (
+				2A805F962CE0546700661FC3 /* CompareScenariosView.swift */,
 				2ACA56502CE0E91C005F26DF /* KeyMetricsStack.swift */,
 				2ACFDDDF2CC8BA440033B5B8 /* KeyMetricsLayoutEditor.swift */,
 				2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */,
 			);
-			path = KeyMetrics;
+			path = ScenarioCompare;
 			sourceTree = "<group>";
 		};
 		2ACC0F472CCE518F002FEB3B /* Frameworks */ = {
