@@ -35,6 +35,7 @@ struct ProjectView : View {
                 }
                 .onMove(perform: move)
             }
+            .frame(minWidth: 250)
         } detail: {
             if selectedScenarios.count == 1, let singleScenario = selectedScenarios.first,
                let scenarioIndex = document.scenarios.firstIndex(where: { $0.id == singleScenario.id }) {
@@ -51,7 +52,7 @@ struct ProjectView : View {
             }
         }
         .toolbar {
-            ToolbarItem {
+            ToolbarItem(placement: .navigation) {
                 Button {
                     newScenario()
                 } label: {

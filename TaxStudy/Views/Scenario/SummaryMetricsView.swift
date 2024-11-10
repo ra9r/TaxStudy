@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KeyMetricsView: View {
+struct SummaryMetricsView: View {
     @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
     @State var keyMetricGroups: [KeyMetricGroup] = [

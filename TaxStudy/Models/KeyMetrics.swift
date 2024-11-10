@@ -8,7 +8,7 @@
 import Foundation
 
 enum KeyMetricTypes: Codable {
-    case divider
+//    case divider
     
     // MARK: - Profile
     case selfName
@@ -137,8 +137,8 @@ extension KeyMetricTypes {
 extension KeyMetricTypes : Displayable {
     public var label: String {
         switch self {
-        case .divider:
-            return String(localized: "Divider")
+//        case .divider:
+//            return String(localized: "Divider")
         case .selfName:
             return String(localized: "Name (self)")
         case .spouseName:
@@ -329,8 +329,8 @@ extension KeyMetricTypes {
     func resolve(fedTax: FederalTaxCalc, stateTax: any StateTaxCalc) -> String {
         
         switch self {
-        case .divider:
-            return ""
+//        case .divider:
+//            return ""
         case .selfName:
             return fedTax.scenario.profileSelf.name
         case .spouseName:

@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct KeyMetricsPickerView: View {
-    @State var selectedKeyMetrics: [KeyMetricTypes] = []
+    @Binding var selectedKeyMetrics: Set<KeyMetricTypes>
     @State private var searchText: String = ""
     var body: some View {
         VStack {
             // Add a search bar
-                        SearchBar(text: $searchText)
+            SearchBar(text: $searchText)
             List(KeyMetricCategories.allCases, id: \.self) { category in
                 let filteredTypes = filteredTypes(for: category)
                 if filteredTypes.isEmpty == false {
                     Section(category.label) {
                         ForEach(filteredTypes, id: \.self) { keyMetric in
-                            KeyMetricToggle(keyMetric: keyMetric, selectedKeyMetrics: $selectedKeyMetrics)
+                            KeyMetricToggle(keyMetric: keyMetric, isOn: selectedKeyMetrics.contains(keyMetric), selectedKeyMetrics: $selectedKeyMetrics)
                         }
                     }
                 }
@@ -54,8 +54,8 @@ struct SearchBar: View {
 
 struct KeyMetricToggle: View {
     var keyMetric: KeyMetricTypes
-    @State var isOn: Bool = false
-    @Binding var selectedKeyMetrics: [KeyMetricTypes]
+    @State var isOn: Bool
+    @Binding var selectedKeyMetrics: Set<KeyMetricTypes>
     var body: some View {
         Toggle(isOn: $isOn) {
             Text(keyMetric.label)
@@ -63,14 +63,19 @@ struct KeyMetricToggle: View {
         .onChange(of: isOn) { oldValue, newValue in
             print("\(keyMetric) is now \(newValue)")
             if newValue {
-                selectedKeyMetrics.append(keyMetric)
+                selectedKeyMetrics.insert(keyMetric)
             } else {
-                selectedKeyMetrics.removeAll(where: { $0 == keyMetric })
+                selectedKeyMetrics.remove(keyMetric)
             }
         }
     }
 }
 
 #Preview {
-    KeyMetricsPickerView()
+    @Previewable @State var keyMetrics: Set<KeyMetricTypes> = [
+        .grossIncome,
+        .totalIncome,
+        .agi,
+        ]
+    KeyMetricsPickerView(selectedKeyMetrics: $keyMetrics)
 }

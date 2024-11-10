@@ -15,7 +15,7 @@ struct ScenarioView : View {
         ScrollView {
             VStack {
                 HeaderView(scenario: $scenario)
-                KeyMetricsView(scenario: $scenario)
+                SummaryMetricsView(scenario: $scenario)
                 ProfileView(scenario: $scenario)
                 IncomeView(scenario: $scenario)
                 DeductionsView(scenario: $scenario)
