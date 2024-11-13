@@ -10,35 +10,36 @@ import SwiftUI
 struct SummaryMetricsView: View {
     @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
-    @State var keyMetricGroups: [ReportSection] = [
-        .init(title: "Column Left", keyMetrics: [
-            .grossIncome,
-            .totalIncome,
-            .agi,
-            .deduction,
-            .taxableIncome,
-            .amtIncome,
-            .amtTax,
-            .federalTax,
-            .totalFICATax,
+    @State var reportSections: [ReportSection] = [
+        .init(title: "Column Left", items: [
+            KeyMetricReportItem(.grossIncome),
+            KeyMetricReportItem(.totalIncome),
+            KeyMetricReportItem(.agi),
+            KeyMetricReportItem(.deduction),
+            KeyMetricReportItem(.taxableIncome),
+            KeyMetricReportItem(.amtIncome),
+            KeyMetricReportItem(.amtTax),
+            KeyMetricReportItem(.federalTax),
+            KeyMetricReportItem(.totalFICATax),
         ]),
-        .init(title: "Column Middle", keyMetrics: [
-            .filingStatus,
-            .marginalOrdinaryTaxRate,
-            .marginalCapitalGainsTaxRate,
-            .averageTaxRate,
-            .safeHarborTax,
-            .irmaaSurcharges,
-            .deductibleMedicalExpenses,
-            .deductibleMedicalExpensesForAMT
+        .init(title: "Column Middle", items: [
+            KeyMetricReportItem(.filingStatus),
+            KeyMetricReportItem(.marginalOrdinaryTaxRate),
+            KeyMetricReportItem(.marginalCapitalGainsTaxRate),
+            KeyMetricReportItem(.averageTaxRate),
+            DividerReportItem(),
+            KeyMetricReportItem(.safeHarborTax),
+            KeyMetricReportItem(.irmaaSurcharges),
+            KeyMetricReportItem(.deductibleMedicalExpenses),
+            KeyMetricReportItem(.deductibleMedicalExpensesForAMT),
         ]),
-        .init(title: "Column Right", keyMetrics: [
-            .totalTaxExemptInterestIncome,
-            .dividends,
-            .capitalGains,
-            .futureCarryForwardLoss,
-            .provisionalIncome,
-            .totalSSAIncome,
+        .init(title: "Column Right", items: [
+            KeyMetricReportItem(.totalTaxExemptInterestIncome),
+            KeyMetricReportItem(.dividends),
+            KeyMetricReportItem(.capitalGains),
+            KeyMetricReportItem(.futureCarryForwardLoss),
+            KeyMetricReportItem(.provisionalIncome),
+            KeyMetricReportItem(.totalSSAIncome),
         ])
     ]
         
@@ -46,24 +47,22 @@ struct SummaryMetricsView: View {
     var body: some View {
         CardView("Key Metrics") {
             if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.taxSchemeId}) {
-                let federalTaxes = FederalTaxCalc(scenario, taxScheme: selectedTaxScheme)
-                let stateTaxes = NCTaxCalc(scenario, taxScheme: selectedTaxScheme)
                 HStack(alignment: .top) {
                     VStack {
-                        ForEach(keyMetricGroups[0].keyMetrics, id: \.label) { keyMetric in
-                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        ForEach(reportSections[0].items, id: \.id) { item in
+                            AnyView(item.content(scenario: scenario, taxScheme: selectedTaxScheme))
                         }
                     }
                     Divider()
                     VStack {
-                        ForEach(keyMetricGroups[1].keyMetrics, id: \.label) { keyMetric in
-                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        ForEach(reportSections[1].items, id: \.id) { item in
+                            AnyView(item.content(scenario: scenario, taxScheme: selectedTaxScheme))
                         }
                     }
                     Divider()
                     VStack {
-                        ForEach(keyMetricGroups[2].keyMetrics, id: \.label) { keyMetric in
-                            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+                        ForEach(reportSections[2].items, id: \.id) { item in
+                            AnyView(item.content(scenario: scenario, taxScheme: selectedTaxScheme))
                         }
                     }
                 }

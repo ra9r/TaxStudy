@@ -7,12 +7,15 @@
 import SwiftUI
 
 protocol ReportItem : Codable, Identifiable {
+    var id: String { get }
+    var type: String { get }
     associatedtype Content: View
     @ViewBuilder func content(scenario: TaxScenario, taxScheme: TaxScheme) -> Content
 }
 
 struct KeyMetricReportItem : ReportItem {
     var id: String
+    var type: String = "KeyMetric"
     var keyMetric: KeyMetricTypes
     
     init(_ keyMetric: KeyMetricTypes) {
@@ -30,6 +33,7 @@ struct KeyMetricReportItem : ReportItem {
 
 struct DividerReportItem : ReportItem {
     var id: String
+    var type: String = "Divider"
     
     init() {
         self.id = UUID().uuidString
