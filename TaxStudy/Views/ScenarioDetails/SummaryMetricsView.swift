@@ -10,7 +10,7 @@ import SwiftUI
 struct SummaryMetricsView: View {
     @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenario: TaxScenario
-    @State var keyMetricGroups: [KeyMetricGroup] = [
+    @State var keyMetricGroups: [ReportSection] = [
         .init(title: "Column Left", keyMetrics: [
             .grossIncome,
             .totalIncome,

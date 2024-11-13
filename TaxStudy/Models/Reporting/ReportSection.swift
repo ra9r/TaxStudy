@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KeyMetricGroup: Codable {
+struct ReportSection: Codable {
     var title: String
     var keyMetrics: [KeyMetricTypes]
 
