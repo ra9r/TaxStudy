@@ -9,10 +9,12 @@
 enum KeyMetricCategories: String, CaseIterable {
     case profile
     case income
+    case adjustments
+    case credits
+    case deductions
     case agiAndMagis
     case investments
     case socialSecurity
-    case deductions
     case taxes
     case wages
     case irmaa
@@ -50,7 +52,87 @@ enum KeyMetricCategories: String, CaseIterable {
             .ordinaryIncome,
             .netInvestmentIncome,
             .provisionalIncome,
+            .totalIncomeOfType(.businessIncome),
+            .totalIncomeOfType(.interest),
+            .totalIncomeOfType(.taxExemptInterest),
+            .totalIncomeOfType(.shortTermCapitalGains),
+            .totalIncomeOfType(.longTermCapitalGains),
+            .totalIncomeOfType(.carryforwardLoss),
+            .totalIncomeOfType(.qualifiedDividends),
+            .totalIncomeOfType(.ordinaryDividends),
+            .totalIncomeOfType(.rentalIncome),
+            .totalIncomeOfType(.royalties),
+            .totalIncomeOfType(.businessIncome),
+            .totalIncomeOfType(.foreignEarnedIncome),
+            .totalIncomeOfType(.otherOrdinaryIncome),
+            .totalIncomeOfType(.iraWithdrawal),
+            .totalIncomeOfType(.rothConversion),
+            .totalIncomeOfType(.qualifiedHSADistributions),
+            .totalIncomeOfType(.rothDistributions),
+            .totalIncomeOfType(.giftsOrInheritance),
+            .totalIncomeOfType(.otherTaxExemptIncome),
             ]
+        case .adjustments: return [
+            .totalAdjustmentOfType(.iraOr401kContribution),
+            .totalAdjustmentOfType(.hsaContribution),
+            .totalAdjustmentOfType(.studentLoanInterest),
+            .totalAdjustmentOfType(.businessExpenses),
+            .totalAdjustmentOfType(.earlyWithDrawalPenalties),
+            .totalAdjustmentOfType(.foreignEarnedIncomeExclusion),
+            .totalAdjustmentOfType(.foreignHousingExclusion),
+            .totalAdjustmentOfType(.customAdjustment),
+        ]
+        case .credits: return [
+            .totalCreditsOfType(.childTaxCredit),
+            .totalCreditsOfType(.earnedIncomeTaxCredit),
+            .totalCreditsOfType(.americanOpportunityTaxCredit),
+            .totalCreditsOfType(.lifetimeLearningCredit),
+            .totalCreditsOfType(.saversCredit),
+            .totalCreditsOfType(.foreignTaxCredit),
+            .totalCreditsOfType(.adoptionCredit),
+            .totalCreditsOfType(.premiumTaxCredit),
+            .totalCreditsOfType(.residentialRenewableEnergyCredit),
+            .totalCreditsOfType(.energyEfficiencyImprovementCredit),
+            .totalCreditsOfType(.plugInElectricVehicleCredit),
+            .totalCreditsOfType(.dependentCareCredit),
+            .totalCreditsOfType(.childAndDependencyCareCredit),
+            .totalCreditsOfType(.healthCoverageTaxCredit),
+            .totalCreditsOfType(.workOpportunityTaxCredit),
+            .totalCreditsOfType(.elderlyOrDisabledTaxCredit),
+            .totalCreditsOfType(.customCredit),
+        ]
+        case .deductions: return [
+            .standardDeduction,
+            .deductibleMedicalExpenses,
+            .deductibleCharitableCashContributions,
+            .deductibleCharitableAssetContributions,
+            .totalDecutibleChartitableContributions,
+            .totalItemizedDeductions,
+            .deduction,
+            .deductionMethod,
+            .totalDeductionOfType(.medicalAndDentalDeduction),
+            .totalDeductionOfType(.stateAndLocalTaxDeduction),
+            .totalDeductionOfType(.mortgageInterestDeduction),
+            .totalDeductionOfType(.charitableCashContributionDeduction),
+            .totalDeductionOfType(.charitableAssetContributionDeduction),
+            .totalDeductionOfType(.charitableMileageContributionDeduction),
+            .totalDeductionOfType(.casualtyAndTheftLossDeduction),
+            .totalDeductionOfType(.qualifiedBusinessIncomeDeduction),
+            .totalDeductionOfType(.marginInterestDeduction),
+            .totalDeductionOfType(.gamblingLossDeduction),
+            .totalDeductionOfType(.longTermCareInsurancePremiumsDeductions),
+            .totalDeductionOfType(.rentalPropertyExpensesDeduction),
+            .totalDeductionOfType(.selfEmployedHealthInsurancePremiumsDeduction),
+            .totalDeductionOfType(.studentLoanInterestDeduction),
+            .totalDeductionOfType(.tuitionAndFeesDeduction),
+            .totalDeductionOfType(.selfEmploymentTaxDeduction),
+            .totalDeductionOfType(.homeOfficeDeduction),
+            .totalDeductionOfType(.selfEmployedBusinessExpenseDeduction),
+            .totalDeductionOfType(.mileageDeduction),
+            .totalDeductionOfType(.depreciationDeduction),
+            .totalDeductionOfType(.netOperatingLossCarryforwardDeduction),
+            .totalDeductionOfType(.customDeduction),
+        ]
         case .agiAndMagis: return [
             .agi,
             .agiBeforeSSI,
@@ -79,16 +161,6 @@ enum KeyMetricCategories: String, CaseIterable {
             .provisionalIncome,
             .provisionalTaxRate,
             .taxableSSAIncome,
-            ]
-        case .deductions: return [
-            .standardDeduction,
-            .deductibleMedicalExpenses,
-            .deductibleCharitableCashContributions,
-            .deductibleCharitableAssetContributions,
-            .totalDecutibleChartitableContributions,
-            .totalItemizedDeductions,
-            .deduction,
-            .deductionMethod,
             ]
         case .taxes: return [
             .ordinaryIncomeTax,
@@ -158,6 +230,8 @@ extension KeyMetricCategories: Displayable {
         case .computedFlags: return String(localized:"Computed Flags")
         case .irmaa: return String(localized:"IRMAA")
         case .amt: return String(localized:"AMT")
+        case .adjustments: return String(localized:"Adjustments")
+        case .credits: return String(localized:"Credits")
         }
     }
     

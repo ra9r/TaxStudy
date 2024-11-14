@@ -47,7 +47,7 @@ class TaxProjectDocument: FileDocument, Identifiable {
             self.name = content.name
             self.taxSchemes = content.taxSchemes
             self.scenarios = content.scenarios
-            self.config = content.config
+            self.config = ReportConfig.default //content.config
         } catch {
             print("Error decoding JSON: \(error)")
             throw error
@@ -85,7 +85,7 @@ private class TaxProjectDocumentData : Codable, Equatable {
         self.name = name ?? "New Project"
         self.taxSchemes = taxSchemes ?? []
         self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", taxSchemeId: TaxScheme.official2024.id)]
-        self.config = config ?? ReportConfig()
+        self.config = config ?? ReportConfig.default
     }
 }
 

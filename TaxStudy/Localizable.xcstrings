@@ -71,6 +71,9 @@
     "Add Bracket" : {
 
     },
+    "Adjustments" : {
+
+    },
     "Adoption Credit" : {
 
     },
@@ -195,6 +198,9 @@
 
     },
     "Computed Flags" : {
+
+    },
+    "Credits" : {
 
     },
     "Deduct 50% of your self-employment taxes (SECA)." : {
@@ -820,19 +826,13 @@
         }
       }
     },
-    "Total Adjustment of Type" : {
-
-    },
-    "Total Credits of Type" : {
+    "Total %@" : {
 
     },
     "Total Decutible Chartitable Contributions" : {
 
     },
     "Total Deduction" : {
-
-    },
-    "Total Deduction of Type" : {
 
     },
     "Total Dividends" : {
@@ -851,9 +851,6 @@
 
     },
     "Total Income" : {
-
-    },
-    "Total Income of Type" : {
 
     },
     "Total Itemized Deductions" : {

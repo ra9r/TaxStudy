@@ -10,18 +10,14 @@ import SwiftUI
 struct CompareScenariosView : View {
     @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenarios: Set<TaxScenario>
-    @State var keyMetrics: Set<KeyMetricTypes> = [
-        .grossIncome,
-        .totalIncome,
-        .agi,
-        .taxableIncome,
-    ]
+    @Binding var reportConfig: ReportConfig
+
     
     var body: some View {
         VStack {
             HStack {
                 ForEach(Array(scenarios), id: \.id) { scenario in
-                    KeyMetricsStack(scenario: scenario, keyMetrics: $keyMetrics)
+                    KeyMetricsStack(scenario: scenario, reportConfig: $reportConfig)
                 }
             }
             Spacer()

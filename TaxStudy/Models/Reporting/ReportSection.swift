@@ -7,23 +7,39 @@
 
 import SwiftUI
 
-struct ReportSection: Codable {
+struct ReportSection: Codable, Identifiable {
+    var id: String = UUID().uuidString
     var title: String
     var items: [any ReportItem & Identifiable]
+    
+    var keyMetrics: Set<KeyMetricTypes> {
+        var keyMetricSet = Set<KeyMetricTypes>()
+
+        for item in items {
+            if let keyMetricItem = item as? KeyMetricReportItem {
+                keyMetricSet.insert(keyMetricItem.keyMetric)
+            }
+        }
+        
+        return keyMetricSet
+    }
 
     enum CodingKeys: String, CodingKey {
+        case id
         case title
         case items
         case type
     }
 
-    init(title: String, items: [any ReportItem]) {
+    init(id: String? = nil, title: String, items: [any ReportItem]) {
+        self.id = id ?? UUID().uuidString
         self.title = title
         self.items = items
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(title, forKey: .title)
         
         var itemsContainer = container.nestedUnkeyedContainer(forKey: .items)
@@ -45,6 +61,7 @@ struct ReportSection: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
+        id = try container.decodeIfPresent(String.self, forKey: .id) ?? UUID().uuidString
         
         var itemsContainer = try container.nestedUnkeyedContainer(forKey: .items)
         var decodedItems: [any ReportItem] = []

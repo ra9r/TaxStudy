@@ -19,7 +19,9 @@ struct KeyMetricsPickerView: View {
                 if filteredTypes.isEmpty == false {
                     Section(category.label) {
                         ForEach(filteredTypes, id: \.self) { keyMetric in
-                            KeyMetricToggle(keyMetric: keyMetric, isOn: selectedKeyMetrics.contains(keyMetric), selectedKeyMetrics: $selectedKeyMetrics)
+                            KeyMetricToggle(keyMetric: keyMetric,
+                                            isOn: selectedKeyMetrics.contains(keyMetric),
+                                            selectedKeyMetrics: $selectedKeyMetrics)
                         }
                     }
                 }
@@ -38,38 +40,9 @@ struct KeyMetricsPickerView: View {
         }
     }
 }
-// A basic search bar component using a TextField
-struct SearchBar: View {
-    @Binding var text: String
 
-    var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-            TextField("Search key metrics", text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-        }
-        .padding()
-    }
-}
 
-struct KeyMetricToggle: View {
-    var keyMetric: KeyMetricTypes
-    @State var isOn: Bool
-    @Binding var selectedKeyMetrics: Set<KeyMetricTypes>
-    var body: some View {
-        Toggle(isOn: $isOn) {
-            Text(keyMetric.label)
-        }
-        .onChange(of: isOn) { oldValue, newValue in
-            print("\(keyMetric) is now \(newValue)")
-            if newValue {
-                selectedKeyMetrics.insert(keyMetric)
-            } else {
-                selectedKeyMetrics.remove(keyMetric)
-            }
-        }
-    }
-}
+
 
 #Preview {
     @Previewable @State var keyMetrics: Set<KeyMetricTypes> = [

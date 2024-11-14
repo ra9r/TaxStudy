@@ -39,14 +39,14 @@ struct ProjectView : View {
         } detail: {
             if selectedScenarios.count == 1, let singleScenario = selectedScenarios.first,
                let scenarioIndex = document.scenarios.firstIndex(where: { $0.id == singleScenario.id }) {
-                ScenarioView(scenario: Binding(
+                ScenarioDetailView(scenario: Binding(
                     get: { document.scenarios[scenarioIndex] },
                     set: { newValue in
                         document.scenarios[scenarioIndex] = newValue
                     }
-                ), embeddedFacts: document.taxSchemes)
+                ),reportConfig: $document.config, embeddedFacts: document.taxSchemes)
             } else if selectedScenarios.count > 1 {
-                CompareScenariosView(scenarios: $selectedScenarios)
+                CompareScenariosView(scenarios: $selectedScenarios, reportConfig: $document.config)
             } else {
                 Text("Select a scenario to view details")
             }

@@ -35,7 +35,7 @@ enum KeyMetricTypes: Codable {
     case totalSSAIncome
     case totalDividends
     case totalIncomeOfType(IncomeType)
-    case totalDeductionOftype(TaxDeductionType)
+    case totalDeductionOfType(TaxDeductionType)
     case totalAdjustmentOfType(TaxAdjustmentType)
     case totalCreditsOfType(TaxCreditType)
         
@@ -171,12 +171,12 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "Gross Income")
         case .totalIncome:
             return String(localized: "Total Income")
-        case .totalDeductionOftype:
-            return String(localized: "Total Deduction of Type")
-        case .totalAdjustmentOfType:
-            return String(localized: "Total Adjustment of Type")
-        case .totalCreditsOfType:
-            return String(localized: "Total Credits of Type")
+        case .totalDeductionOfType(let type):
+            return String(localized: "Total \(type.label)")
+        case .totalAdjustmentOfType(let type):
+            return String(localized: "Total \(type.label)")
+        case .totalCreditsOfType(let type):
+            return String(localized: "Total \(type.label)")
         case .totalTaxExemptInterestIncome:
             return String(localized: "Total Tax Exempt Interest Income")
         case .totalAdjustments:
@@ -305,8 +305,8 @@ extension KeyMetricTypes : Displayable {
             return String(localized: "AMT Taxable Income")
         case .amtTax:
             return String(localized: "AMT Tax")
-        case .totalIncomeOfType(_):
-            return String(localized: "Total Income of Type")
+        case .totalIncomeOfType(let type):
+            return String(localized: "Total \(type.label)")
         }
     }
     
@@ -373,7 +373,7 @@ extension KeyMetricTypes {
             return fedTax.scenario.totalSocialSecurityIncome.asCurrency(0)
         case .totalIncomeOfType(let incomeType):
             return fedTax.scenario.income.total(for: incomeType).asCurrency(0)
-        case .totalDeductionOftype(let deductionType):
+        case .totalDeductionOfType(let deductionType):
             return fedTax.scenario.deductions.total(for: deductionType).asCurrency(0)
         case .totalAdjustmentOfType(let adjustmentType):
             return fedTax.scenario.adjustments.total(for: adjustmentType).asCurrency(0)
