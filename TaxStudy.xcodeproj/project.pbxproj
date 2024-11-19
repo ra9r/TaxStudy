@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0CAD1E2CEC66E90071E2CA /* SortableVStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CAD1D2CEC66DF0071E2CA /* SortableVStackView.swift */; };
+		2A0CAD202CECF3910071E2CA /* ReorderableForEach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CAD1F2CECF3870071E2CA /* ReorderableForEach.swift */; };
 		2A1F27282CDADA1D002CB2D3 /* TaxSchemeEditorCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1F27272CDADA16002CB2D3 /* TaxSchemeEditorCommands.swift */; };
 		2A3E03BD2CD5BFB0003D189E /* ProvisionalIncomeFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */; };
 		2A3E03BF2CD5C3EF003D189E /* IRMAAFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */; };
@@ -100,6 +102,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A0CAD1D2CEC66DF0071E2CA /* SortableVStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableVStackView.swift; sourceTree = "<group>"; };
+		2A0CAD1F2CECF3870071E2CA /* ReorderableForEach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderableForEach.swift; sourceTree = "<group>"; };
 		2A1F27272CDADA16002CB2D3 /* TaxSchemeEditorCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxSchemeEditorCommands.swift; sourceTree = "<group>"; };
 		2A3E03BC2CD5BF96003D189E /* ProvisionalIncomeFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvisionalIncomeFactsEditor.swift; sourceTree = "<group>"; };
 		2A3E03BE2CD5C3E8003D189E /* IRMAAFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRMAAFactsEditor.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 		2A51CB022CB9A3650075BBA0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2A0CAD1F2CECF3870071E2CA /* ReorderableForEach.swift */,
+				2A0CAD1D2CEC66DF0071E2CA /* SortableVStackView.swift */,
 				2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */,
 				2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */,
 				2A7CB28B2CBC2886008334E1 /* MetaCard.swift */,
@@ -627,6 +633,7 @@
 				2A7CB29D2CBDAE80008334E1 /* TaxDeductions.swift in Sources */,
 				2A51CB302CB9A3650075BBA0 /* IncomeEditor.swift in Sources */,
 				2ACFDE302CCA630D0033B5B8 /* TaxProjectDocument.swift in Sources */,
+				2A0CAD202CECF3910071E2CA /* ReorderableForEach.swift in Sources */,
 				2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */,
 				2ACFDE322CCA6D720033B5B8 /* ScenarioDetailView.swift in Sources */,
 				2ACC20142CC0BC0F00D2A907 /* IncomeSources.swift in Sources */,
@@ -648,6 +655,7 @@
 				2AA0B5202CC4AEDA00546505 /* Profiles.swift in Sources */,
 				2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */,
 				2AD415612CD477AB005995EF /* OrdinaryFactsEditor.swift in Sources */,
+				2A0CAD1E2CEC66E90071E2CA /* SortableVStackView.swift in Sources */,
 				2ACFDE2C2CCA47B80033B5B8 /* ProjectView.swift in Sources */,
 				2A7CB28A2CBC09BD008334E1 /* TaxScheme.swift in Sources */,
 				2ACFDDDE2CC8A4F40033B5B8 /* KeyMetricsPickerView.swift in Sources */,

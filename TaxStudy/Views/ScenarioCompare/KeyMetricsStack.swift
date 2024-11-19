@@ -42,6 +42,8 @@ struct KeyMetricsStackSection : View {
     @Binding var section: ReportSection
     var taxScheme: TaxScheme
     var scenario: TaxScenario
+    @State var selectedReportItem: ReportItem?
+    
     @State var showKeyMetricPicker: Bool = false
     var body: some View {
         CardView {
@@ -56,22 +58,25 @@ struct KeyMetricsStackSection : View {
                 .buttonStyle(.plain)
             }
         } content: {
-            
-            VStack {
-                ForEach(section.items, id: \.id) { item in
-                    AnyView(item.content(scenario: scenario, taxScheme: taxScheme))
+            ScrollView {
+                VStack {
+                    let columns = Array(repeating: GridItem(spacing: 2), count: 1)
+                    LazyVGrid(columns: columns, spacing: 2) {
+                        ReorderableForEach(section.items, active: $selectedReportItem) { item in
+                            item.content(scenario: scenario, taxScheme: taxScheme)
+                                .padding()
+                                .background(.white)
+                        } moveAction: { source, destination in
+                            section.items.move(fromOffsets: source, toOffset: destination)
+                        }
+                    }
                 }
-                .onMove(perform: move)
             }
             .sheet(isPresented: $showKeyMetricPicker) {
-//                KeyMetricsPickerView(selectedKeyMetrics: $keyMetrics)
-//                    .frame(minHeight: 300)
+                KeyMetricsPickerView(selectedKeyMetrics: section.keyMetrics)
+                    .frame(minHeight: 300)
             }
         }
-    }
-    
-    func move(from source: IndexSet, to destination: Int) {
-        section.items.move(fromOffsets: source, toOffset: destination)
     }
 }
 

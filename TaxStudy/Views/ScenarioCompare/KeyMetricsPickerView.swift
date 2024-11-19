@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KeyMetricsPickerView: View {
-    @Binding var selectedKeyMetrics: Set<KeyMetricTypes>
+    @State var selectedKeyMetrics: Set<KeyMetricTypes>
     @State private var searchText: String = ""
     var body: some View {
         VStack {
@@ -39,16 +39,4 @@ struct KeyMetricsPickerView: View {
             }
         }
     }
-}
-
-
-
-
-#Preview {
-    @Previewable @State var keyMetrics: Set<KeyMetricTypes> = [
-        .grossIncome,
-        .totalIncome,
-        .agi,
-        ]
-    KeyMetricsPickerView(selectedKeyMetrics: $keyMetrics)
 }

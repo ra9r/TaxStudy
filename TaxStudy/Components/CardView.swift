@@ -39,11 +39,7 @@ struct CardView<Content: View>: View {
                     .frame(maxWidth: .infinity)
                     .background(.accent)
                     .foregroundColor(.white)
-                VStack {
-                    content
-                }
-                .padding(.bottom, 15)
-                .padding(.horizontal, 10)
+                content
             }
             
         }

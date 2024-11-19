@@ -62,7 +62,6 @@ enum KeyMetricCategories: String, CaseIterable {
             .totalIncomeOfType(.ordinaryDividends),
             .totalIncomeOfType(.rentalIncome),
             .totalIncomeOfType(.royalties),
-            .totalIncomeOfType(.businessIncome),
             .totalIncomeOfType(.foreignEarnedIncome),
             .totalIncomeOfType(.otherOrdinaryIncome),
             .totalIncomeOfType(.iraWithdrawal),
