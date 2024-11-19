@@ -8,8 +8,6 @@
 import Foundation
 
 enum KeyMetricTypes: Codable {
-//    case divider
-    
     // MARK: - Profile
     case selfName
     case spouseName
@@ -35,10 +33,11 @@ enum KeyMetricTypes: Codable {
     case totalSSAIncome
     case totalDividends
     case totalIncomeOfType(IncomeType)
+    
+    // MARK: - Dudctions, Adjustments and Credits
     case totalDeductionOfType(TaxDeductionType)
     case totalAdjustmentOfType(TaxAdjustmentType)
     case totalCreditsOfType(TaxCreditType)
-        
     
     // MARK: - AGI and MAGI's
     case agi
@@ -124,21 +123,9 @@ enum KeyMetricTypes: Codable {
     case amtTax
 }
 
-extension KeyMetricTypes {
-    var supported: Bool {
-        switch self {
-            
-        default:
-            return false
-        }
-    }
-}
-
 extension KeyMetricTypes : Displayable {
     public var label: String {
         switch self {
-//        case .divider:
-//            return String(localized: "Divider")
         case .selfName:
             return String(localized: "Name (self)")
         case .spouseName:
@@ -329,8 +316,6 @@ extension KeyMetricTypes {
     func resolve(fedTax: FederalTaxCalc, stateTax: any StateTaxCalc) -> String {
         
         switch self {
-//        case .divider:
-//            return ""
         case .selfName:
             return fedTax.scenario.profileSelf.name
         case .spouseName:
@@ -505,6 +490,203 @@ extension KeyMetricTypes {
         case .amtTax:
             return fedTax.amtTax.asCurrency(0)
             
+        }
+    }
+}
+
+extension KeyMetricTypes : Identifiable {
+    var id: String { rawValue }
+}
+
+extension KeyMetricTypes : RawRepresentable {
+    public init?(rawValue: String) {
+        switch rawValue {
+        case "selfName": self = .selfName
+        case "spouseName": self = .spouseName
+        case "selfAge": self = .selfAge
+        case "spouseAge": self = .spouseAge
+        case "selfWages": self = .selfWages
+        case "spouseWages": self = .spouseWages
+        case "selfSSI": self = .selfSSI
+        case "spouseSSI": self = .spouseSSI
+        case "selfMedical": self = .selfMedical
+        case "spouseMedical": self = .spouseMedical
+        case "selfEmployement": self = .selfEmployement
+        case "spouseEmployement": self = .spouseEmployement
+        case "filingStatus": self = .filingStatus
+        case "taxRules": self = .taxRules
+        case "grossIncome": self = .grossIncome
+        case "totalIncome": self = .totalIncome
+        case "totalTaxExemptInterestIncome": self = .totalTaxExemptInterestIncome
+        case "totalAdjustments": self = .totalAdjustments
+        case "totalWages": self = .totalWages
+        case "totalSSAIncome": self = .totalSSAIncome
+        case "totalDividends": self = .totalDividends
+        case let rawValue where rawValue.starts(with: "totalIncomeOfType"):
+            let typeRawValue = rawValue.replacingOccurrences(of: "totalIncomeOfType", with: "")
+            guard let type = IncomeType(rawValue: typeRawValue) else { return nil }
+            self = .totalIncomeOfType(type)
+        case let rawValue where rawValue.starts(with: "totalDeductionOfType"):
+            let typeRawValue = rawValue.replacingOccurrences(of: "totalDeductionOfType", with: "")
+            guard  let type = TaxDeductionType(rawValue: typeRawValue) else { return nil }
+            self = .totalDeductionOfType(type)
+        case let rawValue where rawValue.starts(with: "totalAdjustmentOfType"):
+            let typeRawValue = rawValue.replacingOccurrences(of: "totalAdjustmentOfType", with: "")
+            guard   let type = TaxAdjustmentType(rawValue: typeRawValue) else { return nil }
+            self = .totalAdjustmentOfType(type)
+        case let rawValue where rawValue.starts(with: "totalCreditsOfType"):
+            let typeRawValue = rawValue.replacingOccurrences(of: "totalCreditsOfType", with: "")
+            guard   let type = TaxCreditType(rawValue: typeRawValue) else { return nil }
+            self = .totalCreditsOfType(type)
+        case "agi": self = .agi
+        case "agiBeforeSSI": self = .agiBeforeSSI
+        case "magiForIRMAA": self = .magiForIRMAA
+        case "magiForIRA": self = .magiForIRA
+        case "magiForRothIRA": self = .magiForRothIRA
+        case "magiForNIIT": self = .magiForNIIT
+        case "magiForACASubsidies": self = .magiForACASubsidies
+        case "magiForPassiveActivityLossRules": self = .magiForPassiveActivityLossRules
+        case "magiForSocialSecurity": self = .magiForSocialSecurity
+        case "interest": self = .interest
+        case "carryforwardLoss": self = .carryforwardLoss
+        case "dividends": self = .dividends
+        case "capitalGains": self = .capitalGains
+        case "netLTCG": self = .netLTCG
+        case "netSTCG": self = .netSTCG
+        case "futureCarryForwardLoss": self = .futureCarryForwardLoss
+        case "netInvestmentIncome": self = .netInvestmentIncome
+        case "capitalLossAdjustment": self = .capitalLossAdjustment
+        case "provisionalIncome": self = .provisionalIncome
+        case "provisionalTaxRate": self = .provisionalTaxRate
+        case "taxableSSAIncome": self = .taxableSSAIncome
+        case "standardDeduction": self = .standardDeduction
+        case "deductibleMedicalExpenses": self = .deductibleMedicalExpenses
+        case "deductibleMedicalExpensesForAMT": self = .deductibleMedicalExpensesForAMT
+        case "deductibleCharitableCashContributions": self = .deductibleCharitableCashContributions
+        case "deductibleCharitableAssetContributions": self = .deductibleCharitableAssetContributions
+        case "totalDecutibleChartitableContributions": self = .totalDecutibleChartitableContributions
+        case "totalItemizedDeductions": self = .totalItemizedDeductions
+        case "deduction": self = .deduction
+        case "deductionMethod": self = .deductionMethod
+        case "taxableIncome": self = .taxableIncome
+        case "preferentialIncome": self = .preferentialIncome
+        case "ordinaryIncome": self = .ordinaryIncome
+        case "ordinaryIncomeTax": self = .ordinaryIncomeTax
+        case "qualifiedDividendTax": self = .qualifiedDividendTax
+        case "capitalGainsTax": self = .capitalGainsTax
+        case "netInvestmentIncomeTax": self = .netInvestmentIncomeTax
+        case "federalTax": self = .federalTax
+        case "safeHarborTax": self = .safeHarborTax
+        case "totalFICATax": self = .totalFICATax
+        case "totalFICATaxSocialSecurity": self = .totalFICATaxSocialSecurity
+        case "totalFICATaxMedicare": self = .totalFICATaxMedicare
+        case "marginalCapitalGainsTaxRate": self = .marginalCapitalGainsTaxRate
+        case "marginalOrdinaryTaxRate": self = .marginalOrdinaryTaxRate
+        case "averageTaxRate": self = .averageTaxRate
+        case "effectiveTaxRate": self = .effectiveTaxRate
+        case "isSubjectToNIIT": self = .isSubjectToNIIT
+        case "isSubjectToFICA": self = .isSubjectToFICA
+        case "isSubjectToIRMAA": self = .isSubjectToIRMAA
+        case "irmaaPlanDSurcharge": self = .irmaaPlanDSurcharge
+        case "irmaaPlanBSurcharge": self = .irmaaPlanBSurcharge
+        case "irmaaSurcharges": self = .irmaaSurcharges
+        case "isSubjectToAMT": self = .isSubjectToAMT
+        case "amtIncome": self = .amtIncome
+        case "amtExemption": self = .amtExemption
+        case "amtPhaseOutTheshold": self = .amtPhaseOutTheshold
+        case "amtReducedExemption": self = .amtReducedExemption
+        case "amtTaxableIncome": self = .amtTaxableIncome
+        case "amtTax": self = .amtTax
+        default: return nil
+        }
+    }
+    
+    public var rawValue: String {
+        switch self {
+        case .selfName: return "selfName"
+        case .spouseName: return "spouseName"
+        case .selfAge: return "selfAge"
+        case .spouseAge: return "spouseAge"
+        case .selfWages: return "selfWages"
+        case .spouseWages: return "spouseWages"
+        case .selfSSI: return "selfSSI"
+        case .spouseSSI: return "spouseSSI"
+        case .selfMedical: return "selfMedical"
+        case .spouseMedical: return "spouseMedical"
+        case .selfEmployement: return "selfEmployement"
+        case .spouseEmployement: return "spouseEmployement"
+        case .filingStatus: return "filingStatus"
+        case .taxRules: return "taxRules"
+        case .grossIncome: return "grossIncome"
+        case .totalIncome: return "totalIncome"
+        case .totalTaxExemptInterestIncome: return "totalTaxExemptInterestIncome"
+        case .totalAdjustments: return "totalAdjustments"
+        case .totalWages: return "totalWages"
+        case .totalSSAIncome: return "totalSSAIncome"
+        case .totalDividends: return "totalDividends"
+        case .totalIncomeOfType(let type): return "totalIncomeOfType\(type.rawValue)"
+        case .totalDeductionOfType(let type): return "totalDeductionOfType\(type.rawValue)"
+        case .totalAdjustmentOfType(let type): return "totalAdjustmentOfType\(type.rawValue)"
+        case .totalCreditsOfType(let type): return "totalCreditsOfType\(type.rawValue)"
+        case .agi: return "agi"
+        case .agiBeforeSSI: return "agiBeforeSSI"
+        case .magiForIRMAA: return "magiForIRMAA"
+        case .magiForIRA: return "magiForIRA"
+        case .magiForRothIRA: return "magiForRothIRA"
+        case .magiForNIIT: return "magiForNIIT"
+        case .magiForACASubsidies: return "magiForACASubsidies"
+        case .magiForPassiveActivityLossRules: return "magiForPassiveActivityLossRules"
+        case .magiForSocialSecurity: return "magiForSocialSecurity"
+        case .interest: return "interest"
+        case .carryforwardLoss: return "carryforwardLoss"
+        case .dividends: return "dividends"
+        case .capitalGains: return "capitalGains"
+        case .netLTCG: return "netLTCG"
+        case .netSTCG: return "netSTCG"
+        case .futureCarryForwardLoss: return "futureCarryForwardLoss"
+        case .netInvestmentIncome: return "netInvestmentIncome"
+        case .capitalLossAdjustment: return "capitalLossAdjustment"
+        case .provisionalIncome: return "provisionalIncome"
+        case .provisionalTaxRate: return "provisionalTaxRate"
+        case .taxableSSAIncome: return "taxableSSAIncome"
+        case .standardDeduction: return "standardDeduction"
+        case .deductibleMedicalExpenses: return "deductibleMedicalExpenses"
+        case .deductibleMedicalExpensesForAMT: return "deductibleMedicalExpensesForAMT"
+        case .deductibleCharitableCashContributions: return "deductibleCharitableCashContributions"
+        case .deductibleCharitableAssetContributions: return "deductibleCharitableAssetContributions"
+        case .totalDecutibleChartitableContributions: return "totalDecutibleChartitableContributions"
+        case .totalItemizedDeductions: return "totalItemizedDeductions"
+        case .deduction: return "deduction"
+        case .deductionMethod: return "deductionMethod"
+        case .taxableIncome: return "taxableIncome"
+        case .preferentialIncome: return "preferentialIncome"
+        case .ordinaryIncome: return "ordinaryIncome"
+        case .ordinaryIncomeTax: return "ordinaryIncomeTax"
+        case .qualifiedDividendTax: return "qualifiedDividendTax"
+        case .capitalGainsTax: return "capitalGainsTax"
+        case .netInvestmentIncomeTax: return "netInvestmentIncomeTax"
+        case .federalTax: return "federalTax"
+        case .safeHarborTax: return "safeHarborTax"
+        case .totalFICATax: return "totalFICATax"
+        case .totalFICATaxSocialSecurity: return "totalFICATaxSocialSecurity"
+        case .totalFICATaxMedicare: return "totalFICATaxMedicare"
+        case .marginalCapitalGainsTaxRate: return "marginalCapitalGainsTaxRate"
+        case .marginalOrdinaryTaxRate: return "marginalOrdinaryTaxRate"
+        case .averageTaxRate: return "averageTaxRate"
+        case .effectiveTaxRate: return "effectiveTaxRate"
+        case .isSubjectToNIIT: return "isSubjectToNIIT"
+        case .isSubjectToFICA: return "isSubjectToFICA"
+        case .isSubjectToIRMAA: return "isSubjectToIRMAA"
+        case .irmaaPlanDSurcharge: return "irmaaPlanDSurcharge"
+        case .irmaaPlanBSurcharge: return "irmaaPlanBSurcharge"
+        case .irmaaSurcharges: return "irmaaSurcharges"
+        case .isSubjectToAMT: return "isSubjectToAMT"
+        case .amtIncome: return "amtIncome"
+        case .amtExemption: return "amtExemption"
+        case .amtPhaseOutTheshold: return "amtPhaseOutTheshold"
+        case .amtReducedExemption: return "amtReducedExemption"
+        case .amtTaxableIncome: return "amtTaxableIncome"
+        case .amtTax: return "amtTax"
         }
     }
 }
