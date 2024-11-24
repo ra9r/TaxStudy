@@ -40,3 +40,7 @@ struct KeyMetricsPickerView: View {
         }
     }
 }
+
+#Preview {
+    KeyMetricsPickerView(selectedKeyMetrics: [])
+}
