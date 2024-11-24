@@ -9,20 +9,35 @@ import SwiftUI
 struct KeyMetricEditorView: View {
     @Binding var metrics: [KeyMetricTypes]
     @State var draggingItem: KeyMetricTypes?
+    @State var showPicker: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack {
-                let columns = Array(repeating: GridItem(spacing: 2), count: 1)
-                LazyVGrid(columns: columns, spacing: 0) {
-                    KeyMetricList()
-                    Divider().padding(4)
-                    AddButton()
+            ZStack {
+                KeyMetricSorter()
+                if (showPicker) {
+                    KeyMetricsPickerView(selectedKeyMetrics: $metrics, visible: $showPicker)
+                        .background(.white)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .zIndex(1) // Ensure the picker is above other views
                 }
-                .padding(4)
             }
-            .frame(minWidth: 400)
-        }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .animation(.easeInOut(duration: 0.3), value: showPicker) // Animate showPicker state changes
+        
+    }
+    
+    func KeyMetricSorter() -> some View {
+        ScrollView {
+            let columns = Array(repeating: GridItem(spacing: 2), count: 1)
+            LazyVGrid(columns: columns, spacing: 0) {
+                KeyMetricList()
+                Divider().padding(4)
+                AddButton()
+            }
+            .padding(4)
+            }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     func KeyMetricList() -> some View {
@@ -52,7 +67,7 @@ struct KeyMetricEditorView: View {
     func AddButton() -> some View {
         HStack {
             Button {
-                
+                showPicker = true
             } label: {
                 Spacer()
                 Image(systemName: "plus")

@@ -9,7 +9,7 @@ import SwiftUI
 struct KeyMetricToggle: View {
     var keyMetric: KeyMetricTypes
     @State var isOn: Bool
-    @Binding var selectedKeyMetrics: Set<KeyMetricTypes>
+    @Binding var selectedKeyMetrics: [KeyMetricTypes]
     
     @State var selectedIncomeType: IncomeType?
     @State var selectedAdjustmentType: TaxAdjustmentType?
@@ -23,9 +23,9 @@ struct KeyMetricToggle: View {
         .onChange(of: isOn) { oldValue, newValue in
             print("\(keyMetric) is now \(newValue)")
             if newValue {
-                selectedKeyMetrics.insert(keyMetric)
+                selectedKeyMetrics.append(keyMetric)
             } else {
-                selectedKeyMetrics.remove(keyMetric)
+                selectedKeyMetrics.removeAll(where: { $0.id == keyMetric.id })
             }
         }
     }

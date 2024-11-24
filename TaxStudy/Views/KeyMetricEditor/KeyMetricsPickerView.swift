@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct KeyMetricsPickerView: View {
-    @State var selectedKeyMetrics: Set<KeyMetricTypes>
+    @Binding var selectedKeyMetrics: [KeyMetricTypes]
+    @Binding var visible: Bool
     @State private var searchText: String = ""
     var body: some View {
         VStack {
@@ -26,6 +27,15 @@ struct KeyMetricsPickerView: View {
                     }
                 }
             }
+            HStack {
+                Spacer()
+                Button("Done") {
+                    visible.toggle()
+                }
+                .padding(.bottom, 5)
+            }
+            .padding(5)
+            
         }
     }
     
@@ -42,5 +52,5 @@ struct KeyMetricsPickerView: View {
 }
 
 #Preview {
-    KeyMetricsPickerView(selectedKeyMetrics: [])
+    KeyMetricsPickerView(selectedKeyMetrics: .constant([]), visible: .constant(true))
 }
