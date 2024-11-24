@@ -31,3 +31,12 @@ struct CardItem: View {
         .padding(2.5)
     }
 }
+
+#Preview(traits: .fixedLayout(width: 300, height: 600)) {
+    VStack {
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
+    }
+}

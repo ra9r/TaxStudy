@@ -18,13 +18,12 @@ struct SummaryMetricsView: View {
             if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.taxSchemeId}) {
                 HStack(alignment: .top) {
                     ForEach(reportConfig.detailReport, id: \.id) { section in
-                        VStack {
-                            ForEach(section.items, id: \.id) { item in
-                                AnyView(item.content(scenario: scenario, taxScheme: selectedTaxScheme))
-                            }
-                        }
+                        ReportItemStack(items: section.items,
+                                        taxScheme: selectedTaxScheme,
+                                        scenario: scenario)
                     }
                 }
+                .padding(.bottom)
             } else {
                 Text("No Tax Scheme with ID: '\(scenario.taxSchemeId)' Found")
             }

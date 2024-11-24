@@ -17,7 +17,21 @@ struct CompareScenariosView : View {
         VStack {
             HStack {
                 ForEach(Array(scenarios), id: \.id) { scenario in
-                    KeyMetricsStack(scenario: scenario, reportConfig: $reportConfig)
+                    VStack {
+                        if let selectedTaxScheme = taxSchemeManager.allTaxSchemes().first(where: { $0.id == scenario.taxSchemeId}) {
+                            ForEach(reportConfig.compareReport, id: \.id) { section in
+                                CardView(section.title) {
+                                    ReportItemStack(
+                                        items: section.items,
+                                        taxScheme: selectedTaxScheme,
+                                        scenario: scenario)
+                                    .padding(.bottom, 10)
+                                }
+                            }
+                        } else {
+                            Text("No Tax Scheme Assigned")
+                        }
+                    }
                 }
             }
             Spacer()

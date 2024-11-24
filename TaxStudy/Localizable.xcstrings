@@ -29,6 +29,9 @@
     "%lld kWh" : {
 
     },
+    "$80,000" : {
+
+    },
     "A credit for businesses hiring individuals from targeted groups, such as veterans or long-term unemployed workers." : {
 
     },
@@ -483,6 +486,9 @@
 
     },
     "Lifetime Learning" : {
+
+    },
+    "Line Value" : {
 
     },
     "Long-Term Capital Gains" : {

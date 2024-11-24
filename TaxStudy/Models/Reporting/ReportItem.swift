@@ -28,6 +28,13 @@ enum ReportItem : Codable, Identifiable, Equatable {
             CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
         case .divider:
             Divider()
+                .padding(5)
         }
+    }
+}
+
+extension ReportItem: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .json)
     }
 }
