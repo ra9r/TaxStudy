@@ -61,6 +61,11 @@ class ReportConfig: Codable {
             .keyMetric(.amtTax),
             .keyMetric(.federalTax),
             .keyMetric(.totalFICATax),
+        ]),
+        .init(title: "Rates", items: [
+            .keyMetric(.averageTaxRate),
+            .keyMetric(.effectiveTaxRate),
+            .keyMetric(.provisionalTaxRate),
         ])
     ])
 }

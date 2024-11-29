@@ -71,7 +71,16 @@
     "Add Bracket" : {
 
     },
+    "Add Chart" : {
+
+    },
     "Add Key Metric" : {
+
+    },
+    "Add Metric" : {
+
+    },
+    "Add Section" : {
 
     },
     "Adjustments" : {
@@ -482,6 +491,9 @@
     "Is Subject to NIIT" : {
 
     },
+    "Item %lld" : {
+
+    },
     "Itemized" : {
 
     },
@@ -602,9 +614,6 @@
           }
         }
       }
-    },
-    "No Tax Scheme Assigned" : {
-
     },
     "No Tax Scheme with ID: '%@' Found" : {
 

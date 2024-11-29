@@ -19,13 +19,22 @@ enum ReportItem : Codable, Identifiable, Equatable {
         }
     }
     
+    var label: String {
+        switch self {
+        case .keyMetric(let keyMetric):
+            return keyMetric.label
+        case .divider:
+            return ""
+        }
+    }
+    
     @ViewBuilder
-    func content(scenario: TaxScenario, taxScheme: TaxScheme) -> some View {
+    func content(scenario: TaxScenario, taxScheme: TaxScheme, compact: Bool = false) -> some View {
         let federalTaxes = FederalTaxCalc(scenario, taxScheme: taxScheme)
         let stateTaxes = NCTaxCalc(scenario, taxScheme: taxScheme)
         switch self {
         case .keyMetric(let keyMetric):
-            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes))
+            CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes), compact: compact)
         case .divider:
             Divider()
                 .padding(5)
