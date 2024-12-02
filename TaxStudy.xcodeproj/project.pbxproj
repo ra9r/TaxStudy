@@ -49,7 +49,6 @@
 		2A7CB2A62CBE0A8E008334E1 /* DeductionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */; };
 		2A805F972CE0547400661FC3 /* CompareScenariosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A805F962CE0546700661FC3 /* CompareScenariosView.swift */; };
 		2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */; };
-		2AA069DA2CF923060068BE4A /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA069D92CF922FF0068BE4A /* Untitled.swift */; };
 		2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50A2CC2F3B000546505 /* CardPicker.swift */; };
 		2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50C2CC35EE800546505 /* CardNumberField.swift */; };
 		2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51B2CC4A11300546505 /* Displayable.swift */; };
@@ -147,7 +146,6 @@
 		2A7CB2A52CBE0A8E008334E1 /* DeductionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeductionsView.swift; sourceTree = "<group>"; };
 		2A805F962CE0546700661FC3 /* CompareScenariosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareScenariosView.swift; sourceTree = "<group>"; };
 		2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Extension.swift"; sourceTree = "<group>"; };
-		2AA069D92CF922FF0068BE4A /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		2AA0B50A2CC2F3B000546505 /* CardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPicker.swift; sourceTree = "<group>"; };
 		2AA0B50C2CC35EE800546505 /* CardNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberField.swift; sourceTree = "<group>"; };
 		2AA0B51B2CC4A11300546505 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 		2A51CB182CB9A3650075BBA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2AA069D92CF922FF0068BE4A /* Untitled.swift */,
 				2ACFDE2A2CCA45AC0033B5B8 /* Project */,
 				2A7CB28F2CBC71A9008334E1 /* ScenarioDetails */,
 				2ACA564F2CE0E6C6005F26DF /* ScenarioCompare */,
@@ -627,7 +624,6 @@
 				2A51CB2E2CB9A3650075BBA0 /* StateTaxCalc.swift in Sources */,
 				2ACFDDE22CC8BCD70033B5B8 /* KeyMetricCategories.swift in Sources */,
 				2ACC20162CC0CCFD00D2A907 /* IncomeView.swift in Sources */,
-				2AA069DA2CF923060068BE4A /* Untitled.swift in Sources */,
 				2AA0B51E2CC4A83A00546505 /* ProfileView.swift in Sources */,
 				2A79A0432CDAC7A100C29057 /* GeneralEditor.swift in Sources */,
 				2AD415672CD482AC005995EF /* FICAFactsEditor.swift in Sources */,
