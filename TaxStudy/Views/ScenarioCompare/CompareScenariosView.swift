@@ -11,7 +11,8 @@ struct CompareScenariosView : View {
     @Environment(TaxSchemeManager.self) var taxSchemeManager
     @Binding var scenarios: Set<TaxScenario>
     @Binding var reportSections: [ReportSection]
-//    @State var showKeyMetricsEditor: Bool = false
+    @State var showKeyMetricsEditor: Bool = false
+    @State var selectedMetrics: [KeyMetricTypes] = []
     
     var body: some View {
         ScrollView {
@@ -25,7 +26,8 @@ struct CompareScenariosView : View {
                             }, onAddChart: {
                                 print("Add Chart")
                             }, onAddMetrics: {
-                               print("Add Metrics")
+                                selectedMetrics = extractKeyMetrics(from: reportSection.items)
+                                showKeyMetricsEditor = true
                             }
                         )
                         .gridCellColumns(scenarios.count + 1)
@@ -40,10 +42,19 @@ struct CompareScenariosView : View {
             .padding()
         }
         .background(Color.white)
-//        .sheet(isPresented: $showKeyMetricsEditor) {
-//            KeyMetricEditorView(metrics: .constant([]))
-//                .frame(minHeight: 400)
-//        }
+        .sheet(isPresented: $showKeyMetricsEditor) {
+            KeyMetricEditorView(metrics: $selectedMetrics)
+                .frame(minHeight: 400)
+        }
+    }
+}
+
+func extractKeyMetrics(from reportItems: [ReportItem]) -> [KeyMetricTypes] {
+    reportItems.compactMap { reportItem in
+        if case let .keyMetric(keyMetric) = reportItem {
+            return keyMetric
+        }
+        return nil
     }
 }
 
