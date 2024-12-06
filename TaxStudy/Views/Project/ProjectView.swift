@@ -46,7 +46,7 @@ struct ProjectView : View {
                     }
                 ),reportConfig: $document.config, embeddedFacts: document.taxSchemes)
             } else if selectedScenarios.count > 1 {
-                CompareScenariosView(scenarios: $selectedScenarios, reportConfig: $document.config)
+                CompareScenariosView(scenarios: $selectedScenarios, reportSections: $document.config.compareReport)
             } else {
                 Text("Select a scenario to view details")
             }

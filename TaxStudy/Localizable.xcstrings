@@ -77,9 +77,6 @@
     "Add Key Metric" : {
 
     },
-    "Add Metric" : {
-
-    },
     "Add Section" : {
 
     },
@@ -491,9 +488,6 @@
     "Is Subject to NIIT" : {
 
     },
-    "Item %lld" : {
-
-    },
     "Itemized" : {
 
     },
@@ -534,6 +528,9 @@
 
     },
     "MAGI for Social Security" : {
+
+    },
+    "Manage Metrics" : {
 
     },
     "Margin Interest" : {
