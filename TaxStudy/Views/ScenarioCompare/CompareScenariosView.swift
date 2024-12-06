@@ -43,8 +43,10 @@ struct CompareScenariosView : View {
         }
         .background(Color.white)
         .sheet(isPresented: $showKeyMetricsEditor) {
+            print("Dismissed!")
+        } content: {
             KeyMetricEditorView(metrics: $selectedMetrics)
-                .frame(minHeight: 400)
+            .frame(minHeight: 400)
         }
     }
 }
