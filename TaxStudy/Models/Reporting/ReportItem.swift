@@ -6,21 +6,12 @@
 //
 import SwiftUI
 
-enum ReportItem : Codable, Identifiable, Equatable {
-    case keyMetric(KeyMetricTypes)
-    case divider
-    
-    var id: String {
-        switch self {
-        case .divider:
-            return "divider"
-        case .keyMetric(let keyMetric):
-            return keyMetric.id
-        }
-    }
+class ReportItem : Codable, Identifiable {
+    var id: String
+    var type: ReportItemType
     
     var label: String {
-        switch self {
+        switch type {
         case .keyMetric(let keyMetric):
             return keyMetric.label
         case .divider:
@@ -28,11 +19,16 @@ enum ReportItem : Codable, Identifiable, Equatable {
         }
     }
     
+    init(_ id: String? = nil, type: ReportItemType) {
+        self.type = type
+        self.id = id ?? UUID().uuidString
+    }
+    
     @ViewBuilder
     func content(scenario: TaxScenario, taxScheme: TaxScheme, compact: Bool = false) -> some View {
         let federalTaxes = FederalTaxCalc(scenario, taxScheme: taxScheme)
         let stateTaxes = NCTaxCalc(scenario, taxScheme: taxScheme)
-        switch self {
+        switch type {
         case .keyMetric(let keyMetric):
             CardItem(keyMetric.label, value: keyMetric.resolve(fedTax: federalTaxes, stateTax: stateTaxes), compact: compact)
         case .divider:
@@ -42,8 +38,10 @@ enum ReportItem : Codable, Identifiable, Equatable {
     }
 }
 
-extension ReportItem: Transferable {
-    static var transferRepresentation: some TransferRepresentation {
-        CodableRepresentation(contentType: .json)
-    }
-}
+//extension ReportItem: Transferable {
+//    static var transferRepresentation: some TransferRepresentation {
+//        CodableRepresentation(contentType: .json)
+//    }
+//}
+
+

@@ -26,15 +26,15 @@ struct ReportItemStack : View {
 #Preview("ForEach Version") {
     @Previewable @State var sections: [ReportSection] = [
         .init(title: "Section 1", items: [
-            .keyMetric(.filingStatus),
-            .keyMetric(.grossIncome),
-            .keyMetric(.totalIncome)
+            .init(type: .keyMetric(.filingStatus)),
+            .init(type: .keyMetric(.grossIncome)),
+            .init(type: .keyMetric(.totalIncome))
         ]),
         .init(title: "Section 2", items: [
-            .keyMetric(.agi),
-            .keyMetric(.deduction),
-            .keyMetric(.taxableIncome),
-            .keyMetric(.amtIncome)
+            .init(type: .keyMetric(.agi)),
+            .init(type: .keyMetric(.deduction)),
+            .init(type: .keyMetric(.taxableIncome)),
+            .init(type: .keyMetric(.amtIncome))
         ])
     ]
     

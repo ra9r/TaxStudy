@@ -51,6 +51,7 @@
 		2A826EB42CC6FA0400BEFFD2 /* UTType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */; };
 		2AA06A302D0276650068BE4A /* ReportItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06A2F2D0276650068BE4A /* ReportItemRow.swift */; };
 		2AA06A322D0279F40068BE4A /* ReportHeaderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06A312D0279EA0068BE4A /* ReportHeaderRow.swift */; };
+		2AA06A882D033A380068BE4A /* ReportItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA06A872D033A380068BE4A /* ReportItemType.swift */; };
 		2AA0B50B2CC2F3B000546505 /* CardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50A2CC2F3B000546505 /* CardPicker.swift */; };
 		2AA0B50D2CC35EE800546505 /* CardNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B50C2CC35EE800546505 /* CardNumberField.swift */; };
 		2AA0B51C2CC4A11B00546505 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA0B51B2CC4A11300546505 /* Displayable.swift */; };
@@ -150,6 +151,7 @@
 		2A826EB32CC6F9F900BEFFD2 /* UTType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Extension.swift"; sourceTree = "<group>"; };
 		2AA06A2F2D0276650068BE4A /* ReportItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItemRow.swift; sourceTree = "<group>"; };
 		2AA06A312D0279EA0068BE4A /* ReportHeaderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHeaderRow.swift; sourceTree = "<group>"; };
+		2AA06A872D033A380068BE4A /* ReportItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItemType.swift; sourceTree = "<group>"; };
 		2AA0B50A2CC2F3B000546505 /* CardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPicker.swift; sourceTree = "<group>"; };
 		2AA0B50C2CC35EE800546505 /* CardNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberField.swift; sourceTree = "<group>"; };
 		2AA0B51B2CC4A11300546505 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				2AC634B52CE50E77000D5657 /* ReportConfig.swift */,
 				2ACFDDE32CC8C86F0033B5B8 /* ReportSection.swift */,
 				2AC634BA2CE5145E000D5657 /* ReportItem.swift */,
+				2AA06A872D033A380068BE4A /* ReportItemType.swift */,
 				2ACFDDDB2CC87A080033B5B8 /* KeyMetrics.swift */,
 				2ACFDDE12CC8BCD70033B5B8 /* KeyMetricCategories.swift */,
 			);
@@ -638,6 +641,7 @@
 				2A51CB2F2CB9A3650075BBA0 /* DeductionEditor.swift in Sources */,
 				2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */,
 				2AD415632CD478BE005995EF /* TaxSchemeFactTypes.swift in Sources */,
+				2AA06A882D033A380068BE4A /* ReportItemType.swift in Sources */,
 				2ACFDDDC2CC87A0D0033B5B8 /* KeyMetrics.swift in Sources */,
 				2A805F972CE0547400661FC3 /* CompareScenariosView.swift in Sources */,
 				2AD415652CD47D97005995EF /* CapitalGainFactsEditor.swift in Sources */,

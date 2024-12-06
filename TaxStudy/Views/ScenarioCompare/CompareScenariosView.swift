@@ -14,10 +14,12 @@ struct CompareScenariosView : View {
     @State var showKeyMetricsEditor: Bool = false
     @State var selectedMetrics: [KeyMetricTypes] = []
     
+    @State var draggedSection: ReportSection?
+    
     var body: some View {
         ScrollView {
             Grid(alignment: .leading, horizontalSpacing: 5, verticalSpacing: 0) {
-                ForEach(reportSections, id: \.id) { reportSection in
+                ReorderableForEach(reportSections, active: $draggedSection) { reportSection in
                     GridRow {
                         ReportHeaderRow(
                             reportSection: reportSection,
@@ -26,7 +28,7 @@ struct CompareScenariosView : View {
                             }, onAddChart: {
                                 print("Add Chart")
                             }, onAddMetrics: {
-                                selectedMetrics = extractKeyMetrics(from: reportSection.items)
+                                selectedMetrics = reportSection.keyMetrics
                                 showKeyMetricsEditor = true
                             }
                         )
@@ -37,6 +39,8 @@ struct CompareScenariosView : View {
                             ReportItemRow(item: reportItem, scenarios: $scenarios)
                         }
                     }
+                } moveAction: { from, to in
+                    reportSections.move(fromOffsets: from, toOffset: to)
                 }
             }
             .padding()
@@ -51,12 +55,4 @@ struct CompareScenariosView : View {
     }
 }
 
-func extractKeyMetrics(from reportItems: [ReportItem]) -> [KeyMetricTypes] {
-    reportItems.compactMap { reportItem in
-        if case let .keyMetric(keyMetric) = reportItem {
-            return keyMetric
-        }
-        return nil
-    }
-}
 
