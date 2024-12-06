@@ -100,3 +100,4 @@ iOSInjectionProject/
 
 ## MacOS ##
 .DS_Store/*
+*.resolved
