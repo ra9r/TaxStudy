@@ -38,10 +38,9 @@ class ReportItem : Codable, Identifiable {
     }
 }
 
-//extension ReportItem: Transferable {
-//    static var transferRepresentation: some TransferRepresentation {
-//        CodableRepresentation(contentType: .json)
-//    }
-//}
-
+extension ReportItem: Equatable {
+    static func == (lhs: ReportItem, rhs: ReportItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
 
