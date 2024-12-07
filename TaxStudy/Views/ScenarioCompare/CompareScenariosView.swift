@@ -20,6 +20,23 @@ struct CompareScenariosView : View {
     var body: some View {
         ScrollView {
             Grid(alignment: .leading, horizontalSpacing: 5, verticalSpacing: 0) {
+                // Title Row
+                GridRow {
+                    Spacer()
+                    ForEach(Array(scenarios).indices, id: \.self) { index in
+                        let scenario = Array(scenarios)[index]
+                        VStack(alignment: .leading) {
+                            Text("Scenario \(index + 1)")
+                                .font(.title)
+                            Text(scenario.name)
+                                .font(.headline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.primary)
+                                .padding(.bottom, 10)
+                            Spacer()
+                        }
+                    }
+                }
                 // Report Sections
                 ReorderableForEach(reportSections, active: $draggedSection) { reportSection in
                     // Report Section Header
