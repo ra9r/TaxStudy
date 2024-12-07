@@ -8,35 +8,39 @@
 import SwiftUI
 
 struct KeyMetricsPickerView: View {
-    @Binding var selectedKeyMetrics: [KeyMetricTypes]
-    @Binding var visible: Bool
     @State private var searchText: String = ""
+    @State private var selectedKeyMetric: KeyMetricTypes? = nil
+    
+    var onComplete: (KeyMetricTypes) -> Void
+
     var body: some View {
         VStack {
             // Add a search bar
             SearchBar(text: $searchText)
-            List(KeyMetricCategories.allCases, id: \.self) { category in
+            List(KeyMetricCategories.allCases, id: \.self, selection: $selectedKeyMetric) { category in
                 let filteredTypes = filteredTypes(for: category)
                 if filteredTypes.isEmpty == false {
                     Section(category.label) {
                         ForEach(filteredTypes, id: \.self) { keyMetric in
-                            KeyMetricToggle(keyMetric: keyMetric,
-                                            isOn: selectedKeyMetrics.contains(keyMetric),
-                                            selectedKeyMetrics: $selectedKeyMetrics)
+                            let isSelected = selectedKeyMetric == keyMetric
+                            Text(keyMetric.label)
+                            
                         }
                     }
                 }
             }
             HStack {
                 Spacer()
-                Button("Done") {
-                    visible.toggle()
+                Button("Add Metric") {
+                    if let selectedKeyMetric = selectedKeyMetric {
+                        onComplete(selectedKeyMetric)
+                    }
                 }
-                .padding(.bottom, 5)
+                .disabled(selectedKeyMetric == nil)
             }
             .padding(5)
-            
         }
+        .padding(5)
     }
     
     // Function to filter the types in each category
@@ -52,5 +56,7 @@ struct KeyMetricsPickerView: View {
 }
 
 #Preview {
-    KeyMetricsPickerView(selectedKeyMetrics: .constant([]), visible: .constant(true))
+    KeyMetricsPickerView() { keyMetrics in
+        print(keyMetrics.label)
+    }
 }

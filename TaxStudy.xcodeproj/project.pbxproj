@@ -84,7 +84,6 @@
 		2AD415652CD47D97005995EF /* CapitalGainFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD415642CD47D97005995EF /* CapitalGainFactsEditor.swift */; };
 		2AD415672CD482AC005995EF /* FICAFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD415662CD482AC005995EF /* FICAFactsEditor.swift */; };
 		2AEA46332CF2C668001EA399 /* ReportItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA46322CF2C668001EA399 /* ReportItemStack.swift */; };
-		2AEA46362CF2FB34001EA399 /* KeyMetricEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA46352CF2FB26001EA399 /* KeyMetricEditorView.swift */; };
 		2AEFB41D2CCF5C8B00B975CF /* NIITFactsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */; };
 		2AEFB4232CD056B800B975CF /* DecoratedTextItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */; };
 		2AEFB4252CD0594100B975CF /* DecoratedTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */; };
@@ -185,7 +184,6 @@
 		2AD415642CD47D97005995EF /* CapitalGainFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalGainFactsEditor.swift; sourceTree = "<group>"; };
 		2AD415662CD482AC005995EF /* FICAFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FICAFactsEditor.swift; sourceTree = "<group>"; };
 		2AEA46322CF2C668001EA399 /* ReportItemStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItemStack.swift; sourceTree = "<group>"; };
-		2AEA46352CF2FB26001EA399 /* KeyMetricEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricEditorView.swift; sourceTree = "<group>"; };
 		2AEFB41C2CCF5C7D00B975CF /* NIITFactsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIITFactsEditor.swift; sourceTree = "<group>"; };
 		2AEFB4222CD056A900B975CF /* DecoratedTextItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextItemStyle.swift; sourceTree = "<group>"; };
 		2AEFB4242CD0593600B975CF /* DecoratedTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -476,7 +474,6 @@
 		2AEA46342CF2FAA3001EA399 /* KeyMetricEditor */ = {
 			isa = PBXGroup;
 			children = (
-				2AEA46352CF2FB26001EA399 /* KeyMetricEditorView.swift */,
 				2ACFDDDD2CC8A4E30033B5B8 /* KeyMetricsPickerView.swift */,
 				2AC634BE2CE65138000D5657 /* SearchBar.swift */,
 				2AC634BC2CE65109000D5657 /* KeyMetricToggle.swift */,
@@ -637,7 +634,6 @@
 				2AA0B51E2CC4A83A00546505 /* ProfileView.swift in Sources */,
 				2A79A0432CDAC7A100C29057 /* GeneralEditor.swift in Sources */,
 				2AD415672CD482AC005995EF /* FICAFactsEditor.swift in Sources */,
-				2AEA46362CF2FB34001EA399 /* KeyMetricEditorView.swift in Sources */,
 				2A51CB2F2CB9A3650075BBA0 /* DeductionEditor.swift in Sources */,
 				2ACC20122CC0B8DC00D2A907 /* IncomeTypes.swift in Sources */,
 				2AD415632CD478BE005995EF /* TaxSchemeFactTypes.swift in Sources */,

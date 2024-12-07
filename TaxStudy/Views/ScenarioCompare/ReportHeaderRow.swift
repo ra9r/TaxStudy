@@ -25,7 +25,7 @@ struct ReportHeaderRow: View {
                 Button("Add Chart") {
                     onAddChart()
                 }
-                Button("Manage Metrics") {
+                Button("Add Key Metric") {
                     onAddMetrics()
                 }
             } label: {

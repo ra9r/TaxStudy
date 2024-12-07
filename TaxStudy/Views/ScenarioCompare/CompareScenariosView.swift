@@ -12,6 +12,8 @@ struct CompareScenariosView : View {
     @Binding var scenarios: Set<TaxScenario>
     @Binding var reportSections: [ReportSection]
     
+    @State var activeReportSection: ReportSection?
+    @State var showSheet: Bool = false
     @State var draggedSection: ReportSection?
     @State var draggedItem: ReportItem?
     
@@ -31,7 +33,8 @@ struct CompareScenariosView : View {
                             }, onAddChart: {
                                 print("Add Chart")
                             }, onAddMetrics: {
-                                print("Add Metrics")
+                                activeReportSection = reportSection
+                                showSheet = true
                             }
                         )
                         .gridCellColumns(scenarios.count + 1)
@@ -70,6 +73,20 @@ struct CompareScenariosView : View {
             .padding()
         }
         .background(Color.white)
+        .sheet(isPresented: $showSheet) {
+            KeyMetricsPickerView { keyMetrics in
+                withAnimation {
+                    if let activeReportSection {
+                        activeReportSection.items.append(.init(type: .keyMetric(keyMetrics)))
+                        if let index = reportSections.firstIndex(of: activeReportSection) {
+                            reportSections[index] = activeReportSection
+                        }
+                    }
+                }
+                showSheet = false
+            }
+            .frame(width: 400, height: 300)
+        }
     }
 }
 
