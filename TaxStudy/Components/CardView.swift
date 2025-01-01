@@ -29,23 +29,19 @@ struct CardView<Content: View>: View {
 
     var body: some View {
         VStack {
-            VStack(alignment: .leading, spacing: 10) {
-                header
-                    .textCase(.uppercase)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 10)
-                    .font(.system(size: 14, weight: .regular))
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity)
-                    .background(.accent)
-                    .foregroundColor(.white)
-                VStack {
-                    content
-                }
-                .padding(.bottom, 15)
+            header
+                .textCase(.uppercase)
+                .padding(.vertical, 10)
                 .padding(.horizontal, 10)
+                .font(.system(size: 14, weight: .regular))
+                .multilineTextAlignment(.leading)
+                .frame(maxWidth: .infinity)
+                .background(.accent)
+                .foregroundColor(.white)
+            VStack {
+                content
             }
-            
+            .padding(.horizontal, 10)
         }
         .background(.altBackground.opacity(0.2))
         .frame(minWidth: 250)
@@ -99,6 +95,7 @@ struct CardView<Content: View>: View {
                     .font(.subheadline)
             }
             .padding(2.5)
+            Divider()
         }
     }
     .padding()

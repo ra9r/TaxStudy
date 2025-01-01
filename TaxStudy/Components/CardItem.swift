@@ -10,17 +10,20 @@ import SwiftUI
 struct CardItem: View {
     var label: String
     var value: String
+    var compact: Bool
     
-    init(_ label: String, value: String) {
+    init(_ label: String, value: String, compact: Bool = false) {
         self.label = label
         self.value = value
+        self.compact = compact
     }
     
     var body: some View {
         HStack {
-            Text(label)
-                .font(.system(size: 12, weight: .semibold))
-            
+            if compact == false {
+                Text(label)
+                    .font(.system(size: 12, weight: .semibold))
+            }
             Spacer()
             
             Text(value)
@@ -29,5 +32,14 @@ struct CardItem: View {
                 .multilineTextAlignment(.trailing)
         }
         .padding(2.5)
+    }
+}
+
+#Preview(traits: .fixedLayout(width: 300, height: 600)) {
+    VStack {
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
+        CardItem("Label", value: "Value")
     }
 }

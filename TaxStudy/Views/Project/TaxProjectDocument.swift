@@ -18,14 +18,20 @@ class TaxProjectDocument: FileDocument, Identifiable {
     // The data model that will hold the decoded JSON content
     var id = UUID()
     var name: String
+    var config: ReportConfig
     var taxSchemes: [TaxScheme]
     var scenarios: [TaxScenario]
     
     // Default initializer
-    init(name: String? = nil, taxSchemes: [TaxScheme] = [], scenarios: [TaxScenario] = []) {
+    init(name: String? = nil,
+         taxSchemes: [TaxScheme] = [],
+         scenarios: [TaxScenario] = [],
+         config: ReportConfig = ReportConfig()
+    ) {
         self.name = name ?? "New Project"
         self.taxSchemes = taxSchemes
         self.scenarios = scenarios
+        self.config = config
     }
     
     // Required initializer to read the file from disk
@@ -41,6 +47,7 @@ class TaxProjectDocument: FileDocument, Identifiable {
             self.name = content.name
             self.taxSchemes = content.taxSchemes
             self.scenarios = content.scenarios
+            self.config = ReportConfig.default //content.config
         } catch {
             print("Error decoding JSON: \(error)")
             throw error
@@ -72,11 +79,13 @@ private class TaxProjectDocumentData : Codable, Equatable {
     var name: String
     var taxSchemes: [TaxScheme]
     var scenarios: [TaxScenario]
+    var config: ReportConfig
     
-    init(name: String? = nil, taxSchemes: [TaxScheme]? = nil, scenarios: [TaxScenario]? = nil) {
+    init(name: String? = nil, taxSchemes: [TaxScheme]? = nil, scenarios: [TaxScenario]? = nil, config: ReportConfig? = nil) {
         self.name = name ?? "New Project"
         self.taxSchemes = taxSchemes ?? []
         self.scenarios = scenarios ?? [TaxScenario(name: "New Scenario", taxSchemeId: TaxScheme.official2024.id)]
+        self.config = config ?? ReportConfig.default
     }
 }
 

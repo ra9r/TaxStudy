@@ -36,45 +36,8 @@ struct ProjectCommands : Commands {
         guard let document else {
             fatalError("Unabled to create new TaxScenario, no TaxProjectDocument found")
         }
-        guard let firstFact = document.taxSchemes.first else {
-            fatalError("Unabled to create new TaxScenario, no TaxFacts found")
-        }
-        let newScenario = TaxScenario(name: "New Scenario", taxSchemeId: firstFact.id)
+        let newScenario = TaxScenario(name: "New Scenario", taxSchemeId: TaxScheme.official2024.id)
         
         document.scenarios.append(newScenario)
     }
-    
-//    func importTaxSchemes() {
-//        let openPanel = NSOpenPanel()
-//        openPanel.canChooseFiles = true
-//        openPanel.canChooseDirectories = false
-//        openPanel.allowsMultipleSelection = false
-//
-//        if openPanel.runModal() == .OK {
-//            if let url = openPanel.url {
-//                do {
-//                    try taxFactsService.importSharedTaxSchemes(from: url)
-//                } catch {
-//                    print("Error decoding JSON: \(error)")
-//                }
-//            }
-//        }
-//    }
-//    
-//    func exportTaxSchemes() {
-//        let savePanel = NSSavePanel()
-//        savePanel.canCreateDirectories = true
-//        savePanel.nameFieldStringValue = "Untitled" // Default file name
-//        savePanel.allowedContentTypes = [.txcfg] // Define the allowed file types (optional)
-//        
-//        if savePanel.runModal() == .OK {
-//            if let url = savePanel.url {
-//                do {
-//                    try taxFactsService.exportSharedTaxSchemes(to: url)
-//                } catch {
-//                    print("Error encoding defaultFacts: \(error)")
-//                }
-//            }
-//        }
-//    }
 }

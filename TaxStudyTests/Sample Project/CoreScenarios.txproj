@@ -1,115 +1,448 @@
 {
+  "name" : "Core Scenarios",
+  "config" : {
+    "compareReport" : [
+      {
+        "items" : [
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "filingStatus"
+              }
+            },
+            "id" : "E00B1DA4-72A1-4BE5-844E-5DE1437017E0"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "grossIncome"
+              }
+            },
+            "id" : "B5EF76C8-9BD2-4C8E-AA83-4685A1085EA3"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalIncome"
+              }
+            },
+            "id" : "06015851-EE82-45C4-BAB3-DAC9645B1F10"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "agi"
+              }
+            },
+            "id" : "0FCD2AF8-E1F4-4035-AB1B-674FCCB346AD"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "deduction"
+              }
+            },
+            "id" : "87A03CE8-25AA-4C52-9B7E-2214D16863FE"
+          },
+          {
+            "id" : "BAFBCFB0-42E6-476C-8C62-02D4807340FC",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "taxableIncome"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "amtIncome"
+              }
+            },
+            "id" : "03337A36-760F-4661-9947-1A86DC54C9D8"
+          }
+        ],
+        "title" : "Summary",
+        "id" : "109C7765-0D07-4B63-9B32-31EF4C631D10"
+      },
+      {
+        "title" : "Taxes",
+        "items" : [
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "amtTax"
+              }
+            },
+            "id" : "847F5590-6A54-4D4B-9D3B-08B858EE2BD5"
+          },
+          {
+            "id" : "2ACD08C9-171B-424B-B172-DD5614B68915",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "federalTax"
+              }
+            }
+          },
+          {
+            "id" : "6FEB6766-49F8-4695-9778-290CBA4D8779",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalFICATax"
+              }
+            }
+          }
+        ],
+        "id" : "3FD48401-3288-430F-BFFA-74D61C3376ED"
+      },
+      {
+        "title" : "Rates",
+        "items" : [
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "provisionalTaxRate"
+              }
+            },
+            "id" : "6906AEE5-F7FB-4C1D-845A-703AFDCEA34E"
+          },
+          {
+            "id" : "A4068F21-8FC8-4442-91C7-85C965F8936F",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "averageTaxRate"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "effectiveTaxRate"
+              }
+            },
+            "id" : "DDD433D4-BD6D-4EB8-A99B-07DE72819123"
+          }
+        ],
+        "id" : "3FA6EB55-628C-4FE6-9F18-18E06B2C1BCE"
+      }
+    ],
+    "detailReport" : [
+      {
+        "id" : "6B0F6547-5A09-482E-95E2-60EA98C65C28",
+        "items" : [
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "grossIncome"
+              }
+            },
+            "id" : "F1FD5339-7274-4A45-A985-5CBF55D47011"
+          },
+          {
+            "id" : "6DFF7FD4-D63F-4E45-9B4E-1C905997BB8D",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalIncome"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "agi"
+              }
+            },
+            "id" : "FAD17FE9-9C00-4DF5-B21C-010714AED201"
+          },
+          {
+            "id" : "2A731477-14C6-4E4C-83AE-34CCF2FC0981",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "deduction"
+              }
+            }
+          },
+          {
+            "id" : "232CA363-2611-497B-B778-AF411A0ED305",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "taxableIncome"
+              }
+            }
+          },
+          {
+            "id" : "19439DBB-C5F2-4E8C-BBD4-AD941F0516B8",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "amtIncome"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "amtTax"
+              }
+            },
+            "id" : "88F4F9E4-FEEB-4F50-8FB4-B82DA4C5C85C"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "federalTax"
+              }
+            },
+            "id" : "2C08D00E-743F-4E0B-A021-70A3F4C2D737"
+          },
+          {
+            "id" : "D53E5E9D-FD2A-4302-B972-417F5210F454",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalFICATax"
+              }
+            }
+          }
+        ],
+        "title" : "Column Left"
+      },
+      {
+        "id" : "565DE982-78D2-4D4F-85CE-C21EAD1964D8",
+        "title" : "Column Middle",
+        "items" : [
+          {
+            "id" : "66070D60-AA92-4775-899B-964BFEDF97B4",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "filingStatus"
+              }
+            }
+          },
+          {
+            "id" : "3BEC224E-2DF7-4370-9496-C0286547D67E",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "marginalOrdinaryTaxRate"
+              }
+            }
+          },
+          {
+            "id" : "9B5C3104-3E18-481A-92B7-9AB16E26CF51",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "marginalCapitalGainsTaxRate"
+              }
+            }
+          },
+          {
+            "id" : "CCF50424-8161-468D-9344-0EC386F6F960",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "averageTaxRate"
+              }
+            }
+          },
+          {
+            "id" : "A95F4E45-B20F-4741-B432-CC299D4EBE5B",
+            "type" : {
+              "divider" : {
+
+              }
+            }
+          },
+          {
+            "id" : "EA5445B9-FC1B-4068-8A26-39F1E10808E3",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "safeHarborTax"
+              }
+            }
+          },
+          {
+            "id" : "F4211DEB-2CFE-462F-A995-67FB7A1959E7",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "irmaaSurcharges"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "deductibleMedicalExpenses"
+              }
+            },
+            "id" : "DFD4CC91-0D40-40EF-95F7-3656D8D6AA55"
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "deductibleMedicalExpensesForAMT"
+              }
+            },
+            "id" : "07BFDD9B-F115-42C4-802F-7E6D9D0293E4"
+          }
+        ]
+      },
+      {
+        "id" : "43E6BD9A-3779-4C06-B640-D2D8E6F75EAC",
+        "title" : "Column Right",
+        "items" : [
+          {
+            "id" : "23765944-5E93-4D03-8629-F2F8D4A7FC14",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalTaxExemptInterestIncome"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "dividends"
+              }
+            },
+            "id" : "9D5AEB6A-8038-46B8-A5D3-F716B82DD61C"
+          },
+          {
+            "id" : "079D5C71-17BA-4A3B-AB64-07F92A7EBB31",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "capitalGains"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "futureCarryForwardLoss"
+              }
+            },
+            "id" : "8CDCB212-333A-4A12-A6E9-EE76857E4687"
+          },
+          {
+            "id" : "7E6514AB-A2B1-474E-90ED-1AFC9E2FC85D",
+            "type" : {
+              "keyMetric" : {
+                "_0" : "provisionalIncome"
+              }
+            }
+          },
+          {
+            "type" : {
+              "keyMetric" : {
+                "_0" : "totalSSAIncome"
+              }
+            },
+            "id" : "0FF5FEE8-12B3-46CA-9964-862A04052AA1"
+          }
+        ]
+      }
+    ]
+  },
   "taxSchemes" : [
 
   ],
-  "name" : "Core Scenarios",
   "scenarios" : [
     {
-      "profileSpouse" : {
-        "medicalCoverage" : "otherOrNone",
-        "name" : "Taxpayer 2",
-        "employmentStatus" : "selfEmployed",
-        "age" : 50,
-        "wages" : 50000,
-        "socialSecurity" : 0
-      },
-      "profileSelf" : {
-        "medicalCoverage" : "otherOrNone",
-        "name" : "Taxpayer 1",
-        "employmentStatus" : "retired",
-        "wages" : 50000,
-        "age" : 50,
-        "socialSecurity" : 0
-      },
-      "id" : "9CB4E820-9B19-432D-B3A0-0764BED16079",
-      "filingStatus" : "marriedFilingJointly",
-      "description" : "",
-      "taxSchemeId" : "official_20240",
-      "deductions" : [
+      "adjustments" : [
 
       ],
+      "filingStatus" : "marriedFilingJointly",
       "income" : [
 
       ],
+      "profileSelf" : {
+        "medicalCoverage" : "otherOrNone",
+        "age" : 50,
+        "name" : "Taxpayer 1",
+        "employmentStatus" : "retired",
+        "wages" : 50000,
+        "socialSecurity" : 0
+      },
+      "profileSpouse" : {
+        "wages" : 50000,
+        "medicalCoverage" : "otherOrNone",
+        "employmentStatus" : "selfEmployed",
+        "socialSecurity" : 0,
+        "age" : 50,
+        "name" : "Taxpayer 2"
+      },
+      "id" : "9CB4E820-9B19-432D-B3A0-0764BED16079",
+      "description" : "",
+      "name" : "$100k Wage Only",
+      "taxSchemeId" : "official_20240",
       "credits" : [
 
       ],
-      "name" : "$100k Wage Only",
-      "adjustments" : [
+      "deductions" : [
 
       ]
     },
     {
-      "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
-      "income" : [
-        {
-          "type" : "iraWithdrawal",
-          "amount" : 11600,
-          "id" : "2BF3BF71-CED9-48B1-A53D-B1A23CC103D1"
-        },
-        {
-          "amount" : 10000,
-          "id" : "06B8BB69-1FC7-4E32-AFE3-C747E037757D",
-          "type" : "qualifiedDividends"
-        },
-        {
-          "amount" : 8000,
-          "id" : "076DAFAE-D478-4E0A-879C-5F083C372ABF",
-          "type" : "longTermCapitalGains"
-        }
+      "name" : "$0 Tax on $100,000",
+      "id" : "B095BD06-B0FC-41BC-992A-07A3BBE92D76",
+      "credits" : [
+
       ],
       "deductions" : [
 
       ],
-      "id" : "B095BD06-B0FC-41BC-992A-07A3BBE92D76",
       "profileSelf" : {
-        "medicalCoverage" : "medicare",
         "employmentStatus" : "retired",
+        "age" : 65,
+        "medicalCoverage" : "medicare",
         "name" : "Bob",
-        "socialSecurity" : 38400,
         "wages" : 0,
-        "age" : 65
+        "socialSecurity" : 38400
       },
-      "credits" : [
-
-      ],
       "taxSchemeId" : "official_20240",
-      "name" : "$0 Tax on $100,000",
       "profileSpouse" : {
         "age" : 65,
+        "medicalCoverage" : "medicare",
+        "wages" : 0,
         "name" : "Angie",
         "socialSecurity" : 24000,
-        "employmentStatus" : "retired",
-        "wages" : 0,
-        "medicalCoverage" : "medicare"
+        "employmentStatus" : "retired"
       },
       "adjustments" : [
 
       ],
-      "filingStatus" : "marriedFilingJointly"
-    },
-    {
-      "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
-      "taxSchemeId" : "official_20240",
-      "profileSpouse" : {
-        "employmentStatus" : "retired",
-        "wages" : 0,
-        "name" : "Taxpayer 2",
-        "socialSecurity" : 0,
-        "medicalCoverage" : "otherOrNone",
-        "age" : 65
-      },
-      "name" : "$0 Tax on $120,000",
+      "filingStatus" : "marriedFilingJointly",
+      "description" : "Base on the YouTube video https:\/\/www.youtube.com\/watch?v=8pvqCAKc3vk",
       "income" : [
         {
-          "id" : "F7004EAB-E978-4EB2-A2E0-A73CC1E4965F",
+          "id" : "2BF3BF71-CED9-48B1-A53D-B1A23CC103D1",
+          "type" : "iraWithdrawal",
+          "amount" : 11600
+        },
+        {
+          "id" : "06B8BB69-1FC7-4E32-AFE3-C747E037757D",
+          "type" : "qualifiedDividends",
+          "amount" : 10000
+        },
+        {
+          "id" : "076DAFAE-D478-4E0A-879C-5F083C372ABF",
+          "type" : "longTermCapitalGains",
+          "amount" : 8000
+        }
+      ]
+    },
+    {
+      "deductions" : [
+
+      ],
+      "adjustments" : [
+
+      ],
+      "income" : [
+        {
           "type" : "otherTaxExemptIncome",
+          "id" : "F7004EAB-E978-4EB2-A2E0-A73CC1E4965F",
           "amount" : 22500
         },
         {
+          "id" : "57131CCB-76E8-42E3-9C6C-8620DAE73FAB",
           "amount" : 30000,
-          "type" : "iraWithdrawal",
-          "id" : "57131CCB-76E8-42E3-9C6C-8620DAE73FAB"
+          "type" : "iraWithdrawal"
         },
         {
           "type" : "longTermCapitalGains",
@@ -118,129 +451,124 @@
         }
       ],
       "profileSelf" : {
-        "wages" : 0,
-        "name" : "Taxpayer 1",
-        "medicalCoverage" : "otherOrNone",
         "age" : 65,
+        "medicalCoverage" : "otherOrNone",
         "socialSecurity" : 0,
-        "employmentStatus" : "retired"
+        "wages" : 0,
+        "employmentStatus" : "retired",
+        "name" : "Taxpayer 1"
       },
-      "deductions" : [
-
-      ],
-      "id" : "4F4C1F1D-55D0-48EE-B6F6-0ED527FFFD0B",
-      "adjustments" : [
-
-      ],
+      "name" : "$0 Tax on $120,000",
+      "description" : "Based on the YouTube Video https:\/\/www.youtube.com\/watch?v=eJoK8fYS8DY",
       "credits" : [
 
       ],
-      "filingStatus" : "marriedFilingJointly"
+      "filingStatus" : "marriedFilingJointly",
+      "taxSchemeId" : "official_20240",
+      "id" : "4F4C1F1D-55D0-48EE-B6F6-0ED527FFFD0B",
+      "profileSpouse" : {
+        "employmentStatus" : "retired",
+        "socialSecurity" : 0,
+        "age" : 65,
+        "wages" : 0,
+        "medicalCoverage" : "otherOrNone",
+        "name" : "Taxpayer 2"
+      }
     },
     {
-      "description" : "",
       "name" : "100% VTI w\/Rodney",
+      "description" : "",
+      "credits" : [
+
+      ],
+      "deductions" : [
+
+      ],
+      "filingStatus" : "marriedFilingJointly",
+      "id" : "E1D7DD09-AA87-41AF-8961-604873031B8C",
       "income" : [
         {
-          "id" : "E1A89CB9-D8D7-4750-A76B-9F7B27C9B615",
           "type" : "interest",
+          "id" : "E1A89CB9-D8D7-4750-A76B-9F7B27C9B615",
           "amount" : 12250
         },
         {
-          "amount" : 68640,
           "id" : "DBE397FD-D886-4069-BA9C-5F48CC531FE0",
+          "amount" : 68640,
           "type" : "qualifiedDividends"
         }
       ],
-      "profileSelf" : {
-        "medicalCoverage" : "offMarketACAPlan",
-        "name" : "Nobuko",
-        "age" : 52,
-        "employmentStatus" : "retired",
-        "wages" : 0,
-        "socialSecurity" : 0
-      },
-      "filingStatus" : "marriedFilingJointly",
-      "id" : "E1D7DD09-AA87-41AF-8961-604873031B8C",
-      "taxSchemeId" : "official_20240",
-      "credits" : [
-
-      ],
-      "deductions" : [
+      "adjustments" : [
 
       ],
       "profileSpouse" : {
         "age" : 50,
-        "wages" : 0,
+        "name" : "Rodney",
         "socialSecurity" : 42000,
         "medicalCoverage" : "offMarketACAPlan",
-        "name" : "Rodney",
+        "wages" : 0,
         "employmentStatus" : "retired"
       },
-      "adjustments" : [
-
-      ]
+      "taxSchemeId" : "official_20240",
+      "profileSelf" : {
+        "age" : 52,
+        "name" : "Nobuko",
+        "wages" : 0,
+        "employmentStatus" : "retired",
+        "medicalCoverage" : "offMarketACAPlan",
+        "socialSecurity" : 0
+      }
     },
     {
-      "id" : "6D8F7E1D-993D-4544-982D-994CFB5F4069",
-      "filingStatus" : "single",
       "profileSelf" : {
+        "employmentStatus" : "retired",
+        "wages" : 0,
+        "socialSecurity" : 0,
+        "age" : 50,
+        "medicalCoverage" : "otherOrNone",
+        "name" : "Taxpayer 1"
+      },
+      "name" : "100% VTI w\/out Rodney",
+      "filingStatus" : "single",
+      "profileSpouse" : {
+        "wages" : 0,
+        "name" : "Taxpayer 2",
+        "medicalCoverage" : "otherOrNone",
         "age" : 50,
         "socialSecurity" : 0,
-        "wages" : 0,
-        "name" : "Taxpayer 1",
-        "medicalCoverage" : "otherOrNone",
         "employmentStatus" : "retired"
       },
-      "adjustments" : [
-
+      "deductions" : [
+        {
+          "type" : "stateAndLocalTaxDeduction",
+          "amount" : 3123,
+          "id" : "36392155-FE1E-40B4-A7F6-CD5D2FAF318A"
+        }
       ],
-      "name" : "100% VTI w\/out Rodney",
-      "description" : "",
-      "profileSpouse" : {
-        "socialSecurity" : 0,
-        "wages" : 0,
-        "medicalCoverage" : "otherOrNone",
-        "employmentStatus" : "retired",
-        "age" : 50,
-        "name" : "Taxpayer 2"
-      },
+      "id" : "6D8F7E1D-993D-4544-982D-994CFB5F4069",
       "taxSchemeId" : "official_20240",
       "income" : [
         {
+          "amount" : 12250,
           "id" : "55C9A213-D17D-49BB-BCE1-45278A7EE6B3",
-          "type" : "interest",
-          "amount" : 12250
+          "type" : "interest"
         },
         {
           "type" : "qualifiedDividends",
-          "id" : "8A56DBA4-4D06-4BF1-875A-984BF57A8F7B",
-          "amount" : 68640
+          "amount" : 68640,
+          "id" : "8A56DBA4-4D06-4BF1-875A-984BF57A8F7B"
         }
       ],
       "credits" : [
 
       ],
-      "deductions" : [
-        {
-          "id" : "36392155-FE1E-40B4-A7F6-CD5D2FAF318A",
-          "amount" : 3123,
-          "type" : "stateAndLocalTaxDeduction"
-        }
+      "description" : "",
+      "adjustments" : [
+
       ]
     },
     {
-      "taxSchemeId" : "official_20240",
-      "filingStatus" : "marriedFilingJointly",
-      "profileSpouse" : {
-        "age" : 52,
-        "employmentStatus" : "retired",
-        "name" : "Rodney",
-        "wages" : 50000,
-        "socialSecurity" : 43826,
-        "medicalCoverage" : "offMarketACAPlan"
-      },
-      "deductions" : [
+      "credits" : [
 
       ],
       "income" : [
@@ -256,131 +584,63 @@
         },
         {
           "type" : "ordinaryDividends",
-          "amount" : 57824,
-          "id" : "38FF8742-F760-4FE7-96A2-C751A8E6D673"
+          "id" : "38FF8742-F760-4FE7-96A2-C751A8E6D673",
+          "amount" : 57824
         },
         {
-          "amount" : 12500,
+          "type" : "interest",
           "id" : "87B10989-A411-42ED-9240-24DBBB578969",
-          "type" : "interest"
+          "amount" : 12500
         }
       ],
-      "credits" : [
-
-      ],
-      "profileSelf" : {
-        "wages" : 0,
-        "name" : "Nobuko",
-        "medicalCoverage" : "offMarketACAPlan",
-        "employmentStatus" : "retired",
-        "age" : 50,
-        "socialSecurity" : 0
-      },
+      "filingStatus" : "marriedFilingJointly",
       "name" : "CoreFolio w\/Rodney",
       "description" : "This is scenario we will likely find ourselves in during tax year 2025 while Rodney is still alive and receiving SSDI.  Income is very high but the filing status of MFJ keeps our taxes low.  This may be the best apportunity to finish converting over Rodney’s Roth IRA.",
       "adjustments" : [
         {
-          "amount" : 8300,
+          "type" : "hsaContribution",
           "id" : "6F8906B6-5EAB-4602-A7EB-24E317A865D0",
-          "type" : "hsaContribution"
+          "amount" : 8300
         }
       ],
-      "id" : "190F599B-1EBC-417D-8C58-94973FB3A24B"
-    },
-    {
-      "description" : "",
       "deductions" : [
-        {
-          "type" : "marginInterestDeduction",
-          "amount" : 40012,
-          "id" : "540B20F8-07BA-44E2-BE40-8DE7C753DFE5"
-        },
-        {
-          "type" : "stateAndLocalTaxDeduction",
-          "amount" : 11175,
-          "id" : "8352A479-D54E-48DB-9340-00B645AB6B22"
-        }
+
       ],
-      "income" : [
-        {
-          "amount" : 253905,
-          "type" : "longTermCapitalGains",
-          "id" : "90A7D352-FA26-49B5-A4EB-2480C64259FB"
-        },
-        {
-          "type" : "shortTermCapitalGains",
-          "amount" : 182204,
-          "id" : "662CF7E8-7B08-44A9-8BDC-A22156EC9CDA"
-        },
-        {
-          "type" : "qualifiedDividends",
-          "id" : "30A48ACF-E351-42EC-9B74-9F0E185E6E5E",
-          "amount" : 104993
-        },
-        {
-          "type" : "ordinaryDividends",
-          "amount" : 107152,
-          "id" : "D4180EC1-A8C6-455D-BB57-E84670572825"
-        },
-        {
-          "type" : "interest",
-          "id" : "67A17DCE-6907-4927-BED0-CF062275DBEC",
-          "amount" : 13358
-        },
-        {
-          "type" : "carryforwardLoss",
-          "amount" : 2279214,
-          "id" : "9D082BCD-350B-4687-A73E-C73B468870FC"
-        },
-        {
-          "id" : "5F5647F4-F819-4231-B833-BB2FB27ADE40",
-          "type" : "taxExemptInterest",
-          "amount" : 44619
-        }
-      ],
-      "profileSpouse" : {
-        "wages" : 0,
-        "socialSecurity" : 0,
-        "age" : 50,
-        "name" : "Nobuko",
-        "medicalCoverage" : "offMarketACAPlan",
-        "employmentStatus" : "retired"
-      },
-      "filingStatus" : "marriedFilingJointly",
-      "taxSchemeId" : "official_20240",
+      "id" : "190F599B-1EBC-417D-8C58-94973FB3A24B",
       "profileSelf" : {
         "employmentStatus" : "retired",
-        "socialSecurity" : 39248,
         "medicalCoverage" : "offMarketACAPlan",
-        "name" : "Rodney",
+        "name" : "Nobuko",
         "wages" : 0,
-        "age" : 50
+        "age" : 50,
+        "socialSecurity" : 0
       },
-      "credits" : [
-
-      ],
-      "adjustments" : [
-
-      ],
-      "name" : "Current Year Estimates",
-      "id" : "39305EB3-E084-4436-B706-409B9BBADA39"
+      "profileSpouse" : {
+        "name" : "Rodney",
+        "medicalCoverage" : "offMarketACAPlan",
+        "socialSecurity" : 43826,
+        "age" : 52,
+        "wages" : 50000,
+        "employmentStatus" : "retired"
+      },
+      "taxSchemeId" : "official_20240"
     },
     {
       "income" : [
         {
+          "type" : "qualifiedDividends",
           "amount" : 53419,
-          "id" : "FFCC7206-F47C-4538-9D9B-610EB257AC56",
-          "type" : "qualifiedDividends"
+          "id" : "FFCC7206-F47C-4538-9D9B-610EB257AC56"
         },
         {
-          "amount" : 27146,
           "id" : "7FF07C0B-8926-42A7-B3DC-E77D6CFDF30A",
+          "amount" : 27146,
           "type" : "qualifiedDividends"
         },
         {
           "id" : "72A3ED61-0D7D-440B-A15C-999FD8EBD7BB",
-          "type" : "ordinaryDividends",
-          "amount" : 57824
+          "amount" : 57824,
+          "type" : "ordinaryDividends"
         },
         {
           "type" : "interest",
@@ -388,40 +648,118 @@
           "id" : "94E97E65-D8BE-4C7C-A7EB-F8E3E1674AB2"
         }
       ],
-      "description" : "This is a scenario what the current CoreFolio investment approach would look like after Rodney dies.  Total income is reduced (no more SSDI) but filing status changes to Single which results is much more taxes being owed.",
-      "taxSchemeId" : "official_20240",
-      "credits" : [
-
-      ],
-      "adjustments" : [
-        {
-          "amount" : 8300,
-          "id" : "87FF341B-F8A3-4CBB-9D7A-41F3CBF662F6",
-          "type" : "hsaContribution"
-        }
-      ],
-      "id" : "09C0C9E2-DAD5-429B-A2EC-F03471AFC452",
       "name" : "CoreFolio w\/out Rodney",
-      "profileSelf" : {
-        "medicalCoverage" : "offMarketACAPlan",
-        "wages" : 0,
-        "age" : 50,
-        "employmentStatus" : "retired",
-        "name" : "Nobuko",
-        "socialSecurity" : 0
-      },
-      "profileSpouse" : {
-        "name" : "Rodney",
-        "wages" : 50000,
-        "socialSecurity" : 43826,
-        "medicalCoverage" : "offMarketACAPlan",
-        "age" : 52,
-        "employmentStatus" : "retired"
-      },
       "deductions" : [
 
       ],
-      "filingStatus" : "single"
+      "filingStatus" : "single",
+      "credits" : [
+
+      ],
+      "profileSpouse" : {
+        "age" : 52,
+        "socialSecurity" : 43826,
+        "medicalCoverage" : "offMarketACAPlan",
+        "name" : "Rodney",
+        "wages" : 50000,
+        "employmentStatus" : "retired"
+      },
+      "description" : "This is a scenario what the current CoreFolio investment approach would look like after Rodney dies.  Total income is reduced (no more SSDI) but filing status changes to Single which results is much more taxes being owed.",
+      "adjustments" : [
+        {
+          "type" : "hsaContribution",
+          "id" : "87FF341B-F8A3-4CBB-9D7A-41F3CBF662F6",
+          "amount" : 8300
+        }
+      ],
+      "taxSchemeId" : "official_20240",
+      "profileSelf" : {
+        "employmentStatus" : "retired",
+        "socialSecurity" : 0,
+        "name" : "Nobuko",
+        "wages" : 0,
+        "age" : 50,
+        "medicalCoverage" : "offMarketACAPlan"
+      },
+      "id" : "09C0C9E2-DAD5-429B-A2EC-F03471AFC452"
+    },
+    {
+      "description" : "",
+      "adjustments" : [
+
+      ],
+      "taxSchemeId" : "official_20240",
+      "income" : [
+        {
+          "type" : "longTermCapitalGains",
+          "amount" : 253905,
+          "id" : "90A7D352-FA26-49B5-A4EB-2480C64259FB"
+        },
+        {
+          "amount" : 182204,
+          "type" : "shortTermCapitalGains",
+          "id" : "662CF7E8-7B08-44A9-8BDC-A22156EC9CDA"
+        },
+        {
+          "amount" : 104993,
+          "id" : "30A48ACF-E351-42EC-9B74-9F0E185E6E5E",
+          "type" : "qualifiedDividends"
+        },
+        {
+          "type" : "ordinaryDividends",
+          "amount" : 107152,
+          "id" : "D4180EC1-A8C6-455D-BB57-E84670572825"
+        },
+        {
+          "id" : "67A17DCE-6907-4927-BED0-CF062275DBEC",
+          "type" : "interest",
+          "amount" : 13358
+        },
+        {
+          "type" : "carryforwardLoss",
+          "id" : "9D082BCD-350B-4687-A73E-C73B468870FC",
+          "amount" : 2279214
+        },
+        {
+          "id" : "5F5647F4-F819-4231-B833-BB2FB27ADE40",
+          "amount" : 44619,
+          "type" : "taxExemptInterest"
+        }
+      ],
+      "name" : "Current Year Estimates",
+      "profileSpouse" : {
+        "socialSecurity" : 0,
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "medicalCoverage" : "offMarketACAPlan",
+        "wages" : 0,
+        "name" : "Nobuko"
+      },
+      "credits" : [
+
+      ],
+      "profileSelf" : {
+        "name" : "Rodney",
+        "socialSecurity" : 39248,
+        "employmentStatus" : "retired",
+        "age" : 50,
+        "wages" : 0,
+        "medicalCoverage" : "offMarketACAPlan"
+      },
+      "filingStatus" : "marriedFilingJointly",
+      "id" : "39305EB3-E084-4436-B706-409B9BBADA39",
+      "deductions" : [
+        {
+          "id" : "540B20F8-07BA-44E2-BE40-8DE7C753DFE5",
+          "type" : "marginInterestDeduction",
+          "amount" : 40012
+        },
+        {
+          "amount" : 11175,
+          "type" : "stateAndLocalTaxDeduction",
+          "id" : "8352A479-D54E-48DB-9340-00B645AB6B22"
+        }
+      ]
     }
   ]
 }
